@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 215
+   Title
+ Modular Components
+   Sponsor
+ https://github.com/sophistifunk
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-08-08
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Creating and Publishing a Widget Requirements Documentation Main Widget Class Metadata CSS Static Assets Internationalisation Data Model Widget Events Host Events Service Object Interfaces Runtime Extensibility Building and Publishing your Widget   Embedding a Widget into a Host Application Requirements Adding it to your project Providing the Data Model Providing CSS Providing Static Assets Providing i18n Resources Providing Service Objects Listening to Widget Events Notifying Widget of External Events   Widget Module Artefact Specifications   Motivation Reasoning TypeScript Source ES6 Module Distribution   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract This document describes a set of practices to allow creation and embedding of Modular UX Widgets: Compound React components that are more task-specific and self-contained than the simpler, building-block kind of components found in a common UI Component library package (such as Button, Table, DropDown, etc)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/215/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 215
+   Title
+ Modular Components
+   Sponsor
+ https://github.com/sophistifunk
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-08-08
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Creating and Publishing a Widget Requirements Documentation Main Widget Class Metadata CSS Static Assets Internationalisation Data Model Widget Events Host Events Service Object Interfaces Runtime Extensibility Building and Publishing your Widget   Embedding a Widget into a Host Application Requirements Adding it to your project Providing the Data Model Providing CSS Providing Static Assets Providing i18n Resources Providing Service Objects Listening to Widget Events Notifying Widget of External Events   Widget Module Artefact Specifications   Motivation Reasoning TypeScript Source ES6 Module Distribution   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract This document describes a set of practices to allow creation and embedding of Modular UX Widgets: Compound React components that are more task-specific and self-contained than the simpler, building-block kind of components found in a common UI Component library package (such as Button, Table, DropDown, etc).">
+
+
+
+<meta itemprop="wordCount" content="2187">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 215
+   Title
+ Modular Components
+   Sponsor
+ https://github.com/sophistifunk
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-08-08
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Creating and Publishing a Widget Requirements Documentation Main Widget Class Metadata CSS Static Assets Internationalisation Data Model Widget Events Host Events Service Object Interfaces Runtime Extensibility Building and Publishing your Widget   Embedding a Widget into a Host Application Requirements Adding it to your project Providing the Data Model Providing CSS Providing Static Assets Providing i18n Resources Providing Service Objects Listening to Widget Events Notifying Widget of External Events   Widget Module Artefact Specifications   Motivation Reasoning TypeScript Source ES6 Module Distribution   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract This document describes a set of practices to allow creation and embedding of Modular UX Widgets: Compound React components that are more task-specific and self-contained than the simpler, building-block kind of components found in a common UI Component library package (such as Button, Table, DropDown, etc)."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">215</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Title</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modular Components</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/sophistifunk" class="bare">https://github.com/sophistifunk</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Status</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Type</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Created</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-08-08</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TBD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_creating_and_publishing_a_widget">Creating and Publishing a Widget</a>
+<ul class="sectlevel3">
+<li><a href="#_requirements">Requirements</a></li>
+<li><a href="#_documentation">Documentation</a></li>
+<li><a href="#_main_widget_class">Main Widget Class</a></li>
+<li><a href="#_metadata">Metadata</a></li>
+<li><a href="#_css">CSS</a></li>
+<li><a href="#_static_assets">Static Assets</a></li>
+<li><a href="#_internationalisation">Internationalisation</a></li>
+<li><a href="#_data_model">Data Model</a></li>
+<li><a href="#_widget_events">Widget Events</a></li>
+<li><a href="#_host_events">Host Events</a></li>
+<li><a href="#_service_object_interfaces">Service Object Interfaces</a></li>
+<li><a href="#_runtime_extensibility">Runtime Extensibility</a></li>
+<li><a href="#_building_and_publishing_your_widget">Building and Publishing your Widget</a></li>
+</ul>
+</li>
+<li><a href="#_embedding_a_widget_into_a_host_application">Embedding a Widget into a Host Application</a>
+<ul class="sectlevel3">
+<li><a href="#_requirements_2">Requirements</a></li>
+<li><a href="#_adding_it_to_your_project">Adding it to your project</a></li>
+<li><a href="#_providing_the_data_model">Providing the Data Model</a></li>
+<li><a href="#_providing_css">Providing CSS</a></li>
+<li><a href="#_providing_static_assets">Providing Static Assets</a></li>
+<li><a href="#_providing_i18n_resources">Providing i18n Resources</a></li>
+<li><a href="#_providing_service_objects">Providing Service Objects</a></li>
+<li><a href="#_listening_to_widget_events">Listening to Widget Events</a></li>
+<li><a href="#_notifying_widget_of_external_events">Notifying Widget of External Events</a></li>
+</ul>
+</li>
+<li><a href="#_widget_module_artefact_specifications">Widget Module Artefact Specifications</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_typescript_source">TypeScript Source</a></li>
+<li><a href="#_es6_module_distribution">ES6 Module Distribution</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document describes a set of practices to allow creation and embedding of Modular UX Widgets: Compound React components that are more task-specific and self-contained than the simpler, building-block kind of components found in a common UI Component library package (such as Button, Table, DropDown, etc).</p>
+</div>
+<div class="paragraph">
+<p>Example use cases:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline run graph</p>
+</li>
+<li>
+<p>Pipeline creation wizard</p>
+</li>
+<li>
+<p>Pipeline activity table</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_creating_and_publishing_a_widget">Creating and Publishing a Widget</h3>
+<div class="sect3">
+<h4 id="_requirements">Requirements</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>TypeScript</p>
+</li>
+<li>
+<p>React</p>
+</li>
+<li>
+<p>Gulp</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_documentation">Documentation</h4>
+<div class="paragraph">
+<p>Quality documentation is a key concern for any reusable code, moreso in the case of Widgets that may require the Host Application to provide implementation of service interfaces and Host Event signals.</p>
+</div>
+<div class="paragraph">
+<p>The Widget Framework provides tools usable from the command line or Gulp to generate documentation for your Widget. It is generated mechanically, based on the <code>WidgetDescription.json</code>, the types of your Widget&#8217;s props, and your documentation comments.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_main_widget_class">Main Widget Class</h4>
+<div class="paragraph">
+<p>The main class for your Widget should be a React component. Use a named export (no default exports), and export it in the root namespace of your module.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_metadata">Metadata</h4>
+<div class="paragraph">
+<p>The build tools provided by the Widget Framework require a small amount of metadata in the form of a <code>WidgetDescription.json</code> file. The interface declaration for the file is as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-TypeScript" data-lang="TypeScript">export interface WidgetDescription {
+    /**
+     * The name of the Widget's React Component class
+     */
+    widgetClass: string;
+
+    /**
+     * Names of the React properties for Widget Events
+     */
+    widgetEvents: Array&lt;string&gt;;
+
+    /**
+     * Names of the React properties for Host Events
+     */
+    hostEvents: Array&lt;string&gt;;
+
+    /**
+     * Names of the React properties for Data Model objects
+     */
+    models: Array&lt;string&gt;;
+
+    /**
+     * Names of the React properties for required Service objects
+     */
+    services: Array&lt;string&gt;;
+
+    /**
+     * Names of the React properties for static assets
+     */
+    assets: Array&lt;string&gt;;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_css">CSS</h4>
+<div class="paragraph">
+<p>If your Widget requires stylesheets, you must provide them as CSS in your published module under <code>/styles/css/</code>, with the entry point (preferrably a single file) being <code>/styles/css/main.css</code>. We recommend SCSS for writing stylesheets, and that you also include the SCSS sources in your module, with the entry point being <code>/styles/scss/main.scss</code> - this allows those embedding the widget the most freedom over how they choose to embed the stylesheets into their build.</p>
+</div>
+<div class="paragraph">
+<p>Styles must be namespaced so as to not interfere with the Host Application, and should not refer to external assets if possible, as this may make embedding your Widget more difficult for Host Application authors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_static_assets">Static Assets</h4>
+<div class="paragraph">
+<p>As a general rule, try not to require any static assets for your widgets. Use inline SVG where possible, to reduce the burden on Host Application authors.</p>
+</div>
+<div class="paragraph">
+<p>If you do need static assets such as PNG or JPG files, each asset:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Must be included in the published module under the <code>/assets/</code> directory;</p>
+</li>
+<li>
+<p>Must have a corresponding React prop on the main class so the Host Application can set the correct URL at runtime;</p>
+</li>
+<li>
+<p>Must be listed in <code>WidgetDescription.assets</code>, and</p>
+</li>
+<li>
+<p>Should be appropriately documented in the typedef for your <code>props</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_internationalisation">Internationalisation</h4>
+<div class="paragraph">
+<p>Include any localised resources in JSON format in the following location within the published Widget module:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/i18n/resources.en.json</code></p>
+</li>
+<li>
+<p><code>/i18n/resources.us.json</code></p>
+</li>
+<li>
+<p><code>/i18n/resources.jp.json</code></p>
+</li>
+<li>
+<p><code>/i18n/resources.de.json</code></p>
+</li>
+<li>
+<p><em>&#8230;&#8203;etc</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>At runtime, the Host Application will select the appropriate bundle based on the user&#8217;s locale, and provide it to your Widget&#8217;s main class via the <code>resourceBundle</code> React prop.</p>
+</div>
+<div class="paragraph">
+<p>How these JSON files are generated, and the implementation details of translating keys to strings are up to each individual Widget&#8217;s authors.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_data_model">Data Model</h4>
+<div class="paragraph">
+<p>Any data your Widget requires that will be provided by the Host Application must be fully specified as commented TypeScript interfaces, and listed in <code>WidgetDescription.models</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_widget_events">Widget Events</h4>
+<div class="paragraph">
+<p>Widget Events are those dispatched by your Widget, usually in response to user actions such as selection changes, button clicks, etc. These should be standard <code>onEventName</code>-style React props that are of fully specified and commented <code>Function</code> type, and should usually be optional:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-TypeScript" data-lang="TypeScript">interface MyWidgetProps {
+    /* .... */
+
+    /**
+     * Called when the user clicks the cancel buton
+     */
+    onCancel?: () =&gt; void;
+
+    /**
+     * Called when the user selects an option from the available hostnames
+     */
+    onHostnameSelected?: (hostname: string) =&gt; void;
+
+    /* .... */
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The names of these properties must be included in <code>WidgetDescription.widgetEvents</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_host_events">Host Events</h4>
+<div class="paragraph">
+<p>If your Widget needs to be notified of distinct <em>events</em> from the Host Application or outside world that can&#8217;t be described as part of the Data Model, the Widget Framework provides a generic <a href="https://en.wikipedia.org/wiki/Signals_and_slots">Signal</a>-like interface.</p>
+</div>
+<div class="paragraph">
+<p>Declare a prop of type <code>Signal&lt;PayloadType&gt;</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-TypeScript" data-lang="TypeScript">interface MyWidgetProps {
+    /* .... */
+
+    /**
+     * Host Application should trigger this signal every time the current temperature is taken
+     */
+    currentTemperature: Signal&lt;Number&gt;;
+
+    /* .... */
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a handler to the signal in <code>componentWillMount()</code></p>
+</li>
+<li>
+<p>Cancel the subscription in <code>componentWillUnmount()</code> - otherwise you may create a memory leak</p>
+</li>
+<li>
+<p>Take whatever action is needed when the Signal is fired</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-TypeScript" data-lang="TypeScript">interface MyWidget {
+    onTemperatureRecorded: Handler&lt;Number&gt;;
+}
+
+export class MyWidget extends React.Component {
+
+    props: MyWidgetProps;
+
+    subscriptions: Array&lt;Subscription&gt; = [];
+
+    componentWillMount() {
+        this.subscriptions.push(this.props.currentTemperature.add(this.onTemperatureRecorded));
+    }
+
+    componentWillUnmount() {
+        this.subscriptions.forEach(subscription =&gt; subscription.cancel());
+    }
+
+    onTemperatureRecorded = (event: HostEvent&lt;Number&gt;) =&gt; {
+        this.doSomething(event.value);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The names of these properties must be included in <code>WidgetDescription.hostEvents</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_service_object_interfaces">Service Object Interfaces</h4>
+<div class="paragraph">
+<p>In most cases, information should be provided to your Widget via Data Model props and user actions dispatched via Widget Events. However if your Widget requires access to an API, you should use a Service Object prop.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Declare the object as a React prop</p>
+</li>
+<li>
+<p>Provide a fully-specified and commented TypeScript Interface</p>
+</li>
+<li>
+<p>List the prop name in <code>WidgetDescription.services</code></p>
+</li>
+<li>
+<p>If it&#8217;s a common / known API, provide a default implementation if possible.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_runtime_extensibility">Runtime Extensibility</h4>
+<div class="paragraph">
+<p>Documentation for how to extend widgets at runtime is available at <a href="https://github.com/imeredith/es-extensions-api">es-extensions-api</a> (JEP-204).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_building_and_publishing_your_widget">Building and Publishing your Widget</h4>
+<div class="paragraph">
+<p>Your widget should be built and published as a normal NPM module, with the correct layout, including generated documentation. Widgets should be published as ES6 modules, with accompanying TypeScript <code>*.d.ts</code> declaration files.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_embedding_a_widget_into_a_host_application">Embedding a Widget into a Host Application</h3>
+<div class="sect3">
+<h4 id="_requirements_2">Requirements</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>A bundler/transpiler that understands ES6 Modules (or modern browser requirements)</p>
+</li>
+<li>
+<p>React</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additionally, the Widget module artefact will include TypeScript <code>*.d.ts</code> files for Host Applications using TypeScript, but you are free to ignore them otherwise.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_adding_it_to_your_project">Adding it to your project</h4>
+<div class="paragraph">
+<p>Add the Widget to your application&#8217;s dependencies like a normal NPM module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>npm install --save @org-name/widget-module-name</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And render it as you would any other React component:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript" data-lang="JavaScript">import { FooWidget } from '@org-name/widget-module-name';
+
+class MyWrapper extends React.Component {
+
+    /* .... */
+
+    render() {
+        /* .... */
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;Hello, World!&lt;/h1&gt;
+                &lt;FooWidget foo="bar" baz={quux}/&gt;
+            &lt;/div&gt;
+        );
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_providing_the_data_model">Providing the Data Model</h4>
+<div class="paragraph">
+<p>The data model should be provided to the Widget via React properties, as a normal JavaScript object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript" data-lang="JavaScript">    render() {
+        const topLevelStages = this.getTopLevelStages();
+        return (
+            &lt;PipelineGraph stages={topLevelStages}/&gt;
+        );
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The expected type of all data model properties will be described in the Widget&#8217;s documentation, as well as available in the form of TypeScript <code>Foo.d.ts</code> files in the artefact alongside the JavaScript source.</p>
+</div>
+<div class="paragraph">
+<p>Unless specifically described otherwise in the Widget&#8217;s documentation, treat data model objects as immutable, and do not expect the Widget to re-render if you change some of its nested properties.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_providing_css">Providing CSS</h4>
+<div class="paragraph">
+<p>Each Widget will provide the styles it requires in a predictable location within the artefact:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>As CSS, located with the entry at <code>/styles/css/main.css</code></p>
+</li>
+<li>
+<p>Optionally as SCSS source files with the entry at <code>/styles/scss/main.scss</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is up to the Host Application to ensure that the correct styles are loaded when rendering the widget. How you do that depends on your Application&#8217;s build process and environment.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_providing_static_assets">Providing Static Assets</h4>
+<div class="paragraph">
+<p>Any static assets (such as images) required by the Widget will be provided in the artefact within the <code>/assets/</code> folder, and must be set as React props on the Widget.</p>
+</div>
+<div class="paragraph">
+<p>Host Applications can serve these assets from a known location and provide the HREFs to the widget:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript" data-lang="JavaScript">    render() {
+        const assetBase = this.getAssetBase();
+
+        const assets = {
+            happy: `${assetBase}/happy.png`,
+            sad: `${assetBase}/sad.png`
+        };
+
+        return (
+            &lt;FaceWidget {...assets}/&gt;
+        );
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As an alternative, depending on your bundler/loader, you can embed them directly from the artefact as <code>data://</code> URLs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JavaScript" data-lang="JavaScript">const happyImg = require('@example-org/widget-module-name/assets/happy.png');
+const sadImg = require('@example-org/widget-module-name/assets/happy.png');
+
+class MyWrapper extends React.Component {
+
+    /* .... */
+
+    render() {
+        const assets = {
+            happy: happyImg,
+            sad: sadImg
+        };
+
+        return (
+            &lt;FaceWidget {...assets}/&gt;
+        );
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_providing_i18n_resources">Providing i18n Resources</h4>
+<div class="paragraph">
+<p>Widgets will provide their localised resources as JSON in a predictable location:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/i18n/resources.en.json</code></p>
+</li>
+<li>
+<p><code>/i18n/resources.us.json</code></p>
+</li>
+<li>
+<p><code>/i18n/resources.jp.json</code></p>
+</li>
+<li>
+<p><code>/i18n/resources.de.json</code></p>
+</li>
+<li>
+<p><em>&#8230;&#8203;etc</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The host application must, based on the user&#8217;s current locale, provide the correct data to the Widget as a plain JavaScript object via the <code>resourceBundle</code> React prop.</p>
+</div>
+<div class="paragraph">
+<p>If the host application supports locales for which the widget does not provide a bundle, default to <code>en</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_providing_service_objects">Providing Service Objects</h4>
+<div class="paragraph">
+<p>In some instances, a Widget may require service objects to provide access to an API. These will be host-specific, and must be provided by the Host Application via React props.</p>
+</div>
+<div class="paragraph">
+<p>The detailed interfaces that must be implemented by any service objects will be provided by the Widget&#8217;s documentation, as well as in the form of TypeScript <code>*.d.ts</code> definitions in the Widget module artefact.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_listening_to_widget_events">Listening to Widget Events</h4>
+<div class="paragraph">
+<p>A Widget may provide standard React events via any number of <code>onFoo=</code> props that the Host Application can choose to listen to. The Widget&#8217;s documentation will provide details of the meaning and function signiatures for any Widget Events, as well as in the form of TypeScript <code>*.d.ts</code> definitions in the Widget module artefact.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_notifying_widget_of_external_events">Notifying Widget of External Events</h4>
+<div class="paragraph">
+<p>In some instances, a Widget will need to be notified about events from the Host Application or the outside world, in a way that would not be well served by changing a data model prop. For this purpose we use a simple implementation of the <a href="https://en.wikipedia.org/wiki/Signals_and_slots">Signal pattern</a>. The Widget Framework library contains the interface definitions and a simple implementation class that can be re-used by Host Applications:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-TypeScript" data-lang="TypeScript">import { EventSource } from 'widget-framework';
+
+class App extends React.Component {
+
+    // Signal instance
+    fileChanged = new EventSource&lt;string&gt;('fileChanged');
+
+    // Method called by some other code (not shown)
+    externalFileChanged(filename: string) {
+        // Notify the widget via our signal
+        this.fileChanged.dispatch(filename);
+    }
+
+    render() {
+        return (
+            &lt;DirectoryListingWidget fileChanged={this.fileChanged} /&gt;
+        );
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_widget_module_artefact_specifications">Widget Module Artefact Specifications</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/package.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard NPM metadata</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/WidgetDescription.json</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Widget metadata</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/assets/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Static assets such as PNG / JPG files</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/docs/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generated documentation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/i18n/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Localised resources and messages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/lib/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ES6 Source and TypeScript declaration files for the Widget&#8217;s classes and modules</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/styles/css/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stylesheet, in standard CSS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/styles/scss/</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stylesheet, SCSS sources (optional)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Benefits to widget consumers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Less overhead and transient dependencies for any given widget</p>
+</li>
+<li>
+<p>More fine-grained control over depdency versioning</p>
+</li>
+<li>
+<p>Component source will be easier to grok without having knowledge of the Blue Ocean codebase (less forest, more tree)</p>
+</li>
+<li>
+<p>Explicit declaration of the component API means no assumptions about the Blue Ocean container will infect the host application</p>
+</li>
+<li>
+<p>Better and more focused documentation</p>
+</li>
+<li>
+<p>Easier to get custom changes to widget source upstream without requiring simultaneous changes to Blue Ocean application or maintaining a fork or cherry-picking from the monolithic Blue Ocean codebase.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Benefits to Blue Ocean team:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Can share Widget code between "Blue Ocean as Jenkins plugin" and future "Standalone Blue Ocean" applications</p>
+</li>
+<li>
+<p>LTS branches will be easier to maintain by pegging widget versions rather than having to cherry-pick from trunk changes</p>
+</li>
+<li>
+<p>Explicit widget API will codify and reduce existing ambient assumptions / globals within the application</p>
+</li>
+<li>
+<p>Widget source code can advance more quickly to meet the needs of consumers without having to make simultaneous changes to the Blue Ocean application</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_typescript_source">TypeScript Source</h3>
+<div class="paragraph">
+<p>The Blue Ocean team has been porting existing sources to TypeScript over the last few months, and found it helps a lot with clarity and readability, dev-time tooling, as well as reducing the time to detect typos, bad import statements and missing object properties. Having explicit typedefs for interfaces and React props also allows a higher quality of output from automatic documentation tooling.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_es6_module_distribution">ES6 Module Distribution</h3>
+<div class="paragraph">
+<p>We find that compiling to ES6 modules gives the greatest build flexibility for Host Application authors, while including TypeScript <code>*.d.ts</code> declaration files means those also using TypeScript (including ourselves in dogfood situations) need not give up the type information.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no backwards compatibility concerns related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Individual projects maintaining Widgets or host applications that rely on them will be responsible for the applicable testing infrastructure, although testability of existing code is expected to improve as these processes are adopted and components are extracted as Widgets.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/sophistifunk/modular-ux-widgets-poc" class="bare">https://github.com/sophistifunk/modular-ux-widgets-poc</a> (some PoC details will differ from the final spec)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/topic/jenkinsci-dev/oiLuh-m38Mc/discussion">Initial JEP Discussion</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

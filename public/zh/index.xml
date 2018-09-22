@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>http://example.org/zh/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    
+	<atom:link href="http://example.org/zh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://example.org/zh/posts/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/zh/posts/readme/</guid>
+      <description>Jenkins Enhancement Proposals zh cn JEP stands for Jenkins Enhancement Proposal. A JEP is a design document that describes a new feature or aspect of the core Jenkins code, a plugin, or the Jenkins project, its processes, or its environment. A JEP provides a concise technical specification of the feature, describes the motivation for the change, and discusses the rationale behind the design.
+ JEPs are the primary mechanism for proposing major new features, for collecting community input on an issue, and for documenting the design decisions that have gone into Jenkins.</description>
+    </item>
+    
+  </channel>
+</rss>

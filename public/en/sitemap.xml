@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://example.org/posts/readme/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/zh/posts/readme/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/posts/readme/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/abc/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/hello/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep-template/0000/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/1/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/10/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/11/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/2/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/200/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/201/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/202/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/203/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/204/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/205/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/206/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/207/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/208/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/209/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/210/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/211/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/212/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/213/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/214/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/215/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/3/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/300/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/301/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/302/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/303/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/304/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/305/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/306/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/307/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/308/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/309/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/310/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/4/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/400/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/5/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/6/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/7/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/8/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/9/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jep/readme/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/zh/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/categories/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://example.org/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/zh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/zh/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/posts/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/</loc>
+    <priority>0</priority>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="http://example.org/zh/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://example.org/tags/"
+                />
+  </url>
+  
+</urlset>

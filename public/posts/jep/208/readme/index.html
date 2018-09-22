@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 208
+   Title
+ Configuration as Code tooling
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-30
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Motivation Reasoning Relax Configuration-asCode for backward compatibility ?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/208/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 208
+   Title
+ Configuration as Code tooling
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-30
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Motivation Reasoning Relax Configuration-asCode for backward compatibility ?">
+
+
+
+<meta itemprop="wordCount" content="1081">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 208
+   Title
+ Configuration as Code tooling
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-30
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Motivation Reasoning Relax Configuration-asCode for backward compatibility ?"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">208</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration as Code tooling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/ewelinawilkosz">Ewelina Wilkosz</a> from <a href="https://github.com/praqma">Praqma</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-05-30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP-201</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a></li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_relax_configuration_ascode_for_backward_compatibility">Relax Configuration-asCode for backward compatibility ?</a></li>
+<li><a href="#_during_jenkins_development">During Jenkins development</a></li>
+<li><a href="#_before_applying_configuration">Before applying configuration</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Configuration-as-Code (JEP-201) describes the mechanisms used to configure a Jenkins master based
+on yaml file(s), by discovering the data model from Java API, without the need to write any "glue-code"
+for each and every supported plugin.</p>
+</div>
+<div class="paragraph">
+<p>This approach comes with some drawback: Any update to Jenkins master&#8217;s core or plugins will change the
+inferred model, and as such a yaml configuration used a <code>t</code> time might not be valid at <code>t+1</code>. This concern
+has been raised by many early-adopters.</p>
+</div>
+<div class="paragraph">
+<p>This proposal is about defining the adequate tooling to balance this limitation, so both end-users
+and plugin maintainer are able to detect such compatibility breaks, and provide some diagnostic and
+resolution hints.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Configuration-as-Code tooling is designed to fill the gap between the raw mechanism defined by JEP-201
+to configure a specific jenkins-core + plugins combination, and the need to keep this configuration
+stable during core or plugin upgrades, or at least detect breaking changes and provide hints to manage
+upgrade.</p>
+</div>
+<div class="paragraph">
+<p>This includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tooling to validate configuration, sort of a "dry-run" mode, with adequate diagnostic when some
+configuration mismatch is detected.</p>
+</li>
+<li>
+<p>tooling to compare inferred model between versions, to be used by plugin developers to be aware
+changes they made during development might have impact on Configuration-as-Code.</p>
+</li>
+<li>
+<p>Document recommendations for plugin developers on ways to avoid breaking changes</p>
+</li>
+<li>
+<p>Metadata definition for plugin developers to document breaking changes and how to fix them. Based
+on this, when yaml validation do detect a configuration mismatch it can offer migration hints.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Configuration-as-Code doesn&#8217;t define a data model to setup jenkins, it&#8217;s based on inferring a model
+from live jenkins instance from its Java API, especially UI data-binding mechanisms. Based on this,
+changes made to core or a plugin <em>might</em> change this model and a configuration file <em>could</em> not be
+valid after upgrade.</p>
+</div>
+<div class="paragraph">
+<p>There&#8217;s not so much cases where such compatibility breaks could happen, but there&#8217;s chances this would.
+Compared to other tools, like <code>docker-compose</code>, we can&#8217;t provide a <code>version</code> attribute and accept
+distinct models, as we only know about the live, inferred one.</p>
+</div>
+<div class="paragraph">
+<p>Configuration-as-Code tooling is defined to work around this limitation by providing a toolset to
+discover such breaking changes early, before the actual production configuration is updated.
+It will help detect breaking changes during jenkins and plugins development, offer an option for
+plugin developers to document required breaking changes, and validate a configuration for a specific
+jenkins instance before it get actually applied.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Without an explicit versioned model per jenkins-core and plugin versions Configuration-as-Code only
+can rely offer some minimal backward compatibility.</p>
+</div>
+<div class="sect2">
+<h3 id="_relax_configuration_ascode_for_backward_compatibility">Relax Configuration-asCode for backward compatibility ?</h3>
+<div class="paragraph">
+<p>There&#8217;s few circumstances where we have options
+to work around a technical change in Jenkins or plugin codebase as the technical bits are still available,
+just hidden by the default "model inference" mechanism.</p>
+</div>
+<div class="paragraph">
+<p>A typical sample for this has been debated on
+<a href="https://github.com/jenkinsci/configuration-as-code-plugin/issues/233">issue 233</a>: <code>JNLPLauncher</code> DataBound
+constructor has been updated in jenkins codebase to introduce new argument <code>workDirSettings</code>. This one
+is declared in API as <code>@Nonnull</code>, which means Configuration-as-Code will infer a required attribute. As
+a result, previous definition for a JNLP launcher will be broken as this attribute isn&#8217;t declared. But on
+the other side, the legacy constructor is still available (but deprecated) and do define a default value
+for this new argument.</p>
+</div>
+<div class="paragraph">
+<p><strong>Shall we just relax Configuration-as-Code so it still can apply an outdated model ?</strong></p>
+</div>
+<div class="paragraph">
+<p>We don&#8217;t think so, as doing so would eventually bring us to indeterminable configuration paths:
+As we allow use of deprecated constructor (or setters, or &#8230;&#8203;) we might result with colliding candidates
+to invoke, without a deterministic way to select the adequate one.</p>
+</div>
+<div class="paragraph">
+<p>To follow-up with this specific sample, JNLPLauncher do define (at time writing) two deprecated constructors
+and another non-deprecated one :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Deprecated
+public JNLPLauncher(String tunnel, String vmargs) { ... }
+
+@Deprecated
+public JNLPLauncher() { ... }
+
+public JNLPLauncher(boolean enableWorkDir) { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sole one we can guarantee is designed to submit configuration is the @DataBound one. For others
+there&#8217;s no deterministic way to choose one. Even considering the configuration attributes we have from
+yaml file, which one should we use if configuration doesn&#8217;t define <code>enableWorkDir</code>, <code>tunnel</code> nor <code>vmargs</code>?
+first one passing <code>null, null</code> of non-deprecated one passing <code>false</code> default value ?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_during_jenkins_development">During Jenkins development</h3>
+<div class="paragraph">
+<p>Actually the exact same code change discussed in <a href="https://github.com/jenkinsci/configuration-as-code-plugin/issues/233">issue 233</a>
+could have been implemented without breaking Configuration-as-Code inferred model :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>by defining a <code>@DataBoundSetter</code> for newly introduced <code>workDirSettings</code> attribute</p>
+</li>
+<li>
+<p>by not defining <code>workDirSettings</code> argument as <code>@Nonnull</code> and applying default value</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Assuming Configuration-as-Code would exist for some time when this change was applied to jenkins-core, we
+might have detected it during code review and prevented this to happen.</p>
+</div>
+<div class="paragraph">
+<p>Configuration-as-Code tooling wants to avoid such unnecessary breaking changes to happen in the future.
+But as it wasn&#8217;t there before developers aren&#8217;t aware of this constraint, and we can&#8217;t just ask them
+to keep our use-case in mind any time they write some code (there&#8217;s already enough backward compatibility
+issues for them to address).</p>
+</div>
+<div class="paragraph">
+<p>Configuration-as-Code tooling do define tooling to detect such breaking changes, and warn developer about
+them. This tooling do run the model inference logic and compare with previous state of the codebase. This
+will warn developer about breaking change being introduced for Configuration-as-Code users.</p>
+</div>
+<div class="paragraph">
+<p>Sometime such changes are actually required. For such situation we propose some metadata being added aside
+changes made to codebase so Configuration-as-Code can give end-user some hints on the break and how to fix
+it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_before_applying_configuration">Before applying configuration</h3>
+<div class="paragraph">
+<p>On end-user side we want ot offer a validation toolkit to be used when applying configuration on a jenkins
+instance. This toolkit do parse the yaml configuration, try to apply configuration on the inferred model,
+and will report issue detected during this dry-run configuration process.</p>
+</div>
+<div class="paragraph">
+<p>It would rely on breaking changes metadata to offer end-user some guidance on way to address reported
+backward compatibility issues.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Configuration-as-Code tooling to check for API backward compatibility will need to be
+included in the CI process, so it can inform plugin developers and contributors on breaking changes
+detection.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO
+This JEP submission is only informative so far about our intents to address this concern</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/forum/#!msg/jenkinsci-dev/nnfreZqwIJ4/XVRM_NZfBwAJ" class="bare">https://groups.google.com/forum/#!msg/jenkinsci-dev/nnfreZqwIJ4/XVRM_NZfBwAJ</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

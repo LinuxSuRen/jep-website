@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 306
+   Title
+ Evergreen Instance Client Health Checking
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-05
+   JIRA
+ JENKINS-50294
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Instance Identity URL /metrics/evergreen/healthcheck URL Absence of the metrics plugin Metrics plugin Configuration     Motivation Reasoning Why not leverage the error logging   Backwards Compatibility Security Accessing the /metrics/evergreen/healthcheck URL from outside the container Using evergreen as the metrics access key Absence of the metrics plugin   Infrastructure Requirements Testing Prototype Implementation References    Abstract The first pillar of Jenkins Evergreen is that it is an Automatically Updated Distribution." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/306/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 306
+   Title
+ Evergreen Instance Client Health Checking
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-05
+   JIRA
+ JENKINS-50294
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Instance Identity URL /metrics/evergreen/healthcheck URL Absence of the metrics plugin Metrics plugin Configuration     Motivation Reasoning Why not leverage the error logging   Backwards Compatibility Security Accessing the /metrics/evergreen/healthcheck URL from outside the container Using evergreen as the metrics access key Absence of the metrics plugin   Infrastructure Requirements Testing Prototype Implementation References    Abstract The first pillar of Jenkins Evergreen is that it is an Automatically Updated Distribution.">
+
+
+
+<meta itemprop="wordCount" content="1051">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 306
+   Title
+ Evergreen Instance Client Health Checking
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-05
+   JIRA
+ JENKINS-50294
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Instance Identity URL /metrics/evergreen/healthcheck URL Absence of the metrics plugin Metrics plugin Configuration     Motivation Reasoning Why not leverage the error logging   Backwards Compatibility Security Accessing the /metrics/evergreen/healthcheck URL from outside the container Using evergreen as the metrics access key Absence of the metrics plugin   Infrastructure Requirements Testing Prototype Implementation References    Abstract The first pillar of Jenkins Evergreen is that it is an Automatically Updated Distribution."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">306</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evergreen Instance Client Health Checking</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/batmat">Baptiste Mathus</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-04-05</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-50294">JENKINS-50294</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_instance_identity_url">Instance Identity URL</a></li>
+<li><a href="#__code_metrics_evergreen_healthcheck_code_url"><code>/metrics/evergreen/healthcheck</code> URL</a>
+<ul class="sectlevel3">
+<li><a href="#_absence_of_the_code_metrics_code_plugin">Absence of the <code>metrics</code> plugin</a></li>
+<li><a href="#_metrics_plugin_configuration">Metrics plugin Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_why_not_leverage_the_error_logging">Why not leverage the error logging</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a>
+<ul class="sectlevel2">
+<li><a href="#metrics-endpoint-access">Accessing the <code>/metrics/evergreen/healthcheck</code> URL from outside the container</a></li>
+<li><a href="#_using_code_evergreen_code_as_the_metrics_access_key">Using <code>evergreen</code> as the metrics access key</a></li>
+<li><a href="#metrics-absence">Absence of the <code>metrics</code> plugin</a></li>
+</ul>
+</li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The first pillar of <em>Jenkins Evergreen</em> is that it is an <a href="https://github.com/jenkinsci/jep/tree/master/jep/300#auto-update">Automatically Updated Distribution</a>.</p>
+</div>
+<div class="paragraph">
+<p>To be able to achieve this goal in a durable way, we need to be able to <em>automatically assess the health</em> of a <strong>given</strong> instance.
+The scope of this proposal is to design the way we decide if we <a href="https://github.com/jenkinsci/jep/tree/master/jep/302">automatically roll back</a> or not.</p>
+</div>
+<div class="paragraph">
+<p>It will also regularly be fed back to the backend so that we can compute global health statistics for a given setup, but that is out of scope for the current document.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We do expect to evolve the health-checking process as we learn, but as the local healthcheck is a critical part of the overall <em>Evergreen</em> story, we want to start <em>small</em> on purpose.
+Once we deem to have learned enough, we will create new proposals to discuss and document the new checks we want to add.</p>
+</div>
+<div class="paragraph">
+<p>We will check two URLs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the <code>/instance-identity/</code> page</p>
+</li>
+<li>
+<p>the <code>/metrics/evergreen/healthcheck</code></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_instance_identity_url">Instance Identity URL</h3>
+<div class="paragraph">
+<p>We check that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>it is reachable,</p>
+</li>
+<li>
+<p>and returns a 200 HTTP status code.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__code_metrics_evergreen_healthcheck_code_url"><code>/metrics/evergreen/healthcheck</code> URL</h3>
+<div class="paragraph">
+<p>We configure the <a href="https://github.com/jenkinsci/metrics-plugin/">Metrics Jenkins plugin</a> to provide a healthcheck under the specified URL.
+The prettified returned format is the following</p>
+</div>
+<div class="listingblock">
+<div class="title"><code>/metrics/evergreen/healthcheck</code> URL output</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "disk-space": {
+    "healthy": true
+  },
+  "plugins": {
+    "healthy": true,
+    "message": "No failed plugins"
+  },
+  "temporary-space": {
+    "healthy": true
+  },
+  "thread-deadlock": {
+    "healthy": true
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From this URL, we check that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>it returns a 200 HTTP status code</p>
+</li>
+<li>
+<p>On the produced JSON</p>
+<div class="ulist">
+<ul>
+<li>
+<p>it is valid JSON</p>
+</li>
+<li>
+<p><code>plugins.healthy</code> attribute is <code>true</code></p>
+</li>
+<li>
+<p><code>thread-deadlock.healthy</code> attribute is <code>true</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We are <strong>not</strong> checking the space related attributes on purpose, at least for now.
+The rationale being that the upgrade to a new <em>Evergreen</em> BOM
+<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>
+ could consume a bit more disk space, and trigger a disk space warning.
+We probably do not want to wholly revert an upgrade because of this.</p>
+</div>
+<div class="sect3">
+<h4 id="_absence_of_the_code_metrics_code_plugin">Absence of the <code>metrics</code> plugin</h4>
+<div class="paragraph">
+<p>Making this plugin a part of the healthchecking story obviously makes it a <strong>required</strong> plugin.
+So the <em>evergreen-client</em> should make sure it is always present and active when upgrading.
+For instance, if it is disabled, or removed from the disk, it <strong>must</strong> be forcefully reinstalled and enabled automatically next time.</p>
+</div>
+<div class="paragraph">
+<p>If for some reason, the plugin fails to start, then the healthcheck should fall back to only check the <code>/instance-identity/</code>, and report this issue as critical to the backend.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_metrics_plugin_configuration">Metrics plugin Configuration</h4>
+<div class="paragraph">
+<p>The plugin is configured using the <a href="https://github.com/jenkinsci/configuration-as-code-plugin">Configuration As Code</a> Jenkins plugin, using the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="title">Evergreen Configuration-as-code file</div>
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">---
+jenkins:
+  # [snip other configurations]
+  metricsaccesskey:
+    accessKeys:
+      - key:            "evergreen"
+        description:    "Key for evergreen health-check"
+        canHealthCheck: true
+        canPing:        false
+        canThreadDump:  false
+        canMetrics:     false
+        origins:        "*"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is nothing existing in this area.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_why_not_leverage_the_error_logging">Why not leverage the error logging</h3>
+<div class="paragraph">
+<p>In the <a href="https://github.com/jenkinsci/jep/tree/master/jep/304">JEP-304 on <em>Evergreen Client Error Telemetry Logging</em></a>, we describe how the Jenkins instance is <em>publishing</em> its error logging.</p>
+</div>
+<div class="paragraph">
+<p>We are not going to use those logs for now for the reason stated previously: we do no think we know enough how to use them correctly yet.
+So we are taking a careful path here: anyway, those logs are going to be sent to the backend as a one of the data points for assessing quality of given releases.</p>
+</div>
+<div class="paragraph">
+<p>Over time, once we have a better idea of what they typically are, and how to use them, this is likely we will design a new proposal to enrich the way we do the healthchecking process from the <em>evergreen-client</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no backwards compatibility concerns related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="metrics-endpoint-access">Accessing the <code>/metrics/evergreen/healthcheck</code> URL from outside the container</h3>
+<div class="paragraph">
+<p>Though this is probably not a problematic data leak that it is accessible to anyone who would already be able to reach the server, we plan to use the <code>origins</code> field to restrict requesters to be <code>localhost</code> so that only the <em>evergreen-client</em> can access it.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+Seems like this field is actually not designed for source IP filtering.
+If so, we will either add this feature to the metrics plugin or adjust the proposal to confirm the sentence above: that we don&#8217;t deem it critical that this URL is accessible from outside the container for security.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_code_evergreen_code_as_the_metrics_access_key">Using <code>evergreen</code> as the metrics access key</h3>
+<div class="paragraph">
+<p>Normally, a <code>metrics</code> plugin healthcheck URL is of the format <code>SERVER/metrics/&lt;access-key&gt;/healthcheck</code>.</p>
+</div>
+<div class="paragraph">
+<p>We set the the accesskey value for clarity and simplicity: this makes it unnecessary to write some logic to initialize a random access key, and have the client store or access it from somewhere.</p>
+</div>
+<div class="paragraph">
+<p>Once the healthcheck endpoint access will be <a href="#metrics-endpoint-access">restricted to localhost only</a>, that is deemed to not an issue anymore.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="metrics-absence">Absence of the <code>metrics</code> plugin</h3>
+<div class="paragraph">
+<p>An attacker could try to make the plugin fail, for instance by implementing an extension in a bad way.</p>
+</div>
+<div class="paragraph">
+<p>If this ends up making the plugin fail to start, this should be detected by the <em>evergreen-client</em> and it will fall back to the simpler mode when only the <code>/instance-identity/</code> URL is checked.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This component and any change to it should be tested very aggressively, as it could trigger unneeded rollbacks in production or worse if broken.</p>
+</div>
+<div class="paragraph">
+<p>There should particularly be a testcase to check the behaviour <a href="#metrics-absence">in absence of the <em>Metrics</em> plugin</a>, or generally with failed plugins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen" class="bare">https://github.com/jenkins-infra/evergreen</a> and more specifically the <a href="https://github.com/jenkins-infra/evergreen/pull/44">PR-44</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>See also <a href="https://github.com/jenkinsci/jep/tree/master/jep/302">JEP-302: Evergreen snapshotting data safety system</a> as the <em>evergreen-client</em> will use the current proposal to trigger or not a rollback using the specification in <em>JEP-302</em>.</p>
+</li>
+<li>
+<p><a href="https://groups.google.com/forum/#!msg/jenkinsci-dev/9YNUJyE5WGE/pbOEzWz4BgAJ">Thread on the developer mailing list</a>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When moving this JEP from a Draft to "Accepted" or "Final" state,
+include links to the pull requests and mailing list discussions which were involved in the process.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Bill Of Materials: the configuration file describing what an Evergreen release is made of: what exact WAR version, which plugins, etc.
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

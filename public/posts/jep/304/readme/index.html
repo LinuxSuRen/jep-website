@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 304
+   Title
+ Evergreen Error Telemetry Logging
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-30
+   JIRA
+ JENKINS-49805
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301
+     Table of Contents Abstract Specification Summary Jenkins Plugin Logging format Exceptions handling Newlines and special characters   Destination Rotation parameters     Motivation Reasoning Why not send logs to the client using a socket Packaging: Jenkins plugin or Jenkins module The exception field in the JSON logs   Backwards Compatibility JSON format versioning Logs handling   Security Infrastructure Requirements Testing JSON Logging as and where expected Test with the plugin   Prototype Implementation References    Abstract Sending error logging to the backend is a critical aspect of Evergreen to be able to implement the Automated Health Assessment story [1]." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/304/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 304
+   Title
+ Evergreen Error Telemetry Logging
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-30
+   JIRA
+ JENKINS-49805
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301
+     Table of Contents Abstract Specification Summary Jenkins Plugin Logging format Exceptions handling Newlines and special characters   Destination Rotation parameters     Motivation Reasoning Why not send logs to the client using a socket Packaging: Jenkins plugin or Jenkins module The exception field in the JSON logs   Backwards Compatibility JSON format versioning Logs handling   Security Infrastructure Requirements Testing JSON Logging as and where expected Test with the plugin   Prototype Implementation References    Abstract Sending error logging to the backend is a critical aspect of Evergreen to be able to implement the Automated Health Assessment story [1].">
+
+
+
+<meta itemprop="wordCount" content="1460">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 304
+   Title
+ Evergreen Error Telemetry Logging
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-30
+   JIRA
+ JENKINS-49805
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301
+     Table of Contents Abstract Specification Summary Jenkins Plugin Logging format Exceptions handling Newlines and special characters   Destination Rotation parameters     Motivation Reasoning Why not send logs to the client using a socket Packaging: Jenkins plugin or Jenkins module The exception field in the JSON logs   Backwards Compatibility JSON format versioning Logs handling   Security Infrastructure Requirements Testing JSON Logging as and where expected Test with the plugin   Prototype Implementation References    Abstract Sending error logging to the backend is a critical aspect of Evergreen to be able to implement the Automated Health Assessment story [1]."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">304</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evergreen Error Telemetry Logging</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/batmat">Baptiste Mathus</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-03-30</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-49805">JENKINS-49805</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300</a>,
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/301">JEP-301</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_summary">Summary</a></li>
+<li><a href="#_jenkins_plugin">Jenkins Plugin</a></li>
+<li><a href="#_logging_format">Logging format</a>
+<ul class="sectlevel3">
+<li><a href="#exception-handling">Exceptions handling</a></li>
+<li><a href="#_newlines_and_special_characters">Newlines and special characters</a></li>
+</ul>
+</li>
+<li><a href="#_destination">Destination</a>
+<ul class="sectlevel3">
+<li><a href="#_rotation_parameters">Rotation parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#why-not-socket">Why not send logs to the client using a socket</a></li>
+<li><a href="#plugin-or-module">Packaging: Jenkins plugin or Jenkins module</a></li>
+<li><a href="#_the_code_exception_code_field_in_the_json_logs">The <code>exception</code> field in the JSON logs</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a>
+<ul class="sectlevel2">
+<li><a href="#__code_json_code_format_versioning"><code>JSON</code> format versioning</a></li>
+<li><a href="#_logs_handling">Logs handling</a></li>
+</ul>
+</li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a>
+<ul class="sectlevel2">
+<li><a href="#_json_logging_as_and_where_expected">JSON Logging as and where expected</a></li>
+<li><a href="#_test_with_the_plugin">Test with the plugin</a></li>
+</ul>
+</li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sending error logging to the backend is a critical aspect of Evergreen to be able to implement the <em>Automated Health Assessment</em> story
+<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p><em>Jenkins Evergreen</em> needs a way to <em>extract</em> the error logging from the Jenkins instance.</p>
+</div>
+<div class="paragraph">
+<p>The current document describes how we plan to extract those logs so that the <em>evergreen-client</em> can find, process and send them to the backend.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins will be configured to send the logs to the <em>evergreen-client</em>.
+The client being already <a href="https://github.com/jenkinsci/jep/tree/master/jep/303">connected</a> by definition, this will avoid having to maintain two ways to authenticate and access the backend.</p>
+</div>
+<div class="sect2">
+<h3 id="_summary">Summary</h3>
+<div class="paragraph">
+<p>Logs are sent:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>in <code>JSON</code> format for easier parsing by the client.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each log entry separated by a newline, so that each line can be parsed as a JSON object, without needing a JSON streaming parser.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>only if the level is greater or equal to <em>WARNING</em>.</p>
+</li>
+<li>
+<p>to the disk, under <code>$JENKINS_VAR/logs/essentials.log.N</code> rotating files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>By rotating, we mean <code>essentials.log.0</code> is the one file to "tail" to receive new log entries.
+It is left to the consumer to decide how to know where to start from in case of a fresh start, or restart.
+Though it is a subject for another design document, it is suggested to:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>store the last timestamp that was read ;</p>
+</li>
+<li>
+<p>be able to idempotently send everything to the backend (in case of a fresh startup, or a missing value for the last read and sent timestamp), and that already sent logs are deduplicated or ignored there.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>in <em>UTF-8</em> (The <em>JSON</em> specification allows some other encodings. We restrict it to <em>UTF-8</em> only)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>5 files maximum ;</p>
+</li>
+<li>
+<p>Approximately 10 MB maximum per file.</p>
+</li>
+<li>
+<p>This should give largely enough time for the client to parse and send everything before it gets rotated, even more because only logs ≥ <code>WARNING</code> will be sent.
+A total maximum of 50 MB of disk consumption for all this seems very reasonable with modern disk sizes.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jenkins_plugin">Jenkins Plugin</h3>
+<div class="paragraph">
+<p>We will host the code for all this in a new <em>Evergreen Jenkins Plugin</em> that will be required to be installed and active on any <em>Jenkins Evergreen</em> instance.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#plugin-or-module">Packaging: Jenkins plugin or Jenkins module</a> for why a Jenkins plugin.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logging_format">Logging format</h3>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+The JSON excerpts below are pretty-printed for readability.
+This will <strong>not</strong> be the case in real conditions so that one line is one log entry.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The logs is sent in <code>JSON</code> format.
+A version tag is put with initial value 1.
+This will make it easier to evolve the format if needed.</p>
+</div>
+<div class="paragraph">
+<p>The formatting is done by a <code>JSONFormatter</code> extending <a href="https://docs.oracle.com/javase/8/docs/api/java/util/logging/SimpleFormatter.html"><code>java.util.logging.Formatter</code></a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Required fields for a single log entry</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "version": 1,
+  "timestamp": 1522840762769,
+  "name": "io.jenkins.plugins.SomeTypicalClass",
+  "level": "WARNING",
+  "message": "the message\nand another line",
+  "exception": {
+    "raw": "serialized exception\n many \n many \n lines"
+  }
+}</code></pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">version</dt>
+<dd>
+<p>Initially <code>1</code>.
+Will be used in case we need to evolve the format.</p>
+</dd>
+<dt class="hdlist1">timestamp</dt>
+<dd>
+<p>Timestamp for the log in Epoch format</p>
+</dd>
+<dt class="hdlist1">name</dt>
+<dd>
+<p>The logger name.
+It is generally the name of the emitting class, but can be any text or even the empty string.</p>
+</dd>
+<dt class="hdlist1">level</dt>
+<dd>
+<p>The level of criticality of the log.
+In practice, should always be <code>SEVERE</code> or <code>WARNING</code>.
+But it is expected that this could be any value of the <code>java.util.logging.Level</code> class, if this proves necessary in the future.</p>
+</dd>
+<dt class="hdlist1">message</dt>
+<dd>
+<p>The message for this log entry.</p>
+</dd>
+<dt class="hdlist1">exception</dt>
+<dd>
+<p>(<strong>optional</strong>) See below <a href="#exception-handling">Exceptions handling</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="sect3">
+<h4 id="exception-handling">Exceptions handling</h4>
+<div class="paragraph">
+<p>Exceptions are serialized in a <code>exception</code> field.
+This field can be absent.</p>
+</div>
+<div class="paragraph">
+<p>To make potential future evolution easier, we are making the exception field an object.
+For now, we only put a single <code>raw</code> field in this object.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_newlines_and_special_characters">Newlines and special characters</h4>
+<div class="paragraph">
+<p>As <code>JSON</code> does not allow multiline strings, newlines are encoded using the typical <code>\n</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_destination">Destination</h3>
+<div class="paragraph">
+<p>The logs are written to disk in rotating log files under <code>$JENKINS_VAR/logs</code>.
+This uses a custom <code>FileHandler</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+This part is really meant to stay an internal implementation detail: the main goal is to have the client able to access and send those logs.
+So we might in the future change that for instance to send those logs to the client directly using a local socket connection (see <a href="#why-not-socket">Why not send logs to the client using a socket</a>).
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_rotation_parameters">Rotation parameters</h4>
+<div class="paragraph">
+<p>As explained previously, we plan to rotate on <em>5</em> files, of <em>10 MB</em> each maximum.
+If contrary to what we think, this proves not enough, or too much, we will be able to easily adjust those settings by delivering a new version of the <em>Evergreen Jenkins Plugin</em> handling this.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is no existing tooling for this.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="why-not-socket">Why not send logs to the client using a socket</h3>
+<div class="paragraph">
+<p>The <code>SocketHandler</code> class provided by the JDK is not usable for any real life usage.
+There is no reconnection logic at all: this means that <strong>any</strong> even temporary unavailability of the server socket will break the connection, and no logs will ever be sent again when it becomes available.</p>
+</div>
+<div class="paragraph">
+<p>So we chose the easiest path to <strong>not</strong> roll our own <code>SocketHandler</code> at least for now, and use a <code>FileHandler</code> and rotating log files instead for more out-of-the-box robustness (the producer can send its data, and the consumer can read it when ready).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plugin-or-module">Packaging: Jenkins plugin or Jenkins module</h3>
+<div class="paragraph">
+<p>We chose the Jenkins plugin path because this is a simpler path forward.
+The <em>Jenkins Project</em> has already everything ready to handle the hosting and release process of plugins.</p>
+</div>
+<div class="paragraph">
+<p>Using a <code>jenkins-module</code> would mean we need to set up a custom Jenkins WAR build for Evergreen.
+This would also mean we cannot use the quality assurance improvements we have started to put in place in the same way for Evergreen, and for the standard Jenkins core delivery.</p>
+</div>
+<div class="paragraph">
+<p>Though having a dedicated WAR packaging for <em>Jenkins Evergreen</em> is very likely something we will do in the future, we deemed preferrable to defer it to later, and focus instead on the other yet unresolved design questions of Evergreen.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_code_exception_code_field_in_the_json_logs">The <code>exception</code> field in the JSON logs</h3>
+<div class="paragraph">
+<p>Following <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">YAGNI</a>, we use a simple <code>exception</code> field where the exception is basically serialized as text.
+We will likely use <code>hudson.Functions.printThrowable()</code>
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>
+for the text formatting.</p>
+</div>
+<div class="paragraph">
+<p>If needed, this <em>might</em> be replaced in the future by a richer structure.
+In such case we will bump the <code>version</code> field to a higher number.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="__code_json_code_format_versioning"><code>JSON</code> format versioning</h3>
+<div class="paragraph">
+<p>As explained above, we put a <code>version</code> field in the JSON logs.
+This will help accomodate a format change if this becomes a necessity.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logs_handling">Logs handling</h3>
+<div class="paragraph">
+<p>We might decide at some point to change the way we pass the logs from <em>Jenkins</em> to the Evergreen Client.
+If this happens, we will probably go through a period of time where we&#8217;d log both to the disk, and to the Socket, so that we are not dependent on the version of the client.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The sensitive part of this feature lies in sending data outside of the instance.
+This will be handled in <a href="https://issues.jenkins-ci.org/browse/JENKINS-49811">JENKINS-49811</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+<div class="paragraph">
+<p>The infrastructure side of this feature will be handled in <a href="https://issues.jenkins-ci.org/browse/JENKINS-49811">JENKINS-49811</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_json_logging_as_and_where_expected">JSON Logging as and where expected</h3>
+<div class="paragraph">
+<p>The biggest part of this feature should be tested directly in the <a href="https://github.com/jenkins-infra/evergreen/">Evergreen</a> codebase.
+It is indeed easy to check that the logs are indeed found under the expected location.
+* See <a href="https://github.com/jenkins-infra/evergreen/pull/43" class="bare">https://github.com/jenkins-infra/evergreen/pull/43</a> for such example</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_with_the_plugin">Test with the plugin</h3>
+<div class="paragraph">
+<p>The <em>Evergreen Jenkins Plugin</em> is going to start introducing some core changes to the way Jenkins logs things.</p>
+</div>
+<div class="paragraph">
+<p>We want to check we do not inadvertently change, or disable totally for instance, the usual logging Jenkins has.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen/">Jenkins Evergreen official repository</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>More specifically: <a href="https://github.com/jenkins-infra/evergreen/pull/43" class="bare">https://github.com/jenkins-infra/evergreen/pull/43</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/batmat/essentials-plugin/" class="bare">https://github.com/batmat/essentials-plugin/</a> (will be moved to <a href="https://github.com/jenkinsci" class="bare">https://github.com/jenkinsci</a> as soon as the feedback is gathered and the overall feedback validates this design)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-49805">JENKINS-49805</a></p>
+</li>
+<li>
+<p>Mailing list related threads:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/1qtL_ADxfFE/W2_1UOzJAAAJ">Thoughts on sending error telemetry for Jenkins Evergreen</a></p>
+</li>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/sS8XQbnm9cg/xXEOFx-GBwAJ">Where to store necessary classes: plugin or a core module?</a></p>
+</li>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/IrNOfrlgEEw/MiR5wDiXAQAJ">Early draft review of this JEP</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>When moving this JEP from a Draft to "Accepted" or "Final" state,
+include links to the pull requests and mailing list discussions which were involved in the process.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. a dedicated proposal will be written for this in <a href="https://issues.jenkins-ci.org/browse/JENKINS-50294">JENKINS-50294</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. which formats chained exceptions more readably than <code>Exception.printStackTrace()</code>.
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 212
+   Title
+ External Logging API Plugin
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires
+ JEP-207, JEP-210
+     Table of Contents Abstract Specification Event class Event metadata Run metadata Pipeline metadata   Extension Points ExternalLoggingMethod and subclasses ExternalLogBrowser and subclasses Pipeline Bridge extensions JSON-based external-logging layer Configuration Reference implementation   Motivation Reasoning Why ExternalLoggingMethod and ExternalLogBrowser are separated?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/212/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 212
+   Title
+ External Logging API Plugin
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires
+ JEP-207, JEP-210
+     Table of Contents Abstract Specification Event class Event metadata Run metadata Pipeline metadata   Extension Points ExternalLoggingMethod and subclasses ExternalLogBrowser and subclasses Pipeline Bridge extensions JSON-based external-logging layer Configuration Reference implementation   Motivation Reasoning Why ExternalLoggingMethod and ExternalLogBrowser are separated?">
+
+
+
+<meta itemprop="wordCount" content="2056">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 212
+   Title
+ External Logging API Plugin
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires
+ JEP-207, JEP-210
+     Table of Contents Abstract Specification Event class Event metadata Run metadata Pipeline metadata   Extension Points ExternalLoggingMethod and subclasses ExternalLogBrowser and subclasses Pipeline Bridge extensions JSON-based external-logging layer Configuration Reference implementation   Motivation Reasoning Why ExternalLoggingMethod and ExternalLogBrowser are separated?"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">212</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">External Logging API Plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/oleg-nenashev">Oleg Nenashev</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-07-24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/carlossg">Carlos Sanchez</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discussions-To</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://groups.google.com/forum/#!forum/jenkins-cloud-native-sig">Jenkins Cloud Native SIG</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="/jep/jep-207">JEP-207</a>, <a href="/jep/jep-210">JEP-210</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_event_class">Event class</a>
+<ul class="sectlevel3">
+<li><a href="#_event_metadata">Event metadata</a></li>
+<li><a href="#_run_metadata">Run metadata</a></li>
+<li><a href="#_pipeline_metadata">Pipeline metadata</a></li>
+</ul>
+</li>
+<li><a href="#_extension_points">Extension Points</a></li>
+<li><a href="#_externalloggingmethod_and_subclasses">ExternalLoggingMethod and subclasses</a></li>
+<li><a href="#_externallogbrowser_and_subclasses">ExternalLogBrowser and subclasses</a></li>
+<li><a href="#_pipeline_bridge_extensions">Pipeline Bridge extensions</a></li>
+<li><a href="#_json_based_external_logging_layer">JSON-based external-logging layer</a></li>
+<li><a href="#_configuration">Configuration</a></li>
+<li><a href="#_reference_implementation">Reference implementation</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_why_externalloggingmethod_and_externallogbrowser_are_separated">Why ExternalLoggingMethod and ExternalLogBrowser are separated?</a></li>
+<li><a href="#_why_do_we_introduce_the_event_layer">Why do we introduce the Event layer?</a></li>
+<li><a href="#_why_do_we_need_json_layer">Why do we need JSON layer?</a></li>
+<li><a href="#_eventually_consistent_storages">Eventually-consistent storages</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure requirements</a></li>
+<li><a href="#_testing">Testing</a>
+<ul class="sectlevel2">
+<li><a href="#_functional_testing">Functional testing</a></li>
+<li><a href="#_integration_testing">Integration testing</a></li>
+<li><a href="#_load_testing">Load Testing</a></li>
+</ul>
+</li>
+<li><a href="#_prototype_implementation">Prototype implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On large-scale Jenkins instances master Disk and Network I/O become bottlenecks in particular cases.
+Build logging and Task reporting are one for the most intensive I/O consumers,
+hence it would be great to somehow redirect them to an external system.
+This is a continuation of the original story we had back in 2016
+(see the public design document
+<a href="TODO">here</a>).
+JEP-TODO defines requirements to the external logging system and Core APIs.</p>
+</div>
+<div class="paragraph">
+<p>The External Logging API plugin is a separate plugin
+which offers shared functionality to External Logging implementations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configuration UI</p>
+</li>
+<li>
+<p>Extension Points for External Logging implementations</p>
+</li>
+<li>
+<p>Base classes for external logging,
+which simplify implementations</p>
+</li>
+<li>
+<p>Other shared utility classes</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_event_class">Event class</h3>
+<div class="paragraph">
+<p>Event is an atomic entry of the external logging.
+In the data model it includes the following fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code> (long) - ID of the message.
+It must be unique within a single <code>LoggingMethod</code> writer</p>
+</li>
+<li>
+<p><code>message</code>(string) - Contains the message body.
+It may be a single-line or a multi-line message.
+The message may also contain annotations.</p>
+</li>
+<li>
+<p><code>timestamp</code> (long) - Timestamp of the message,
+measured in milliseconds, between
+the current time and midnight, January 1, 1970 UTC</p>
+</li>
+<li>
+<p><code>data</code> (<code>Map&lt;String, Serializable&gt;</code>) - additional metadata.
+This metadata will be used to categorize event entries.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(svanoort)</strong>
+Timestamp when first part of message generated, or last? Or perhaps both?</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(svanoort)</strong>
+Why not enforce something simpler than Serializable for (meta)data which can be consumed by non-Java clients potentially, i.e. JSON perhaps?</p>
+</div>
+<div class="paragraph">
+<p>Better yet: JSON (or Map&lt;String, JsonType&gt; that gets converted to a JSON document) for most things, and a Map&lt;String, Serializable&gt; of JenkinsInternal stuff - with as little as possible in the latter category.</p>
+</div>
+<div class="paragraph">
+<p>To do cloud-native effectively, we need to have something consumable directly from the browser or that potentially be consumed by a non-Java source. (ab)use of java serialization is generally discouraged at this point - we should only be doing it where 100% required.</p>
+</div>
+<div class="paragraph">
+<p>Actually yeah, here&#8217;s my proposal: we have JSON field that can be trivially converted by Java since types will map over. Then we have a Map&lt;String, Serializable&gt; with serializables stored (edited)base64, which can be ignored by non-Java consumers.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Some metadata is mandatory.
+Requited fields are defined below.</p>
+</div>
+<div class="sect3">
+<h4 id="_event_metadata">Event metadata</h4>
+<div class="paragraph">
+<p>The following metadata entries are required to be present
+for all event entries:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jenkinsId</code> - Instance ID of the Jenkins instance</p>
+</li>
+<li>
+<p><code>loggableType</code>  - Type of the <code>Loggable</code> entry, e.g. <code>run</code></p>
+</li>
+<li>
+<p><code>loggableId</code> - Identifier of the <code>Loggable</code> entry</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(svanoort)</strong> Re: <code>jenkinsId</code> -
+We probably need an API on the master that provides this easily (or at least there wasn&#8217;t one the last time I checked, you had to kind of duplicate the method used for web requests).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_run_metadata">Run metadata</h4>
+<div class="paragraph">
+<p>The following metadata entries are required to be present
+for all <code>hudson.model.Run</code> event entries:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All event metadata</p>
+</li>
+<li>
+<p><code>jobId</code> - ID of the Job, should be provided by Unique ID Plugin</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pipeline_metadata">Pipeline metadata</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>All Run metadata</p>
+</li>
+<li>
+<p><code>stepId</code> - Identifier of the step ("node")</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(svanoort)</strong>
+I think you probably mean flowNodeId, since that&#8217;s the actual object that is mapped to where a log originates from (1 or more flownodes per step - an important key point).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_extension_points">Extension Points</h3>
+<div class="paragraph">
+<p>The plugin should offer the following extension points:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ExternalLoggingMethodFactory</code> -
+produced <code>ExternalLoggingMethod</code> instances for Runs and, eventually, other objects.
+This extension point implements <code>Describable</code>
+and should be configurable via UI.</p>
+</li>
+<li>
+<p><code>ExternalLogBrowserFactory</code> -
+Same as above, but for <code>ExternalLogBrowser</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_externalloggingmethod_and_subclasses">ExternalLoggingMethod and subclasses</h3>
+<div class="paragraph">
+<p>This class defines how the logs should be sent to the storage.
+Logging method generally does not define the storage itself,
+because it may be pointing to intermediate log collectors like Fluentd or Logstash.</p>
+</div>
+<div class="paragraph">
+<p>Produces <code>ExternalLoggingMethod</code> instances for Runs and, eventually, other objects.
+This extension point implements <code>Describable</code>
+and should be configurable via UI.</p>
+</div>
+<div class="paragraph">
+<p>ExternalLoggingMethod is a new extension point on the top of <code>LoggingMethod</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It implements <code>LoggingMethod</code> interfaces</p>
+</li>
+<li>
+<p>It provides a new <code>createWriter()</code> method,
+which produces a <code>ExternalLoggingEventWriter</code> class instance.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This method automatically injects the mandatory metadata for events</p>
+</li>
+<li>
+<p>An abstract <code>_createWriter()</code> method is offered for implementation by downstream implementations</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Being compared to <code>LoggingMethod</code>,
+the implementation is designed to always perform logging
+from the agent side</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ExternalLoggingEventWriter class:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The class is <code>Serializable</code>.
+It will be sent to the agent side.</p>
+</li>
+<li>
+<p>The class offers the following abstract methods:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>void writeEvent(Event event) throws IOException</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p>writing event to the remote storage</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The class also stores metadata, which may be injected into the events</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The class stores a Map of Serializable metadata entries</p>
+</li>
+<li>
+<p>The class offers API, which allow setting the metadata.
+This API will be used by <code>ExternalLoggingMethod</code> implementations and other logic
+to provide additional metadata if required</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(svanoort)</strong> Re: Map of Serializable metadata entries
+Similarly, consider a non-Java map of metadata that can be consumed by other sources, plus a smaller Java serialized grouping.</p>
+</div>
+<div class="paragraph">
+<p>This makes parsing easier for non-java consumers too</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_externallogbrowser_and_subclasses">ExternalLogBrowser and subclasses</h3>
+<div class="paragraph">
+<p>Log Browser class is an instance,
+which refers ways to access the logs on the remote storage.</p>
+</div>
+<div class="paragraph">
+<p>It should offer the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AnnotatedLargeText&lt;T&gt; overallLog()</code> -
+Get large text for the entire execution/run</p>
+</li>
+<li>
+<p><code>AnnotatedLargeText&lt;T&gt; stepLog(@CheckForNull String stepId, boolean completed)</code> -
+Get large text for a particular step</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some implementations should be also moved from <code>Run</code> and generalized.
+It will provide default convenience methods which can be overridden by implementations for better performance.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>InputStream getLogInputStream() throws IOException</code> -
+gets the log as an input stream</p>
+</li>
+<li>
+<p><code>Reader getLogReader() throws IOException</code> -
+get the log as a Reader</p>
+</li>
+<li>
+<p><code>String getLog() throws IOException</code> -
+gets the entire log as a single String</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This method is deprecated in <code>hudson.model.Run</code>,
+and it should remain deprecated</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>List&lt;String&gt; getLog(int maxLines) throws IOException</code> -
+gets a number of log lines as a list of strings</p>
+</li>
+<li>
+<p><code>File getLogFile() throws IOException</code> -
+Compatibility method, which retrieves the log as a <code>File</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>By default a temporary file will be created, unless an implementation offers something better</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>ExternalLogBrowser</code> will also provide an abstraction layer for
+eventual consistency management.
+This layer will be determined during reference implementation polishing.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pipeline_bridge_extensions">Pipeline Bridge extensions</h3>
+<div class="paragraph">
+<p>The plugin should also implement Pipeline <code>LogStorage</code> and <code>LogStorageFactory</code> extension points
+so that it transparently supports Pipeline with existing API.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline Storage JEP is documented in JEP-TODO.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_json_based_external_logging_layer">JSON-based external-logging layer</h3>
+<div class="paragraph">
+<p>The API Plugin should offer a convenience layer in order
+to support a number of most common logging providers like
+Logstash, Fluentd, Elasticsearch, AWS CloudWatch, etc.</p>
+</div>
+<div class="paragraph">
+<p>This layer should provide the following features:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utility classes for reading and writing JSON Events,
+including parsing/writing <code>ConsoleNote</code> objects</p>
+</li>
+<li>
+<p>Base classes for constructing JSON queries for fetching data</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(svanoort)</strong>
+Consider GraphQL for an event querying API?</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Other convenience layers will be defined during prototyping.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration">Configuration</h3>
+<div class="paragraph">
+<p>External Logging API plugin should be fully configurable via
+WebUI and <em>Configuration-as-Code Plugin</em>.
+It includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Selection of <code>LoggingMethod</code> and <code>LogStorage</code> factories</p>
+</li>
+<li>
+<p>Configuration of built-in External Logging and Log Browser factories</p>
+</li>
+<li>
+<p>Any other configuration options</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reference_implementation">Reference implementation</h3>
+<div class="paragraph">
+<p>As a reference implementation of the <em>External Logging API</em> plugin,
+a new <em>External Logging for Elasticsearch Plugin</em> will be implemented.
+Other implementations may be also created.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JEP-207 introduces a new API in the core for adding External logging features,
+but it does not provide neither configuration UI nor convenient API for implementing these storage engines.
+This API plugin does that.
+One may say that all bits in the current design could be implemented
+as a part of the Jenkins core.
+It is true, but detaching of the plugin has the following motivation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The plugin will have a separate release cycle so that changes in it
+can be delivered and backported independently from the core&#8217;s release cycle</p>
+</li>
+<li>
+<p>The approach allows keeping the patches on the core&#8217;s side minimal</p>
+</li>
+<li>
+<p>The approach allows integrating with Pipeline Log Storage API introduced in Pipeline plugins (JEP-200)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All External Log Storage implementations are expected to extend this plugin
+instead of just using API provided by the Core.
+Core APIs may be still used to define custom <code>LoggingMethodLocator</code> impelemtations,
+e.g. to define a custom logger allocation logic.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_why_externalloggingmethod_and_externallogbrowser_are_separated">Why ExternalLoggingMethod and ExternalLogBrowser are separated?</h3>
+<div class="paragraph">
+<p>After the initial prototyping it was decided to separate Logging Method and LogBrowser
+to separate pluggable entities.
+It is different from how Pipeline <code>LogStorage</code> is implemented in
+<a href="https://github.com/jenkinsci/workflow-job-plugin/pull/27">this pull request</a>.</p>
+</div>
+<div class="paragraph">
+<p>Reasons for such approach:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ExternalLoggingMethod</code> does not define where logs will be actually stored.
+For example, logging to Fluentd or Logstash may end up in various storages
+depending on their configuration
+(e.g. in Elasticsearch, Redis, AWS CloudWatch, etc.)</p>
+</li>
+<li>
+<p>Log browsing logic may be shared.
+E.g. with the current design logs can be browsed from Elasticsearch
+independently of how the logs get there (Logstash or direct push)</p>
+</li>
+<li>
+<p>It gives more flexibility to Jenkins admins and plugin developers</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Originally the separation was done inside the Jenkins Core as a part of JEP-207,
+but then it was decided to move it to External Logging API.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_do_we_introduce_the_event_layer">Why do we introduce the Event layer?</h3>
+<div class="paragraph">
+<p>Jenkins project usually operates with logs as data streams and lines,
+especially on the agent side.
+On the other hand, modern log storage systems operate with "events" -
+atomic objects which may include multi-line strings and various metadata.
+Example: exception stacktraces may go to log storage as a single event and
+then they can be processed by external systems like Logstash if needed.
+The idea in this plugin is to offer bridge logic which converts
+stream-based logging into event-based logic.</p>
+</div>
+<div class="paragraph">
+<p>Jesse Glick has raised the concern that Event layer may not be helpful
+taking the current state,
+because a lot of code would need to be updated so that the events get captured properly.
+Opinion of the JEP sponsor is that this JEP offers a foundation layer
+so that it may be implemented.
+Reworking the entire Jenkins API to events is NOT an objective for this JEP-200,
+but it may be added in subsequent JEPs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_do_we_need_json_layer">Why do we need JSON layer?</h3>
+<div class="paragraph">
+<p>Many popular log storage engines store events in a JSON format:
+Fluentd, Logstash, Elasticsearch, AWS CloudWatch, etc.
+Offering a JSON layer as a part of the API plugin could greatly
+simplify such implementations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_eventually_consistent_storages">Eventually-consistent storages</h3>
+<div class="paragraph">
+<p>Some target storages are eventually consistent.
+One cannot just write the data to remote storage and then reliably read it.
+It is critical for log browsers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When a run finishes, querying data does not guarantee we get all the data</p>
+</li>
+<li>
+<p><code>Loggable#isCompleted()</code> call is not enough,
+some entries may be missing for "completed" entries</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Such issue explains why we need a special watch layer to determine whether logs are actually completed.
+It explains why we need a special logic/queries to determine whether the log is actually complete.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(svanoort)</strong>
+Polling-based or notification-based watch layer? This strikes me as a wrinkle that may be deceptively complex.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Full logic for the layer should be determined during reference implementation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The External Logging API plugin will follow the compatibility requirements
+defined in the upstream JEP-TODO for the core.
+It will also offer API for plugins, which will allow reporting incompatibilities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is no special security requirements defined at this level.
+JEP-207 defines top-level security requirements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is no special infrastructure requirements defined for
+this JEP.
+Subsequent JEPs for the implementations may define such infrastructure
+requirements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_functional_testing">Functional testing</h3>
+<div class="paragraph">
+<p>All tests will be implemented using Jenkins Test Harness or
+Acceptance Test Harness (ATH) frameworks.</p>
+</div>
+<div class="paragraph">
+<p>The following use-cases must be covered:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Backward compatibility</p>
+</li>
+<li>
+<p>Upgradeability - upgraded instances use the Filesystem Storage by default</p>
+</li>
+<li>
+<p>Smoke tests - logging Method locators are invoked for new runs</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_integration_testing">Integration testing</h3>
+<div class="paragraph">
+<p>Once JENKINS-TODO is implemented, integration tests with <em>External Task Logging for Logstash Plugin</em>
+and other reference implementations should be added to the
+<code>essentialsTest()</code> run.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_load_testing">Load Testing</h3>
+<div class="paragraph">
+<p>There is no special log testing requirements for this story.
+External Logging API and its implementations are responsible to execute
+performance and load testing,
+if deemed necessary.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype implementation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/oleg-nenashev/external-logging-api-plugin" class="bare">https://github.com/oleg-nenashev/external-logging-api-plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/oleg-nenashev/external-logging-logstash-plugin" class="bare">https://github.com/oleg-nenashev/external-logging-logstash-plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://speakerdeck.com/onenashev/jw2016-hackathon-external-build-logging-prototype-demo">External Build Logging demo slides, 2016</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/custom-war-packager/tree/master/demo/external-logging-elasticsearch">External Task logging with Elasticsearch demo, 2018</a></p>
+</li>
+<li>
+<p><a href="/jep/jep-207">JEP-207</a> - External Build Logging support in the Jenkins Core</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

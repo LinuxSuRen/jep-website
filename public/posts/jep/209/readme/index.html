@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 209
+   Title
+ Configuration as Code YAML Schema
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2017-06-07
+   JIRA
+ JENKINS-31094
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Declarative configuration as code Mimic web UI No glue-code requirement Documentation Generation Validation   Motivation Reasoning Human friendly syntax Configuration mechanism Yaml syntax Component names General mechanism Descriptors global configuration Corner cases and custom schema   Documentation / Schema generation   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins Configuration-as-Code (JEP-201) do rely on a YAML configuration file to setup jenkins, both for core and plugins, fully automatically." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/209/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 209
+   Title
+ Configuration as Code YAML Schema
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2017-06-07
+   JIRA
+ JENKINS-31094
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Declarative configuration as code Mimic web UI No glue-code requirement Documentation Generation Validation   Motivation Reasoning Human friendly syntax Configuration mechanism Yaml syntax Component names General mechanism Descriptors global configuration Corner cases and custom schema   Documentation / Schema generation   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins Configuration-as-Code (JEP-201) do rely on a YAML configuration file to setup jenkins, both for core and plugins, fully automatically.">
+
+
+
+<meta itemprop="wordCount" content="1554">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 209
+   Title
+ Configuration as Code YAML Schema
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2017-06-07
+   JIRA
+ JENKINS-31094
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Declarative configuration as code Mimic web UI No glue-code requirement Documentation Generation Validation   Motivation Reasoning Human friendly syntax Configuration mechanism Yaml syntax Component names General mechanism Descriptors global configuration Corner cases and custom schema   Documentation / Schema generation   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins Configuration-as-Code (JEP-201) do rely on a YAML configuration file to setup jenkins, both for core and plugins, fully automatically."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">209</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration as Code YAML Schema</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/ewelinawilkosz2">Ewelina Wilkosz</a> from <a href="https://github.com/praqma">Praqma</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2017-06-07</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-31094">JENKINS-31094</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP-201</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_declarative_configuration_as_code">Declarative configuration as code</a></li>
+<li><a href="#_mimic_web_ui">Mimic web UI</a></li>
+<li><a href="#_no_glue_code_requirement">No glue-code requirement</a></li>
+<li><a href="#_documentation_generation">Documentation Generation</a></li>
+<li><a href="#_validation">Validation</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_human_friendly_syntax">Human friendly syntax</a></li>
+<li><a href="#_configuration_mechanism">Configuration mechanism</a>
+<ul class="sectlevel3">
+<li><a href="#_yaml_syntax">Yaml syntax</a></li>
+<li><a href="#_component_names">Component names</a></li>
+<li><a href="#_general_mechanism">General mechanism</a></li>
+<li><a href="#_descriptors_global_configuration">Descriptors global configuration</a></li>
+<li><a href="#_corner_cases_and_custom_schema">Corner cases and custom schema</a></li>
+</ul>
+</li>
+<li><a href="#_documentation_schema_generation">Documentation / Schema generation</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins Configuration-as-Code (<a href="https://github.com/jenkinsci/jep/blob/master/jep/201/README.adoc">JEP-201</a>) do rely on
+a <code>YAML</code> configuration file to setup jenkins, both for core and plugins, fully automatically. This JEP get&#8217;s into
+details on the way a schema is dynamically built for this file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_declarative_configuration_as_code">Declarative configuration as code</h3>
+<div class="paragraph">
+<p>We want to introduce a simple way to define Jenkins configuration from a declarative document that would be accessible even to newcomers.
+Such a document should replicate the web UI user experience so the resulting structure looks natural to end user. Jenkins components have
+to be identified by convention or user-friendly names rather than by actual implementation class name.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mimic_web_ui">Mimic web UI</h3>
+<div class="paragraph">
+<p>We consider web UI as a natural documentation for end-user. As they switch to configuration-as-code they will search for the labels and
+model their use to see on web UI. The configuration-as-code model should follow as much as possible this model.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_no_glue_code_requirement">No glue-code requirement</h3>
+<div class="paragraph">
+<p>We want configuration-as-code to apply to all jenkins components without need for dedicated glue-code. But we also want to provide some
+helper code that would make some specific components easier to configure, or better reflect the web UI user experience.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_documentation_generation">Documentation Generation</h3>
+<div class="paragraph">
+<p>The configuration file format has to be well documented to assist end-user in writing. This documentation has to be generated to ensure
+it’s in sync with the actual codebase, like Pipeline DSL documentation does.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validation">Validation</h3>
+<div class="paragraph">
+<p>The configuration file should be validated without the need to actually run a Jenkins master. At same time we generate documentation we
+need to generate some schema that could also be used with adequate IDE / editor to assist writing configuration.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO: @ndeloof This need filling out.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_human_friendly_syntax">Human friendly syntax</h3>
+<div class="paragraph">
+<p>We also only support a limited subset of YAML syntax, to ensure configuration file is understandable by newcomers.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_mechanism">Configuration mechanism</h3>
+<div class="sect3">
+<h4 id="_yaml_syntax">Yaml syntax</h4>
+<div class="paragraph">
+<p>Yaml do support complex data structures, like Maps, nested yaml, merges &#8230;&#8203; but initial alpha release demonstrate this isn&#8217;t well
+understood by end users which mostly expect a simple tree syntax, comparable to <code>json</code>.</p>
+</div>
+<div class="paragraph">
+<p>For this reason Configuration-as-Code do only support a subset of Yaml syntax:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://yaml.org/type/map.html">Mapping</a> with String keys</p>
+</li>
+<li>
+<p><a href="http://yaml.org/type/seq.html">Sequences</a></p>
+</li>
+<li>
+<p>basic Scalar types</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This restriction allows to keep the yaml file simple and readable even by newcomers. Jenkins plugins which internal design would
+require more complex models will have to provide a dedicated "simplified" model object with custom adapter code. Option for a plugin
+to provide a customized adapter is part of Configuration-as-Code design to support such corner-cases.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_component_names">Component names</h4>
+<div class="paragraph">
+<p>Configuration file has to identify target components to be setup, and in many cases a specific implementation for some
+extension point to be selected. We want to offer end-user a comfortable syntax for this purpose, and as such avoid
+using class names or such technical details.</p>
+</div>
+<div class="paragraph">
+<p>For a specific extension point to be configured, we need to find the matching Jenkins component. Relying on <code>@Symbol</code> annotation is an
+efficient way to identify components with a human friendly short name.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">@Symbol("foo")
+public class MyFooExtension extends CoolAPI { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8594; Component name is "foo" based on Symbol annotation</p>
+</div>
+<div class="paragraph">
+<p>For plugin which haven&#8217;t (yet) adopted this annotation, we can rely
+on some convention. A common pattern is to name an implementation class as prefix + API class name. As we know
+the API we are looking for implementation, we can establish a natural short name for this implementation. We have
+identified two naming conventions widely used in Java ecosystem :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">public class FooCoolAPI extends CoolAPI { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8594; Component name is "foo" based on class name convention <em>vs</em> API class name</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">public class FooCoolAPIIml extends CoolAPI { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8594; Component name is "foo" based on class name convention <em>vs</em> API class name + <code>Impl</code> suffix</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_general_mechanism">General mechanism</h4>
+<div class="paragraph">
+<p>Any configurable component comes with a Configurator which knows how to handle it&#8217;s data model.</p>
+</div>
+<div class="paragraph">
+<p>To support both jenkins-core and all plugins out-of-the-box we need a generic mechanism to configure anything Jenkins
+component. This is the "fallback" mechanism for any component which doesn&#8217;t come with a custom configurator, so not
+intended to cover all potential design glitches, but to offer a reasonable schema inference for any code base used
+in Jenkins ecosystem.</p>
+</div>
+<div class="paragraph">
+<p>We need some mechanism to construct a jenkins component in respect with it&#8217;s lifecycle, and in a way the data model
+schema is relevant for end-user based on his use of jenkins and it&#8217;s web UI. Such component are tightly coupled with
+Stapler web framework and the expectation for them to be managed by this framework.</p>
+</div>
+<div class="paragraph">
+<p><code>DataBoundSetter</code>s &amp; <code>DataBoundConstructor</code>s offer a natural way to construct Jenkins components from a set of key=value pairs. Most
+jenkins components do rely on them and as such offer a 1:1 match between internal data structure and web UI configuration forms.
+Component to follow UI binding conventions and best practices will then be supported out-of-the-box. The few of them with custom UI binding
+rules should be easily fixed, as the required changes are limited to data binding conventions.</p>
+</div>
+<div class="paragraph">
+<p>Using annotations to define the data-binding model let us introspect a class efficiently. When approved we want
+Configuration-as-Code to adopt <a href="https://github.com/jenkinsci/jep/tree/master/jep/205">JEP-205</a> declarative data binding
+to get more details on component data model, as well as configure target components with full support for their
+construction lifecycle and data constraints validation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_descriptors_global_configuration">Descriptors global configuration</h4>
+<div class="paragraph">
+<p>A major exception to this is <code>Descriptor</code>s which in many cases rely on manual parsing of <code>JSONObject</code>. In this JEP we
+propose to offer guidance and recommendation for plugin developers to apply the same databinding mechanisme to descriptor&#8217;s
+<code>configure</code> method. We published a <a href="https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/PLUGINS.md">step-by-step guide</a>
+for this purpose and will open pull-requests on few commons plugins to demonstrate this approach.</p>
+</div>
+<div class="paragraph">
+<p>Most plugin do already have setters for descriptor&#8217;s attribte, designed to enable configuration from groovy scripts. We
+do rely on those when they exist, but adoption databinding mechanisms will ensure</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>accessors name and types do match the internal data model</p>
+</li>
+<li>
+<p>all attributes are configurable relying on DataBound setters.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_corner_cases_and_custom_schema">Corner cases and custom schema</h4>
+<div class="paragraph">
+<p>In some circumstances the Java codebase doesn’t match the web UI forms or relies on some custom code for configuration. The Jenkins root
+object is such a component. For those, we need to provide some dedicated configuration adapter code. Some plugins might need the same,
+either to offer a nicer schema, or to adjust to internal data representation.</p>
+</div>
+<div class="paragraph">
+<p>Such component can define their own Configurator extension to Configuration-as-Code, which will be responsible to
+define the data model schema used to set the target component. Configuration-as-Code do define such custom configurators for
+some jenkins-core components which don&#8217;t follow the data-binding conventions for legacy or architecture reasons.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_documentation_schema_generation">Documentation / Schema generation</h3>
+<div class="paragraph">
+<p>As configuration-as-code can identify a Configurator for any component in jenkins sometime using a generic, data-binding one,
+sometime relying on a specialized implementation, we can construct a full data model from a live jenkins instance, and
+produce various artifacts :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We generate user-friendly documentation for the data schema. As we rely on data-bound attributes we can include help
+tips from web view as additional guidance to end-user reading the doc.</p>
+</li>
+<li>
+<p>We generate a json-schema that can be used by IDE or validation tools to check the yaml syntax is valid and matches the
+target jenkins instance.</p>
+</li>
+<li>
+<p>We <em>could</em> generate more, including dedicated validation tools, linter, etc. Tooling will be discussed in more details
+in <a href="https://github.com/jenkinsci/jep/blob/master/jep/208/README.adoc">JEP-208</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As Configuration-as-Code do infer data model schema from data binding this schema is subject to changes when a plugin is
+updated, so configuration would suddenly fail to load. To workaround this issue we have implemented some backward compatibility
+support, based on the meta-data we can collect from live jenkins instance on obsolete code base.</p>
+</div>
+<div class="paragraph">
+<p>By default Configuration-as-Code would reject use of a Deprecated or Restricted attribute. For backward compatibility it
+can be configured to only warn user. This behaviour is controlled by an additional meta-configuration in yaml file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">configuration-as-code:
+   deprecation: warn
+   restricted: warn</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For a comparable reason, if at some point we decide to introduce some breaking change in the way we introspect the
+data model to build schema, this new behaviour would only be enabled as the configuration file opt-in for this new
+feature :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">configuration-as-code:
+    version: 2</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sensible informations should <em>not</em> be exposed directly within the yaml configuration file.
+Configuration-as-Code do support string expansion using a bash-like <code>${KEY}</code> syntax for string based values. Configuration-as-Code do also define
+an API to connect with third-party secret-sources. Out of the box we do support environment variable expansion, which should only be considered
+for testing purpose, as well as file-based secret source (docker-secret, kubernetes-secret) and a Vault connector. Third party plugins can be developped to offer comparable support with other secret providers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We provide a set of configuration samples for various popular plugins, both as documentation for newcomers and for acceptance testing of the
+implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/configuration-as-code-plugin" class="bare">https://github.com/jenkinsci/configuration-as-code-plugin</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This topic was initially discussed on <a href="https://issues.jenkins-ci.org/browse/JENKINS-31094">JENKINS-31094</a>.
+Subsequent discussion <a href="https://groups.google.com/d/msg/jenkinsci-dev/6TjlxEqHUEs/nKSG1xSkCQAJ">here</a>.</p>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

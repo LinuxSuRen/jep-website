@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 6
+   Title
+ Jenkins CVE Numbering Authority
+   Sponsor
+ Daniel Beck
+   Status
+ Accepted :ok_hand:
+   Type
+ Process
+   Created
+ 2018-05-31
+   BDFL-Delegate
+ Daniel Beck
+     Table of Contents Abstract Specification Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract The Jenkins project wants to allow its users to refer to security vulnerabilities in Jenkins and Jenkins plugins using CVE identifiers." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/6/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 6
+   Title
+ Jenkins CVE Numbering Authority
+   Sponsor
+ Daniel Beck
+   Status
+ Accepted :ok_hand:
+   Type
+ Process
+   Created
+ 2018-05-31
+   BDFL-Delegate
+ Daniel Beck
+     Table of Contents Abstract Specification Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract The Jenkins project wants to allow its users to refer to security vulnerabilities in Jenkins and Jenkins plugins using CVE identifiers.">
+
+
+
+<meta itemprop="wordCount" content="810">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 6
+   Title
+ Jenkins CVE Numbering Authority
+   Sponsor
+ Daniel Beck
+   Status
+ Accepted :ok_hand:
+   Type
+ Process
+   Created
+ 2018-05-31
+   BDFL-Delegate
+ Daniel Beck
+     Table of Contents Abstract Specification Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract The Jenkins project wants to allow its users to refer to security vulnerabilities in Jenkins and Jenkins plugins using CVE identifiers."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jenkins CVE Numbering Authority</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/daniel-beck/">Daniel Beck</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepted :ok_hand:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-05-31</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/daniel-beck">Daniel Beck</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a></li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a></li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins project wants to allow its users to refer to security vulnerabilities in Jenkins and Jenkins plugins using CVE identifiers.
+To allow for timely assignment of CVE identifiers for vulnerabilities, the Jenkins project needs to become a CVE Numbering Authority, or CNA.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins project will apply to become a "Sub CNA" CVE numbering authority under the Distributed Weakness Filing (DWF) federated CNA as described in
+<a href="https://github.com/distributedweaknessfiling/DWF-Documentation#becoming-an-open-source-cna-cve-numbering-authority">this GitHub repository of the DWF Project</a>.</p>
+</div>
+<div class="paragraph">
+<p>Three documents we need to abide by are being provided by the DWF project:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>To be able to submit data to CVE, every individual involved in providing that data (i.e. the authors of the CVE description, not the reporter(s) of the vulnerability, not the developer(s) fixing it, not the author(s) of the Jenkins security advisory) will need to agree to the <a href="https://cve.mitre.org/about/termsofuse.html">MITRE CVE Terms of service</a>.</p>
+</li>
+<li>
+<p>As a CNA operating under the DWF project, the Jenkins project will need to agree to the <a href="http://contributor-covenant.org/version/1/4/">DWF Contributor Agreement</a>, which is based on Contributor Covenant 1.4.</p>
+</li>
+<li>
+<p>The Jenkins project will need to agree to the <a href="http://cve.mitre.org/cve/cna/rules.html">MITRE CNA rules</a> that outlines the rules and processes the Jenkins project will need to follow and implement. The following sections apply to the Jenkins project:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Chapter 2 outlines the responsibilities of all CNA, which applies to us.</p>
+</li>
+<li>
+<p>Chapter 4 outlines the CNA candidate process that includes onboarding.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Distributed Weakness Filing Project splits the CNA responsibilities into two parts:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Jenkins Project, as CNA, will own blocks of CVE numbers.</p>
+</li>
+<li>
+<p>Individuals working with the Jenkins Project, the CVE mentors, will assign CVE numbers and write issue descriptions in the required format.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To start this process, an individual associated with the Jenkins project will need to become a CVE mentor.
+Once they are a CVE mentor, the Jenkins project can apply to become a CNA.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>CVE, or Common Vulnerabilities and Exposures, is a system to unambiguously identify security vulnerabilities in software. Quoting <a href="https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures#CVE_Usage">Wikipedia</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Common Vulnerabilities and Exposures (CVE®) is a dictionary of common names (i.e., CVE Identifiers) for publicly known information security vulnerabilities. CVE’s common identifiers make it easier to share data across separate network security databases and tools, and provide a baseline for evaluating the coverage of an organization’s security tools. If a report from one of your security tools incorporates CVE Identifiers, you may then quickly and accurately access fix information in one or more separate CVE-compatible databases to remediate the problem.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The Jenkins project has used CVE Identifiers for security vulnerabilities since 2013, after Kurt Seifried of Red Hat, Inc. requested we do so.
+Since then we&#8217;ve been providing advance information about soon-to-be-fixed security vulnerabilities to the private <a href="http://oss-security.openwall.org/wiki/mailing-lists/distros">distros mailing list</a> whose members are various Linux and BSD distributions.
+Most of those CVEs were assigned by Kurt Seifried.
+In early 2017, the list owner requested that these CVE assignments be handled elsewhere due to the lack of relevant of advance information about Jenkins vulnerabilities to the regular list recipients.
+From that point on, the Jenkins project requested CVE IDs from Kurt Seifried/the Distributed Weakness Filing Project directly.
+However, handling of those requests is irregular, and could sometimes be delayed up to multiple months.</p>
+</div>
+<div class="paragraph">
+<p>In addition, without a dedicated project-specific CNA, other CNAs are free to assign CVE IDs, and provide the descriptions.
+In the past, this has resulted in badly described or completely incorrect issue descriptions, which took time to clean up.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Requesting CVE IDs from MITRE (the primary CNA) is out of scope as per <a href="http://cve.mitre.org/cve/request_id.html">the request form</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>For open source software products not listed below, request a CVE ID through the Distributed Weakness Filing Project CNA.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>We are currently using the Distributed Weakness Filing Project. This has the downsides of delays and non-exclusivity described above.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Not applicable, as this is a process.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We are already using the jenkinsci-cert Google Group and the issues.jenkins-ci.org Jira to receive and track vulnerabilities in Jenkins before becoming a CNA, so there are no new security concerns.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Requirements for being a CNA that are related to infrastructure are the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Points of contact, both for other CNAs, as well as the general public, for which we can use the jenkinsci-cert mailing list we already publish as security contact.</p>
+</li>
+<li>
+<p>Publish a disclosure and embargo policy, which we can do via the jenkins.io/security URL space.</p>
+</li>
+<li>
+<p>Distribution point for vulnerability disclosures that is freely available to the general public, which already exists at jenkins.io/security/advisories.</p>
+</li>
+<li>
+<p>Provide a list of products that are in scope (and possibly lists of what is not in scope).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All of these are trivial to implement.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no testing issues related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>n/a</p>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

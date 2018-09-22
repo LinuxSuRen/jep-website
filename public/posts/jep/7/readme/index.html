@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 7
+   Title
+ Deprecation of ruby-runtime
+   Sponsor
+ Daniel Beck
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-06-06
+     Table of Contents Abstract Specification Motivation Reasoning Impact on current users   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Due to its negative impact on core maintenance, distribution of the unmaintained ruby-runtime plugin will be suspended." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/7/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 7
+   Title
+ Deprecation of ruby-runtime
+   Sponsor
+ Daniel Beck
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-06-06
+     Table of Contents Abstract Specification Motivation Reasoning Impact on current users   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Due to its negative impact on core maintenance, distribution of the unmaintained ruby-runtime plugin will be suspended.">
+
+
+
+<meta itemprop="wordCount" content="811">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 7
+   Title
+ Deprecation of ruby-runtime
+   Sponsor
+ Daniel Beck
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-06-06
+     Table of Contents Abstract Specification Motivation Reasoning Impact on current users   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Due to its negative impact on core maintenance, distribution of the unmaintained ruby-runtime plugin will be suspended."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deprecation of ruby-runtime</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/daniel-beck/">Daniel Beck</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-06-06</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a></li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_impact_on_current_users">Impact on current users</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due to its negative impact on core maintenance, distribution of the unmaintained <code>ruby-runtime</code> plugin will be suspended.
+Distribution of plugins depending on it will be suspended until their dependency is removed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>ruby-runtime</code> will be added to the <code>artifact-ignores</code> file of the update center generator so it is no longer available for download on update sites.</p>
+</div>
+<div class="paragraph">
+<p>Plugins with a mandatory dependency on <code>ruby-runtime</code> will be added to the same file, as they will not be installable without <code>ruby-runtime</code> being available.</p>
+</div>
+<div class="paragraph">
+<p>The multiple Git repositories holding the <code>ruby-runtime</code> source code will be archived on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Workarounds in Jenkins core implemented specifically to enable <code>ruby-runtime</code> will be reviewed and considered for reversal.
+No future core development will consider the impact on <code>ruby-runtime</code> and plugins based on it, and bug reports to core and related components about their impact on <code>ruby-runtime</code> and plugins based on it will be closed as <strong>Won&#8217;t Fix</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>ruby-runtime</code> plugin allows plugins to be written in Ruby, rather than the usual Java/Groovy.
+Development of ruby-runtime stopped around 2013.
+There are currently two Git repositories holding different states of its source code: jenkinsci/ruby-runtime-plugin and jenkinsci/jenkins.rb.
+It is unmaintained and the changelog mentions a version 0.13 that has never actually been released.</p>
+</div>
+<div class="paragraph">
+<p>Over the past year, multiple changes to core negatively impacted ruby-runtime based plugins, and core maintainers had to implement workarounds to address these problems.
+Due to its design, it is not always possible to apply corresponding changes to ruby-runtime itself.
+Instead, every dependent plugin may need to be adapted individually, if a change to core results in problems to ruby-runtime.</p>
+</div>
+<div class="paragraph">
+<p>There currently are no plugins based on ruby-runtime that are both actively maintained (a release in the last two years, i.e. since June 2016) and popular (&gt;2500 reported installations).
+In a Jenkins developers mailing list thread proposing the deprecation of <code>ruby-runtime</code> in May 2018, nobody volunteered to maintain <code>ruby-runtime</code> and address its problems.</p>
+</div>
+<div class="paragraph">
+<p>Therefore this JEP proposed the deprecation of ruby-runtime, and to suspend its distribution via Jenkins project update sites.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We have a limited set of tools available to deal with problems like this.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Security warnings don&#8217;t really apply here, as UI labels specifically mention 'security'.</p>
+</li>
+<li>
+<p>Wiki pages and other plugin documentation is easy to overlook, especially in automated deployments.</p>
+</li>
+<li>
+<p>There are no ways for users to provide feedback for plugins like there is for core (via changelog 'weather').</p>
+</li>
+<li>
+<p>There are no ways to mark plugins as incompatible and, for example, warn users on upgrade, other than to suspend distribution. Additionally, we&#8217;d need to test every core change for ruby-runtime impact to know of the problem in advance.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>So the viable options are the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We could continue to distribute ruby-runtime while reverting the changes in Jenkins core that make it work. This will just result in a bad user experience, as ruby-runtime based plugins remain available while not working with new Jenkins releases.</p>
+</li>
+<li>
+<p>We could continue to distribute ruby-runtime and keep the already implemented changes to core around, hoping no further problems occur. If they do, we can still implement this proposed deprecation of ruby-runtime. In this case, there would be no advance warning of current ruby-runtime users, and the number of users may increase in the mean time, making it more difficult to justify such a change.</p>
+</li>
+<li>
+<p>We could continue to distribute ruby-runtime, keep the already implemented changes to core around, and fix any future problems. This option comes with potentially significant work with very little benefit, as ruby-runtime based plugins are neither very popular, nor actively maintained.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_impact_on_current_users">Impact on current users</h3>
+<div class="paragraph">
+<p>Feedback on the developers list expressed concern for current users of any of these plugins and a 'configuration-as-code' approach that sets up new Jenkins instances on a regular basis.
+This will be addressed in the next section.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Existing users can continue to use ruby-runtime based plugins.
+ruby-runtime and plugins depending on it can still be downloaded from Artifactory to support legacy environments.
+This is also expected to apply to most configuration-as-code approaches supporting installation of arbitrary plugin versions.</p>
+</div>
+<div class="paragraph">
+<p>Users of 'configuration-as-code' methods for Jenkins will be impacted by this fairly quickly.
+Workarounds for this include downloading affected plugins from Artifactory, and possibly hosting their own update sites.</p>
+</div>
+<div class="paragraph">
+<p>If previous core compatibility fixes are reverted, or future core changes break ruby-runtime, users of those plugins will be impacted.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This JEP will be implemented by using a well established feature of the update center generator.</p>
+</div>
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no testing issues related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>n/a</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/Ve0fqAud3Mk/MTIxw6ZyBwAJ" class="bare">https://groups.google.com/d/msg/jenkinsci-dev/Ve0fqAud3Mk/MTIxw6ZyBwAJ</a></p>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 10
+   Title
+ Jenkins Twitter Policy for Contributors
+   Sponsor
+ Tracy Miranda
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-07
+   BDFL-Delegate
+ R. Tyler Croy
+     Table of Contents Abstract Specification Enabling a Team of Contributors Responsibilites of Contributors   Jenkins Twitter Policy Goals Best Practices   Regular Reporting   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract This JEP describes the policy for Jenkins twitter accounts and covers:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/10/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 10
+   Title
+ Jenkins Twitter Policy for Contributors
+   Sponsor
+ Tracy Miranda
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-07
+   BDFL-Delegate
+ R. Tyler Croy
+     Table of Contents Abstract Specification Enabling a Team of Contributors Responsibilites of Contributors   Jenkins Twitter Policy Goals Best Practices   Regular Reporting   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract This JEP describes the policy for Jenkins twitter accounts and covers:">
+
+
+
+<meta itemprop="wordCount" content="684">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 10
+   Title
+ Jenkins Twitter Policy for Contributors
+   Sponsor
+ Tracy Miranda
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-07
+   BDFL-Delegate
+ R. Tyler Croy
+     Table of Contents Abstract Specification Enabling a Team of Contributors Responsibilites of Contributors   Jenkins Twitter Policy Goals Best Practices   Regular Reporting   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract This JEP describes the policy for Jenkins twitter accounts and covers:"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Title</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jenkins Twitter Policy for Contributors</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/tracymiranda">Tracy Miranda</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Status</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Type</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Created</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-08-07</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_enabling_a_team_of_contributors">Enabling a Team of Contributors</a>
+<ul class="sectlevel3">
+<li><a href="#_responsibilites_of_contributors">Responsibilites of Contributors</a></li>
+</ul>
+</li>
+<li><a href="#_jenkins_twitter_policy">Jenkins Twitter Policy</a>
+<ul class="sectlevel3">
+<li><a href="#_goals">Goals</a></li>
+<li><a href="#_best_practices">Best Practices</a></li>
+</ul>
+</li>
+<li><a href="#_regular_reporting">Regular Reporting</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a></li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This JEP describes the policy for Jenkins twitter accounts and covers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enabling a team of contributors</p>
+</li>
+<li>
+<p>Jenkins Twitter policy</p>
+</li>
+<li>
+<p>Regular reports on Twitter engagement</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_enabling_a_team_of_contributors">Enabling a Team of Contributors</h3>
+<div class="paragraph">
+<p>Tweetdeck&#8217;s Team feature will be used to manage the team of contributors.
+The following roles are recognized:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Owner - owner of the twitter account</p>
+</li>
+<li>
+<p>Admin - can invite others to contribute</p>
+</li>
+<li>
+<p>Contributor - creates content and can tweet, retweet and schedule tweets</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>New contributors are first proposed on the dev mailing list and then approved at a governance meeting.
+The Jenkins board will approve contributors using the following criteria:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Contributions - the candidate should actively be contributing to Jenkins community</p>
+</li>
+<li>
+<p>Knowledge - the candidate should have indepth knowledge of Jenkins community and/or projects</p>
+</li>
+<li>
+<p>Experience - the candidate should point to experience with Twitter/social media or submit sample tweets</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Once approved, the candidate should share their twitter account with the Twitter account owner.
+The candidate should confirm they have login verification on their Twitter accounts to meet security requirements.
+The Twitter owner will invite the candidate to join the account Team via Tweetdeck.</p>
+</div>
+<div class="paragraph">
+<p>New admins will typically be experienced contributors who the board approve as administrators.</p>
+</div>
+<div class="sect3">
+<h4 id="_responsibilites_of_contributors">Responsibilites of Contributors</h4>
+<div class="paragraph">
+<p>Admin and Contributors will make regular tweets or retweets to meet the goals below.
+Admin and Contributors agree to abide by the Jenkins Twitter policy.
+The Twitter owner may revoke access if contributors violate this policy.
+If contributors are inactive they may request to leave the team or the owner may revoke access.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jenkins_twitter_policy">Jenkins Twitter Policy</h3>
+<div class="sect3">
+<h4 id="_goals">Goals</h4>
+<div class="paragraph">
+<p>The goals of the @jenkinsci twitter account are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create awareness of Jenkins projects, releases, plugins and features</p>
+</li>
+<li>
+<p>Promote awareness of Jenkins working groups, events, JAMs or talks about Jenkins</p>
+</li>
+<li>
+<p>Build awareness of Jenkins and encourage contributions</p>
+</li>
+<li>
+<p>Celebrate achievements of the community</p>
+</li>
+<li>
+<p>Grow the open source community around Jenkins</p>
+</li>
+<li>
+<p>Always be a trustworthy, reputable source of information</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_best_practices">Best Practices</h4>
+<div class="paragraph">
+<p>These are the best practices for contributors to follow:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Conduct - always abide by Jenkins community code of conduct .</p>
+</li>
+<li>
+<p>Content - write or curate tweets that meet one of the goals above.</p>
+</li>
+<li>
+<p>Cadence - contributors should work together to maintain a regular cadence of interesting/relevant tweets daily</p>
+</li>
+<li>
+<p>Lead with community - tweets should serve a purpose to the community first.</p>
+</li>
+<li>
+<p>Credit - wherever possible give credit to author, project or originating organisation.</p>
+</li>
+<li>
+<p>Hashtags - use these to link themes or help community find content. Ideally max 2 hashtags per tweet.</p>
+</li>
+<li>
+<p>Voice - be community facing, share a common tone with other contributors avoid corporate tones.</p>
+</li>
+<li>
+<p>Support - avoid being a support channel for the Jenkins project</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_regular_reporting">Regular Reporting</h3>
+<div class="paragraph">
+<p>The Twitter account owner will download monthly analytics reports from Twitter.
+These will be shared with the contribution team.
+One member of the contribution team will prepare a quarterly report to be shared with the community summarizing stats and insights.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins twitter accounts have a massive following.
+To date there is usually one owner tweeting, retweeting and all other twitter activity.
+There are automated tweets but these have some limitations e.g no tags, no images included in tweets.
+These policies aim to lighten the burden on Twitter owners and use twitter to meet Jenkins project goals</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Having a well defined policy enables the community to welcome contributors and share best practices.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no backwards compatibility concerns related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Contribution team members are required to use login verification on their Twitter accounts.
+Contribution team members must report breaches to their Twitter account to the Twitter owner as soon as possible.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A location to save Twitter monthly reports for sharing between team members would be required.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no testing issues related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/gqR_ee5grtM">jenkinsci-dev@ discussion</a></p>
+</li>
+<li>
+<p><a href="http://meetings.jenkins-ci.org/jenkins-meeting/2018/jenkins-meeting.2018-07-18-18.00.log.html">Governance meeting discussion</a></p>
+</li>
+<li>
+<p><a href="https://help.twitter.com/en/using-twitter/tweetdeck-teams">How to use TweetDeck Team Feature</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 309
+   Title
+ Bill of Materials
+   Sponsors
+ Carlos Sanchez, Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-04-16
+   BDFL-Delegate
+ R. Tyler Croy
+   Discussions-To
+ link:https://groups.google.com/d/topic/jenkinsci-dev/pR2ZQMj95Zc/discussion
+   Requires
+ JEP-305
+     Table of Contents Abstract Specification What exists today What are we missing Bill of Materials (BoM) Workflow Changes to Core Changes to Plugins Continuous Delivery   YAML example Version Field: metadata Field: labels Field: annotation   Field: specification Dependency type Field: core Field: plugins Field: components Field: environments   Dependency resolution Field: status   Motivation Reasoning Plugin and component sources Format versioning Tooling Hierarchical objects in annotations   Backwards Compatibility Security Infrastructure Requirements Testing Prototype implementation References    Abstract There are multiple ways of defining packaging and what combinations of core, modules, libraries and plugins to test from multiple repositories, forks and PRs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/309/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 309
+   Title
+ Bill of Materials
+   Sponsors
+ Carlos Sanchez, Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-04-16
+   BDFL-Delegate
+ R. Tyler Croy
+   Discussions-To
+ link:https://groups.google.com/d/topic/jenkinsci-dev/pR2ZQMj95Zc/discussion
+   Requires
+ JEP-305
+     Table of Contents Abstract Specification What exists today What are we missing Bill of Materials (BoM) Workflow Changes to Core Changes to Plugins Continuous Delivery   YAML example Version Field: metadata Field: labels Field: annotation   Field: specification Dependency type Field: core Field: plugins Field: components Field: environments   Dependency resolution Field: status   Motivation Reasoning Plugin and component sources Format versioning Tooling Hierarchical objects in annotations   Backwards Compatibility Security Infrastructure Requirements Testing Prototype implementation References    Abstract There are multiple ways of defining packaging and what combinations of core, modules, libraries and plugins to test from multiple repositories, forks and PRs.">
+
+
+
+<meta itemprop="wordCount" content="2324">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 309
+   Title
+ Bill of Materials
+   Sponsors
+ Carlos Sanchez, Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-04-16
+   BDFL-Delegate
+ R. Tyler Croy
+   Discussions-To
+ link:https://groups.google.com/d/topic/jenkinsci-dev/pR2ZQMj95Zc/discussion
+   Requires
+ JEP-305
+     Table of Contents Abstract Specification What exists today What are we missing Bill of Materials (BoM) Workflow Changes to Core Changes to Plugins Continuous Delivery   YAML example Version Field: metadata Field: labels Field: annotation   Field: specification Dependency type Field: core Field: plugins Field: components Field: environments   Dependency resolution Field: status   Motivation Reasoning Plugin and component sources Format versioning Tooling Hierarchical objects in annotations   Backwards Compatibility Security Infrastructure Requirements Testing Prototype implementation References    Abstract There are multiple ways of defining packaging and what combinations of core, modules, libraries and plugins to test from multiple repositories, forks and PRs."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">309</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bill of Materials</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/carlossg">Carlos Sanchez</a>, <a href="https://github.com/oleg-nenashev">Oleg Nenashev</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepted :ok_hand:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-04-16</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discussions-To</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link:https://groups.google.com/d/topic/jenkinsci-dev/pR2ZQMj95Zc/discussion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="/jep/305">JEP-305</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_what_exists_today">What exists today</a></li>
+<li><a href="#_what_are_we_missing">What are we missing</a></li>
+<li><a href="#_bill_of_materials_bom">Bill of Materials (BoM)</a></li>
+<li><a href="#_workflow">Workflow</a>
+<ul class="sectlevel3">
+<li><a href="#_changes_to_core">Changes to Core</a></li>
+<li><a href="#_changes_to_plugins">Changes to Plugins</a></li>
+<li><a href="#_continuous_delivery">Continuous Delivery</a></li>
+</ul>
+</li>
+<li><a href="#_yaml_example">YAML example</a></li>
+<li><a href="#_version">Version</a></li>
+<li><a href="#_field_code_metadata_code">Field: <code>metadata</code></a>
+<ul class="sectlevel3">
+<li><a href="#_field_labels">Field: labels</a></li>
+<li><a href="#_field_annotation">Field: annotation</a></li>
+</ul>
+</li>
+<li><a href="#_field_code_specification_code">Field: <code>specification</code></a>
+<ul class="sectlevel3">
+<li><a href="#_dependency_type">Dependency type</a></li>
+<li><a href="#_field_code_core_code">Field: <code>core</code></a></li>
+<li><a href="#_field_code_plugins_code">Field: <code>plugins</code></a></li>
+<li><a href="#_field_code_components_code">Field: <code>components</code></a></li>
+<li><a href="#_field_code_environments_code">Field: <code>environments</code></a></li>
+</ul>
+</li>
+<li><a href="#_dependency_resolution">Dependency resolution</a></li>
+<li><a href="#_field_code_status_code">Field: <code>status</code></a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_plugin_and_component_sources">Plugin and component sources</a></li>
+<li><a href="#_format_versioning">Format versioning</a></li>
+<li><a href="#_tooling">Tooling</a></li>
+<li><a href="#_hierarchical_objects_in_annotations">Hierarchical objects in annotations</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are multiple ways of defining packaging and what combinations of core, modules, libraries and plugins to test from multiple repositories, forks and PRs.
+The Bill of Materials (<strong>BoM</strong>) aims to set a common language that can be reused across them.</p>
+</div>
+<div class="paragraph">
+<p>The BoM is a cornerstone to enable these other goals:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ensure value gets delivered while quality is continuously improved</p>
+</li>
+<li>
+<p>Do not go down the rabbit hole of spending weeks without delivering value</p>
+</li>
+<li>
+<p>Increase quality of non-LTS builds</p>
+</li>
+<li>
+<p>Provide an answer to “Is this code ready to be delivered to Jenkins Evergreen?”</p>
+</li>
+<li>
+<p>Avoid complex matrix testing that is the objective of Evergreen tracing and monitoring</p>
+</li>
+<li>
+<p>Feedback delivered to PR author as soon as possible</p>
+</li>
+<li>
+<p>Automated releases - at least from the perspective of the engineer</p>
+</li>
+<li>
+<p>Reduce code review overheads so that maintainers can process more.
+AKA “I am a plugin maintainer, not a FindBugs robot. Automate checks for me”</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_exists_today">What exists today</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/acceptance-test-harness">Jenkins acceptance test harness</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/blueocean-acceptance-test">Blue Ocean acceptance test</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/plugin-compat-tester">Jenkins plugin compat tester</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen">Evergreen evergreen draft</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/custom-war-packager">Jenkins Custom WAR packager</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_what_are_we_missing">What are we missing</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Builds/Tests from master, needed for Evergreen</p>
+</li>
+<li>
+<p>Builds/Tests from core, libraries and plugins PRs</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These cases are addressed by a Custom WAR Packager for custom WAR Building and testing use-cases.
+That format is narrow focused, and it does not address use-cases like support of custom environments.
+We want to unify the description format across projects within Jenkins (e.g. Jenkins Evergreen, Jenkins X, Docker Packaging, etc.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bill_of_materials_bom">Bill of Materials (BoM)</h3>
+<div class="paragraph">
+<p>The BoM defines what commits of core, bundled libraries (stapler, remoting)  and plugins are delivered and tested together.
+They key part is the usage of commit ids and not releases.
+The usage of the maven release plugin does not fit this requirement.</p>
+</div>
+<div class="paragraph">
+<p>The BoM needs to be trackable in Git.</p>
+</div>
+<div class="paragraph">
+<p>The BoM needs to have the concept of environments for Evergreen. Ie. install different plugins in AWS vs Azure vs&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>A requirement for Evergreen is that parts of the BoM need to be downloadable.
+Evergreen needs to enable selective downloads of core, bundled libraries and plugins for incremental upgrades.
+Pushing into maven repo is fine, although indexing time is big.
+Will need to mirror into Azure CDN at some point.</p>
+</div>
+<div class="paragraph">
+<p>The BoM needs to be translated to take advantage of existing infrastructure.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Evergreen needs to generate a diff for upgrades and download the bits</p>
+</li>
+<li>
+<p>Existing ATH uses a war binary that can be built from BoM</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Packages should be trackable back to a commit id, but during development the BoM should point to branches or tags, so we would have a BoM as input and a effective BoM as output with all the git refs resolved to specific commit ids.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_workflow">Workflow</h3>
+<div class="paragraph">
+<p>Core, libraries and plugins could have a BoM in the master branch.
+This BoM should point to master of core, master of libraries.
+There is an implicit dependency to the current branch of the current git repository.</p>
+</div>
+<div class="paragraph">
+<p>The BoM should be processed to update the Maven pom on change events.</p>
+</div>
+<div class="sect3">
+<h4 id="_changes_to_core">Changes to Core</h4>
+<div class="paragraph">
+<p>Developer needs some changes to core or Jenkins internal library or component for downstream use.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create PR against core/library.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>PR builder in core/library will publish the artifacts using the git commit id as part of the identifier, for downstream consumption.</p>
+</li>
+<li>
+<p>Would also publish the result BoM with all git references converted to ids.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Create PR against a plugin</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This PR would include a modified BoM pointing to the PR branch of core/library.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>PR builder for plugin/library would process the BoM, creating as output:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A Jenkins package (WAR and/or Docker image) with the dependencies stated in the BoM.</p>
+</li>
+<li>
+<p>The realized BoM, with all git references converted to ids.</p>
+</li>
+<li>
+<p>Dependencies would not need to be rebuilt as they were already published.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tests run against this output</p>
+</li>
+<li>
+<p>Output artifact is published to repository, for downstream consumption in a way that can be fetched by git commmit id.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_changes_to_plugins">Changes to Plugins</h4>
+<div class="paragraph">
+<p>Same as above but instead of pointing to core/library PR, pointing to master.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_continuous_delivery">Continuous Delivery</h4>
+<div class="paragraph">
+<p>Changes in master of core and libraries should trigger downstream rebuilds of plugins.
+Given the amount of work involved we recommend doing it in phases, targeting core plugins first, as defined in Evergreen.</p>
+</div>
+<div class="sect4">
+<h5 id="_bom_format">BoM Format</h5>
+<div class="paragraph">
+<p>A new yaml format based on <a href="https://github.com/jenkins-infra/evergreen/blob/master/essentials.yaml">essentials</a> and <a href="https://github.com/oleg-nenashev/jenkins-war-packager">Custom WAR packager</a> using the Kubernetes format.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_yaml_example">YAML example</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">version: 1.0
+metadata:
+  # labels and annotations are key: value string attributes
+  labels:
+    name: myplugin
+    groupId: ...
+    artifactId: ...
+    version: ...
+  annotations:
+    io.jenkins.x: y
+spec:
+  core:
+    # version OR version + ref (version just to keep Maven happy about version order)
+    ref: master
+    version: 1.0
+  components:
+    - groupId: org.acme
+      artifactId: acme-component
+      ref: master
+      version: 1.0
+  plugins:
+    - groupId: org.acme
+      artifactId: acme-plugin
+      ref: master
+      # version: 1.0
+  environments:
+    # environments get added to the other section when enabled
+    - name: aws
+      plugins:
+        - groupId: org.acme
+          artifactId: acme2-plugin
+          ref: master
+          # version: 1.0
+      components: ...
+  # other sections can be added and ignored by default
+# the realized BoM after refs are resolved
+status:
+  core:
+    ref: aaabbb
+    # version: 1.0
+  plugins:
+    - groupId: org.acme
+      artifactId: acme-plugin
+      ref: bbbccc
+      # version: 1.0
+  environments:
+    - name: aws
+      plugins:
+        - groupId: org.acme
+          artifactId: acme2-plugin
+          ref: cccddd
+          # version: 1.0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_version">Version</h3>
+<div class="paragraph">
+<p><code>version</code> field defines version of the BOM format.
+This JEP defines the version <code>1.0</code>,
+new formats may be introduced in subsequent JEPs.</p>
+</div>
+<div class="paragraph">
+<p>The specification version follows the <a href="https://semver.org/">Semantic Versioning 2.0.0</a> approach,
+but defines a 2-digit specification since there is no "bugfixes" planned.
+Incompatible changes will be always done along with a major version change.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_field_code_metadata_code">Field: <code>metadata</code></h3>
+<div class="paragraph">
+<p>Metadata includes 2 key-value maps: <code>labels</code> and <code>annotations</code>.
+Both sections are optional.
+More new keys may be added in future BOM specification versions (see <em>BOM Versioning</em>),
+and implementations should ignore them if they hit unsupported metadata entries.</p>
+</div>
+<div class="sect3">
+<h4 id="_field_labels">Field: labels</h4>
+<div class="paragraph">
+<p>Labels implement fields which will be used during the build.
+All labels are optional from the BOM specification standpoint,
+but implementations may define special requirements.</p>
+</div>
+<div class="paragraph">
+<p>There are following recommended <code>labels</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code> - Short string description of the bundle</p>
+</li>
+<li>
+<p><code>description</code> - Longer text description of the bundle</p>
+</li>
+<li>
+<p><code>groupId</code> - Maven Group ID of the bundle</p>
+</li>
+<li>
+<p><code>artifactId</code> - Maven Artifact ID of the bundle</p>
+</li>
+<li>
+<p><code>vendor</code> - Short description of the bundle&#8217;s vendor (e.g. <code>Jenkins project</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All label values must be Strings.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_field_annotation">Field: annotation</h4>
+<div class="paragraph">
+<p>Additional metadata, which is not used during the build directly.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All metadata entries are optional.</p>
+</li>
+<li>
+<p>Metadata keys should use the dot-separated strings,
+e.g. <code>io.jenkins.demo.mybundle.notForProduction</code>.</p>
+</li>
+<li>
+<p>Metadata values should be always plain strings</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The expectation from BOM packaging implementations is that they
+take annotations and somehow make it available to users.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_field_code_specification_code">Field: <code>specification</code></h3>
+<div class="paragraph">
+<p>Specification defines contents of the bundle.
+It consists of the following sections:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>core</code> - Defines the core, this is a mandatory section</p>
+</li>
+<li>
+<p><code>plugins</code> - Jenkins plugins in the bundle</p>
+</li>
+<li>
+<p><code>components</code> - Defines a component (anything excepting a plugin)</p>
+</li>
+<li>
+<p><code>environments</code> - Environment-specific components</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_dependency_type">Dependency type</h4>
+<div class="paragraph">
+<p>Fields below use a similar dependency format.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>groupId</code> - Maven group ID</p>
+</li>
+<li>
+<p><code>artifactId</code> - Maven artifact ID</p>
+</li>
+<li>
+<p><code>type</code> - Type of the packaging.
+It may be implied or required depending on the field</p>
+</li>
+<li>
+<p><code>version</code> - Version to be used</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_field_code_core_code">Field: <code>core</code></h4>
+<div class="paragraph">
+<p>Defines source of the Jenkins core to be used.
+Depending on the BOM packaging implementation,
+it may be referring WAR or other packaging type.</p>
+</div>
+<div class="paragraph">
+<p>Implied type: <code>war</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_field_code_plugins_code">Field: <code>plugins</code></h4>
+<div class="paragraph">
+<p>Implied type: <code>hpi</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_field_code_components_code">Field: <code>components</code></h4>
+<div class="paragraph">
+<p>This section defines all other components which may be used in the package.
+The components are classified by the <code>type</code> field values,
+and these field may be interpreted differently by implementations.
+Type examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>jar</code> - JAR library</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This type may be used to define extra libraries which are included into the package</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>jenkins-module</code> - Jenkins core module</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Modules represent parts of the Jenkins core which have their own release cycle.
+They are always bundled into the core, but they are not used by the core directly.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>groovy-hook</code> - A package of
+<a href="https://wiki.jenkins.io/display/JENKINS/Groovy+Hook+Script">Groovy Hook Scripts</a></p>
+</li>
+<li>
+<p><code>jcasc</code> - A package of</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If a BOM packager implementation support modifying the WAR file,
+these fields may be used to define components to be included/replaced.
+Other implementations may ignore the section, fail or handle components differently.</p>
+</div>
+<div class="paragraph">
+<p>Implied type: <code>jar</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_field_code_environments_code">Field: <code>environments</code></h4>
+<div class="paragraph">
+<p>Environments allow defining various packaging approaches for different targets.
+For example, BOM may define different environment specific plugins to be bundled for AWS and Azure:
+Agent provisioners, artifact manager implementations, etc.</p>
+</div>
+<div class="paragraph">
+<p>Fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code> - Name of the environment, e.g. <code>aws</code> or <code>k8s</code>.
+This field is mandatory</p>
+</li>
+<li>
+<p><code>plugins</code> - Jenkins plugins in the bundle</p>
+</li>
+<li>
+<p><code>modules</code> - Jenkins core modules to be bundled</p>
+</li>
+<li>
+<p><code>components</code> - Defines extra components to be bundled</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>BOM packagers are expected to support passing environments as a build argument.
+The following rules apply:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Environments can add new plugins/components</p>
+</li>
+<li>
+<p>Environments can update plugin/component versions defined in the main BOM section,
+e.g. they may require newer plugin version</p>
+</li>
+<li>
+<p>Environments cannot remove plugins/components</p>
+</li>
+<li>
+<p>Environments cannot downgrade plugin/component versions</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dependency_resolution">Dependency resolution</h3>
+<div class="paragraph">
+<p>Plugins, modules and components may declare dependencies on other components.
+There is no strict requirement for BOM to provide a full list of dependencies,
+although it is recommended for BOM usages in production packages.</p>
+</div>
+<div class="paragraph">
+<p>Dependency resolution logic is not specified in this BOM format version,
+it is up to the implementations.
+Similarly, implementations are responsible for upper bounds dependency resolution
+and checks if they support transitive dependencies.
+Packaging implementations may also refuse to support transitive dependencies.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_field_code_status_code">Field: <code>status</code></h3>
+<div class="paragraph">
+<p>This field represents the resulting BOM generated by a BOM packager implementation.
+This field is equivalent to <code>specification</code>, but there are additional requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All dependencies must be resolved in a reproducible way.
+There is no <code>dir</code> specifications pointing to sources not packaged with the resulting distribution</p>
+</li>
+<li>
+<p>All transitive dependencies must be resolved and added to <code>status</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Particular BOM packager implementations may squash the <code>environments</code> section
+if they build a package targeting a single environment.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The current approach to make changes in core, libraries and plugins is too cumbersome, far from Continuous Integration and complicated for contributors, due to the usage of multiple repositories.</p>
+</div>
+<div class="paragraph">
+<p>Changes typically span more than one repository, causing contributors to manually combine different PRs together.
+The goal of this proposal is to move towards a master based delivery process, ensure that core changes don&#8217;t break plugins and that core changes needed by plugins can be quickly and safely adopted.</p>
+</div>
+<div class="paragraph">
+<p>This proposal builds on the goals of Evergreen. We want to ensure that the Evergreen distribution is continuously delivered, off master, and is done safely with a set of checks that run automatically.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The chosen YAML format is just picked due to the similarities with Kubernetes model objects and has no importance.
+Since the format does not support all required features,
+it has been extended to support them.</p>
+</div>
+<div class="sect2">
+<h3 id="_plugin_and_component_sources">Plugin and component sources</h3>
+<div class="paragraph">
+<p>The implementation should support pulling in components by version from different sources.
+It includes version-based dependencies and also path definitions for local builds.</p>
+</div>
+<div class="paragraph">
+<p>For <code>version</code> naming there are other options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use standard releases in Jenkins repository</p>
+</li>
+<li>
+<p>Use Incremental releases (JEP-305)</p>
+</li>
+<li>
+<p>Use Maven SNAPSHOTS</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatically deploy snapshots using commit ids (ie. jenkins-core:aabbcc-SNAPSHOT)</p>
+</li>
+<li>
+<p>Ensure the commit ids are included in the packaging and visible during builds</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Use git modules to point to the master and PR commits</p>
+<div class="ulist">
+<ul>
+<li>
+<p>And build everything every time</p>
+</li>
+<li>
+<p>This would not work for Evergreen as the components need to be individually downloadable.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For path-based naming an <code>dir</code> field will be used.
+This field will support defining absolute and relative paths
+to sources of the component.
+Build of these sources is a responsibility of BOM implementations,
+support of such paths is <strong>not mandatory</strong>,
+implementations may reject the field.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_format_versioning">Format versioning</h3>
+<div class="paragraph">
+<p>According to the BOM discussion feedback,
+BOM format may change in the future in an incompatible way.
+In order to support that, a <code>version</code> field is introduced in the format.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_tooling">Tooling</h3>
+<div class="paragraph">
+<p>During the JEP discussion, it was proposed to introduce some tools
+in order to simplify usage of the model.
+It includes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Utility Java library, which allows parsing and generating BOM</p>
+</li>
+<li>
+<p>YAML schema, which will allow verifying the BOM formats</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As a part of this JEP, it was decided to NOT include separate tooling to the scope of this JEP.
+There is a <a href="https://github.com/jenkinsci/custom-war-packager">Jenkins Custom WAR Packager library</a>
+which offers BOM Model and utility methods.
+It can be used as a utility library for BOM format <code>1.0</code>.
+More tooling can be implemented on-demand.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_hierarchical_objects_in_annotations">Hierarchical objects in annotations</h3>
+<div class="paragraph">
+<p>There was a comment that <code>annotations</code> should support hierarchical objects
+to be more flexible.
+As a part of format <code>1.0</code>, it was decided to NOT do that in order
+to keep YAML processing implementations simple.
+It can be implemented in new format versions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This proposal aims to add new functionality and reuse existing tooling by generating Maven poms and other formats in use today.
+BOM format versioning is supported by the <code>version</code> field in YAML.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no testing issues related to this proposal.
+Custom WAR Packager and Evergreen have test automation which verifies
+support of YAML formats.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype implementation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/custom-war-packager">Custom WAR Packager</a> -
+BOM is supported as input and output format</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen">Evergreen evergreen</a> -
+BOM is used as intermediate format to define contents of the system</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/pipeline-library/blob/master/vars/essentialsTest.groovy">essentialsTest()</a> -
+Part of the component delivery Pipeline which produces and uses BOM internally</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/topic/jenkinsci-dev/pR2ZQMj95Zc/discussion">design discussion</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/acceptance-test-harness">Jenkins acceptance test harness</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/blueocean-acceptance-test">Blue Ocean acceptance test</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen">evergreen draft</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/custom-war-packager">Jenkins Custom WAR packager</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/pipeline-library/blob/master/vars/essentialsTest.groovy">essentialsTest() in Jenkins Pipeline Library</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/plugin-compat-tester">Jenkins plugin compat tester</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 308
+   Title
+ Evergreen Error Telemetry API
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-07
+   JIRA
+ JENKINS-51140
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303.
+     Table of Contents Abstract Specification Authentication and linking log entries to an instance Endpoint and expected format Maximum message size Malformed data Meta Error Logging   Rate limiting   Motivation Reasoning A dedicated /telemetry/error endpoint only for error logging Reliability concerns Send logs one by one   Backwards Compatibility Security Infrastructure Requirements Testing Rejecting bad data Load Testing Store UUID with logs   Prototype Implementation References    Abstract One critical aspect of Jenkins Evergreen is that the connected instances must be upgraded automatically in a safe way." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/308/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 308
+   Title
+ Evergreen Error Telemetry API
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-07
+   JIRA
+ JENKINS-51140
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303.
+     Table of Contents Abstract Specification Authentication and linking log entries to an instance Endpoint and expected format Maximum message size Malformed data Meta Error Logging   Rate limiting   Motivation Reasoning A dedicated /telemetry/error endpoint only for error logging Reliability concerns Send logs one by one   Backwards Compatibility Security Infrastructure Requirements Testing Rejecting bad data Load Testing Store UUID with logs   Prototype Implementation References    Abstract One critical aspect of Jenkins Evergreen is that the connected instances must be upgraded automatically in a safe way.">
+
+
+
+<meta itemprop="wordCount" content="1139">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 308
+   Title
+ Evergreen Error Telemetry API
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-07
+   JIRA
+ JENKINS-51140
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303.
+     Table of Contents Abstract Specification Authentication and linking log entries to an instance Endpoint and expected format Maximum message size Malformed data Meta Error Logging   Rate limiting   Motivation Reasoning A dedicated /telemetry/error endpoint only for error logging Reliability concerns Send logs one by one   Backwards Compatibility Security Infrastructure Requirements Testing Rejecting bad data Load Testing Store UUID with logs   Prototype Implementation References    Abstract One critical aspect of Jenkins Evergreen is that the connected instances must be upgraded automatically in a safe way."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">308</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evergreen Error Telemetry API</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/batmat">Baptiste Mathus</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-06-07</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-51140">JENKINS-51140</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300</a>, <a href="https://github.com/jenkinsci/jep/tree/master/jep/303">JEP-303</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_authentication_and_linking_log_entries_to_an_instance">Authentication and linking log entries to an instance</a></li>
+<li><a href="#_endpoint_and_expected_format">Endpoint and expected format</a></li>
+<li><a href="#_maximum_message_size">Maximum message size</a></li>
+<li><a href="#_malformed_data">Malformed data</a>
+<ul class="sectlevel3">
+<li><a href="#_meta_error_logging">Meta Error Logging</a></li>
+</ul>
+</li>
+<li><a href="#_rate_limiting">Rate limiting</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_a_dedicated_code_telemetry_error_code_endpoint_only_for_strong_error_strong_logging">A dedicated <code>/telemetry/error</code> endpoint only for <strong>error</strong> logging</a></li>
+<li><a href="#_reliability_concerns">Reliability concerns</a></li>
+<li><a href="#_send_logs_one_by_one">Send logs one by one</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a>
+<ul class="sectlevel2">
+<li><a href="#_rejecting_bad_data">Rejecting bad data</a></li>
+<li><a href="#_load_testing">Load Testing</a></li>
+<li><a href="#_store_uuid_with_logs">Store UUID with logs</a></li>
+</ul>
+</li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>One critical aspect of Jenkins Evergreen is that the connected instances
+must be upgraded automatically in a safe way.
+To that end, we detect the errors that occur in these instance,
+and push those to a central place to participate to the assessment of
+the health level of a given instance, and by transitivity of a given
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/307#update-levels"><em>Evergreen</em> update level</a>.</p>
+</div>
+<div class="paragraph">
+<p>The current document describes what the server side API for this error logging looks like
+<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_authentication_and_linking_log_entries_to_an_instance">Authentication and linking log entries to an instance</h3>
+<div class="paragraph">
+<p>It is obviously required that the instance is registered and authenticated
+to be allowed to push data to this endpoint, as described in
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/303">JEP-303</a>.</p>
+</div>
+<div class="paragraph">
+<p>HTTP status code will hence be the ones defines in that specification.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_endpoint_and_expected_format">Endpoint and expected format</h3>
+<div class="paragraph">
+<p>We are taking a simplistic approach defining a single endpoint for error logging.</p>
+</div>
+<div class="paragraph">
+<p>The <code>/telemetry/error</code> endpoint will simply receive a JSON message sent
+via a <code>POST</code> request, with a single log entry, containing in turn the <code>JSON</code>
+structure emitted locally as defined in
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/304#logging-format">JEP-304</a>.</p>
+</div>
+<div class="paragraph">
+<p>No other verb than <code>POST</code> will be accepted.</p>
+</div>
+<div class="listingblock">
+<div class="title">Error telemetry payload</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "log": {
+    "version": 1,
+    "timestamp": 1522840762769,
+    "name": "io.jenkins.plugins.SomeTypicalClass",
+    "level": "WARNING",
+    "message": "the message\nand another line",
+    "exception": {
+      "raw": "serialized exception\n many \n many \n lines"
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Registration Headers</div>
+<div class="content">
+<pre class="highlight"><code>Content-Type: application/json</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When things are sent as expected, then the endpoint will answer
+with an <em>HTTP-201</em> and the following payload:</p>
+</div>
+<div class="listingblock">
+<div class="title">Error Telemetry successful creation payload</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "status": "OK"
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+the log is <strong>not</strong> sent back as this often can be seen to avoid sending
+big logs back and forth when the client is most likely not interested by what it just sent.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maximum_message_size">Maximum message size</h3>
+<div class="paragraph">
+<p>The maximum size of a the global JSON message is 1 million characters (~1 MB).
+This should be enough to allow receiving enough information when a stack trace is included,
+and defining a maximum size seems critical to operate the service.
+Hence the sender is expected to truncate the message if it is larger than this.</p>
+</div>
+<div class="paragraph">
+<p>If the received message exceeds that maximum, the HTTP status code will be an <em>HTTP-413</em>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Error Telemetry failed creation payload</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "status": "ERROR"
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_malformed_data">Malformed data</h3>
+<div class="paragraph">
+<p>The client will receive a more generic <em>HTTP-400</em>.
+An optional <code>message</code> field can be provided by the server in the payload
+to help understand what is wrong.</p>
+</div>
+<div class="listingblock">
+<div class="title">Error Telemetry failed creation payload</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+  "status": "ERROR",
+  "message": "(optional) message to explain what made the server reject this message."
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_meta_error_logging">Meta Error Logging</h4>
+<div class="paragraph">
+<p>When the server rejects data, be it because of exceeded message size,
+or malformed message, it should reject it in some <strong>non silent</strong> way.
+The message can be dropped, but the fact there was a rejection
+shall be logged on the server side.</p>
+</div>
+<div class="paragraph">
+<p>This is important to detect attacks, but also more simply bugs that might have
+made the reporting system broken and we need to fix expeditely.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rate_limiting">Rate limiting</h3>
+<div class="paragraph">
+<p>We may define in the future the use of rate limiting.
+In that case, the server will send an <em>HTTP-429</em>.</p>
+</div>
+<div class="paragraph">
+<p>If so, the client is expected to retry <em>later</em>
+(the exact meaning of <em>later</em> will be clarified if we decide to go that path).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is no existing code base or process for this feature.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_a_dedicated_code_telemetry_error_code_endpoint_only_for_strong_error_strong_logging">A dedicated <code>/telemetry/error</code> endpoint only for <strong>error</strong> logging</h3>
+<div class="paragraph">
+<p>Despite we will define in the future endpoints for reporting other telemetry types,
+like metrics telemetry, for instance like
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-49852">Pipeline related metrics</a>,
+we are defining a dedicated entrypoint for error logging,
+and will define others for other types.</p>
+</div>
+<div class="paragraph">
+<p>We are <strong>not</strong> using the same endpoint, for instance using a <code>type</code> field as those
+different Telemetry <em>communications</em> are very likely to be very different,
+and it will make this easier to define router-level rules if needed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reliability_concerns">Reliability concerns</h3>
+<div class="paragraph">
+<p>Though the service is expected to be always available,
+the client should be designed to handle a temporary unavailability.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_send_logs_one_by_one">Send logs one by one</h3>
+<div class="paragraph">
+<p>For the current design, the client will use a single <code>POST</code> HTTP request for each log entry to send.
+We expect that the number of error or warning logs emitted from the Jenkins instance to be rare (i.e. less than a few dozens per day).</p>
+</div>
+<div class="paragraph">
+<p>So, at that stage of the project, we keep things simple.
+If it proves wrong, we will be able to evolve the API to accept for instance either <code>log</code> as currently, or <code>logs</code> to directly accept an array of multiple logs in one go.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As the <code>log</code> field is somehow an opaque blob content,
+the compatibility concerns are more the same as defined in the
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/304#logging-format">JEP 304 logging format section</a>.
+But as also discussed there, using the <code>version</code> field of the message should
+be enough to accomadate any schema evolution.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>That service will need to be integrated and operated in the current Jenkins Infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>This will most likely be integrated with the existing setup for error logging, but that aspect will need more prototyping to make this clearer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rejecting_bad_data">Rejecting bad data</h3>
+<div class="paragraph">
+<p>We must check that the backend does reject exceedingly big messages, or malformed logs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_load_testing">Load Testing</h3>
+<div class="paragraph">
+<p>The system must be tested against a reasonable amount of data,
+by evaluating the expected volume in 3 to 6 months that the service is likely to receive.
+This should especially be done by sending the right amount in number, but also in sizes
+(mimicking clients that would be sending a lot of stack traces for example).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_store_uuid_with_logs">Store UUID with logs</h3>
+<div class="paragraph">
+<p>It is critical to the quality of the telemetry system to be able to find
+and remove some logs originating from a rogue instance.
+Be it because it is controlled by an attacker, or for any other valid reasons.</p>
+</div>
+<div class="paragraph">
+<p>So, though not a pure API contract concern, it is important that the API
+stores a way to link back a log entry to its origin.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to store the UUID, so that the log can be linked back to
+not only a given instance, but a period of time where that instance was connected.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen" class="bare">https://github.com/jenkins-infra/evergreen</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen/tree/master/docs/meetings/2018-05-07-existing-telemetry-setup-on-jenkins-io">Meeting notes about existing setup for Error Logging in the Kubernetes cluster in the Jenkins Infrastructure</a>.</p>
+</li>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/ql9iX06IdGw/AJxFcGK5BgAJ">Thread on the Jenkins Developers Mailing List</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Basically sending the Jenkins logs defined in the <a href="https://github.com/jenkinsci/jep/tree/master/jep/304">JEP-304</a>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

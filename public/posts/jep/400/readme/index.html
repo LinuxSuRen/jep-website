@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 400
+   Title
+ Jenkins X: Jenkins for Kubernetes CD
+   Sponsor
+ James Strachan
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+     Table of Contents Abstract Specification Target Audience Development Practice ‘Environment’ Model CLI Pipeline where “the right thing is the easiest thing” Build Packs Helm Charts Kubernetes Native Jenkins UpdateBot Longer Term integrations: Prow &amp; Argo   Motivation Reasoning Ease of Use CLI as Main Developer Experience Jenkins in Kubernetes   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins X provides a Kubernetes-native CI / CD platform for developing Cloud Native applications." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/400/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 400
+   Title
+ Jenkins X: Jenkins for Kubernetes CD
+   Sponsor
+ James Strachan
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+     Table of Contents Abstract Specification Target Audience Development Practice ‘Environment’ Model CLI Pipeline where “the right thing is the easiest thing” Build Packs Helm Charts Kubernetes Native Jenkins UpdateBot Longer Term integrations: Prow &amp; Argo   Motivation Reasoning Ease of Use CLI as Main Developer Experience Jenkins in Kubernetes   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins X provides a Kubernetes-native CI / CD platform for developing Cloud Native applications.">
+
+
+
+<meta itemprop="wordCount" content="3349">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 400
+   Title
+ Jenkins X: Jenkins for Kubernetes CD
+   Sponsor
+ James Strachan
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+     Table of Contents Abstract Specification Target Audience Development Practice ‘Environment’ Model CLI Pipeline where “the right thing is the easiest thing” Build Packs Helm Charts Kubernetes Native Jenkins UpdateBot Longer Term integrations: Prow &amp; Argo   Motivation Reasoning Ease of Use CLI as Main Developer Experience Jenkins in Kubernetes   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins X provides a Kubernetes-native CI / CD platform for developing Cloud Native applications."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">400</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jenkins X: Jenkins for Kubernetes CD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jstrachan">James Strachan</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-02-07</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_target_audience">Target Audience</a></li>
+<li><a href="#_development_practice">Development Practice</a></li>
+<li><a href="#__environment_model">‘Environment’ Model</a></li>
+<li><a href="#_cli">CLI</a></li>
+<li><a href="#_pipeline_where_the_right_thing_is_the_easiest_thing">Pipeline where “the right thing is the easiest thing”</a></li>
+<li><a href="#_build_packs">Build Packs</a></li>
+<li><a href="#_helm_charts">Helm Charts</a></li>
+<li><a href="#_kubernetes_native_jenkins">Kubernetes Native Jenkins</a></li>
+<li><a href="#_updatebot">UpdateBot</a></li>
+<li><a href="#_longer_term_integrations_prow_argo">Longer Term integrations: Prow &amp; Argo</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_ease_of_use">Ease of Use</a></li>
+<li><a href="#_cli_as_main_developer_experience">CLI as Main Developer Experience</a></li>
+<li><a href="#_jenkins_in_kubernetes">Jenkins in Kubernetes</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins X provides a Kubernetes-native CI / CD platform for developing Cloud Native applications.
+Jenkins X uses a distribution of Jenkins as the core CI / CD engine.</p>
+</div>
+<div class="paragraph">
+<p>This JEP is a “stake on the ground” that captures the mission and the general directions.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins X sub project focuses 100% on Kubernetes, CI/CD and Cloud Native use cases to provide great developer productivity.
+To that end, we have so far identified the following major deliverables.</p>
+</div>
+<div class="sect2">
+<h3 id="_target_audience">Target Audience</h3>
+<div class="paragraph">
+<p>Jenkins X is targeted at existing and new Jenkins users who are either:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Already using Kubernetes and want to adopt CI / CD</p>
+</li>
+<li>
+<p>Want CI / CD and increasingly to move to the public cloud - though don’t necessary know anything about Kubernetes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In both cases we expect these users to "just want get things done" by using best practices rather than discovering the best practices on their own.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_development_practice">Development Practice</h3>
+<div class="paragraph">
+<p>Jenkins X promotes a particular Git branching &amp; repository model. The rest of the tools and services are built to fit this model.</p>
+</div>
+<div class="paragraph">
+<p>This development practice represents the best practice of developing Kubernetes applications, based in part on the experience of developing Fabric8, a project of a similar mission and on the results of the <a href="https://puppet.com/resources/whitepaper/state-of-devops-report">State of DevOps report</a>.</p>
+</div>
+<div class="paragraph">
+<p>The value of Jenkins X is that if you follow this best practice, then Jenkins X assembles all the pieces for you (e.g., Jenkins, Kubernetes, Git, CI/CD etc) such that developers can be instantly productive.
+This is akin to what Maven brought over Ant —  encouraging developers to use a standard Lifecycle-model provided by Maven (<a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY</a>) to achieve greater productivity.</p>
+</div>
+<div class="paragraph">
+<p>Here are some examples of the practice:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The master branch shall be always clean and release ready.
+No long running feature branches to stay lean.</p>
+</li>
+<li>
+<p>Pull requests are used to work on new changes that then land to the master.
+CI tests are triggered on changes to a PR and the PR can only merged if all the CI checks pass and it passes any required code reviews etc.</p>
+</li>
+<li>
+<p>A release is produced from the master branch to create versioned immutable artifacts (jars, binaries, docker images, helm charts etc).
+A release might be triggered manually, or automatically upon a new PR merge, or even at set frequency.</p>
+</li>
+<li>
+<p>Which version of what services run in which environment is managed declaratively in a separate environment Git repo.
+You make deployment happen by pushing changes into the environment git repository which then triggers the Environments pipeline.
+This approach is often referred to as <em>GitOps</em> and is similar to how people develop Chef recipes or Ansible playbooks with Git.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__environment_model">‘Environment’ Model</h3>
+<div class="paragraph">
+<p>Among web application developers practicing Continuous Delivery, the notion of “environment” is a well-established practice.
+It allows orderly flow of changes from a developer, through testing and staging to production.
+Yet, Jenkins does not have the environment concept as the first class citizen.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins X bridges this gap by introducing the concept of ‘environment’ on top of more generic Kubernetes concepts, such as namespaces and GitOps.
+The development practice then talks in terms of promoting apps from one environment to another in a cascading manner.</p>
+</div>
+<div class="paragraph">
+<p>For example a release occurs for a new version <code>1.2.3</code> resulting in immutable artifacts being created.
+So docker images and helm charts with the version <code>1.2.3</code> are created along with other things (npm packages, maven jars or whatever).</p>
+</div>
+<div class="paragraph">
+<p>Then the <em>promotion</em> of an application from version <code>1.2.2</code> to <code>1.2.3</code> for an Environment in the Jenkins X GitOps model results in:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A Pull Request being created in the environment’s git repository to update the version of the application</p>
+</li>
+<li>
+<p>When the Pull Request is approved and merged, a Pipeline runs in the environment applying the new changes to the underlying Environment in a Kubernetes namespace</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In classic web application development, environments are often static.
+Jenkins X leverages the elasticity of Kubernetes to offer more dynamic environments to users.
+For example, we offer “preview environments” that are tied to GitHub pull requests, to let reviewers  see the running changes before approving the merge to master.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cli">CLI</h3>
+<div class="paragraph">
+<p>Following the development practice discussed above, one finds that some common sequences of tasks will happen over and over.</p>
+</div>
+<div class="paragraph">
+<p>One such sequence of tasks is the act of “promoting” an application to an environment.
+As an input, it takes what version of which application to promote which environment, then it needs to execute a series of appropriate Kubernetes commands to change some pods that are running, with appropriate metadata.</p>
+</div>
+<div class="paragraph">
+<p>In order to make these common tasks easy, Jenkins X defines a command line tool, <a href="https://github.com/jenkins-x/jx">jx</a>, which encapsulates them as high-level operations.
+Jenkins X CLI is used not only by developers from their computers, but also used by Jenkins Pipeline, which will be discussed later.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins X CLI is a central user interface of Jenkins X.
+It makes it easy to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>install Jenkins X on any kubernetes cluster</p>
+</li>
+<li>
+<p>create new kubernetes clusters from scratch on the public cloud</p>
+</li>
+<li>
+<p>setting up Environments for each Team</p>
+</li>
+<li>
+<p>import existing projects or creating new Spring Boot applications then:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>automatically set up the CI / CD pipeline and webhooks</p>
+</li>
+<li>
+<p>create new releases and promote them through the Environments on merge to master</p>
+</li>
+<li>
+<p>support Preview Environments on Pull Requests</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pipeline_where_the_right_thing_is_the_easiest_thing">Pipeline where “the right thing is the easiest thing”</h3>
+<div class="paragraph">
+<p>At the heart of Jenkins X is an automation that controls how applications are built, tested, deployed, and promoted across different environments.
+Jenkins Pipeline plays a major role in achieving this.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins X extends Declarative Pipeline, so that a pipeline that embodies the best development practice discussed above is be represented in a <em>Jenkinsfile</em> that’s very simple, easy to understand, and declarative.
+This allows Jenkins X to leverage the ease of use of Blue Ocean and its visual editor to make it accessible for our target audience.</p>
+</div>
+<div class="paragraph">
+<p>CLI provides the building blocks of common tasks, which helps keep <em>Jenkinsfile</em> small and concise.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_build_packs">Build Packs</h3>
+<div class="paragraph">
+<p>Jenkins X reuses tooling from <a href="https://github.com/Azure/draft">Draft</a> so that language and framework specific “build packs” can be maintained which contain the default <em>Dockerfile</em>, <em>Jenkinsfile</em> and Helm <em>chart</em> files required to build, test, release and deploy different kinds of application.</p>
+</div>
+<div class="paragraph">
+<p>When users create or import new applications, the build packs get applied to generate the default <em>Dockerfile</em> for building docker images, the <em>Jenkinsfile</em> for the CI / CD together with the Helm chart files to deploy it on Kubernetes.</p>
+</div>
+<div class="paragraph">
+<p>Teams and communities can share and customise their build packs allowing builds, CI and CD to be automated for a wide range of languages and frameworks.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_helm_charts">Helm Charts</h3>
+<div class="paragraph">
+<p>Helm charts are the standard packaging mechanism for installing and upgrading applications on Kubernetes.
+Jenkins X provides a Helm chart so it is easy to install Jenkins X on any kubernetes cluster.</p>
+</div>
+<div class="paragraph">
+<p>Helm charts can also be composed and configured in various ways; so we can provide customised Jenkins X helm charts tailored to different public clouds so that Jenkins X can automatically make the best use of  the available services on the cloud without the user needing to configure anything.
+E.g. so that Jenkins X can use Stackdriver on Google or CloudWatch on AWS for application and pipeline logs.</p>
+</div>
+<div class="paragraph">
+<p>Traditionally the plugin model of Jenkins has been to add jars inside the JVM of the Jenkins master.
+With Kubernetes the extension model can be more flexible and allow extension through separate microservices and configurations distributed in Helm charts.
+These microservices then communicate with each other via Kubernetes resources which are exposed in the Kubernetes REST APIs, kubernetes language clients, Kubernetes Dashboard and the kubectl command line tool.</p>
+</div>
+<div class="paragraph">
+<p>One goal of Jenkins X is to foster a community of Jenkins X addons which are optional Helm charts that can extend Jenkins X with additional capabilities; whether its for different source control repositories, issue management, code quality tools, testing tools, chat integration, UIs or operational management tooling.</p>
+</div>
+<div class="paragraph">
+<p>E.g. we expect there to be Jenkins X addons like:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nexus / Artifactory for Java artifacts</p>
+</li>
+<li>
+<p>Chart Museum/Monocular for Helm chart repositories</p>
+</li>
+<li>
+<p>Metrics and monitoring (e.g. Grafana and Prometheus)</p>
+</li>
+<li>
+<p>Gitea for on premise git hosting</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kubernetes_native_jenkins">Kubernetes Native Jenkins</h3>
+<div class="paragraph">
+<p>Jenkins X is not a general purpose Jenkins that can modified to do anything.
+Instead, it is tailored to focus on Kubernetes and Cloud Native use cases, hence the name “Kubernetes native Jenkins.”</p>
+</div>
+<div class="paragraph">
+<p>Jenkins X includes Jenkins core with a specific set of plugins bundled together to provide the necessary user experience out of the box, without the user needing to “assemble their own LEGO blocks.”</p>
+</div>
+<div class="paragraph">
+<p>Over time, we see an opportunity to improve Jenkins core itself based on our learning in Jenkins X, so that Jenkins itself can be used in more cloud native configurations.
+This should benefit not only Jenkins X but other uses of Jenkins.
+These changes will result in separate JEP proposals.</p>
+</div>
+<div class="paragraph">
+<p>E.g. to allow storage of Jenkins resources (config, pipelines, builds, credentials, artifacts, logs) outside of the Jenkins master local file system to avoid a single point of failure and make managing persistent disk easier.</p>
+</div>
+<div class="paragraph">
+<p>It is common in the Kubernetes ecosystem to store system state in highly available persistent Kubernetes resources (e.g. Pods, Services, ConfigMaps, Secrets etc).
+This allows microservices running on Kubernetes to integrate via Kubernetes resources.
+As part of the Kubernetes native Jenkins initiative we hope to increasingly use Kubernetes resources for the storage of Jenkins state.
+E.g. to represent Environments, Pipeline Activity (Runs) and Releases we will use Kubernetes resources (<a href="https://kubernetes.io/docs/concepts/api-extension/custom-resources/">Custom Resources</a>).
+We intend to extend this to other Jenkins resources like MultiBranchProject, Pipeline, Run, Credentials etc.</p>
+</div>
+<div class="paragraph">
+<p>This will allow microservices on kubernetes to ‘plugin’ to Jenkins X in a similar way conceptually to the way current Jenkins java plugins but without the code having to be colocated inside the Jenkins master.
+Any microsevice with the right RBAC rules will be allowed to list, get, update, delete Jenkins resources via the kubernetes REST API, kubectl or the kubernetes language clients.
+E.g. so a ChatBot gateway component could watch for pipelines starting, changing, terminating and notify users of the state - without having to modify the Jenkins master.</p>
+</div>
+<div class="paragraph">
+<p>Another area of extensibility is via <a href="https://github.com/kubernetes/helm/blob/master/docs/charts_hooks.md">Helm hooks</a> which allows any <a href="https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/">kubernetes Job</a> to be triggered after an application is installed or upgraded to perform any kind of test to ensure the new version is good.
+E.g. we can use Helm Hooks to implement quality gates to ensure a release is good enough in terms of operational monitoring of failures, performance and SLA metrics - if a release is not good enough we can automatically roll back.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_updatebot">UpdateBot</h3>
+<div class="paragraph">
+<p>UpdateBot is a CLI tool which automates updating downstream dependencies as part of a CI / CD pipeline by generating Pull Requests to eagerly push changes through repositories and give better feedback to upstream libraries/component developers if changes break the CI pipelines of downstream repositories.</p>
+</div>
+<div class="paragraph">
+<p>E.g. as a developer of an upstream library, as you release new versions of your library the release pipeline can invoke UpdateBot to generate Pull Requests on all downstream repositories using your library.
+UpdateBot can then wait for those Pull Requests to trigger the downstream CI pipelines and pass/fail.
+If any downstream repositories CI jobs fail then your upstream library pipeline fails; giving valuable early feedback to both the upstream team making the change and downstream teams who become aware of which versions cause failures.
+We should make the waiting configurable so upstream development teams can choose which repositories to wait for and how long to wait before failing a pipeline.</p>
+</div>
+<div class="paragraph">
+<p>Libraries and base docker images are often not deployed directly to Environments; but they are promoted into downstream repositories via Pull Requests changing dependency information in files like pom.xml, package.json, Dockerfile or helm charts etc.
+So you can think of UpdateBot as a tool for providing Continuous Delivery for libraries, base docker images or base helm charts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_longer_term_integrations_prow_argo">Longer Term integrations: Prow &amp; Argo</h3>
+<div class="paragraph">
+<p>The kubernetes ecosystem uses <a href="https://github.com/kubernetes/test-infra/tree/master/prow">Prow</a> for its CI / CD infrastructure - which is a cloud native solution for handling events &amp; webhooks from GitHub such as for processing comments and <a href="https://prow.k8s.io/command-help.html">commands</a> on Issues &amp; Pull Requests.
+Prow can trigger arbitrary jobs on events; including Jenkins builds/pipelines.
+There are lots of similarities between the goals of Prow and Jenkins X (e.g. Kubernetes native and use of highly available Kubernetes resources to store state).</p>
+</div>
+<div class="paragraph">
+<p><a href="https://blog.argoproj.io/">Argo</a> is another useful technology which  handles Kubernetes-native long-term human workflows such as approvals and promotions.</p>
+</div>
+<div class="paragraph">
+<p>Longer term we’d like to integrate Prow and Argo more into Jenkins X as part of the CI / CD Platform for when they make sense; so that Jenkins X pipelines can use Prow to handle events and commands on issues &amp; pull requests or Argo for longer term human approval of promotions in a kubernetes native way - while hiding the implementation details of Prow v Jenkins Pipeline v Argo from the user so the end user just gets awesome CI / CD for Kubernetes that just works and uses resources efficiently.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kubernetes provides the ideal abstraction for building cloud native applications and running them at scale on any public cloud, laptop or data centre.
+It’s rapidly gaining traction in the industry, is adopted by all the major public clouds and it will play a key role in how people develop web apps tomorrow.</p>
+</div>
+<div class="paragraph">
+<p>People developing apps on Kubernetes can today use Jenkins to do CI/CD, but it requires work.
+That’s true not just with Kubernetes, but with any development environment.
+Mobile apps, embedded apps, you name it.
+You know Jenkins, so you know what that is like --- finding the right set of plugins, designing the CD process, writing pipeline definitions, and so on.
+This is both the strength and the weakness of Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>But with Kubernetes lies an unique opportunity.
+It defines the structure and high-level constructs that we can leverage through Jenkins.
+When we integrate Kubernetes and Jenkins together, developers need not be familiar with how best to do CD on Kubernetes (most people are not) nor do they need to be familiar with Jenkins Pipeline (most people are not).
+This much better ease of use can make Kubernetes itself a much more attractive platform, and make Jenkins a de-facto CI/CD platform for Kubernetes.
+This is the motivation of Jenkins X.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many of the reasonings for the design of Jenkins X comes from our experience with Fabric8, where we worked on a similar set of problems.
+The key points are discussed below.</p>
+</div>
+<div class="sect2">
+<h3 id="_ease_of_use">Ease of Use</h3>
+<div class="paragraph">
+<p>The focus on ease of use for the target audience drives a number of design choices.</p>
+</div>
+<div class="paragraph">
+<p>First, in order to make Jenkins X approachable, we didn’t want to invent a whole new workflow, concept, or the way of interacting with Jenkins X.
+Instead, we choose to meet people where they are by adopting existing well-established practices, gluing them together, and amplifying the usefulness of them.
+For example, UpdateBot reflects the popularity of pull requests as a mechanism to propagate changes.
+Preview environments amplify the value of pull requests.</p>
+</div>
+<div class="paragraph">
+<p>Second, it necessitates Jenkins X to take care of how people go from zero to productivity.
+Therefore, Jenkins X will pay a lot of attention to how we can make the first encounter smooth.
+This is why we put such emphasis on the CLI tool 'jx' to provision new Kubernetes cluster, new Jenkins, new environments, and then create or import new applications.</p>
+</div>
+<div class="paragraph">
+<p>We also believe that automation should be a “butler”, providing backstage  invisible assistance to make things go smoothly, as opposed to being front &amp; center of the attention itself.
+From this perspective comes CLI, bot, etc.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cli_as_main_developer_experience">CLI as Main Developer Experience</h3>
+<div class="paragraph">
+<p>Emphasis on CLI also comes from this thinking.
+Kubernetes users are used to get things done with the Kubernetes CLI tool, <a href="https://kubernetes.io/docs/reference/kubectl/overview/">kubectl</a>.
+So we choose to expose Jenkins X data through Kubernetes by using <a href="https://kubernetes.io/docs/concepts/api-extension/custom-resources/">its extensibility mechanism</a>, which allows people to use Kubernetes CLI to interact with Jenkins X.
+Where this is not practical, Jenkins X defines its own CLI in a similar pattern, so that the familiarity with Kubernetes CLI will translate to Jenkins X CLI.</p>
+</div>
+<div class="paragraph">
+<p>Longer term we hope to add jx into <a href="https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/">kubectl as a plugin</a> to expose more of the capabilities of jx directly into kubectl so that Jenkins X and CI / CD feels a natural part of the kubernetes platform.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jenkins_in_kubernetes">Jenkins in Kubernetes</h3>
+<div class="paragraph">
+<p>While powerful, the existing extensibility model of Jenkins is not without challenges.
+Among other things, the fact that every piece of code needs to run inside a single process makes it difficult to isolate failures, scale better, and replace pieces.</p>
+</div>
+<div class="paragraph">
+<p>So in Jenkins X, as we run Jenkins on Kubernetes, we aim to leverage the underlying capabilities of Kubernetes to solve these problems.
+For example, in Jenkins X, many features should be developed as independent microservices as add-ons.</p>
+</div>
+<div class="paragraph">
+<p>This philosophy expands beyond the implementation details of Jenkins X, as discussed in the “helm charts” section. We intend this to become the next extensibility layer for Jenkins X.</p>
+</div>
+<div class="paragraph">
+<p>Finally, achieving the level of integration and ease of use that we aim requires aggressive omission/demotion/hiding of certain features in Jenkins and addition of many more pieces at the same time.
+It is no longer an all-purpose Jenkins packaged for a specific platform.
+It is rather a purpose-built flavor of Jenkins for one purpose.
+This calls for an extension to Jenkins and a  distribution with a name that’s related but separate from Jenkins, hence "Jenkins X."</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Jenkins X is a distribution of Jenkins and additional software for Kubernetes packaged as Helm charts and so it does not introduce any backwards compatibility issues on Jenkins itself.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>From a Jenkins perspective the security model of the Jenkins master inside Jenkins X is that of the regular Jenkins distribution.
+We hope to make it configurable in the Helm chart to use either basic auth or OAuth.</p>
+</div>
+<div class="paragraph">
+<p>The kubernetes resources used by Jenkins X will all follow the <a href="https://kubernetes.io/docs/admin/authorization/rbac/">Kubernetes RBAC security</a> approach.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal - as we intend to use a hosted Jenkins X on Kubernetes to provide all of the CI / CD.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins X will add its own unit tests (e.g. in the jenkins-x/jx repo) together with its own BDD tests for testing the integration of Kubernetes + Jenkins X for CI / CD.</p>
+</div>
+<div class="paragraph">
+<p>We also intend to use Jenkins X to host the CI / CD environment for Jenkins X; storing most of the results of these in GitHub (e.g. as comments on issues or Pull Requests or as releases in GitHub).
+Each Pull Request and merge to master should have its status updated via Jenkins X and be linked to the CI / CD pipelines.</p>
+</div>
+<div class="paragraph">
+<p>e.g. each Pull Request on any Jenkins X git repository will run a CI pipeline to test the code change.
+When Pull Requests are merged to master then the CD pipeline will trigger to release the repository’s artifacts (docker images, binaries, helm charts etc).</p>
+</div>
+<div class="paragraph">
+<p>At this early stage of the project there are no specific coverage or performance metric goals but we can figure that out in the community.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins X will consist of many repositories.
+While we can create them in the jenkinsci org, for practical reasons it’s easier to group them in a separate org, just like jenkins-infra and jenkins-docs are.</p>
+</div>
+<div class="paragraph">
+<p>We have been putting all the github repositories for Jenkins X in the github organisation <a href="https://github.com/jenkins-x">jenkins-x</a></p>
+</div>
+<div class="paragraph">
+<p>The main repositories are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-x/jx">jenkins-x/jx</a> for the jx command line tool</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-x/jenkins-x-platform">jenkins-x/jenkins-x-platform</a> for the helm chart distribution</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-x/jx-docs">jenkins-x/jx-docs</a> the documentation and website</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-x/godog-jx">jenkins-x/godog-jx</a> the BDD tests</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-x/updatebot">jenkins-x/updatebot</a> the UpdateBot code</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://jenkins-x.io/">http://jenkins-x.io/</a> the current project landing page and initial documentation</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-x/jx/blob/master/README.md">Jenkins X CLI ReadMe</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-x/jx-docs/blob/master/content/about/features.md">Jenkins X Features</a></p>
+</li>
+<li>
+<p><a href="view-source:https://fabric8.io/">Fabric8</a><a href="https://github.com/jenkins-x/jx-docs/blob/master/content/about/features.md"> for prior art</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

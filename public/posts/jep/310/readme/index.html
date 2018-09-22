@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 310
+   Title
+ Essentials AWS auto-configuration
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-10
+   BDFL-Delegate
+ R. Tyler Croy
+   JIRA
+ JENKINS-52210
+   Requires
+ JEP-300, JEP-307
+     Table of Contents Abstract Specification Global overview Used plugins and configuration Instance Profile and IAM role EC2 policy S3 bucket policy   Security groups Master Agents     Motivation Reasoning Instance Profile s3:DeleteObject permission on the S3 bucket   Backwards Compatibility Security Allowed certificates SSH access to the server HTTPS by default Agent port   Infrastructure Requirements AWS account for testing   Testing AWS testing of CloudFormation template   Prototype Implementation References    Abstract One of the four pillars of Jenkins Essentials is that it should be autoconfigured with sane defaults for various cloud platforms." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/310/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 310
+   Title
+ Essentials AWS auto-configuration
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-10
+   BDFL-Delegate
+ R. Tyler Croy
+   JIRA
+ JENKINS-52210
+   Requires
+ JEP-300, JEP-307
+     Table of Contents Abstract Specification Global overview Used plugins and configuration Instance Profile and IAM role EC2 policy S3 bucket policy   Security groups Master Agents     Motivation Reasoning Instance Profile s3:DeleteObject permission on the S3 bucket   Backwards Compatibility Security Allowed certificates SSH access to the server HTTPS by default Agent port   Infrastructure Requirements AWS account for testing   Testing AWS testing of CloudFormation template   Prototype Implementation References    Abstract One of the four pillars of Jenkins Essentials is that it should be autoconfigured with sane defaults for various cloud platforms.">
+
+
+
+<meta itemprop="wordCount" content="1058">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 310
+   Title
+ Essentials AWS auto-configuration
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-10
+   BDFL-Delegate
+ R. Tyler Croy
+   JIRA
+ JENKINS-52210
+   Requires
+ JEP-300, JEP-307
+     Table of Contents Abstract Specification Global overview Used plugins and configuration Instance Profile and IAM role EC2 policy S3 bucket policy   Security groups Master Agents     Motivation Reasoning Instance Profile s3:DeleteObject permission on the S3 bucket   Backwards Compatibility Security Allowed certificates SSH access to the server HTTPS by default Agent port   Infrastructure Requirements AWS account for testing   Testing AWS testing of CloudFormation template   Prototype Implementation References    Abstract One of the four pillars of Jenkins Essentials is that it should be autoconfigured with sane defaults for various cloud platforms."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">310</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Essentials AWS auto-configuration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/batmat">Baptiste Mathus</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-07-10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-52210">JENKINS-52210</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300</a>,
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/307">JEP-307</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_global_overview">Global overview</a></li>
+<li><a href="#_used_plugins_and_configuration">Used plugins and configuration</a></li>
+<li><a href="#_instance_profile_and_iam_role">Instance Profile and IAM role</a>
+<ul class="sectlevel3">
+<li><a href="#_ec2_policy">EC2 policy</a></li>
+<li><a href="#_s3_bucket_policy">S3 bucket policy</a></li>
+</ul>
+</li>
+<li><a href="#_security_groups">Security groups</a>
+<ul class="sectlevel3">
+<li><a href="#_master">Master</a></li>
+<li><a href="#_agents">Agents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_instance_profile">Instance Profile</a></li>
+<li><a href="#__code_s3_deleteobject_code_permission_on_the_s3_bucket"><code>s3:DeleteObject</code> permission on the S3 bucket</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a>
+<ul class="sectlevel2">
+<li><a href="#_allowed_certificates">Allowed certificates</a></li>
+<li><a href="#_ssh_access_to_the_server">SSH access to the server</a></li>
+<li><a href="#_https_by_default">HTTPS by default</a></li>
+<li><a href="#_agent_port">Agent port</a></li>
+</ul>
+</li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a>
+<ul class="sectlevel2">
+<li><a href="#aws-account">AWS account for testing</a></li>
+</ul>
+</li>
+<li><a href="#_testing">Testing</a>
+<ul class="sectlevel2">
+<li><a href="#aws-testing">AWS testing of CloudFormation template</a></li>
+</ul>
+</li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>One of the four pillars of Jenkins Essentials is that it should be <a href="https://github.com/jenkinsci/jep/tree/master/jep/300#sane-defaults">autoconfigured with sane defaults for various cloud platforms</a>. This specification explains what setup is done to autoconfigure Jenkins Essentials to run in the <a href="https://aws.amazon.com">Amazon Web Service</a> environment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_global_overview">Global overview</h3>
+<div class="paragraph">
+<p>The setup uses an <a href="https://aws.amazon.com/cloudformation">AWS <em>CloudFormation</em> template</a> that instantiates the right resources.</p>
+</div>
+<div class="paragraph">
+<p>It creates an EC2 instance, to host the Jenkins Essentials master in a dedicated Instance Profile.
+The master will be able to provision agents from EC2, and store artifacts directly in S3.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_used_plugins_and_configuration">Used plugins and configuration</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/ec2">EC2 plugin</a>: to provide dynamically provisioned agents
+<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/artifact-manager-s3">Artifact Manager on S3 plugin</a>: to store artifacts and Pipeline stashes in Amazon S3.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As a general rule for Essentials, we are using the <code>configuration-as-code</code> plugin to do the necessary configuration.</p>
+</div>
+<div class="paragraph">
+<p><strong>No credentials</strong> are specified.
+The permissions are retrieved dynamically through the instance profile used when creating the EC2 instance for the Essentials master.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_instance_profile_and_iam_role">Instance Profile and IAM role</h3>
+<div class="paragraph">
+<p>A dedicated instance profile is created by the <em>CloudFormation</em> template to allow creating EC2 instances for agents, and access a specific S3 bucket to store artifacts and Pipeline stashes.</p>
+</div>
+<div class="sect3">
+<h4 id="_ec2_policy">EC2 policy</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"Statement": [{
+    "Sid": "ControlEC2JenkinsAgents",
+    "Effect": "Allow",
+    "Action": [
+        "ec2:DescribeInstances",
+        "ec2:TerminateInstances",
+        "ec2:RequestSpotInstances",
+        "ec2:DeleteTags",
+        "ec2:CreateTags",
+        "ec2:DescribeRegions",
+        "ec2:RunInstances",
+        "ec2:DescribeSpotInstanceRequests",
+        "ec2:StopInstances",
+        "ec2:DescribeSecurityGroups",
+        "ec2:GetConsoleOutput",
+        "ec2:DescribeImages",
+        "ec2:CancelSpotInstanceRequests",
+        "ec2:StartInstances",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeKeyPairs"
+    ],
+    "Resource": "*"
+}]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_s3_bucket_policy">S3 bucket policy</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"Statement": [{
+        "Sid": "TodoRefineSecurity-JENKINS-52342",
+        "Effect": "Allow",
+        "Action": [
+            "s3:PutObject",
+            "s3:GetObject",
+            "s3:ListBucket",
+            "s3:DeleteObject"
+        ],
+        "Resource": "*"
+    }
+]</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+Currently the prototype is configured with the way shown above.
+We would like to reduce the access to only the dedicated bucket created for Jenkins Essentials usage.
+We are tracking this improvement as <a href="https://issues.jenkins-ci.org/browse/JENKINS-52342">JENKINS-52342</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_security_groups">Security groups</h3>
+<div class="sect3">
+<h4 id="_master">Master</h4>
+<div class="paragraph">
+<p>A dedicated group is created to allow access to the following ports:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">22</dt>
+<dd>
+<p>restricted to the <code>SSHLocation</code> parameter value, passed as CloudFormation template parameter at creation time.
+The user will be strongly advised to use their own public IP to restrict SSH access to the master to her only (i.e. discourage <code>0.0.0.0/0</code>).
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup></p>
+</dd>
+<dt class="hdlist1">8080</dt>
+<dd>
+<p>not restricted.</p>
+</dd>
+<dt class="hdlist1">50000</dt>
+<dd>
+<p>not restricted (for potentially connecting agents with JNLP).</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+The port <code>50000</code> is not currently enabled inside the Essentials instance.
+But we keep it allowed at the security group and Docker container level.
+This will allow users to connect for instance Windows agents through the  Jenkins <code>JNLP</code> protocol by simply enabling the fixed agents port under <code>/configureSecurity/</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_agents">Agents</h4>
+<div class="paragraph">
+<p>A dedicated group is created to allow only access to port <code>22</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Nothing was existing to provide an autoconfigured setup of Jenkins in a specific Cloud environment.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_instance_profile">Instance Profile</h3>
+<div class="paragraph">
+<p>Early during the prototype, a dedicated <em>service user</em> was used.
+This was replaced by instance profile later for various reasons.</p>
+</div>
+<div class="paragraph">
+<p>This is because it is the recommended path for AWS, but also because doing so makes the configuration leaner:
+both the <em>EC2</em> and <em>Artifact Manager on S3</em> plugins will autodetect their permissions if no explicit credentials are specified.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__code_s3_deleteobject_code_permission_on_the_s3_bucket"><code>s3:DeleteObject</code> permission on the S3 bucket</h3>
+<div class="paragraph">
+<p>Keeping this permission has been questioned; why allow deletion permission when:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>pure</em> AWS administrators may prefer to define a lifecycle policy to clean up things;</p>
+</li>
+<li>
+<p>S3 is so cheap that <em>we</em>, at least, should not care about deletions?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We decided to keep it because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">Essentials is critically about simplicity</a>.
+If a user, or us a bit later, wants to enable to delete checkbox of the <code>artifact-manager-s3</code> plugin, this should be possible without having to go through the AWS console or CLI to find the right settings;</p>
+</li>
+<li>
+<p>Keeping everything <em>forever</em> is also probably some kind of liability.
+And if some users have previously been administering a Jenkins instance previously, but they are not AWS experts, their expectation would probably be that artifacts are going to be cleaned up over time, according to the <code>buildDiscarder</code> policy in place.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no backwards compatibility concerns related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_allowed_certificates">Allowed certificates</h3>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/jep/tree/master/jep/307#security">JEP 307</a> aggressively restricts the list of certificates that will be allowed to be used from inside Essentials container.</p>
+</div>
+<div class="paragraph">
+<p>Two more need to be re-enabled for the Essentials AWS flavor to be able to auto-detect permissions given by the current instance profile:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Baltimore_CyberTrust_Root.crt</code>: for S3.</p>
+</li>
+<li>
+<p><code>Amazon_Root_CA_1.crt</code>: for EC2.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ssh_access_to_the_server">SSH access to the server</h3>
+<div class="paragraph">
+<p>A CloudFormation template parameter <code>SSHLocation</code> is used to define the IPs allowed to access the master using SSH.</p>
+</div>
+<div class="paragraph">
+<p>Users are advised to pass only their own IP when creating their setup.
+But SSH is deemed sufficiently secure so that we still allow users to pass <code>0.0.0.0/0</code> as a value if they want this.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_https_by_default">HTTPS by default</h3>
+<div class="paragraph">
+<p>(?) TBD FIXME</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_agent_port">Agent port</h3>
+<div class="paragraph">
+<p>WIP: FIXME: do we even need to open it. Does the agent actually connect through the SSH pipe?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="aws-account">AWS account for testing</h3>
+<div class="paragraph">
+<p>If we want to be able to run automated tests, we need some form of AWS account to actually check the CloudFormation works and keep working. See below <a href="#aws-testing">AWS testing of CloudFormation template</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="aws-testing">AWS testing of CloudFormation template</h3>
+<div class="paragraph">
+<p>Given an <a href="#aws-account">AWS account for testing</a>, we can use the <code>aws</code> CLI to automatically trigger the provisioning, then retrieve what is neeeded to run automated tests:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create the stack using <code>aws cloudformation create-stack &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>retrieve the EC2 instance IP using:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>aws cloudformation list-stack-resources --stack-name &lt;just-created-stack&gt;</code>,</p>
+</li>
+<li>
+<p>and <code>aws ec2 describe-instances --instance-ids i-&lt;retrieved-ID&gt; | grep -i publicIp</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>run some tests, e.g.:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>is the &lt;masterIp&gt;/login URL reachable, etc..</p>
+</li>
+<li>
+<p>use <code>ssh ec2-user &lt;masterIp&gt; docker exec jenkins-essentials &lt;some-command&gt;</code> to do additional automated checks from the running instance itself.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The prototype implementation is available at <a href="https://github.com/jenkins-infra/evergreen" class="bare">https://github.com/jenkins-infra/evergreen</a>.</p>
+</div>
+<div class="paragraph">
+<p>More specifically, the AWS part is available under the <a href="https://github.com/jenkins-infra/evergreen/tree/34371a6c94c5aa0274771d775da8757f544c2c4c/distribution/environments/aws-ec2-cloud">distribution/environments/aws-ec2-cloud</a> directory.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkins-infra/evergreen/pull/128">Pull request which contributed this feature</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. even more important for Jenkins Essentials which is configured with the <a href="JENKINS-49861">sane 0-executor for the master node</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. using <code>curl ident.me</code> is often to help find out one' public IP and pass the value to the CloudFormation template parameter.
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

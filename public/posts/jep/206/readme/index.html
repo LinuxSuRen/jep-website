@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 206
+   Title
+ Use UTF-8 for Pipeline build logs
+   Sponsor
+ Jesse Glick
+   Status
+ Final :lock:
+   Type
+ Standards
+   Created
+ 2018-06-22
+   BDFL-Delegate
+ TBD
+   JIRA
+ JENKINS-31096
+     Table of Contents Abstract Specification Motivation Reasoning Expanding scope to freestyle builds Transcoding of process output from Launcher Default value for DurableTaskStep." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/206/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 206
+   Title
+ Use UTF-8 for Pipeline build logs
+   Sponsor
+ Jesse Glick
+   Status
+ Final :lock:
+   Type
+ Standards
+   Created
+ 2018-06-22
+   BDFL-Delegate
+ TBD
+   JIRA
+ JENKINS-31096
+     Table of Contents Abstract Specification Motivation Reasoning Expanding scope to freestyle builds Transcoding of process output from Launcher Default value for DurableTaskStep.">
+
+
+
+<meta itemprop="wordCount" content="1341">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 206
+   Title
+ Use UTF-8 for Pipeline build logs
+   Sponsor
+ Jesse Glick
+   Status
+ Final :lock:
+   Type
+ Standards
+   Created
+ 2018-06-22
+   BDFL-Delegate
+ TBD
+   JIRA
+ JENKINS-31096
+     Table of Contents Abstract Specification Motivation Reasoning Expanding scope to freestyle builds Transcoding of process output from Launcher Default value for DurableTaskStep."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">206</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use UTF-8 for Pipeline build logs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jglick">Jesse Glick</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Final :lock:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-06-22</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TBD</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-31096">JENKINS-31096</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a></li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_expanding_scope_to_freestyle_builds">Expanding scope to freestyle builds</a></li>
+<li><a href="#_transcoding_of_process_output_from_code_launcher_code">Transcoding of process output from <code>Launcher</code></a></li>
+<li><a href="#_default_value_for_code_durabletaskstep_encoding_code">Default value for <code>DurableTaskStep.encoding</code></a></li>
+<li><a href="#_use_of_agent_system_default_encoding">Use of agent system default encoding</a></li>
+<li><a href="#_use_of_historical_non_unicode_encodings">Use of historical non-Unicode encodings</a></li>
+<li><a href="#_use_of_non_ascii_embedding_encodings">Use of non-ASCII-embedding encodings</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a>
+<ul class="sectlevel2">
+<li><a href="#_historical_builds">Historical builds</a></li>
+<li><a href="#_partial_updates">Partial updates</a></li>
+<li><a href="#_default_encoding_of_durable_tasks">Default encoding of durable tasks</a></li>
+</ul>
+</li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>All Jenkins Pipeline build logs are stored internally in UTF-8 encoding.
+(The log can be seen by users from the <strong>Console</strong> link,
+but also from Blue Ocean, <strong>Pipeline Steps</strong>, and REST and CLI.)</p>
+</div>
+<div class="paragraph">
+<p>Text produced by Jenkins (Java) code is intrinsically Unicode.
+Output from external processes which was not already in UTF-8 is converted to UTF-8 as it is produced.</p>
+</div>
+<div class="paragraph">
+<p>The scope does not include other project types (freestyle),
+or other types of logging (system, branch indexing).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Newly created Pipeline build logs use UTF-8 encoding for all text.
+This is hard-coded in the <code>charset</code> field in <code>build.xml</code>.
+The <code>TaskListener</code> associated with the build as a whole (<code>FlowExecutionOwner.getListener</code>),
+and with individual steps (<code>StepContext.get(TaskListener.class)</code>),
+will thus be using UTF-8 encoding.</p>
+</div>
+<div class="paragraph">
+<p>When output is produced by <code>DurableTaskStep</code> (<code>sh</code>, <code>bat</code>, <code>powershell</code>),
+it is transcoded to UTF-8 where necessary by <code>FileMonitoringController</code>.
+The API methods <code>charset</code> and <code>defaultCharset</code> in the <code>DurableTask</code> interface support this.
+The source encoding defaults to the system default encoding of the node (<code>Charset.defaultCharset</code>),
+but may be explicitly specified with a <code>encoding</code> parameter.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins freestyle build records retain a character encoding field <code>charset</code>,
+which may vary from build to build.
+Since a freestyle build always allocates exactly one node,
+the encoding is just the system default encoding of that node,
+and the build log is understood to use that encoding.
+Output from build steps (external processes)
+is copied directly to the build log as a bytestream.
+Content rendered over HTTP is always sent in UTF-8 encoding.</p>
+</div>
+<div class="paragraph">
+<p>When Pipeline was introduced,
+this system could not applied as is
+since a Pipeline build could use many nodes, or none.
+The build log was just left in the <em>master</em>’s system default encoding;
+if that encoding happens to be identical to that used by an agent,
+then process output will be encoded directly.
+Otherwise you get
+<a href="https://en.wikipedia.org/wiki/Mojibake">mojibake</a>:
+garbled text caused by bytes being interpreted as the wrong characters.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline also suffered from a problem that continues to affect freestyle builds:
+non-ASCII text sent directly by Java code into the build log
+(for example, <code>Folder Name » Job Name</code>)
+may or may not be displayable,
+according to the capacity of the build log encoding.</p>
+</div>
+<div class="paragraph">
+<p>This proposal solves such issues,
+and simplifies development and debugging generally,
+by forcing every Pipeline build log to be in UTF-8 encoding.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_expanding_scope_to_freestyle_builds">Expanding scope to freestyle builds</h3>
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/jenkins/pull/3231">Jenkins PR 3231</a>
+proposes switching everything in Jenkins core to UTF-8.
+The proposed change is far from complete, however;
+notably, it does not address encoding of build step output.</p>
+</div>
+<div class="paragraph">
+<p>This JEP does not attempt to solve those issues,
+but neither does it preclude or impede their solution.
+The bulk of the work here involves the <code>durable-task</code> plugin
+which is not used by freestyle builds.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_transcoding_of_process_output_from_code_launcher_code">Transcoding of process output from <code>Launcher</code></h3>
+<div class="paragraph">
+<p>Non-durable task output from external processes
+(using the core <code>Launcher</code> interface, such as <code>checkout</code> using CLI Git)
+is not transcoded.
+If the process produces non-ASCII, non-UTF-8 output,
+and the process output is streamed to the build log,
+this could result in mojibake in the log.</p>
+</div>
+<div class="paragraph">
+<p>This likely needs to be addressed in Jenkins core
+by having <code>ProcStarter.stdout(Listener)</code> transcode as needed.
+In practice only a small amount of text sent to Pipeline build logs is produced this way,
+and it is particularly unlikely to be produced by user-controlled inputs
+and thus to contain any non-ASCII characters.</p>
+</div>
+<div class="paragraph">
+<p>Due to the low priority, this JEP does not currently attempt to fix this core issue.
+Addressing it <em>may</em> help apply UTF-8 to freestyle build logs in the future.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_default_value_for_code_durabletaskstep_encoding_code">Default value for <code>DurableTaskStep.encoding</code></h3>
+<div class="paragraph">
+<p>The historical default for <code>encoding</code> parameter to <code>sh</code> and similar steps was UTF-8.
+This did not match the default for <code>readFile</code> and <code>writeFile</code>,
+and anyway did not apply to output streamed to the build log
+(only to the <code>returnStdout</code> option).</p>
+</div>
+<div class="paragraph">
+<p>Retaining this default would improve compatibility in only limited circumstances,
+at the expense of doing the wrong thing in typical situations
+where a process is printing text in the system default encoding.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_of_agent_system_default_encoding">Use of agent system default encoding</h3>
+<div class="paragraph">
+<p>As noted in the historical section,
+it is impossible for Pipeline builds to follow the same policy as freestyle builds
+of using the same encoding as the agent system default for the build log:
+there may be multiple agents in use, or none,
+and the particular agent(s) used are not even known when the build starts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_of_historical_non_unicode_encodings">Use of historical non-Unicode encodings</h3>
+<div class="paragraph">
+<p>Some users speaking non-English languages, particularly with non-Latin scripts,
+may prefer to work exclusively with text documents in a traditional encoding.
+This seems to be particularly commonplace in Japan.
+@kohsuke (pers. comm.) has mentioned this concern in the past.</p>
+</div>
+<div class="paragraph">
+<p>Since build logs were already rendered in UTF-8 via HTTP,
+the internal coding system should really only matter
+to users accessing the <code>$JENKINS_HOME/jobs/…/builds/…/log</code> file directly.
+While that may have been common in the early days of Hudson,
+this is likely a rare use case today.</p>
+</div>
+<div class="paragraph">
+<p>In any event, making Jenkins architecture more complex and potentially buggy
+to satisfy a marginal requirement seems a poor trade-off.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_of_non_ascii_embedding_encodings">Use of non-ASCII-embedding encodings</h3>
+<div class="paragraph">
+<p>No special consideration is given to encodings
+which fail to act as a superset of ASCII at the byte level,
+such as UTF-16 or EBCDIC.
+These are unlikely to be practical system encodings for build machines anyway,
+as encoding-naïve developer tools emitting hard-coded ASCII messages
+could not be used in such an environment.</p>
+</div>
+<div class="paragraph">
+<p>In the event a particular process does generate output in such an encoding,
+it is safest to have the user script (passed to <code>sh</code> or the like)
+convert that output to a safer encoding using various command-line tools.
+That would be true even before this JEP.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins clusters running on computers with UTF-8 set as the system encoding
+(including typical modern Linux installations)
+should see no change in behavior.</p>
+</div>
+<div class="paragraph">
+<p>When the computers hosting Jenkins master and/or agent processes
+have a different system encoding
+(typical on Windows servers for example),
+there <em>may</em> be compatibility issues as described below.</p>
+</div>
+<div class="paragraph">
+<p>Of course where the contents of build logs were exclusively ASCII to begin with,
+none of this matters.</p>
+</div>
+<div class="sect2">
+<h3 id="_historical_builds">Historical builds</h3>
+<div class="paragraph">
+<p>Historical builds may have recorded a different <code>charset</code> in <code>build.xml</code>.
+In such a case, their log text will continue to be served in that encoding.</p>
+</div>
+<div class="paragraph">
+<p>If the build was started before the upgrade but is still running,
+it will continue to use the recorded encoding.
+That may mean that newly produced text contains mojibake.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_partial_updates">Partial updates</h3>
+<div class="paragraph">
+<p>If the Jenkins administrator updates one of <code>workflow-job</code> or <code>workflow-durable-task-step</code>,
+but not the other,
+there is a possibility of mojibake in log output when non-ASCII text is printed.</p>
+</div>
+<div class="paragraph">
+<p>The fix is simply to update both plugins.
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-49651">JENKINS-49651</a>
+could be used to enforce that.)</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_default_encoding_of_durable_tasks">Default encoding of durable tasks</h3>
+<div class="paragraph">
+<p>If a Pipeline script was running a durable task with no explicit <code>encoding</code>,
+there is a possibility of mojibake being <em>introduced</em> by the update.
+This should only happen under some fairly specialized conditions.</p>
+</div>
+<div class="paragraph">
+<p>The fix is to specify the <code>encoding</code> parameter explicitly.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>New test code in <code>workflow-job</code> verifies overall behavior.</p>
+</div>
+<div class="paragraph">
+<p>Test code in <code>durable-task</code> verifies all modes of transcoding in detail,
+using a Dockerized agent with ISO-8859-1 encoding.
+Shorter test code in <code>workflow-durable-task-step</code> checks the integration into the actual Pipeline step.</p>
+</div>
+<div class="paragraph">
+<p>Existing test code in <code>workflow-support</code> fails as expected,
+pending plugin releases allowing a cyclic dependency to be broken.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The change is contained in four pull requests to Pipeline plugins, as listed below.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-31096">JENKINS-31096</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-support-plugin/pull/56">workflow-support PR 56</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-job-plugin/pull/89">workflow-job PR 89</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/durable-task-plugin/pull/61">durable-task PR 61</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/64">workflow-durable-task-step PR 64</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

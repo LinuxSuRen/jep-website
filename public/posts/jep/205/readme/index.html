@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 205
+   Title
+ Declarative Data Binding
+   Sponsor
+ ndeloof
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-08
+     Table of Contents Abstract Specification Meta-Model annotations Meta-Model API UI data-binding   Motivation Reasoning Relying on Bean Validation Relying on JSON-B Field vs Setter injection   Backwards Compatibility Security Infrastructure Requirements Prototype Implementation References    Abstract Jenkins web UI relies on Stapler framework, which uses a JSON payload to bind web form inputs to Java model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/205/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 205
+   Title
+ Declarative Data Binding
+   Sponsor
+ ndeloof
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-08
+     Table of Contents Abstract Specification Meta-Model annotations Meta-Model API UI data-binding   Motivation Reasoning Relying on Bean Validation Relying on JSON-B Field vs Setter injection   Backwards Compatibility Security Infrastructure Requirements Prototype Implementation References    Abstract Jenkins web UI relies on Stapler framework, which uses a JSON payload to bind web form inputs to Java model.">
+
+
+
+<meta itemprop="wordCount" content="1714">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 205
+   Title
+ Declarative Data Binding
+   Sponsor
+ ndeloof
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-08
+     Table of Contents Abstract Specification Meta-Model annotations Meta-Model API UI data-binding   Motivation Reasoning Relying on Bean Validation Relying on JSON-B Field vs Setter injection   Backwards Compatibility Security Infrastructure Requirements Prototype Implementation References    Abstract Jenkins web UI relies on Stapler framework, which uses a JSON payload to bind web form inputs to Java model."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">205</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Declarative Data Binding</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/ndeloof">ndeloof</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-06-08</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_meta_model_annotations">Meta-Model annotations</a></li>
+<li><a href="#_meta_model_api">Meta-Model API</a></li>
+<li><a href="#_ui_data_binding">UI data-binding</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel3">
+<li><a href="#_relying_on_bean_validation">Relying on Bean Validation</a></li>
+<li><a href="#_relying_on_json_b">Relying on JSON-B</a></li>
+<li><a href="#_field_vs_setter_injection">Field vs Setter injection</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins web UI relies on Stapler framework, which uses a JSON payload to bind web form inputs
+to Java model. Processing this payload to match Java model constraint use to be implemented with
+human written code. This is both annoying to write and prevents automatic discovery of this model
+by third party tools, like Jenkins Pipeline or Configuration-as-Code (JEP-201).</p>
+</div>
+<div class="paragraph">
+<p>This document describe how we can rely on annotation on code to implement those exact same
+constraints in a declarative way, making developer life easier, and enabling better tooling.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_meta_model_annotations">Meta-Model annotations</h3>
+<div class="paragraph">
+<p>Declarative Data Binding defines annotations for data-binding. This is an opt-in mechanism, an
+arbitrary class can&#8217;t be used for DataBinding.</p>
+</div>
+<div class="paragraph">
+<p>Existing <code>@DataBoundSetter</code> is supported, but we introduce additional <code>@DataBound</code> annotation.</p>
+</div>
+<div class="paragraph">
+<p>Like <code>@DataBoundSetter</code>, <code>@DataBound</code> can be applied to method or field, but also to a class. Doing so
+all (non transient) fields and setters are considered to be used for data-binding. Also, even being public,
+annotated element is marked <code>@Restricted(NoExternalUse)</code> to avoid reuse by third party components,
+as a DataBound component expects a specific lifecycle (instantiation, data injection, validation, post-construction)
+and shouldn&#8217;t be reused outside this specific context, until explicitely enabled by developer.</p>
+</div>
+<div class="paragraph">
+<p>JSR-303 "Bean Validation" annotations are supported both on fields and setter parameter to define constraints
+on the data-bound model.</p>
+</div>
+<div class="paragraph">
+<p><code>@Trim</code> annotation allows to handle a common development pattern to trim strings and convert empty strings
+to null (or the opposite, null to empty) to reflect unset values. This annotation enable
+transformation on the payload before value is injected, so developer don&#8217;t have to handle this.
+We define two trim strategies: <code>TO_NULL</code> (default one) and <code>TO_EMPTY</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>@DefaultValue</code> annotation allows to declare properties value when none is submitted in
+json payload, or value is <code>null</code> (possibly after being trimmed).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_meta_model_api">Meta-Model API</h3>
+<div class="paragraph">
+<p>Stapler is extended so a <code>DataBoundModel</code> do provide meta-data about data-bound properties and handle the
+whole instantiation lifecycle, as a reusable API by other components.
+This new API will mostly reflect existing work implemented by structs-plugin and configuration-as-code-plugin,
+also using it internally in Stapler.</p>
+</div>
+<div class="paragraph">
+<p><code>DataBoundModel of(Class&lt;T&gt; clazz)</code> give access to this API to resolve metadata for specified type,
+with cache support.</p>
+</div>
+<div class="paragraph">
+<p><code>Collection&lt;DataBoundProperty&gt; getProperties()</code> give access to data bound properties (either fields or
+setter methods) discovered by introspection.</p>
+</div>
+<div class="paragraph">
+<p><code>DataBoundProperty getProperty(String name)</code> give access to a specific property by name.</p>
+</div>
+<div class="paragraph">
+<p><code>DataBoundProperty</code> collect meta-data about a specific data-bound property based on introspection. This
+includes:
+- property type (both parameterized type and raw type)
+- flag for deprecated property
+- annotations, typically jsr-303 annotations to define model constraints
+- methods to set and retrieve value from a data-bound object instance</p>
+</div>
+<div class="paragraph">
+<p><code>T instantiate(Map&lt;String,?&gt; map, DataBinder binder, Listener &#8230;&#8203; listeners)</code> allows to instantiate target type based on a {key=value}
+representation of it&#8217;s data.</p>
+</div>
+<div class="paragraph">
+<p><code>DataBinder</code> interface allows to plug conversion from value into java type expected to set property.
+When Used within Stapler for structured form submission, a recursive <code>bindJson</code> invocation will be used. Other implementation
+can use a distinct mechanism, typically relying on <code>@Symbol</code> type lookup.</p>
+</div>
+<div class="paragraph">
+<p><code>Listener</code> allows to watch and control the instantiation process. It get involved as a property is set, as unknown
+attributes are found in submitted data, and while executing <code>@PostConstructor</code> init methods. External component
+can use such a Listener to adjust policy for those construction steps.</p>
+</div>
+<div class="paragraph">
+<p><code>Map&lt;String,Object&gt; uninstantiate(T)</code> does the reverse operation, converting a DataBound object into
+a set of key,values. It only emit tuples for properties which aren&#8217;t set to default value for the
+data-bound type.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ui_data_binding">UI data-binding</h3>
+<div class="paragraph">
+<p>Jelly tags used by Jenkins to build configuration forms for a Data Bound component get extended so they read the
+DataBoundModel for target type and adjust the produced HTML element accordingly, reflecting data model constraints.</p>
+</div>
+<div class="paragraph">
+<p>Typically, Bean Validation annotations are used to tweak the HTML <code>&lt;input&gt;</code> element with adequate HTML5 attributes.
+<code>DefaultValue</code> annotation is also used to set initial value when form is used to create a new instance.</p>
+</div>
+<div class="paragraph">
+<p>So for sample, taking a DataBound field defined as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">    @Positive @DefaultValue("1")
+    private int numExecutors;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>using a minimal <code>&lt;f:textbox&gt;</code> jelly form element, will get following HTML element generated without any extra developer effort:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">   &lt;input type="number" min="1" value="1" name="_.numExecutors"/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://stapler.kohsuke.org/">Stapler</a> framework is the backbone of Jenkins web UI. It is designed to
+offer data-binding from a (jelly or groovy) web view to Java model. For this purpose, a JSON payload
+is sent when a configuration form is submitted, and Stapler converts this back to java model classes
+using a "DataBound" constructor and optional setters.</p>
+</div>
+<div class="paragraph">
+<p>This mechanism offers some discoverable data model on the Java API : the DataBound constructor and setters
+let us know about the name and types of the expected payload. This is the basis for Configuration-as-Code
+(JEP-201). But this model is pretty poor: the only constraint we know on attribute is the expected type.
+In many cases, some additional requirement are checked with human-written code. Typically, parameters get
+trimmed, checked for being empty or null, ensure value belongs to some range or match a pattern, etc.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, the web UI form is built by accessing live Java model data using read methods, being
+converted to plain strings. It&#8217;s up to the plugin developer to define constraints on the html elements
+so they reflect the data model.</p>
+</div>
+<div class="paragraph">
+<p>Generally speaking, with every single line of human-written code to handle data binding we introduce
+development effort / risk to introduce bugs, and we block opportunity for third-party components to discover
+the underlying data model.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Annotations have been used extensively by many frameworks to define metadata on data models expressed as
+Java classes. Typically, <a href="https://jcp.org/en/jsr/detail?id=338">Java Persistence API</a> defines
+how a Java object can be mapped to a database, while <a href="https://jcp.org/en/jsr/detail?id=222">JAXB</a> defines
+annotations to customize how java attributes will be mapped to xml elements.</p>
+</div>
+<div class="paragraph">
+<p>This JEP is about introducing support for annotation-based declarative data binding. A DataBound Jenkins
+component would only rely on annotations to define how attributes are bound to JSON payload from web forms,
+including validation constraints. This would have two major benefits:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Plugin developers would need to write less code, and use standard annotations they probably already know
+from other Java related projects.</p>
+</li>
+<li>
+<p>Constraints on the data model can be introspected. This will allow third party tools to adjust their
+behavior accordingly. A good candidate for this is Configuration-as-Code (JEP-201). Jelly tags used to
+compose the web UI also could introspect those annotations. For example, if some attribute is a number and
+has to be positive, <code>&lt;input type='number' 'min=0'&gt;</code> html 5 element would be automatically generated.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Both <a href="https://github.com/jenkinsci/structs-plugin">structs plugin</a> and
+<a href="https://github.com/jenkinsci/configuration-as-code-plugin">configuration-as-code plugin</a> do re-implement
+Stapler&#8217;s DataBound component lifecycle and as such will also require to be updated to implement this JEP.</p>
+</div>
+<div class="paragraph">
+<p>JEP 205 do include definition of a meta-model API so such components don&#8217;t have to re-implement this logic
+and ensure they always are up to date with Stapler version being used, and expectation from plugin developers.</p>
+</div>
+<div class="sect3">
+<h4 id="_relying_on_bean_validation">Relying on Bean Validation</h4>
+<div class="paragraph">
+<p><a href="http://beanvalidation.org/2.0/spec/">Bean Validation</a> is an annotation-based framework designed for
+generic usage defining constraints validation on data in a Java model. It allows definition of model
+constraints in a fully declarative way, and defines the mechanism to run validation and discover violations.</p>
+</div>
+<div class="paragraph">
+<p>Bean Validation also is extensible by developers who can define custom annotations and rules to implement
+them.</p>
+</div>
+<div class="paragraph">
+<p>Selected implementation for Bean Validation 2.0 is the reference implementation hibernate-validator, until
+some dependency issue is detected and blocks this choice.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_relying_on_json_b">Relying on JSON-B</h4>
+<div class="paragraph">
+<p><a href="http://json-b.net/">Json-B</a> (JSR 367) is the approved specification for JSON binding. It has been highly
+inspired by <a href="https://github.com/FasterXML/jackson">Jackson</a> and defines the exact binding requirements
+Stapler implement, but relying on standard annotations (vs custom <code>@DataBoundConstructor</code>.</p>
+</div>
+<div class="paragraph">
+<p>As Stapler will still need to support legacy data-binding for backward compatibility, we can&#8217;t just replace
+it with a Json-B implementation. We could consider adding support for such standard annotations as
+alternatives to stapler specific ones. But on the other way a Jenkins databound component is nothing like
+a reusable piece of software, and the
+<a href="https://javadoc.io/doc/javax.json.bind/javax.json.bind-api/1.0">Json-B annotations</a>
+are mostly designed to tune Java to Json conversion, not providing huge benefits.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_field_vs_setter_injection">Field vs Setter injection</h4>
+<div class="paragraph">
+<p>An endless debate for annotation based framework is about using annotations on private fields, vs using them
+on accessors. Most frameworks support both as there&#8217;s no single answer to this debate.</p>
+</div>
+<div class="paragraph">
+<p>On one side, injection on private field require Java reflexion to unlock private field accessibility (or
+use Variable Handles on java 9+). It makes testing harder as there&#8217;s no trivial way to mock or instantiate
+the target component.</p>
+</div>
+<div class="paragraph">
+<p>On the other side, setter injection require some boilerplate code being added to codebase, and don&#8217;t prevent
+external component to create an instance without invoking such setters, resulting in misconfigured component.
+Same applies to any <code>@PostConstruct</code> initializer method.</p>
+</div>
+<div class="paragraph">
+<p>Generally speaking, a component designed for data-binding can&#8217;t guarantee it exposes a safe API until there&#8217;s just
+a single constructor to require and validate all attributes. From this point of view, we consider a web UI
+databound component in Jenkins is nothing but a reusable component, and as such should never be used outside this
+very specific context. Plugin developers who have reasons to expose a DataBound object as part of the public API
+can define explicit public setters or annotate class as <code>@Restricted(None)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Based on this:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>databinding annotations can be used both on fields and accessors</p>
+</li>
+<li>
+<p>elements annotated databinding annotation will be automatically marked a restricted so they are not exposed as
+"public API" whatever their Java visibility is.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Annotation based databinding comes in addition to the legacy mechanisms supporter by stapler, so don&#8217;t break
+backward compatibility.</p>
+</div>
+<div class="paragraph">
+<p>As part of this JEP we define an API in Stapler to expose the meta-model for a DataBound component for
+third party consumption, as well as the instanciation lifecycle so components like structs and configuration-as-code
+can just rely on this new API, an stop re-implementing code. This will allow in future to ensure changes
+in Stapler lifecycle are well reflected by those components.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A
+== Testing</p>
+</div>
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Proof of Concept prototype is implemented as changes made directly in Stapler web framework:
+<a href="https://github.com/ndeloof/stapler/tree/jep-205">Stapler jep-205</a>
+<a href="https://github.com/ndeloof/jenkins/tree/jep-205">Jenkins jep-205</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/topic/jenkinsci-dev/Bb4pIdpMMIY/discussion">Initial discussion</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

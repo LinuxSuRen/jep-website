@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>http://example.org/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/readme/</guid>
+      <description>Jenkins Enhancement Proposals JEP stands for Jenkins Enhancement Proposal. A JEP is a design document that describes a new feature or aspect of the core Jenkins code, a plugin, or the Jenkins project, its processes, or its environment. A JEP provides a concise technical specification of the feature, describes the motivation for the change, and discusses the rationale behind the design.
+ JEPs are the primary mechanism for proposing major new features, for collecting community input on an issue, and for documenting the design decisions that have gone into Jenkins.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/abc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/abc/</guid>
+      <description>An introduction to AsciiDoc.
+   First Section   item 1
+  item 2
+   puts &#34;Hello, World!&#34; title: &#34;Readme&#34; date: 2018-09-22T21:44:23+08:00 draft: true ---     </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/hello/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/hello/</guid>
+      <description>An introduction to AsciiDoc.
+   First Section   item 1
+  item 2
+   puts &#34;Hello, World!&#34; title: &#34;Readme&#34; date: 2018-09-22T21:44:23+08:00 draft: true ---     </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep-template/0000/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep-template/0000/readme/</guid>
+      <description>Tip  JEP Template In this document, all text in a &#34;Tip&#34; block (or inline text with with a &#34;:bulb:&#34; on either side) MUST be removed and/or replaced with text appropriate to this JEP before submission.
+ Sections may include aditional help and advice in comments. &#34;:bulb:&#34; entries in comments only need to be filled in if that text is uncommented.
+ See JEP-1 for full and accurate description of the JEP process and what is required in each section.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/1/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/1/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 1
+   Title
+ Jenkins Enhancement Proposal Format
+   Sponsor
+ R Tyler Croy, Liam Newman
+   Status
+ Active :smile:
+   Type
+ Process
+   Created
+ 2017-09-12
+     Table of Contents Abstract Specification What is a JEP? JEP Types JEP Terminology BDFL Editor Contributor Sponsor BDFL Delegate Reviewer Must/Should/May   JEP Workflow Overview Start with an idea for Jenkins Find a Sponsor Discuss the idea with the community Creating a JEP Submission Approval as Draft JEP Refining a Draft JEP JEP Review Accepting a JEP Finalizing a JEP JEP Maintenance Other JEP Outcomes Updating JEP Status and Resolution Scheduling and timeframes Resolving Disputes   JEP Guidelines Required Sections JEP File Format JEP Header Preamble Auxiliary Files   Reporting JEP Bugs, or Submitting JEP Updates Transferring JEP Sponsorship JEP Editor Responsibilities &amp;amp; Workflow Conformance check Request Changes Approve as Draft Permission group membership     Motivation Benefits to existing developers Benefits to future developers   Reasoning Based on Python PEP Differences from Python PEP Requirements-level terms Limits of BDFL model Timeliness Requiring same license Asciidoc style and linter   Backwards Compatibility Security Infrastructure Requirements References Related Processes Discussion threads Pull Requests      Abstract A Jenkins Enhancement Proposal (JEP) is a design document that describes a new feature or aspect of Jenkins itself, or the Jenkins project processes or environment.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/10/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/10/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 10
+   Title
+ Jenkins Twitter Policy for Contributors
+   Sponsor
+ Tracy Miranda
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-07
+   BDFL-Delegate
+ R. Tyler Croy
+     Table of Contents Abstract Specification Enabling a Team of Contributors Responsibilites of Contributors   Jenkins Twitter Policy Goals Best Practices   Regular Reporting   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract This JEP describes the policy for Jenkins twitter accounts and covers:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/11/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/11/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 11
+   Title
+ Process improvements for adopting a Jenkins plugin
+   Sponsor
+ Craig Rodrigues
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-25
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Existing plugin adoption process Proposed modification to plugin adoption process: using JIRA Post plugin adoption tasks   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract Over time, Jenkins plugin maintainers need to change as the original maintainer may need to move on to other work.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/2/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/2/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 2
+   Title
+ Criteria for selecting &#34;Suggested Plugins&#34;
+   Sponsor
+ Daniel Beck, R Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Informational
+   Created
+ 2017-09-12
+      Note  This proposal/design predates the Jenkins Enhancement Proposal process and has therefore been added as an Information type of JEP.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/200/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/200/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 200
+   Title
+ Switch Remoting/XStream blacklist to a whitelist
+   Sponsor
+ Jesse Glick
+   Status
+ Final :lock:
+   Type
+ Standards
+   Created
+ 2017-10-30
+   JIRA
+ JENKINS-47736
+   BDFL-Delegate
+ Oleg Nenashev
+     Table of Contents Abstract Specification Extensibility Rollout plan Phase 1.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/201/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/201/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 201
+   Title
+ Jenkins Configuration as Code
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2017-11-07
+   JIRA
+ JENKINS-31094
+     Table of Contents Abstract Specification Target Audience Goals Declarative configuration as code Intuitive schema YAML file format Per-Instance generated documentation Validation Mutable and immutable Minimal file content Avoid glue-code, support customization Tooling     Motivation Reasoning Mission and Priority Specification   Backwards Compatibility Schema changes   Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins installation and setup requires various configuration steps users have to handle on the web UI.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/202/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/202/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 202
+   Title
+ External Artifact Storage
+   Sponsor
+ Carlos Sanchez
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-04-13
+   BDFL-Delegate
+ Jesse Glick
+     Table of Contents Abstract Specification Motivation Reasoning Initial implementation in AWS S3 Container (Bucket) and Path References Interruptions Security Agents only need upload/download permissions Passing limited credentials to each agent     Backwards Compatibility File-oriented artifact reference Master-based file streaming   Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins uses the master filesystem to store all generated artifacts, unless explicitly using a plugin that archives somewhere else.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/203/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/203/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 203
+   Title
+ BlueOcean extensibility
+   Sponsor
+ Ivan Meredith
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-22
+     Table of Contents Abstract Specification Target Audience Scope of Blue Ocean (Pipeline UX) Extensbility Blue Ocean Extensibility API Blue Ocean REST API Extensibility Blue Ocean Plugin Packaging Blue Ocean SDK     Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract The Blue Ocean plugin uses modern design concepts to visualize Jenkins pipelines.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/204/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/204/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 204
+   Title
+ BlueOcean Extensibility API
+   Sponsor
+ Ivan Meredith
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-15
+   Requires
+ JEP-203
+     Table of Contents Abstract Specification Extension Store Registering Extensions List of Extension Points Listing of Extensions for a Extension Point   Extension function Extensions that render     Motivation Extensions as React components   Reasoning Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract The BlueOcean extensiblity api is the way in which Jenkins plugin developers extend the BlueOcean UI.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/205/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/205/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 205
+   Title
+ Declarative Data Binding
+   Sponsor
+ ndeloof
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-08
+     Table of Contents Abstract Specification Meta-Model annotations Meta-Model API UI data-binding   Motivation Reasoning Relying on Bean Validation Relying on JSON-B Field vs Setter injection   Backwards Compatibility Security Infrastructure Requirements Prototype Implementation References    Abstract Jenkins web UI relies on Stapler framework, which uses a JSON payload to bind web form inputs to Java model.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/206/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/206/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 206
+   Title
+ Use UTF-8 for Pipeline build logs
+   Sponsor
+ Jesse Glick
+   Status
+ Final :lock:
+   Type
+ Standards
+   Created
+ 2018-06-22
+   BDFL-Delegate
+ TBD
+   JIRA
+ JENKINS-31096
+     Table of Contents Abstract Specification Motivation Reasoning Expanding scope to freestyle builds Transcoding of process output from Launcher Default value for DurableTaskStep.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/207/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/207/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 207
+   Title
+ External Build Logging support in the Jenkins Core
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-23
+   BDFL-Delegate
+ Jesse Glick
+   Discussions-To
+ Jenkins Cloud Native SIG
+     Table of Contents Abstract Specification Top-level requirements Design decisions Events External Build Logging System Build logging destinations Number of Logging System destinations Log annotations Log browsing Log rotation   Design NEW: Loggable interface NEW: LogStorage abstract class NEW: LogStorageFactory extension point NEW: FileLogStorage Patches in Run and AbstractBuild     Motivation Reasoning LogStorage vs.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/208/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/208/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 208
+   Title
+ Configuration as Code tooling
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-30
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Motivation Reasoning Relax Configuration-asCode for backward compatibility ?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/209/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/209/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 209
+   Title
+ Configuration as Code YAML Schema
+   Sponsor
+ Ewelina Wilkosz from Praqma
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2017-06-07
+   JIRA
+ JENKINS-31094
+   Requires
+ JEP-201
+     Table of Contents Abstract Specification Declarative configuration as code Mimic web UI No glue-code requirement Documentation Generation Validation   Motivation Reasoning Human friendly syntax Configuration mechanism Yaml syntax Component names General mechanism Descriptors global configuration Corner cases and custom schema   Documentation / Schema generation   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins Configuration-as-Code (JEP-201) do rely on a YAML configuration file to setup jenkins, both for core and plugins, fully automatically.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/210/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/210/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 210
+   Title
+ External log storage for Pipeline
+   Sponsor
+ Jesse Glick
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   JIRA
+ JENKINS-38381
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/211/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/211/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 211
+   Title
+ Java 10 and 11 support in Jenkins
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-07-05
+   BDFL-Delegate
+ Oleg Nenashev
+   JIRA
+ JENKINS-52012 - Java 10 support in weekly releases JENKINS-52284 - Java 10 support in LTS, JENKINS-51805 - Java 11 support</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/212/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/212/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 212
+   Title
+ External Logging API Plugin
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires
+ JEP-207, JEP-210
+     Table of Contents Abstract Specification Event class Event metadata Run metadata Pipeline metadata   Extension Points ExternalLoggingMethod and subclasses ExternalLogBrowser and subclasses Pipeline Bridge extensions JSON-based external-logging layer Configuration Reference implementation   Motivation Reasoning Why ExternalLoggingMethod and ExternalLogBrowser are separated?</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/213/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/213/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 213
+   Title
+ Configuration Storage API in the Jenkins Core
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-08-08
+   BDFL-Delegate
+ TBD
+   JIRA
+ JENKINS-51966
+   Discussions-To
+ Jenkins Cloud Native SIG
+     Table of Contents Abstract Specification Scope of changes Changes in the Jenkins Core NEW: FileStorage and XmlFileStorage API UPD: Jenkins class UPD: XmlFile UPD: XmlFile#getFile() cleanup NEW: Filesystem XML storage   Reference implementations Kubernetes Configuration Storage Library SQL Configuration Storage Library   Packaging   Motivation Reasoning Prior work Focus on hudson.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/214/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/214/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 214
+   Title
+ Jenkins Telemetry
+   Sponsor
+ Daniel Beck
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-08-30
+   BDFL-Delegate
+ R Tyler Croy
+     Table of Contents Abstract Specification Motivation Reasoning Combination with Evergreen telemetry (JEP-308) Reuse of existing anonymous usage statistics   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins is exclusively distributed to users for installation on their own infrastructure.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/215/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/215/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 215
+   Title
+ Modular Components
+   Sponsor
+ https://github.com/sophistifunk
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-08-08
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Creating and Publishing a Widget Requirements Documentation Main Widget Class Metadata CSS Static Assets Internationalisation Data Model Widget Events Host Events Service Object Interfaces Runtime Extensibility Building and Publishing your Widget   Embedding a Widget into a Host Application Requirements Adding it to your project Providing the Data Model Providing CSS Providing Static Assets Providing i18n Resources Providing Service Objects Listening to Widget Events Notifying Widget of External Events   Widget Module Artefact Specifications   Motivation Reasoning TypeScript Source ES6 Module Distribution   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract This document describes a set of practices to allow creation and embedding of Modular UX Widgets: Compound React components that are more task-specific and self-contained than the simpler, building-block kind of components found in a common UI Component library package (such as Button, Table, DropDown, etc).</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/3/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/3/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 3
+   Title
+ Adding the &#34;Released As&#34; field and &#34;Ready for Release&#34; status to Jenkins JIRA
+   Sponsor
+ Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-01-29
+   JIRA
+ INFRA-1301
+   Discussions-To
+ jenkinsci-dev thread
+     Table of Contents Abstract Specification UPDATE: Modify the workflow in the JENKINS project ADD: an optional &#34;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/300/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/300/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 300
+   Title
+ Jenkins Evergreen Overview
+   Sponsor
+ R. Tyler Croy
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-01-10
+      Note  Jenkins Evergreen was originally referred to as &#34;Jenkins Essentials&#34; and has since been renamed, see this mailing list thread.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/301/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/301/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 301
+   Title
+ Evergreen packaging
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Mutable Data Evergreen Client Image Plugins Scripts Kubernetes   Motivation Reasoning Alternative Approaches Extending Jenkins itself     Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract A key aspect of Jenkins Evergreen is the automatically updating distribution, which aims to provide an easier to use, self-updating distribution of Jenkins core and an &#34;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/302/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/302/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 302
+   Title
+ Evergreen snapshotting data safety system
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-21
+   JIRA
+ JENKINS-49406
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301, JEP-306
+     Table of Contents Abstract Specification Upgrading and downgrading Take a snapshot   Checking Jenkins health   Motivation Reasoning Scope of the data snapshotting Why Git Why not use compatibleSinceVersion metadata   Backwards Compatibility Security Secrets Man In The Middle   Infrastructure Requirements Testing Upgrading/downgrading Leveraging Telemetry and live instances data   Prototype Implementation References    Abstract Jenkins Evergreen, and more specifically its Evergreen component, aims at providing an automatically updating distribution of Jenkins.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/303/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/303/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 303
+   Title
+ Evergreen Client Registration and Authentication
+   Sponsor
+ R. Tyler Croy
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-03-21
+   JIRA
+ JENKINS-49810, JENKINS-50347
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301
+     Table of Contents Abstract Specification Claims Client Re-keying Token Revocation   Motivation Reasoning Non-interactive JSON Web Tokens JWT Expiry Alternative Approaches Jenkins Instance Identity JWT HMAC Request Signing     Backwards Compatibility Security TLS/SSL Certificate Pinning   Infrastructure Requirements Testing Prototype Implementation References    Abstract A major component of the Jenkins Evergreen initiative is the &#34;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/304/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/304/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 304
+   Title
+ Evergreen Error Telemetry Logging
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-30
+   JIRA
+ JENKINS-49805
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301
+     Table of Contents Abstract Specification Summary Jenkins Plugin Logging format Exceptions handling Newlines and special characters   Destination Rotation parameters     Motivation Reasoning Why not send logs to the client using a socket Packaging: Jenkins plugin or Jenkins module The exception field in the JSON logs   Backwards Compatibility JSON format versioning Logs handling   Security Infrastructure Requirements Testing JSON Logging as and where expected Test with the plugin   Prototype Implementation References    Abstract Sending error logging to the backend is a critical aspect of Evergreen to be able to implement the Automated Health Assessment story [1].</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/305/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/305/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 305
+   Title
+ Publishing incremental commits as Maven releases
+   Sponsor
+ Jesse Glick
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-04-13
+   JIRA
+ JENKINS-50686
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ IEP-9
+     Table of Contents Abstract Specification Setup Basic usage Relationship to snapshot dependencies Interaction with maven-release-plugin Deployment to Artifactory Usage from the update center   Motivation MRP issues Timestamped snapshot issues Cross-repository complexity Pipeline CERT SCM API 2.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/306/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/306/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 306
+   Title
+ Evergreen Instance Client Health Checking
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-05
+   JIRA
+ JENKINS-50294
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Instance Identity URL /metrics/evergreen/healthcheck URL Absence of the metrics plugin Metrics plugin Configuration     Motivation Reasoning Why not leverage the error logging   Backwards Compatibility Security Accessing the /metrics/evergreen/healthcheck URL from outside the container Using evergreen as the metrics access key Absence of the metrics plugin   Infrastructure Requirements Testing Prototype Implementation References    Abstract The first pillar of Jenkins Evergreen is that it is an Automatically Updated Distribution.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/307/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/307/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 307
+   Title
+ Evergreen Update Client/Server Lifecycle
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-17
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303
+     Table of Contents Abstract Specification Update Levels Update Channel Update Manifest Checksums   Client Update Behavior Version Manifest Adding new Update Levels ingest.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/308/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/308/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 308
+   Title
+ Evergreen Error Telemetry API
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-06-07
+   JIRA
+ JENKINS-51140
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303.
+     Table of Contents Abstract Specification Authentication and linking log entries to an instance Endpoint and expected format Maximum message size Malformed data Meta Error Logging   Rate limiting   Motivation Reasoning A dedicated /telemetry/error endpoint only for error logging Reliability concerns Send logs one by one   Backwards Compatibility Security Infrastructure Requirements Testing Rejecting bad data Load Testing Store UUID with logs   Prototype Implementation References    Abstract One critical aspect of Jenkins Evergreen is that the connected instances must be upgraded automatically in a safe way.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/309/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/309/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 309
+   Title
+ Bill of Materials
+   Sponsors
+ Carlos Sanchez, Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-04-16
+   BDFL-Delegate
+ R. Tyler Croy
+   Discussions-To
+ link:https://groups.google.com/d/topic/jenkinsci-dev/pR2ZQMj95Zc/discussion
+   Requires
+ JEP-305
+     Table of Contents Abstract Specification What exists today What are we missing Bill of Materials (BoM) Workflow Changes to Core Changes to Plugins Continuous Delivery   YAML example Version Field: metadata Field: labels Field: annotation   Field: specification Dependency type Field: core Field: plugins Field: components Field: environments   Dependency resolution Field: status   Motivation Reasoning Plugin and component sources Format versioning Tooling Hierarchical objects in annotations   Backwards Compatibility Security Infrastructure Requirements Testing Prototype implementation References    Abstract There are multiple ways of defining packaging and what combinations of core, modules, libraries and plugins to test from multiple repositories, forks and PRs.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/310/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/310/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 310
+   Title
+ Essentials AWS auto-configuration
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-10
+   BDFL-Delegate
+ R. Tyler Croy
+   JIRA
+ JENKINS-52210
+   Requires
+ JEP-300, JEP-307
+     Table of Contents Abstract Specification Global overview Used plugins and configuration Instance Profile and IAM role EC2 policy S3 bucket policy   Security groups Master Agents     Motivation Reasoning Instance Profile s3:DeleteObject permission on the S3 bucket   Backwards Compatibility Security Allowed certificates SSH access to the server HTTPS by default Agent port   Infrastructure Requirements AWS account for testing   Testing AWS testing of CloudFormation template   Prototype Implementation References    Abstract One of the four pillars of Jenkins Essentials is that it should be autoconfigured with sane defaults for various cloud platforms.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/4/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/4/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 4
+   Title
+ Special Interest Groups
+   Sponsor
+ R Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-04-09
+     Table of Contents Abstract Specification Roles Creation and Maintenance Prerequisites SIGs and JEPs   Creating service accounts for the SIG Google Groups creation Organizations Recorded Video Meetings Recorded IRC Meetings Chats Create the GitHub teams   Changing leaders and adopting SIGs   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract As the Jenkins community has grown, there have been ad hoc groups sprouting up to tackle specific areas of focus within the project.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/400/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/400/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 400
+   Title
+ Jenkins X: Jenkins for Kubernetes CD
+   Sponsor
+ James Strachan
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+     Table of Contents Abstract Specification Target Audience Development Practice ‘Environment’ Model CLI Pipeline where “the right thing is the easiest thing” Build Packs Helm Charts Kubernetes Native Jenkins UpdateBot Longer Term integrations: Prow &amp;amp; Argo   Motivation Reasoning Ease of Use CLI as Main Developer Experience Jenkins in Kubernetes   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Jenkins X provides a Kubernetes-native CI / CD platform for developing Cloud Native applications.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/5/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/5/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 5
+   Title
+ Jenkins Ambassador Program
+   Sponsor
+ Alyssa Tong, Liam Newman
+   Status
+ Accepted :ok_hand:
+   Type
+ Process
+   Created
+ 2018-05-02
+     Table of Contents Abstract Specification Ambassador Program Goals What is a Jenkins Ambassador? Benefits to Ambassador Responsiblities of Ambassadors Nomination Acceptance Term Relationship to CloudBees   Motivation Reasoning No hard limit on CloudBees employees Naming Voting   Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract Jenkins Ambassadors are influential Jenkins enthusiasts who have the passion to share their Jenkins technical expertise with others.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/6/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/6/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 6
+   Title
+ Jenkins CVE Numbering Authority
+   Sponsor
+ Daniel Beck
+   Status
+ Accepted :ok_hand:
+   Type
+ Process
+   Created
+ 2018-05-31
+   BDFL-Delegate
+ Daniel Beck
+     Table of Contents Abstract Specification Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract The Jenkins project wants to allow its users to refer to security vulnerabilities in Jenkins and Jenkins plugins using CVE identifiers.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/7/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/7/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 7
+   Title
+ Deprecation of ruby-runtime
+   Sponsor
+ Daniel Beck
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-06-06
+     Table of Contents Abstract Specification Motivation Reasoning Impact on current users   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract Due to its negative impact on core maintenance, distribution of the unmaintained ruby-runtime plugin will be suspended.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/8/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/8/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 8
+   Title
+ Google Summer of Code Budgeting and Expenses
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-07-17
+     Table of Contents Abstract Specification Budget sources Using the budget Approval process Payment process Liability Unused budget from previous years Transparency   Motivation Reasoning Guarantee letters   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract This document documents the Google Summer of Code (GSoC) budgeting process.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/9/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/9/readme/</guid>
+      <description>Table 1. Metadata     JEP
+ 9
+   Title
+ How BDFL Delegates
+   Sponsor
+ Kohsuke Kawaguchi
+   Status
+ Draft :speech_balloon:
+   Type
+ Informational
+   Created
+ 2018-08-06
+     Table of Contents Abstract Specification How I see Delegates What I expect from Delegates What Delegates are not How I select Delegates   Motivation Reasoning Value of a visible badge Empowering organizational contributors Consistency with other structures   Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract &#34;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://example.org/posts/jep/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/jep/readme/</guid>
+      <description>Status Title Sponsor(s) BDFL Delegate     Active&amp;#160;:smile:
+ JEP-1: Jenkins Enhancement Proposal Format
+ R&amp;#160;Tyler&amp;#160;Croy, Liam&amp;#160;Newman
+ not&amp;#160;delegated
+   Draft&amp;#160;:speech_balloon:
+ JEP-2: Criteria for selecting &#34;Suggested Plugins&#34;
+ Daniel&amp;#160;Beck, R&amp;#160;Tyler&amp;#160;Croy
+ not&amp;#160;delegated
+   Accepted&amp;#160;:ok_hand:
+ JEP-3: Adding the &#34;Released As&#34; field and &#34;Ready for Release&#34; status to Jenkins JIRA
+ Oleg&amp;#160;Nenashev
+ not&amp;#160;delegated
+   Draft&amp;#160;:speech_balloon:
+ JEP-4: Special Interest Groups</description>
+    </item>
+    
+  </channel>
+</rss>

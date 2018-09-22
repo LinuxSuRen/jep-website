@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 210
+   Title
+ External log storage for Pipeline
+   Sponsor
+ Jesse Glick
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   JIRA
+ JENKINS-38381
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/210/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 210
+   Title
+ External log storage for Pipeline
+   Sponsor
+ Jesse Glick
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   JIRA
+ JENKINS-38381
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires">
+
+
+
+<meta itemprop="wordCount" content="3063">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 210
+   Title
+ External log storage for Pipeline
+   Sponsor
+ Jesse Glick
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-24
+   JIRA
+ JENKINS-38381
+   BDFL-Delegate
+ Carlos Sanchez
+   Discussions-To
+ Jenkins Cloud Native SIG
+   Requires"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">210</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">External log storage for Pipeline</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://github.com/jglick">Jesse Glick</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-07-24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-38381">JENKINS-38381</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/carlossg">Carlos Sanchez</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discussions-To</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://groups.google.com/forum/#!forum/jenkins-cloud-native-sig">Jenkins Cloud Native SIG</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jenkinsci/jep/blob/master/jep/206/README.adoc">JEP-206</a>: UTF-8 for Pipeline logs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_invert_control_of_durable_task_polling">Invert control of durable task polling</a></li>
+<li><a href="#_replace_aggregation_with_single_log_stream">Replace aggregation with single log stream</a></li>
+<li><a href="#_semantic_markup_in_html_console">Semantic markup in HTML console</a></li>
+<li><a href="#_pluggable_log_storage">Pluggable log storage</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a>
+<ul class="sectlevel2">
+<li><a href="#_push_vs_pull_for_durable_task_output">Push vs. pull for durable task output</a></li>
+<li><a href="#_log_file_per_step_vs_single_log_stream">Log file per step vs. single log stream</a></li>
+<li><a href="#_semantic_markup">Semantic markup</a></li>
+<li><a href="#_pluggable_storage">Pluggable storage</a></li>
+</ul>
+</li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_spi_design">SPI design</a></li>
+<li><a href="#_annotating_lines_by_step_using_code_consolenote_code">Annotating lines by step using <code>ConsoleNote</code></a></li>
+<li><a href="#_core_dependencies">Core dependencies</a></li>
+<li><a href="#_logging_from_code_launcher_code">Logging from <code>Launcher</code></a></li>
+<li><a href="#_explicit_log_mirroring">Explicit log mirroring</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project overhauls the storage of logs for Jenkins Pipeline builds.
+(The log can be seen from the <strong>Console</strong> link,
+but also from Blue Ocean, <strong>Pipeline Steps</strong>, and REST and CLI.)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are four stages of changes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Minimize Remoting channel usage for durable task (<code>sh</code>, <code>bat</code>, <code>powershell</code>) output.</p>
+</li>
+<li>
+<p>Replace aggregation of per-step log files with a single log stream annotated by step ID.</p>
+</li>
+<li>
+<p>Make the traditional <strong>Console</strong> view use semantic markup of steps and CSS.</p>
+</li>
+<li>
+<p>Permit the entire log to be sent to a pluggable external service:
+in the reference implementation, Amazon CloudWatch Logs via Fluentd.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>#1 is implemented as a set of independently releasable branches.
+(It is tracked by
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-52165">JENKINS-52165</a>.)
+#2, #3, and #4 constitute the complete change,
+and depend on #1 as well as
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/206/README.adoc">JEP-206</a>
+for use of UTF-8 in Pipeline log files.</p>
+</div>
+<div class="paragraph">
+<p>The scope does not include other project types (freestyle),
+or other types of logging (system, branch indexing).
+<a href="https://github.com/jenkinsci/jep/blob/master/jep/207/README.adoc">JEP-207</a>
+covers at least freestyle build logs,
+and is expected to be integrated with these changes via this
+<a href="https://github.com/jenkinsci/jep/pull/151">unsubmitted JEP</a>.</p>
+</div>
+<div class="paragraph">
+<p>Together, the effect is that the <code>TaskListener</code> associated with the overall build,
+as well as with each individual step,
+is potentially a “remotable” object which can autonomously stream log messages
+directly from an agent computer to a cloud log service.
+If and when a Jenkins-based UI needs to observe build or step logs,
+the Jenkins master will retrieve messages from that service,
+and either filter them by step,
+or collate them by timestamp into a whole-build log annotated with step metadata.</p>
+</div>
+<div class="sect2">
+<h3 id="_invert_control_of_durable_task_polling">Invert control of durable task polling</h3>
+<div class="paragraph">
+<p>When running durable tasks such as <code>sh</code> on an agent,
+which involves “tailing” an <code>output.txt</code> file in a hidden directory,
+the agent process begins checking for growth in the file at short recurring intervals.
+Any new content is streamed to the master.</p>
+</div>
+<div class="paragraph">
+<p>By using a <code>last-location.txt</code> file to record the last-observed file length,
+the state is persistent, so that log streaming can resume after a restart of the agent process
+(including a restart of the Jenkins master, which forces agents to restart as well).</p>
+</div>
+<div class="paragraph">
+<p>The principal new API here, in <code>durable-task</code>, is <code>Controller.watch</code>.
+This takes a newly defined interface <code>Handler</code>
+capable of receiving text content and an exit event.</p>
+</div>
+<div class="paragraph">
+<p><code>DurableTaskStep</code> calls the new APIs when available
+(which it will be for all standard steps),
+otherwise falling back to the old polling mode.
+The step will still poll at infrequent intervals
+in case the agent became unresponsive and the step needs to abort.
+The <code>Handler</code> implementation serializes the <code>TaskListener</code> coming from the <code>StepContext</code>,
+allowing an external log sink to bypass all master communications.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_replace_aggregation_with_single_log_stream">Replace aggregation with single log stream</h3>
+<div class="paragraph">
+<p>There is a default <code>FileLogStorage</code> implementation based on the traditional <code>log</code> file inside the build directory.
+All log messages associated with the build are sent to the <code>BuildListener</code> which writes to this file.</p>
+</div>
+<div class="paragraph">
+<p>Steps which call <code>getContext().get(TaskListener.class)</code> for logging
+trigger addition of a <code>LogStorageAction</code> (a stateless marker) to the <code>FlowNode</code>;
+this supplies a <code>TaskListener</code> which tracks the <code>FlowNode.id</code> (typically an integer)
+used at certain byte offsets in the log, in a separate <code>log-index</code> file.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>1597 7
+1985
+2285 8
+2686
+2983 10
+3034
+4245 14
+4287 10
+4296 14
+4328 10
+4337 14
+4360 10
+4369 14
+4392 10
+4401 14
+4424
+5318 10
+5329 14
+7537</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Conversely, calls to <code>LogAction.getLogText()</code> produce an implementation
+which concatenates segments of the <code>log</code> for text corresponding to that step.</p>
+</div>
+<div class="paragraph">
+<p>Console annotations (which are ignored by Blue Ocean)
+continue to be written to the log file
+using serialized, signed, and Base64-encoded <code>ConsoleNote</code> objects.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_semantic_markup_in_html_console">Semantic markup in HTML console</h3>
+<div class="paragraph">
+<p>Every sequence of consecutive lines in the “classic UI” HTML output (<code>AnnotatedLargeText.writeHtmlTo</code>)
+produced by the same step (technically, <code>FlowNode.id</code>, which is a little more specific as it tracks body blocks)
+is marked with an HTML <code>&lt;span&gt;</code> identifying that ID.
+(The absence of such a span indicates log lines not produced by <em>any</em> node.)
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;span class="pipeline-node-12"&gt;+ whoami
+jglick
+&lt;/span&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Implementations of <code>LogStorage.overallLog</code> such as in <code>FileLogStorage</code> must call <code>startStep</code> and <code>endStep</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>NewNodeConsoleNote</code> is used to print the introduction of a new node into the log, typically displayed like</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>[Pipeline] sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with variants for block-scoped steps.
+The generated HTML includes another <code>&lt;span&gt;</code> which encodes not just the node ID,
+but also the start node ID (in the case of a block end node),
+the enclosing (start) node ID,
+any the value of any <code>LabelAction</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>NewNodeConsoleNote</code> defines a combination of CSS and JavaScript
+which, together with both kinds of spans,
+implements a richer GUI in the build log view.
+In particular, <strong>(show)</strong> and <strong>(hide)</strong> links are displayed
+which allow output from individual steps or entire blocks
+to be selectively displayed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pluggable_log_storage">Pluggable log storage</h3>
+<div class="paragraph">
+<p>By default the traditional <code>log</code> file is used for build logs.
+Plugins may override this storage in both the read and write aspects.
+<code>LogStorageFactory</code> is the entry point for such an override;
+currently a plugin may pick builds to provide storage for,
+but this decision is not persisted
+(pending work in JEP-207).</p>
+</div>
+<div class="paragraph">
+<p>On the write side, the plugin is able to supply a custom <code>TaskListener</code>.
+This interface was already defined by Jenkins core to be remotable.
+An implementation which streams to external storage
+therefore needs only to ensure that all fields are truly serializable
+and that the code to connect to a storage service can be run on a remote node.
+There is a variant which records a <code>FlowNode.id</code> association.
+The reference implementation creates JSON-format records to be sent to Fluentd.</p>
+</div>
+<div class="paragraph">
+<p>On the read side, the plugin can supply an <code>AnnotatedLargeText</code>
+for either the build as a whole or one node.
+(While this Jenkins core interface supports HTML rendering for the “classic” UI,
+it is also responsible for generating plain-text content as consumed by Blue Ocean.)
+The reference implementation makes API calls to CloudWatch Logs to serve content
+based on JSON filter patterns to select messages by build and optionally node.</p>
+</div>
+<div class="paragraph">
+<p>A subtle issue is the use of <code>LargeText.isCompleted</code> by UI callers,
+which determines whether a given log is considered finalized,
+in which case no further “AJAX” calls need be made to fetch subsequent content.
+Yet Fluentd does not guarantee that a given record
+has been received by CloudWatch Logs when the log event is sent,
+and in the standard configuration in fact delays log flushes up to a second,
+so without any special effort a build log would sometimes stop refreshing before the end.
+This is solved with a utility class <code>TimestampTracker</code>
+(which could if necessary be pushed into a lower layer)
+which records the last (master-side) log message sent for a given scope
+and declines to mark the text block as completed
+unless the last timestamp observed in CloudWatch Logs
+matches the last-delivered timestamp.</p>
+</div>
+<div class="paragraph">
+<p>Another feature of the reference implementation is to store <code>ConsoleNote</code>s separately in JSON.
+This is accomplished by the <code>ConsoleNotes</code> utility
+(again, potentially extractable to a shared API layer)
+which keeps opaque notes (serialized, signed, and Base64-encoded)
+in a separate JSON field,
+so that external log viewers can access the plain text easily.
+The plugin also supplies a sidebar link in builds
+which jumps to a suitably constructed CloudWatch Logs search URL
+displayed in the AWS Console.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The overall goal is to minimize the load placed on the Jenkins master process
+in the common case that the build log is written but not read
+(or read only via an external log browser).</p>
+</div>
+<div class="paragraph">
+<p>Changes to durable task polling, log aggregation, and especially log pluggability contribute directly to this goal.
+Semantic console markup is a small extension to log aggregation.</p>
+</div>
+<div class="sect2">
+<h3 id="_push_vs_pull_for_durable_task_output">Push vs. pull for durable task output</h3>
+<div class="paragraph">
+<p>Historically, when running durable tasks (<code>sh</code> and kin),
+running output was handled by having the master send a callable to the agent at intervals,
+initially short (¼s) but growing exponentially up to some maximum (15s) if the process seems to be idle,
+and resetting to short again if and when fresh output is detected.</p>
+</div>
+<div class="paragraph">
+<p>Not only is there up to a 15s delay in displaying new output,
+this is wasteful of master and network resources when the process is idle for a long time;
+and sending a <code>UserRequest</code> and corresponding response involves a fair amount of Java serialization.</p>
+</div>
+<div class="paragraph">
+<p>By contrast, non-durable processes (such as those created by <code>Launcher</code> in a freestyle build)
+use <code>RemoteOutputStream</code> to send content from the agent to master as soon as it is available, minimizing network traffic;
+Remoting is also able to optimize this kind of traffic by sending low-overhead <code>Chunk</code> packets of tailored sizes.</p>
+</div>
+<div class="paragraph">
+<p>Another minor benefit is that <code>DurableTaskStep</code> no longer needs to call <code>StepContext.saveState</code> every time new output is observed,
+which was potentially expensive since it involves a fresh serialization to <code>program.dat</code>.</p>
+</div>
+<div class="paragraph">
+<p>Therefore durable tasks should switch from the policy of pulling log output to having the agent push log output.
+The content cannot be detected <em>immediately</em>, since we are effectively tailing a log file,
+but it can be detected quickly after the log file is updated with minimal overhead.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_log_file_per_step_vs_single_log_stream">Log file per step vs. single log stream</h3>
+<div class="paragraph">
+<p>The original implementation of Pipeline (then “Workflow”) used a separate log file for each step
+as a rough-and-ready solution to the problem of allowing clients of the flow graph
+to determine which log lines came from which steps.
+To provide support for the various methods in <code>Run</code> which expect to read a single <code>log</code>,
+a method <code>WorkflowRun.copyLogs</code> periodically checked for new output in the step log files
+and synchronized it to the master log file.
+The last-read location for each active step was saved in <code>build.xml</code> to provide durability.</p>
+</div>
+<div class="paragraph">
+<p>This system had numerous flaws.
+Most obviously, it requires almost double the disk space.</p>
+</div>
+<div class="paragraph">
+<p>The copying had an inherent delay,
+ameliorated by eager copying at the time of step completion,
+which can lead to flaky tests if care is not taken to wait for content.
+Content between <code>parallel</code> steps was also not interleaved in real time.</p>
+</div>
+<div class="paragraph">
+<p>A heavily loaded system could wind up consuming considerable CPU and IOPS
+running copy tasks for numerous concurrent builds.
+Not only did many small step log files need to be read frequently,
+but in the safest durability modes every update forced a new <code>build.xml</code> write,
+which besides I/O requires Java serialization of possibly large unrelated objects.
+The required synchronization also introduced bottlenecks and occasional deadlocks.
+All the background tasks also sometimes consumed all available threads in an executor pool,
+leading to starvation of more critical operations.</p>
+</div>
+<div class="paragraph">
+<p>Using a single <code>log</code> file and streaming all data directly there
+is considerably simpler, even accounting for the need to handle step ID prefixes.
+It may be less efficient at read time,
+but the primary consideration is minimizing overhead at write time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_semantic_markup">Semantic markup</h3>
+<div class="paragraph">
+<p>The original Pipeline log display hard-coded markup for new node notes
+and failed to expose any of the node association information to potential UIs.
+Usability issues in the “classic” log build log UI continue to be brought up by users as annoyances,
+despite the availability of an alternative UI in Blue Ocean.</p>
+</div>
+<div class="paragraph">
+<p>Other behaviors, like hiding new node displays
+or hiding all but the first <code>parallel</code> branch initially,
+could be added later or even perhaps contributed by plugins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pluggable_storage">Pluggable storage</h3>
+<div class="paragraph">
+<p>The key goals of the JEP are addressed by external-storage implementations:
+the use of appropriate long-term storage systems for critical log data;
+and the ability to stream content from an agent JVM
+without consuming bandwidth on the Remoting channel.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_spi_design">SPI design</h3>
+<div class="paragraph">
+<p>An earlier draft implementation exposed a simpler SPI to plugins:
+they could only supply a <code>TaskListener</code> for the overall build,
+and an <code>InputStream</code> for the overall build content.
+This SPI is effectively still available via <code>StreamLogStorage</code>,
+but it has proven inadequate for the CloudWatch Logs implementation at least.</p>
+</div>
+<div class="paragraph">
+<p>Most obviously, the <code>InputStream</code> interface forces the implementation to serve a complete build log
+even when the text for only a single step (~ <code>FlowNode.id</code>) has been requested.
+The CloudWatch Logs implementation can do better by using a server-side filter.
+This avoids any need for the <code>¦</code> separator used by <code>StreamLogStorage</code>.</p>
+</div>
+<div class="paragraph">
+<p>More subtly, the <code>InputStream</code> interface lacked any room for indicating
+that the build content was incomplete.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_annotating_lines_by_step_using_code_consolenote_code">Annotating lines by step using <code>ConsoleNote</code></h3>
+<div class="paragraph">
+<p>For the default filesystem-based storage,
+originally it was attempted to use a special <code>ConsoleNote</code> to mark which step produced a given line.
+This worked, but resulted in unacceptably bloated raw logs:
+the serialized form, after GZIPping and Base64-encoding, was over 200 characters per line;
+and rendered typical raw logs more or less unreadable.
+Therefore the <code>¦</code> separator (later used only by <code>StreamLogStorage</code>) was introduced,
+as it adds minimal space overhead and does not interfere with legibility.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_core_dependencies">Core dependencies</h3>
+<div class="paragraph">
+<p>Some aspects of the implementation would be easier given certain API changes in Jenkins core (or Stapler).
+For example, <code>ConsoleAnnotators</code> could be replaced by a proper API;
+some <code>LargeText</code> / <code>AnnotatedLargeText</code> methods could be better designed for subclassing;
+and some overrides in <code>WorkflowRun</code> would make sense pulled up into <code>Run</code>.
+For now, these considerations were outweighed by the convenience of running on stock versions of Jenkins LTS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logging_from_code_launcher_code">Logging from <code>Launcher</code></h3>
+<div class="paragraph">
+<p>When the synchronous <code>Launcher</code> interface is used to start non-durable remote processes,
+as happens for example from typical <code>SCM</code> implementations delegating to a command-line tool,
+historically the remotability of any supplied <code>TaskListener</code> is ignored
+and all log lines are sent over the Remoting channel to be processed on the master side:
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-52729">JENKINS-52729</a>.
+This was fixed as a simple patch to <code>Launcher</code>,
+which would also benefit JEP-207 by removing any need to use <code>DecoratedLauncher</code>s for freestyle build steps.
+A related change could perhaps also fix encoding issues with such synchronous steps for JEP-206.</p>
+</div>
+<div class="paragraph">
+<p>(While <code>TaskListener</code> was long ago designed to be remotable,
+and <code>StreamTaskListener</code> in fact handled that by using <code>RemoteOutputStream</code>,
+until now it was not noticeable that <code>Launcher</code> fails to remote the listener
+since the effect is the same if the instance is in fact a <code>StreamTaskListener</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_explicit_log_mirroring">Explicit log mirroring</h3>
+<div class="paragraph">
+<p>Some existing plugins such as
+<a href="https://plugins.jenkins.io/logstash">Logstash</a>
+or
+<a href="https://plugins.jenkins.io/aws-cloudwatch-logs-publisher">AWS CloudWatch Logs Publisher</a>
+support redirecting or mirroring log messages to cloud services.
+To the extent that these are even compatible with Pipeline,
+they nonetheless suffer from fundamental limitations compared to the approach in this JEP:
+job configurers may have to opt-in to the publishing;
+log messages may still be kept on disk in the Jenkins master;
+the existing Jenkins UI gestures to display logs do not pick up data from the cloud;
+Remoting channels are still clogged with log-related traffic.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>ConsoleLogFilter</code> implementations must be safely remotable in order to work correctly on the agent side.
+Since any implementations available for use in Pipeline jobs
+must already have been <code>Serializable</code> (to be saved in <code>program.dat</code>),
+this is not as significant a restriction as it might at first appear.
+It does mean that besides being careful about state (non-<code>transient</code> instance fields),
+implementations may not assume they are running inside the master JVM.
+Integration testing is likely to uncover any critical problems in widely-used filters.</p>
+</div>
+<div class="paragraph">
+<p>Completed <code>FlowNode</code>s using the old <code>LogActionImpl</code> will continue to serve log text from the per-step file.
+This applies both to completed historical builds,
+and to steps completed prior to the resume of a build which spanned the upgrade.
+For the special case of a step running across the upgrade,
+<code>LogActionImpl</code> will stream new content to the overall build log,
+as well as to the per-step log.
+(For that purpose, the upgrade is detected as an update to the <code>workflow-job</code> plugin.)</p>
+</div>
+<div class="paragraph">
+<p>Historical builds using <code>WorkflowRunConsoleNote</code> should continue to render logs,
+but without the new semantic markup features.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Any <code>ConsoleLogFilter</code> with security-sensitive fields
+(notably the password masking by the <code>withCredentials</code> step)
+must take into account that it will now be sent to the agent side,
+where that data is vulnerable to retrieval or even manipulation by rogue builds.
+In the case of <code>withCredentials</code> this is not an issue,
+since the agent already received these same secrets as environment variables.</p>
+</div>
+<div class="paragraph">
+<p>Currently the Fluentd logger in the reference implementation
+assumes that the Fluentd server is accessible anonymously.
+A production-grade implementation should prevent a rogue build
+from writing log lines to a build of an unrelated job.
+This would presume some kind of Fluentd authentication plugin
+capable of processing generated tokens scoped to a particular JSON field,
+which is not yet known to exist.
+Alternately, logs could be sent directly to CloudWatch Logs,
+but this would then perhaps require the master to be able to use IAM
+to create temporary roles and tokens.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal,
+beyond what may arise in the course of testing external log implementations
+based on live services such as CloudWatch Logs.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Automated functional tests verify the basic aspects of the change,
+such as the fact that with a suitably remotable <code>TaskListener</code>,
+a <code>sh</code> step will in fact deliver messages to the log sink constructed on the agent side.</p>
+</div>
+<div class="paragraph">
+<p>Functional tests for open-source, cluster-based implementations such as ElasticSearch could be run using <code>docker-fixtures</code>.
+Tests for SaaS-based implementations such as CloudWatch would require either mocks,
+and/or live tests run on restricted CI machines.</p>
+</div>
+<div class="paragraph">
+<p>Integration testing against uncommon plugins and usage modes will be needed,
+which will likely use standard mechanisms such as <code>plugin-compat-tester</code>;
+and some exploratory testing is expected.</p>
+</div>
+<div class="paragraph">
+<p>The nature of performance testing remains to be defined.
+The principal constraint is that the production of logs during a build should be efficient;
+Jenkins-based display of logs during a running build or of a completed build
+may involve some overhead to retrieve and collate messages,
+but this is assumed to be a relatively infrequent event.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The reference implementation is a
+<a href="https://github.com/jglick/pipeline-log-fluentd-cloudwatch-plugin"><code>pipeline-log-fluentd-cloudwatch</code> plugin</a>
+which depends on a series of Pipeline-related pull requests.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-38381">JENKINS-38381</a></p>
+</li>
+<li>
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-52165">JENKINS-52165</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-api-plugin/pull/17">workflow-api PR 17</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-support-plugin/pull/15">workflow-support PR 15</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-job-plugin/pull/27">workflow-job PR 27</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/durable-task-plugin/pull/62">durable-task PR 62</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-durable-task-step-plugin/pull/21">workflow-durable-task-step PR 21</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jglick/pipeline-log-fluentd-cloudwatch-plugin"><code>pipeline-log-fluentd-cloudwatch</code> plugin</a></p>
+</li>
+<li>
+<p><a href="https://youtu.be/9lTOtC9wA_I?t=38m21s">Demo</a> given to Cloud Native SIG (YouTube, ~19m, discussion before and after)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1965 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 1
+   Title
+ Jenkins Enhancement Proposal Format
+   Sponsor
+ R Tyler Croy, Liam Newman
+   Status
+ Active :smile:
+   Type
+ Process
+   Created
+ 2017-09-12
+     Table of Contents Abstract Specification What is a JEP? JEP Types JEP Terminology BDFL Editor Contributor Sponsor BDFL Delegate Reviewer Must/Should/May   JEP Workflow Overview Start with an idea for Jenkins Find a Sponsor Discuss the idea with the community Creating a JEP Submission Approval as Draft JEP Refining a Draft JEP JEP Review Accepting a JEP Finalizing a JEP JEP Maintenance Other JEP Outcomes Updating JEP Status and Resolution Scheduling and timeframes Resolving Disputes   JEP Guidelines Required Sections JEP File Format JEP Header Preamble Auxiliary Files   Reporting JEP Bugs, or Submitting JEP Updates Transferring JEP Sponsorship JEP Editor Responsibilities &amp; Workflow Conformance check Request Changes Approve as Draft Permission group membership     Motivation Benefits to existing developers Benefits to future developers   Reasoning Based on Python PEP Differences from Python PEP Requirements-level terms Limits of BDFL model Timeliness Requiring same license Asciidoc style and linter   Backwards Compatibility Security Infrastructure Requirements References Related Processes Discussion threads Pull Requests      Abstract A Jenkins Enhancement Proposal (JEP) is a design document that describes a new feature or aspect of Jenkins itself, or the Jenkins project processes or environment." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/1/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 1
+   Title
+ Jenkins Enhancement Proposal Format
+   Sponsor
+ R Tyler Croy, Liam Newman
+   Status
+ Active :smile:
+   Type
+ Process
+   Created
+ 2017-09-12
+     Table of Contents Abstract Specification What is a JEP? JEP Types JEP Terminology BDFL Editor Contributor Sponsor BDFL Delegate Reviewer Must/Should/May   JEP Workflow Overview Start with an idea for Jenkins Find a Sponsor Discuss the idea with the community Creating a JEP Submission Approval as Draft JEP Refining a Draft JEP JEP Review Accepting a JEP Finalizing a JEP JEP Maintenance Other JEP Outcomes Updating JEP Status and Resolution Scheduling and timeframes Resolving Disputes   JEP Guidelines Required Sections JEP File Format JEP Header Preamble Auxiliary Files   Reporting JEP Bugs, or Submitting JEP Updates Transferring JEP Sponsorship JEP Editor Responsibilities &amp; Workflow Conformance check Request Changes Approve as Draft Permission group membership     Motivation Benefits to existing developers Benefits to future developers   Reasoning Based on Python PEP Differences from Python PEP Requirements-level terms Limits of BDFL model Timeliness Requiring same license Asciidoc style and linter   Backwards Compatibility Security Infrastructure Requirements References Related Processes Discussion threads Pull Requests      Abstract A Jenkins Enhancement Proposal (JEP) is a design document that describes a new feature or aspect of Jenkins itself, or the Jenkins project processes or environment.">
+
+
+
+<meta itemprop="wordCount" content="7701">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 1
+   Title
+ Jenkins Enhancement Proposal Format
+   Sponsor
+ R Tyler Croy, Liam Newman
+   Status
+ Active :smile:
+   Type
+ Process
+   Created
+ 2017-09-12
+     Table of Contents Abstract Specification What is a JEP? JEP Types JEP Terminology BDFL Editor Contributor Sponsor BDFL Delegate Reviewer Must/Should/May   JEP Workflow Overview Start with an idea for Jenkins Find a Sponsor Discuss the idea with the community Creating a JEP Submission Approval as Draft JEP Refining a Draft JEP JEP Review Accepting a JEP Finalizing a JEP JEP Maintenance Other JEP Outcomes Updating JEP Status and Resolution Scheduling and timeframes Resolving Disputes   JEP Guidelines Required Sections JEP File Format JEP Header Preamble Auxiliary Files   Reporting JEP Bugs, or Submitting JEP Updates Transferring JEP Sponsorship JEP Editor Responsibilities &amp; Workflow Conformance check Request Changes Approve as Draft Permission group membership     Motivation Benefits to existing developers Benefits to future developers   Reasoning Based on Python PEP Differences from Python PEP Requirements-level terms Limits of BDFL model Timeliness Requiring same license Asciidoc style and linter   Backwards Compatibility Security Infrastructure Requirements References Related Processes Discussion threads Pull Requests      Abstract A Jenkins Enhancement Proposal (JEP) is a design document that describes a new feature or aspect of Jenkins itself, or the Jenkins project processes or environment."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jenkins Enhancement Proposal Format</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R Tyler Croy</a>, <a href="https://github.com/bitwiseman">Liam Newman</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Active :smile:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2017-09-12</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_what_is_a_jep">What is a JEP?</a></li>
+<li><a href="#_jep_types">JEP Types</a></li>
+<li><a href="#_jep_terminology">JEP Terminology</a>
+<ul class="sectlevel3">
+<li><a href="#_bdfl">BDFL</a></li>
+<li><a href="#_editor">Editor</a></li>
+<li><a href="#_contributor">Contributor</a></li>
+<li><a href="#_sponsor">Sponsor</a></li>
+<li><a href="#_bdfl_delegate">BDFL Delegate</a></li>
+<li><a href="#_reviewer">Reviewer</a></li>
+<li><a href="#requirement-levels">Must/Should/May</a></li>
+</ul>
+</li>
+<li><a href="#_jep_workflow">JEP Workflow</a>
+<ul class="sectlevel3">
+<li><a href="#_overview">Overview</a></li>
+<li><a href="#start">Start with an idea for Jenkins</a></li>
+<li><a href="#_find_a_sponsor">Find a Sponsor</a></li>
+<li><a href="#discussion">Discuss the idea with the community</a></li>
+<li><a href="#submission">Creating a JEP Submission</a></li>
+<li><a href="#approval">Approval as Draft JEP</a></li>
+<li><a href="#draft">Refining a Draft JEP</a></li>
+<li><a href="#review">JEP Review</a></li>
+<li><a href="#accepted">Accepting a JEP</a></li>
+<li><a href="#final">Finalizing a JEP</a></li>
+<li><a href="#maintenance">JEP Maintenance</a></li>
+<li><a href="#_other_jep_outcomes">Other JEP Outcomes</a></li>
+<li><a href="#_updating_jep_status_and_resolution">Updating JEP Status and Resolution</a></li>
+<li><a href="#_scheduling_and_timeframes">Scheduling and timeframes</a></li>
+<li><a href="#_resolving_disputes">Resolving Disputes</a></li>
+</ul>
+</li>
+<li><a href="#_jep_guidelines">JEP Guidelines</a>
+<ul class="sectlevel3">
+<li><a href="#_required_sections">Required Sections</a></li>
+<li><a href="#_jep_file_format">JEP File Format</a></li>
+<li><a href="#metadata">JEP Header Preamble</a></li>
+<li><a href="#_auxiliary_files">Auxiliary Files</a></li>
+</ul>
+</li>
+<li><a href="#_reporting_jep_bugs_or_submitting_jep_updates">Reporting JEP Bugs, or Submitting JEP Updates</a></li>
+<li><a href="#transferring">Transferring JEP Sponsorship</a></li>
+<li><a href="#editor-responsibilities">JEP Editor Responsibilities &amp; Workflow</a>
+<ul class="sectlevel3">
+<li><a href="#_conformance_check">Conformance check</a></li>
+<li><a href="#_request_changes">Request Changes</a></li>
+<li><a href="#_approve_as_draft">Approve as Draft</a></li>
+<li><a href="#_permission_group_membership">Permission group membership</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a>
+<ul class="sectlevel2">
+<li><a href="#_benefits_to_existing_developers">Benefits to existing developers</a></li>
+<li><a href="#_benefits_to_future_developers">Benefits to future developers</a></li>
+</ul>
+</li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_based_on_python_pep">Based on Python PEP</a></li>
+<li><a href="#_differences_from_python_pep">Differences from Python PEP</a></li>
+<li><a href="#_requirements_level_terms">Requirements-level terms</a></li>
+<li><a href="#_limits_of_bdfl_model">Limits of BDFL model</a></li>
+<li><a href="#_timeliness">Timeliness</a></li>
+<li><a href="#_requiring_same_license">Requiring same license</a></li>
+<li><a href="#_asciidoc_style_and_linter">Asciidoc style and linter</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_references">References</a>
+<ul class="sectlevel2">
+<li><a href="#_related_processes">Related Processes</a></li>
+<li><a href="#_discussion_threads">Discussion threads</a></li>
+<li><a href="#_pull_requests">Pull Requests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Jenkins Enhancement Proposal (JEP) is a design document that
+describes a new feature or aspect of Jenkins itself,
+or the Jenkins project processes or environment.
+This JEP describes the structure of JEP documents
+and details the process by which JEPs are
+created, submitted, reviewed, finalized, and maintained.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_what_is_a_jep">What is a JEP?</h3>
+<div class="paragraph">
+<p>JEP stands for Jenkins Enhancement Proposal.
+A JEP is a design document that
+describes a new feature or aspect of Jenkins itself, or Jenkins project, plugin, processes or environment.
+A JEP provides a concise technical specification of the feature,
+describes the motivation for the change,
+and discusses the rationale behind the design.</p>
+</div>
+<div class="paragraph">
+<p>JEPs are the primary mechanism for proposing major new
+features, for collecting community input on an issue, and for
+documenting the design decisions that have gone into Jenkins.
+Each JEP must have at least one <a href="#_sponsor">Sponsor</a>.
+The JEP Sponsor is responsible for the JEP overall - building
+consensus for that JEP within the community, documenting dissenting opinions,
+coordinating contributors work, and generally ensuring the JEP
+meets the style, format, and quality guidelines described below.
+A JEP may also have any number of <a href="#_contributor">Contributors</a> who
+help write, implement, discussion, or offer feedback about the JEP.
+One contributor might do only one or any combination
+of these things during any part of the life of a JEP.</p>
+</div>
+<div class="paragraph">
+<p>Because the JEPs are maintained as text files in a versioned
+repository, their revision history is the historical record of the
+feature proposal <sup class="footnote" id="_footnote_repo">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For non-text files added to the repository, such as images, the files must be
+readable with free and open source tools, and should ideally be editable by
+other contributors. For example, use SVG rather than PSD for vector graphics.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jep_types">JEP Types</h3>
+<div class="paragraph">
+<p>There are three kinds of JEP:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A <strong>Standards Track</strong> JEP describes a new feature or implementation
+for Jenkins. It may also describe an interoperability or
+backwards-compatibility standard which will be supported for the feature in
+current versions of Jenkins, moving forward.</p>
+</li>
+<li>
+<p>An <strong>Informational</strong> JEP describes a Jenkins design issue, or
+provides general guidelines or information to the Jenkins community,
+but does not propose a new feature. Informational JEPs do not
+necessarily represent a Jenkins community consensus or
+recommendation, so users and implementers are free to ignore
+Informational JEPs or follow their advice.</p>
+</li>
+<li>
+<p>A <strong>Process</strong> JEP describes a process surrounding Jenkins, or
+proposes a change to (or an event in) a process. Process JEPs are like
+Standards Track JEPs but apply to areas other than the Jenkins codebase
+itself. They may propose an implementation, but not for what would be
+generally considered the Jenkins codebase; they often require community
+consensus; unlike Informational JEPs, they are more than recommendations, and
+users are typically not free to ignore them. Examples include procedures,
+guidelines, changes to the decision-making process, and changes to the tools
+or environment used in Jenkins development. Any meta-JEP (JEP focusing on the
+improvement of the Jenkins Enhancement Proposal process) is also considered a
+Process JEP.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jep_terminology">JEP Terminology</h3>
+<div class="sect3">
+<h4 id="_bdfl">BDFL</h4>
+<div class="paragraph">
+<p>There are several references in this JEP to the "BDFL". This acronym stands for
+"<a href="https://en.wikipedia.org/wiki/Benevolent_dictator_for_life">Benevolent Dictator for Life</a>".
+The BDFL is a single person whose role in the project is to act as decision maker
+when a unilateral decision is needed. The responsibilities of the BDFL are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Review JEPs and decide whether they will be accepted</p>
+</li>
+<li>
+<p>Resolve disputes or arguments within the JEP process that cannot be resolved by consensus</p>
+</li>
+<li>
+<p>Delegate their responsibilities to other contributors as neeeded on a per-JEP basis (see <a href="#_bdfl_delegate">BDFL Delegate</a>)</p>
+</li>
+<li>
+<p>Take any other actions as part of the JEP process that they deem best for the Jenkins project</p>
+</li>
+<li>
+<p>Clearly communicate the reasoning for any actions taken or decisions made</p>
+</li>
+<li>
+<p>Refrain from using their power, letting the community self-govern whenever possible</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Under very specific conditions, described in "<a href="#_resolving_disputes">Resolving Disputes</a>",
+contributors may ask the Governance Meeting to review a decision by the BDFL.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For the Jenkins project the BDFL is
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>,
+original creator of Jenkins.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_editor">Editor</h4>
+<div class="paragraph">
+<p>The JEP editors are individuals responsible for managing the administrative
+and editorial aspects of the JEP workflow (e.g. assigning JEP numbers and
+changing their status). See <a href="#editor-responsibilities">JEP Editor Responsibilities &amp; Workflow</a> for
+details. The current editors are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/rtyler">R. Tyler Croy</a></p>
+</li>
+<li>
+<p><a href="https://github.com/oleg-nenashev">Oleg Nenashev</a></p>
+</li>
+<li>
+<p><a href="https://github.com/bitwiseman">Liam Newman</a></p>
+</li>
+<li>
+<p><a href="https://github.com/omehegan">Owen Mehegan</a></p>
+</li>
+<li>
+<p><a href="https://github.com/orrc">Christopher Orr</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>JEP editorship is by invitation of the current editors. All of the JEP workflow
+can be conducted via the GitHub JEP Repository <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> and pull
+requests.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_contributor">Contributor</h4>
+<div class="paragraph">
+<p>A JEP may have any number of "Contributors" who
+help write, implement, discuss, or offer feedback about that JEP.
+One contributor might do only one or any combination of these
+of these things during any part of the life of a JEP.
+While we invite contributions by companies or other organizations, contributors listed in a JEP
+(such as Sponsors or BDFL Delegates below) need to be specific people.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sponsor">Sponsor</h4>
+<div class="paragraph">
+<p>Each JEP has at least one "Sponsor".</p>
+</div>
+<div class="paragraph">
+<p>The JEP Sponsor is a contributor who is responsible for the JEP throughout its lifecycle.
+Their responsibilities include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Building consensus for that JEP within the community</p>
+</li>
+<li>
+<p>Documenting dissenting opinions</p>
+</li>
+<li>
+<p>Coordinating contributors' work</p>
+</li>
+<li>
+<p>Ensuring the JEP meets the style, format, and quality guidelines</p>
+</li>
+<li>
+<p>Maintaining the JEP after it is finalized</p>
+</li>
+<li>
+<p>Setting and communicating the schedule as needed</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Sponsor of a JEP may or may not do any of the tasks other contributors do.
+For example, one sponsor might write large portions of one JEP,
+while another sponsor might leave the writing to other contributors.</p>
+</div>
+<div class="paragraph">
+<p>Anyone may be Sponsor for a JEP,
+though it should be someone familiar enough with Jenkins, the Jenkins project,
+and the JEP workflow to effectively guide the JEP to completion.</p>
+</div>
+<div class="paragraph">
+<p>A JEP may have more than one Sponsor, especially after it has been finalized
+and is being maintained over time.
+For simplicity, this document uses the singular
+("The JEP Sponsor", "a sponsor")
+when referring the one or more people in the role of "Sponsor" of a JEP.</p>
+</div>
+<div class="paragraph">
+<p>Sponsors have committer/write access on the JEP repository, but should
+only approve and merge pull requests for JEPs to which they are assigned.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_bdfl_delegate">BDFL Delegate</h4>
+<div class="paragraph">
+<p>The <a href="#_bdfl">BDFL</a> may delegate their responsibilities to another contributor,
+a "BDFL Delegate" on a per-JEP basis.
+The BDFL Delegate for a JEP has all the responsibilities of the BDFL within the context of that JEP,
+except that BDFL Delegate may not delegate to someone else - there is no such thing as a "BDFL Delegate Delegate".</p>
+</div>
+<div class="paragraph">
+<p>A BDFL Delegate may be selected at any point before the JEP is reviewed.
+A record of this selection must be available publicly.
+Any contributor with sufficient technical and organizational
+experience to make the final decision on that JEP,
+may offer to be the BDFL&#8217;s Delegate for a JEP.
+If their self-nomination is accepted by the other core contributors and the BDFL,
+then that contributor will have the authority to accept (or reject) that JEP.
+The BDFL Delegate for a JEP will be recorded in the
+<a href="#header-delegate">"BDFL-Delegate" header</a> in the JEP.</p>
+</div>
+<div class="paragraph">
+<p>A JEP&#8217;s <a href="#_sponsor">Sponsor</a> may also be the BDFL Delegate for that JEP,
+taking on the responsibilities of both roles.</p>
+</div>
+<div class="paragraph">
+<p>If a Delegate wishes to leave a JEP, they may do so at any time by emailing <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>.
+They can also be removed from a JEP by the BDFL.
+When a BDFL Delegate leaves or is removed from a JEP,
+the BDFL becomes the reviewer again and may ask someone else to be the BDFL Delegate for that JEP.</p>
+</div>
+<div class="paragraph">
+<p>BDFL Delegates have committer/write access on the JEP repository, but should
+only approve and merge pull requests for JEPs to which they are assigned.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reviewer">Reviewer</h4>
+<div class="paragraph">
+<p>The JEP Reviewer is the contributor who will make the final decision whether to accept a JEP.
+In all cases where this document refers to the "Reviewer",
+it means "the BDFL or BDFL Delegate that will review this JEP."</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="requirement-levels">Must/Should/May</h4>
+<div class="paragraph">
+<p>JEP documents <em>must</em> follow <a href="https://tools.ietf.org/html/rfc2119">RFC 2119</a>
+which defines key words to "indicate requirement levels". These are listed
+below:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>MUST</strong> This word, or the terms "REQUIRED" or "SHALL", mean that the
+definition is an absolute requirement of the specification.</p>
+</li>
+<li>
+<p><strong>MUST NOT</strong> This phrase, or the phrase "SHALL NOT", mean that the
+definition is an absolute prohibition of the specification.</p>
+</li>
+<li>
+<p><strong>SHOULD</strong> This word, or the adjective "RECOMMENDED", mean that there
+may exist valid reasons in particular circumstances to ignore a
+particular item, but the full implications must be understood and
+carefully weighed before choosing a different course.</p>
+</li>
+<li>
+<p><strong>SHOULD NOT</strong> This phrase, or the phrase "NOT RECOMMENDED" mean that
+there may exist valid reasons in particular circumstances when the
+particular behavior is acceptable or even useful, but the full
+implications should be understood and the case carefully weighed
+before implementing any behavior described with this label.</p>
+</li>
+<li>
+<p><strong>MAY</strong> This word, or the adjective "OPTIONAL", mean that an item is
+truly optional.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+When choosing to go counter to SHOULD or SHOULD NOT guidance,
+the reasons behind that choice SHOULD be documented.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jep_workflow">JEP Workflow</h3>
+<div class="sect3">
+<h4 id="_overview">Overview</h4>
+<div class="paragraph">
+<p>Before delving into the details of the JEP workflow,
+let&#8217;s take a high-level look at how JEP might go.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong><a href="#start">Initial Discussion</a></strong> - Andrea has an idea for new feature and emails it <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>.
+She discusses the idea with the group, determining that the idea is worth pursuing.
+She chooses to be the "<a href="#_sponsor">Sponsor</a>" for this potential JEP.
+She <a href="#discussion">gathers initial feedback</a> from the community, adjusts her design as needed,
+records the reasons for design choices, and keeps track of differing views.
+Kelly, an expert in the area for this JEP, volunteers to be the <a href="#_bdfl_delegate">BDFL Delegate</a> for this JEP.</p>
+</li>
+<li>
+<p><strong><a href="#submission">Submission</a></strong> - Andrea writes up the proposal using the JEP document template as a guide.
+She includes supporting documentation
+and a minimal prototype implementation sufficient to convey the viability of the design.
+She submits the JEP to the <a href="#editor">JEP editors</a> for
+<a href="#approval">approval as a Draft JEP</a>.
+One of the editors checks the submission and determines it is ready to considered as a JEP.
+They "approve" the submission, assigning the JEP a number,
+and the submission becomes a "<a href="#draft">Draft</a>" JEP.</p>
+</li>
+<li>
+<p><strong><a href="#draft">Draft Status</a></strong> - While the JEP is a "<a href="#draft">Draft</a>", Andrea continues to gather
+feedback, change the proposal, and record the reasoning and differing views.
+At the same time, she and other contributors continue expanding and refining
+the prototype implementation as needed to match the current state of the JEP.
+When Andrea believes the JEP is stable,
+addresses all major design and scope questions,
+and represents the consensus of the community,
+she then asks the <a href="#_reviewer">Reviewer</a>, in this case the <a href="#_bdfl_delegate">BDFL Delegate</a> Kelly,
+to review the JEP for Acceptance.</p>
+</li>
+<li>
+<p><strong><a href="#review">Review</a></strong> - Kelly reviews the JEP
+and any related discussions and implementation.
+Kelly agrees with Andrea that consensus has been reached regarding the JEP
+and that the implementation is far enough along to enusure that
+the design is stable and complete.
+Kelly marks the JEP as an "<a href="#accepted">Accepted</a>" JEP.</p>
+</li>
+<li>
+<p><strong><a href="#accepted">Accepted Status</a></strong> - Andrea and other contributors
+complete all remaining implementation related to the
+"<a href="#accepted">Accepted</a>" JEP (code, documentation, or other changes).</p>
+</li>
+<li>
+<p><strong><a href="#final">Final Status</a></strong> - When the implementation is complete
+and all changes have been published
+or otherwise incorporated into the appropriate code repositories,
+the JEP status is changed to "<a href="#final">Final</a>"
+(or in some cases "<a href="#active">Active</a>").
+The JEP is done.</p>
+</li>
+<li>
+<p><strong><a href="#maintenance">Maintenance</a></strong> - At some later date,
+the JEP may need to be updated with minor changes and clarifications.
+As <a href="#_sponsor">Sponsor</a> of the JEP, Andrea makes changes as needed or hands off sponsorship to someone else.
+Updates follow the same basic JEP workflow.
+For extensive changes or additions,
+Andrea will start a whole new JEP instead of updating the original JEP.
+This new JEP might expand on the orginal or might <a href="#replaced">replace</a> it.</p>
+</li>
+<li>
+<p><strong><a href="#_other_jep_outcomes">Other Outcomes</a></strong> - Not all JEPs will be accepted and finalized.
+Other possible outcomes include "<a href="#rejected">Rejected</a>",
+"<a href="#deferred">Deferred</a>", "<a href="#withdrawn">Withdrawn</a>".</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+The above is only a high-level overview of the JEP workflow.
+The full and complete description of the JEP workflow is provided below.
+Read the full description below before starting a JEP.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="start">Start with an idea for Jenkins</h4>
+<div class="paragraph">
+<p>The JEP process begins with a new idea for Jenkins.
+A single JEP should contain a single key proposal or new idea.
+The more focused the JEP, the more successful it tends to be.
+The JEP editors reserve the right to reject potential JEPs
+if they appear too unfocused or too broad.
+If in doubt, sponsors should split their JEP into several well-focused ones.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Enhancements or patches which have a smaller impact often don’t need a JEP.
+These can be handled via the regular Jenkins development workflow with a JIRA issue and/or pull request to the appropriate repository.</p>
+</div>
+<div class="paragraph">
+<p>A JEP may still have an accompanying JIRA issue as a placeholder.
+This might be useful, for example, if implementation of the JEP is later found to have introduced a bug;
+being able to link the <code>regression</code>-labelled JIRA issue to the placeholder is valuable for tracking purposes.
+In such a case be sure to specify a "<a href="#header-jira">JIRA</a>" section.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_find_a_sponsor">Find a Sponsor</h4>
+<div class="paragraph">
+<p>Each JEP must have a "<a href="#_sponsor">Sponsor</a>"&#8201;&#8212;&#8201;someone who writes the JEP using the style and
+format described below, shepherds the discussions in the appropriate forums,
+and attempts to build community consensus around the idea.
+The JEP Sponsor should first attempt to ascertain whether the idea is JEP-able.
+Posting to the <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a> mailing list is the best way to
+go about this.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="discussion">Discuss the idea with the community</h4>
+<div class="paragraph">
+<p>Vetting an idea publicly before going as far as writing a JEP is meant
+to save the potential sponsor time. Many ideas have been brought
+forward for changing Jenkins that have been rejected for various
+reasons. Asking the Jenkins community first if an idea is original
+helps prevent too much time being spent on something that is
+guaranteed to be rejected based on prior discussions (searching
+the internet does not always do the trick). It also helps to make sure
+the idea is applicable to the entire community and not just the sponsor. Just
+because an idea sounds good to the sponsor does not mean it will work for most
+people in most areas where Jenkins is used.</p>
+</div>
+<div class="paragraph">
+<p>Once the sponsor has asked the Jenkins community whether an idea has any
+chance of acceptance, a "pre-Draft" JEP should be presented to <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>.
+This gives the sponsor a chance to flesh out the JEP to make sure it is
+properly formatted, of high quality, and to address initial concerns about the
+proposal.</p>
+</div>
+<div class="paragraph">
+<p>Even for "pre-Draft" discussion, sponsors may find it convient to follow the
+<a href="#submission">JEP Submission</a> steps below, including creating a PR,
+but state in PR comments that they not yet ready to submit the JEP.
+This allows them to use the PR request tools for discussion and modification right away,
+and sets them up for a smooth submission process.
+In this case, the sponsor only needs to notify <code>@jenkinsci/jep-editors</code> when they are ready to
+submit the JEP for <a href="#approval">approval as Draft</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="submission">Creating a JEP Submission</h4>
+<div class="paragraph">
+<p>Following a discussion on <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>,
+the proposal should be turned into as a JEP submission and submitted
+via a GitHub pull request to this repository <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+All submissions must go through pull request,
+even those by editors or contributors with "git push" privileges
+for the JEP repository <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To submit a JEP for <a href="#approval">approval as Draft</a>, the JEP sponsor should:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fork the JEP repository <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</li>
+<li>
+<p>Clone their forked repository locally.</p>
+</li>
+<li>
+<p>Create a new branch called <code>jep-submission</code> in their clone
+(<code>git checkout -b jep-submission</code>).
+If there is already a JEP being submitted from this fork,
+they may uniquify the branch name; for example, <code>jep-submission-JENKINS-nnnnn</code>.</p>
+</li>
+<li>
+<p>Copy the folder <code>jep-template/0000</code> to <code>jep/0000</code>.</p>
+</li>
+<li>
+<p>Modify the template JEP in <code>jep/0000</code>
+per the instructions in this JEP (which are also outlined in the template).</p>
+</li>
+<li>
+<p>Commit and push the changes to their fork
+and submit a pull request targeting the <code>jenkinsci/master</code> branch.</p>
+</li>
+<li>
+<p>Add the following line to the description of the PR to indicate that the JEP
+is being submitted for approval as draft:
+"Submitted for approval as draft JEP by <code>@jenkinsci/jep-editors</code>."
+If this is a PR that was created earlier to gather feedback,
+the line requesting approval should be added as a comment when the JEP is ready.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The sponsor may alter the steps above or do something else entirely
+as long the result is a PR with a submission in the appropriate format
+with a comment asking for approval as draft.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="approval">Approval as Draft JEP</h4>
+<div class="paragraph">
+<p>A JEP editor will check the submission for conformance with
+JEP structure and formatting guidelines.
+Editors may make minor changes to make the submission meet
+the requirements for approval as a Draft JEP.
+If a JEP requires major changes, editors will add specific feedback
+and send the submission back to the sponsor for revision.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+"Approval as Draft" is <strong>not</strong> the same as <a href="#accepted">accepting the JEP</a>.
+"Approval as Draft" is an initial conformance and viability check.
+When a sponsor submits a JEP for approval, Editors and contributors
+should restrict their feedback to issues which would cause the JEP
+to be denied <a href="#draft">Draft</a> status.
+This keeps the approval process from bogging down in details that are outside
+the scope of evaluating whether a JEP is ready for "Draft" status.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The JEP editors will not unreasonably deny a JEP "Draft" status.
+Reasons for denying JEP "Draft" status include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>duplication of effort</p>
+</li>
+<li>
+<p>being technically unsound</p>
+</li>
+<li>
+<p>not providing enough information in all <a href="#_required_sections">Required Sections</a>
+("Motivation", "Backwards Compatibility", etc)</p>
+</li>
+<li>
+<p>not in keeping with the <a href="https://jenkins.io/project/governance/">Jenkins philosophy</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The <a href="#_reviewer">Reviewer</a> for this JEP may be consulted during the approval phase,
+and is the final arbiter of a submission&#8217;s approvability as a Draft JEP.</p>
+</div>
+<div class="paragraph">
+<p>Once JEP meets requirements for structure and formatting,
+the editors will approve the submission as a draft JEP
+by following the steps outlined in the
+<a href="#approve-as-draft">editors' "Approve as Draft" section</a>.
+When they are done, the Draft JEP will have an official JEP number and
+the submission PR will have been merged to a matching folder
+(for example,
+<code><a href="https://github.com/jenkinsci/jep/tree/master/jep/1">jep/1</a></code>)
+in the <code>master</code> branch.</p>
+</div>
+<div class="paragraph">
+<p>Editors are not the only ones who can approve a submission.
+Non-editor contributors who have "git push" privileges for the
+JEP repository <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> may also approve submissions.
+When doing so, that contributor must handle the tasks
+that would normally be taken care of by the JEP editors
+(see <a href="#editor-responsibilities">JEP Editor Responsibilities &amp; Workflow</a>).
+This includes ensuring the initial version meets the expected standards
+for a Draft JEP.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="draft">Refining a Draft JEP</h4>
+<div class="paragraph">
+<p>The version of a JEP that is approved as a Draft JEP
+is rarely the same as the final version that is reviewed and hopefully accepted.
+A Draft JEP often requires further refinement and expansion
+before it is sufficiently complete and represents the consensus of the community.</p>
+</div>
+<div class="paragraph">
+<p>Standards Track JEPs consist of two parts, a design document
+and a prototype implementation.
+The prototype implementation should be co-developed with the JEP,
+as ideas that sound good in principle sometimes turn out to be impractical
+when subjected to the test of implementation.</p>
+</div>
+<div class="paragraph">
+<p>A JEP&#8217;s sponsor is responsible for collecting community feedback on a JEP
+before submitting it for review.
+Potential changes to a draft JEP may be discussed further on <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>.
+However, long open-ended discussions are not recommended on mailing lists.
+Strategies to keep the discussion efficient include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>setting up a series of in-person, or video-conferencing sessions to
+discuss the JEP with necessary stakeholders.</p>
+</li>
+<li>
+<p>having the JEP sponsor accept private comments in the early design phases</p>
+</li>
+<li>
+<p>setting up a wiki page, etc.</p>
+</li>
+<li>
+<p>committing and reviewing small concrete changes via Pull Requests
+rather than large sweeping changes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>JEP sponsors should use their discretion here.</p>
+</div>
+<div class="paragraph">
+<p>The JEP sponsor may also ask JEP editors for further feedback regarding the
+style and consistency of a JEP and its readiness for review.</p>
+</div>
+<div class="paragraph">
+<p>As updates are necessary, the JEP sponsor and other contributors
+should push commits to their fork of the JEP repository <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>,
+and submit pull requests targeting the <code>master</code> branch.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="review">JEP Review</h4>
+<div class="paragraph">
+<p>Once the sponsor believes a JEP meets at least the minimum criteria to be "<a href="#Accepted">Accepted</a>",
+they request the JEP be reviewed for acceptance, usually via
+an email to the <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a> mailing list.
+The JEP <a href="#_reviewer">Reviewer</a> and their chosen consultants then review the JEP.
+If the Reviewer agrees that JEP is ready, they mark the JEP as "<a href="#Accepted">Accepted</a>".
+If they do not agree, they leave the JEP as a "Draft", awaiting further revision.
+In either case, the reviewer must send a detailed response
+to the <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a> mailing list explaining their decision.</p>
+</div>
+<div class="paragraph">
+<p>JEP review and resolution may also occur on a list other than <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>.
+In this case, the "Discussions-To" header in the JEP will identify the
+appropriate alternative list where discussion, review and pronouncement on the
+JEP will occur.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="accepted">Accepting a JEP</h4>
+<div class="paragraph">
+<p>For a JEP to be "Accepted" it must meet certain minimum criteria.
+It must:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>provide a net improvement.</p>
+</li>
+<li>
+<p>represent the consensus of the community,
+including documentation of dissenting opions.</p>
+</li>
+<li>
+<p>clearly define the scope and features of the proposed enhancement.</p>
+</li>
+<li>
+<p>describe a completed design that addesses any major design questions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For JEPs that include implementation based on the proposal,
+the implementation must meet certain minimum criteria.
+It must:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>be solid and have progressed enough to resolve major design or scope questions.</p>
+</li>
+<li>
+<p>not complicate Jenkins unduly.</p>
+</li>
+<li>
+<p>have the same license as the component the
+proposal is meant to be added to (or MIT licensed by default).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>By marking a JEP as "Accepted" the Reviewer indicates they believe that the JEP has
+clear scope, design completeness, community consensus, and (if applicable) in-progress implementation.
+Without all of these a JEP cannot be accepted.
+For this reason, it is not unusual for JEPs to remain in "Draft" state
+even after they have strong community support and progressing implementation.
+They must still pass the other criteria, such as scoping and design completeness.</p>
+</div>
+<div class="paragraph">
+<p>Once a JEP has been accepted, the implementation must continue to progress
+and eventually be completed.
+The Jenkins project values contribution over "talk"
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>, and as such the
+implementation is of utmost importance to moving any proposal (Standards or
+Process) forward.</p>
+</div>
+<div class="paragraph">
+<p>Ideally, all changes to a JEP should be completed before it is "Accepted",
+but surprises may still occur.  Changes might be minor changes,
+such as clarifications or typo fixes, or major changes,
+which would alter the intent, scope, API, or core behavior of the JEP.</p>
+</div>
+<div class="paragraph">
+<p>All changes to an already "Accepted" JEP, must be submitted via PR as usual.
+In the case of major changes,
+the Sponsor should also communicate those changes on the mailing list
+and take sufficient time to ensure there is consensus on the changes before merging them.
+A link to any discussion should be added to the PR for the change
+and to the <a href="#_required_sections">References</a> section.
+If there are significant objections or questions around proposed changes,
+the JEP Sponsor or Reviewer may choose to return the JEP to a "Draft" status
+for more extensive discussion and eventual <a href="#review">review again for acceptance</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="final">Finalizing a JEP</h4>
+<div class="paragraph">
+<p>When the implementation is complete and incorporated into the
+appropriate "main" code repository, the JEP sponsor will change
+the JEP&#8217;s status changed to "Final".</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Active</dt>
+<dd>
+<p><a id="active"></a>
+Some Informational and Process JEPs may have a status of "Active" instead of "Final"
+These JEPs are ongoing and never meant to be completed per se. E.g. JEP 1 (this JEP).</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="maintenance">JEP Maintenance</h4>
+<div class="paragraph">
+<p>Even after a JEP reaches "Final" status, it may need to be updated.</p>
+</div>
+<div class="paragraph">
+<p>In general, Standards track JEPs are not modified after they have
+reached the Final state. Once a Standards JEP has been completed, Jenkins developer
+documentation must become the formal documentation of the expected behavior.</p>
+</div>
+<div class="paragraph">
+<p>Informational and Process JEPs may be updated over time to reflect changes
+to development practices and other details. The precise process followed in
+these cases will depend on the nature and purpose of the JEP being updated.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Replaced</dt>
+<dd>
+<p><a id="replaced"></a>
+Final JEPs may eventually also be "Replaced" - superseded by a different JEP -
+rendering the original obsolete.
+This is intended for Informational JEPs, where version 2 of an API can replace version 1.
+When a JEP is marked as replaced, the <a href="#header-superseded-by">Superseded-by</a> header
+must be filled in with a link to the new JEP.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_other_jep_outcomes">Other JEP Outcomes</h4>
+<div class="paragraph">
+<p>Not all JEPs will be accepted and finalized.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Rejected</dt>
+<dd>
+<p><a id="rejected"></a>
+A JEP <a href="#_reviewer">Reviewer</a> may choose to reject a JEP.
+Perhaps after all is said and done it was not a good idea
+or perhaps a competing proposal is a better alternative.
+It is still important to have a record of this fact.</p>
+<div class="paragraph">
+<p>Rejecting a JEP is a very strong statement.
+If the reviewer believes the JEP might eventually be accepted with sufficient modification,
+the reviewer will not reject the JEP.
+If a reviewer is confident JEP will never be accepted,
+they should inform the JEP sponsor as soon as possible to prevent wasted effort.
+On the other hand, even an <a href="#accepted">Accepted</a> JEP may ultimately be rejected
+at some point before it reaches "<a href="#final">Final</a>" status,
+due to factors not known at the time it was Accepted.</p>
+</div>
+<div class="paragraph">
+<p>Upon the request of the sponsor, the reviewer may choose to return a
+Rejected JEP to Draft status, but this is at the discretion of the reviewer.</p>
+</div>
+</dd>
+<dt class="hdlist1">Withdrawn</dt>
+<dd>
+<p><a id="withdrawn"></a>
+A JEP <a href="#_sponsor">Sponsor</a> may choose to withdraw a JEP.
+Similar to "Rejected", "Withdrawn" means that the JEP sponsor
+themselves has decided that the JEP is actually a bad idea,
+or agrees that a competing proposal is a better alternative.</p>
+</dd>
+<dt class="hdlist1">Deferred</dt>
+<dd>
+<p><a id="deferred"></a>
+A JEP can also be assigned a status of "Deferred". The JEP sponsor or an
+editor can assign the JEP this status when no progress is being made
+on the JEP. Once a JEP is deferred, a JEP editor can re-assign it
+to draft status.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_updating_jep_status_and_resolution">Updating JEP Status and Resolution</h4>
+<div class="paragraph">
+<p>Whenever a JEP status changes, the "Status" field in the JEP document must be updated.</p>
+</div>
+<div class="paragraph">
+<p>The possible paths of a JEP&#8217;s status are as follows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="workflow.png" alt="JEP Workflow">
+</div>
+<div class="title">Figure 1. JEP Workflow</div>
+</div>
+<div class="paragraph">
+<p>When a JEP is Accepted, Rejected or Withdrawn,
+a "<a href="#header-resolution">Resolution</a>" section must be added to the JEP Header
+with a link to the relevant post in the <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a> mailing list archives.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_scheduling_and_timeframes">Scheduling and timeframes</h4>
+<div class="paragraph">
+<p>This workflow does not dictate specific time frames for any actions.
+In general, it is expected that a JEP should make reasonable progress over time,
+and all involved should respond in everyone can agree is timely manner.
+If it becomes necessary to set specific timeframes for action,
+it is the sponsors responsibility to do so.
+Just as the sponsor must build consensus for a JEP,
+they must also set and communicate a reasonable schedule to keep a JEP moving forward.
+If one or more contributors are not responding
+and the sponsor chooses to move forward without their feedback,
+they should document that choice in the "<a href="#_reasoning">Reasoning</a>" section of the JEP.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_resolving_disputes">Resolving Disputes</h4>
+<div class="paragraph">
+<p>Except for decisions by a JEP&#8217;s <a href="#_reviewer">Reviewer</a>,
+the JEP process is run by
+<a href="https://en.wikipedia.org/wiki/Consensus_decision-making">consensus</a>.
+It is the responsibility of every contributor to respect other contributors,
+listen to their perspectives, and attempt to find solutions that work for everyone.</p>
+</div>
+<div class="paragraph">
+<p>If consensus cannot be achieved on a JEP,
+contributors may request that the <a href="#reviewer">JEP Reviewer</a> intervene.
+The reviewer will consider the matter, and render their decision,
+including describing what actions will be taken and documenting their reasoning.</p>
+</div>
+<div class="paragraph">
+<p>For disputes involving a decision by a <a href="#_bdfl_delegate">BDFL Delegate</a>
+or the overall JEP process (rather than one specific JEP),
+contributors may request that the <a href="#_bdfl">BDFL</a> intervene.
+The BDFL will consider the matter and render their decision,
+including describing what actions will be taken and documenting their reasoning.
+The BDFL&#8217;s decision may include technical direction and other specific instructions as needed.</p>
+</div>
+<div class="paragraph">
+<p>If contributors believe a decision made by the BDFL runs counter to the best interests to Jenkins project,
+they may request the Governance meeting review the BDFL&#8217;s decision.
+The Governance meeting will take up the matter and render a decision within a reasonable timeframe.
+Similar to the judiciary, the Governance meeting will <em>not</em> make technical decisions,
+they will only affirm or reject the BDFL&#8217;s decision.
+If they affirm, the matter is closed.
+If they reject, the BDFL will render a new decision taking into account the Governance Meeting&#8217;s input.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_jep_guidelines">JEP Guidelines</h3>
+<div class="sect3">
+<h4 id="_required_sections">Required Sections</h4>
+<div class="paragraph">
+<p>All JEPs MUST have the following parts to be "approved as Draft":</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Metadata</strong> - table containing the <a href="#metadata">JEP Header Preamble</a> about the JEP,
+including the JEP number, a short descriptive title, the names,
+and optionally the contact info for each sponsor, etc.</p>
+</li>
+<li>
+<p><strong>Abstract</strong> - short (200 word) description of the technical issue
+being addressed.</p>
+</li>
+<li>
+<p><strong>Specification</strong> - The technical specification should describe the
+syntax and semantics of any new feature. The specification should be
+sufficiently detailed to allow new or existing Jenkins developers to
+reasonably understand the scope/impact of an implementation.</p>
+</li>
+<li>
+<p><strong>Motivation</strong> - A clear description of the motivation is critical for any JEP
+that wants to change Jenkins or the Jenkins project.
+The motivation section should clearly explain why the existing
+code base or process is inadequate to address the problem that the JEP solves.
+A JEP submission without sufficient discussion of its motivation
+will not be approved as a JEP Draft.</p>
+</li>
+<li>
+<p><strong>Reasoning</strong> - The reasoning describes why particular design decisions were made.
+It should describe alternate designs that were considered and related work,
+e.g. how the feature is supported in other systems.</p>
+<div class="paragraph">
+<p>The reasoning section provides evidence of consensus within the
+community and describes important objections or concerns raised
+during discussion.</p>
+</div>
+</li>
+<li>
+<p><strong>Backwards Compatibility</strong> - All JEPs must include a section describing
+any incompatibilities and their severity.
+The JEP must explain how it proposes to deal with these incompatibilities.
+If there are no backwards compatibility concerns, the section must say that.</p>
+</li>
+<li>
+<p><strong>Security</strong> - All JEPs must include a section describing their security impact.
+This includes outlining what was done to identify and evaluate security issues,
+discussion of potential security issues and how they are mitigated or prevented,
+and how the JEP interacts with existing permissions, authentication, authorization, etc.
+If the JEP has no impact on security, the section must say that.</p>
+</li>
+<li>
+<p><strong>Infrastructure Requirements</strong> -
+All JEPs must include a section describing their impact on
+Jenkins project infrastructure,
+including additions or changes, interactions with exiting components,
+potential instabilities, service-level agreements,
+and assigning responsibility for continuing maintenance.
+Each JEP must explain the scope of infrastructure changes with sufficient detail
+to allow initial and on-going cost (in both time and money) to be estimated.
+If the JEP has no impact on infrastructure, the section must say that.</p>
+</li>
+<li>
+<p><strong>Testing</strong> -
+All JEPs which include code changes must include a section summarizing how the
+changes will be tested. The JEP itself need not include a complete test
+plan—this could be developed concurrently with the rest of the
+implementation—but it should set out expectations for testability. If the JEP
+has no testing needs, the section must say that.</p>
+</li>
+<li>
+<p><strong>Prototype Implementation</strong>&#8201;&#8212;&#8201;If a JEP will include code changes,
+this section will provide links to a an open source prototype implementation of those changes.
+The prototype implementation must be present for a JEP to be approved as <a href="#draft">Refining a Draft JEP</a>.
+The prototype implementation must be sufficient to convey the viability of the design
+for a JEP to be <a href="#accepted">Accepting a JEP</a>.
+While there is merit to the approach of reaching consensus on the
+specification and reasoning before writing code,
+the principle of "rough consensus and running code" is still useful
+when it comes to resolving many discussions of API details.
+JEPs which will not include code changes may omit this section.</p>
+</li>
+<li>
+<p><strong>References</strong>&#8201;&#8212;&#8201;When moving a JEP from a Draft to "Accepted" or "Final" state,
+the references section must be updated to include links to the pull requests
+and mailing list discussions which were involved in the process. The JEP
+should self-document the process in which it was developed.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+JEP submissions that do not adequately complete any of the above sections
+will not be approved as JEP Drafts.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The final implementation must include test code and documentation
+appropriate for either the Jenkins user or developer documentation.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jep_file_format">JEP File Format</h4>
+<div class="paragraph">
+<p>JEPs are UTF-8 encoded text files using the
+<a href="https://asciidoctor.org">AsciiDoc</a> format.
+AsciiDoc allows for rich markup that is still quite easy to read,
+but also results in good-looking and functional HTML.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="metadata">JEP Header Preamble</h4>
+<div class="sect4">
+<h5 id="_required_metadata">Required Metadata</h5>
+<div class="paragraph">
+<p>All JEPs MUST begin with an AsciiDoc table containing metadata relevant to the
+JEP:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">.Metadata
+[cols="2"]
+|===
+| JEP
+| 1
+
+| Title
+| Jenkins Enhancement Proposal Format
+
+| Sponsor
+| link:https://github.com/rtyler[R Tyler Croy]
+
+| Status
+| Draft :speech_balloon:
+
+| Type
+| Process
+
+| Created
+| 2017-09-12
+|===</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>JEP</strong>&#8201;&#8212;&#8201;Proposal number, given by the JEP editors. Use "0000" until one is assigned.</p>
+</li>
+<li>
+<p><strong>Title</strong>&#8201;&#8212;&#8201;Brief title explaining the proposal in fewer than 50 characters</p>
+</li>
+<li>
+<p><strong>Sponsor</strong>&#8201;&#8212;&#8201;<a href="#_sponsor">Sponsor</a> of the JEP, in essence, the individual
+responsible for seeing the JEP through the process.</p>
+</li>
+<li>
+<p><strong>Status</strong>&#8201;&#8212;&#8201;Draft :speech_balloon:, Deferred :hourglass:, Accepted :ok_hand:,
+Rejected :no_entry:, Withdrawn :hand:, Final :lock:, Replaced :dagger:, Active :smile:.</p>
+</li>
+<li>
+<p><strong>Type</strong>&#8201;&#8212;&#8201;Describes the type of JEP: Standards, Informational, Process</p>
+</li>
+<li>
+<p><strong>Created</strong>&#8201;&#8212;&#8201;Date (<code>%Y-%m-%d</code>) when the document was first created.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_additional_header_rows">Additional Header Rows</h5>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">JIRA</dt>
+<dd>
+<p><a id="header-jira"></a>
+A <strong>JIRA</strong> row is available to specify a linked placeholder JIRA issue, if any.</p>
+</dd>
+<dt class="hdlist1">BDFL-Delegate</dt>
+<dd>
+<p><a id="header-delegate"></a>
+A <strong><a href="#BDFL-Delegate">[BDFL-Delegate]</a></strong> row records who will make the final decision to approve or reject a JEP.
+If this row is not included, the BDFL will make the decision.</p>
+</dd>
+<dt class="hdlist1">Discussions-To</dt>
+<dd>
+<p><a id="header-discussions-to"></a>
+For a JEP where final pronouncement will be made on a list other than
+<a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>, a <strong>Discussions-To</strong> row will indicate the mailing list
+or URL where the pronouncement will occur. A temporary Discussions-To header
+may also be used when a draft JEP is being discussed prior to submission for
+pronouncement.</p>
+</dd>
+<dt class="hdlist1">Requires</dt>
+<dd>
+<p><a id="header-requires"></a>
+JEPs may have a <strong>Requires</strong> row, indicating the JEP numbers that this
+JEP depends on.</p>
+</dd>
+<dt class="hdlist1">Superseded-By</dt>
+<dd>
+<p><a id="header-superseded-by"></a>
+JEPs may also have a <strong>Superseded-By</strong> row indicating that a JEP has been
+rendered obsolete by a later document; the value is the number of the JEP that
+replaces the current document. The newer JEP must have a <strong>Replaces</strong> row
+containing the number of the JEP that it rendered obsolete.</p>
+</dd>
+<dt class="hdlist1">Resolution</dt>
+<dd>
+<p><a id="header-resolution"></a>
+A <strong>Resolution</strong> section will be added to JEPs when their status is set to
+Accepted, Rejected or Withdrawn.
+It will include a link to the relevant post in the
+<a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a> mailing list archives.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_auxiliary_files">Auxiliary Files</h4>
+<div class="paragraph">
+<p>JEPs may include auxiliary files such as diagrams. Such files must be
+named appropriately, with lowercase letters and no spaces, and be included in
+the directory with the <code>README.adoc</code> describing the JEP.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reporting_jep_bugs_or_submitting_jep_updates">Reporting JEP Bugs, or Submitting JEP Updates</h3>
+<div class="paragraph">
+<p>The process for reporting a bug or submitting a JEP update depends on several factors,
+such as the maturity of the JEP, the preferences of the JEP sponsor, and the nature
+of the comments. For the early draft stages of the JEP, it&#8217;s probably best to
+send  comments and changes directly to the JEP sponsor. For more mature, or
+finished JEPs consider submitting corrections to the JEP repository
+<sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> or the Jenkins issue tracker
+<sup class="footnote" id="_footnote_issues">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>.  If the JEP sponsor is a
+Jenkins developer, assign the bug/patch to them, otherwise assign it to a JEP
+editor.</p>
+</div>
+<div class="paragraph">
+<p>When in doubt about where to send changes, please check first
+with the JEP sponsor and/or a JEP editor.</p>
+</div>
+<div class="paragraph">
+<p>Even JEP sponsors with git push privileges for the JEP repository should submit
+via Pull Request, with the exception of status or resolution updates
+which may be pushed directly given the change was already discussed
+and agreed to elsewhere.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transferring">Transferring JEP Sponsorship</h3>
+<div class="paragraph">
+<p>It occasionally becomes necessary to transfer sponsorship of JEPs to a
+new sponsor. In general, it is preferable to retain the original sponsor as
+a co-sponsor of the transferred JEP, but that&#8217;s really up to the
+original sponsor. A good reason to transfer sponsorship is because the
+original sponsor no longer has the time or interest in updating it or
+following through with the JEP process, or has fallen off the face of
+the 'net (i.e. is unreachable or not responding to email). A bad
+reason to transfer sponsorship is because the sponsor doesn&#8217;t agree with the
+direction of the JEP. One aim of the JEP process is to try to build
+consensus around a JEP, but if that&#8217;s not possible, a sponsor can always
+submit a competing JEP.</p>
+</div>
+<div class="paragraph">
+<p>Ownership of a JEP may also be assumed via pull request.
+Fork the JEP repository, <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> make the sponsorship
+modification, and submit a pull request. At the same time, send a message asking
+to take over, addressed to both the original sponsor and the JEP editors via
+<a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a>.  If the original sponsor doesn&#8217;t respond to email in a timely
+manner, the JEP editors will make a unilateral decision (it&#8217;s not like such
+decisions can&#8217;t be reversed :).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editor-responsibilities">JEP Editor Responsibilities &amp; Workflow</h3>
+<div class="paragraph">
+<p>A JEP editor must subscribe to the <a href="mailto:jenkinsci-dev@googlegroups.com">jenkinsci-dev@googlegroups.com</a> list and must
+watch the JEP repository <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>. Most correspondence regarding JEP
+administration can be handled through GitHub issues and pull requests.</p>
+</div>
+<div class="paragraph">
+<p>Aside from the editorial cases outlined below, editors should submit all changes
+as GitHub pull requests (the same as any other contributor).</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+JEP editors don&#8217;t pass judgment on JEPs. They merely do the
+administrative &amp; editorial part (which is generally a low volume task).
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_conformance_check">Conformance check</h4>
+<div class="paragraph">
+<p>For each new JEP submission, an editor will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read the JEP to check if it is ready, sound, and complete. The ideas
+must make technical sense, even if they don&#8217;t seem likely to be
+accepted.</p>
+</li>
+<li>
+<p>The title should accurately describe the content.</p>
+</li>
+<li>
+<p>Edit the JEP for minor non-controversial language
+(spelling, grammar, sentence structure, etc.), markup, code style changes.
+For significant or time consuming changes,
+the editor may choose to provide feedback instead.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_request_changes">Request Changes</h4>
+<div class="paragraph">
+<p>If the JEP isn&#8217;t ready, an editor will send it back to the sponsor for
+revision with specific instructions.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_approve_as_draft">Approve as Draft</h4>
+<div class="paragraph">
+<p>Once the JEP is ready for the repository, a JEP editor will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Assign a JEP number (almost always just the next available number, but
+may also be a special/joke number, like 666 or 3141).</p>
+</li>
+<li>
+<p>Update the folder number to match the JEP number</p>
+</li>
+<li>
+<p>Update the JEP number in the document.</p>
+</li>
+<li>
+<p>Update the JEP status using the <code>./set-jep-status &lt;JEP number&gt; draft</code> command (script is located in the root)</p>
+</li>
+<li>
+<p>Commit all changes and push them to the branch in the PR</p>
+</li>
+<li>
+<p>"Squash and merge" the PR into the <code>master</code> branch.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_permission_group_membership">Permission group membership</h4>
+<div class="paragraph">
+<p>Editors add and remove Sponsors and BDFL Delegates
+from the appropriate permission groups on the JEP repository.
+When a JEP includes a new Sponsor or BDFL Delegate an editor will add that
+person to the "JEP Sponsors" or "JEP BDFL Delegates" GitHub group respectively.
+When someone is no longer an active Sponsor or BDFL Delegate,
+a JEP editor will remove them from the permission group.
+Editors will clean up the the permission groups from time to time
+as they see the need or are asked to do so.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins has classically been driven by "you-had-to-be-there" development. With
+specific changes largely being driven by smaller independent groups of
+developers (sometimes just one).</p>
+</div>
+<div class="paragraph">
+<p>Design documents extending back into the history of Jenkins are few and far
+between, as the project grew organically over time. As such, a contributor,
+existing or future, must read mountains of code, pull requests, mailing list
+discussions, etc, in order to fully understand how/what/why for many major
+subsystems within Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, Jenkins has no formal approach to discussing and reviewing larger
+changes as evidenced by many of the Jenkins 2.0 mailing list threads
+<sup class="footnote">[<a id="_footnoteref_4" class="footnote" href="#_footnote_4" title="View footnote.">4</a>]</sup>,
+which ballooned into threads with 100+ replies and sufficient chaos to be very
+difficult for those who weren&#8217;t full-time Jenkins developers to understand.</p>
+</div>
+<div class="paragraph">
+<p>The Jenkins Enhancement Proposal aims to address both of these major issues by
+providing an understood process for making sizable, but understandable,
+enhancements to Jenkins.</p>
+</div>
+<div class="sect2">
+<h3 id="_benefits_to_existing_developers">Benefits to existing developers</h3>
+<div class="paragraph">
+<p>JEP provides a systematic approach for vetting and developing new proposals and
+ideas for Jenkins. By encouraging "everybody to follow the rules" it will be
+easier for existing developers to get their ideas and changes into Jenkins
+without finding themselves mired in unspoken cultural norms within the project.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_benefits_to_future_developers">Benefits to future developers</h3>
+<div class="paragraph">
+<p>By providing clear, understandable, and bite-sized design documents which would
+explain various subsections of Jenkins. JEPs also make it clearer how an
+ambitious new developer to the Jenkins project can propose, and make progress
+upon, a new idea they have for Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Overall, less chaos and more productivity is the rationale for JEP.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_based_on_python_pep">Based on Python PEP</h3>
+<div class="paragraph">
+<p>The Python community, whose process JEP is modeled after, have successfully
+navigated several large-scale reworkings of Python and its related tools and
+processes over the past decade. This includes most notably the multi-year
+project of Python 3 (formerly Python 3000).</p>
+</div>
+<div class="paragraph">
+<p>Their Python Enhancement Proposals are largely consensus driven, which is
+<em>mostly</em> how work is done presently in the Jenkins project,
+<sup class="footnote">[<a id="_footnoteref_5" class="footnote" href="#_footnote_5" title="View footnote.">5</a>]</sup>
+<sup class="footnote">[<a id="_footnoteref_6" class="footnote" href="#_footnote_6" title="View footnote.">6</a>]</sup>
+<sup class="footnote">[<a id="_footnoteref_7" class="footnote" href="#_footnote_7" title="View footnote.">7</a>]</sup>
+ making the PEP model relatively straightforward to graft onto our existing
+ processes for making proposals and deciding upon changes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_differences_from_python_pep">Differences from Python PEP</h3>
+<div class="paragraph">
+<p>The process by which a number of <a href="https://apache.org">Apache</a> projects are
+operated was also considered, but the Python Enhancement Proposal process was
+by far the most well-documented and obviously successful approach considered to
+project improvement (technical and otherwise) over time.</p>
+</div>
+<div class="paragraph">
+<p>The Python process uses "Rationale" as the heading for the section for describing design decisions.
+However the meaning of "Rationale" is similar to "Motivation" in some contexts.
+We decided to use "Reasoning" instead to avoid confusion.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requirements_level_terms">Requirements-level terms</h3>
+<div class="paragraph">
+<p>Some non-native english speakers commented on the
+<a href="#requirement-levels">Must/Should/May</a> mentioned that "should" is a synonym of "must",
+but that existing RFC was a good justification for keeping the terms.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_limits_of_bdfl_model">Limits of BDFL model</h3>
+<div class="paragraph">
+<p>People expressed concern over the limits of the current model where the BDFL
+has final say in a number of steps.
+They felt having 1-person bottlenecks in the JEP process could be problematic.
+The BDFL delegating to others addresses some of that,
+but it is still worth noting possible alternatives.</p>
+</div>
+<div class="paragraph">
+<p>One alternative would be for the Jenkins project Governance meeting to have final say.
+Another alternative would be to create some sort of "Technical Steering Committee",
+separate from Governance, to do this job.</p>
+</div>
+<div class="paragraph">
+<p>Issues mentioned in relation to these alternatives:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Voting policy</strong> - a voting policy would need to be established,
+outlining what percentage of the meeting would need to vote for or against a JEP.</p>
+</li>
+<li>
+<p><strong>Committee vs Delegation</strong> - a strictly committee-approval approach
+may not result in good decisions being made in a timely manner. For example,
+only a few people are qualified to make decisions on Remoting.
+It would be difficult for a group of people in <code>#jenkins-meeting</code> to vote
+sensibly on a JEP relating to Remoting which most of them don&#8217;t fully understand.
+Delegation to experts and stakeholders is much more likely to produce high quality improvements.</p>
+</li>
+<li>
+<p><strong>Lack of established process</strong> - structured technical decision making
+in the Jenkins project (as outlined in this JEP) is still in its early stages.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The BDFL model with Delegation as needed may not be sufficient in the long run,
+but it will suffice for now.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_timeliness">Timeliness</h3>
+<div class="paragraph">
+<p>Along with concerns about a bottleneck in reviews,
+some wanted to add specific language to set expectations timeliness
+(also sometimes referred to a
+"<a href="https://en.wikipedia.org/wiki/Service-level_agreement">service-level agreements</a>", or SLAs).
+The "<a href="#Deferred">[Deferred]</a>" status addresses what happens if
+a sponsor does not move a JEP forward in a timely manner,
+but there are no contingencies for slow response from
+contributors, editors, BDFL, or BDFL delegates.</p>
+</div>
+<div class="paragraph">
+<p>There are any number of ways to set expectations about timeliness.
+For example, regarding the review process, one person mentioned put forward,
+<a href="https://github.com/jenkinsci/jep/pull/1#discussion-diff-139636422R362">this possible outline</a>.</p>
+</div>
+<div class="paragraph">
+<p>For now, we have chosen to add a "<a href="#_scheduling_and_timeframes">Scheduling and timeframes</a>" section
+and not to set specific timeframes for action or response.
+Attempting to set exact limits on a volunteer organization could lead to more
+difficulties than leaving the timing up to the contributors to each JEP.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requiring_same_license">Requiring same license</h3>
+<div class="paragraph">
+<p>Some contributors were concerned that changes to a component
+"must be the same license as the component the proposal is
+meant to added to (or MIT licensed by default)."
+The mentioned that  some companies strictly require "Apache v.2",
+because MIT is not explicit about the patent release.
+By setting this condition we explicitly require contributors
+to create at least a prototype implementation with the MIT license,
+which their employer may not allow.</p>
+</div>
+<div class="paragraph">
+<p>We could allow other licenses, or mixed licenses.
+However, most JEPs will refer to core or many of the "essential" plugins.
+All of those are MIT licensed, such that anybody contributing
+to those repositories is already expected to contribute
+under the existing (MIT) license.</p>
+</div>
+<div class="paragraph">
+<p>We chose to keep this text as-is until we have a concrete reason to change it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asciidoc_style_and_linter">Asciidoc style and linter</h3>
+<div class="paragraph">
+<p>There are a number of possible asciidoc style guidelines.
+For example, there are a number of reasons to use
+<a href="http://asciidoctor.org/docs/asciidoc-recommended-practices/#one-sentence-per-line">one sentence per line</a>,
+one phrase per line, or other specific formatting.
+However, choosing which guideline to require, recommend, or even make optional,
+is a potentially long and difficult process.
+Instead of bogging down this JEP in that process,
+we decided to consider asciidoc style and formatting guidelines in a later JEP.</p>
+</div>
+<div class="paragraph">
+<p>There are currently no Asciidoc linters.
+Should one be found, we will evaluate it for automated checking of
+<a href="#_jep_file_format">JEP File Format</a> for syntax or structural errors
+(or for style guidelines once they are established).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no backwards compatibility concerns related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.
+This JEP leverages existing infrastructure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_related_processes">Related Processes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.python.org/dev/peps/">Python Enhancement Proposals</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkins-infra/iep">Infrastructure Enhancement Proposal</a></p>
+</li>
+<li>
+<p><a href="http://www.ietf.org/rfc.html">IETF RFC</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_discussion_threads">Discussion threads</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/spDAr8EJm3c/T9Nmhn-fAQAJ">Request for feedback: Jenkins Enhancement Proposal</a></p>
+</li>
+<li>
+<p><a href="https://groups.google.com/d/topic/jenkinsci-dev/tw0ETwvboAM/discussion">Modification of "Accepted" JEPs</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pull_requests">Pull Requests</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/pull/1">PR 1</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/pull/12">PR 12</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/pull/19">PR 19</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/pull/76">PR 76</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://github.com/jenkinsci/jep" class="bare">https://github.com/jenkinsci/jep</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://jenkins.io/project/governance/#meritocracy" class="bare">https://jenkins.io/project/governance/#meritocracy</a>
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. https://issues.jenkins-ci.org
+</div>
+<div class="footnote" id="_footnote_4">
+<a href="#_footnoteref_4">4</a>. <a href="https://groups.google.com/d/msg/jenkinsci-dev/vbXK7JJekFw/BlEvO0UxBgAJ" class="bare">https://groups.google.com/d/msg/jenkinsci-dev/vbXK7JJekFw/BlEvO0UxBgAJ</a>
+</div>
+<div class="footnote" id="_footnote_5">
+<a href="#_footnoteref_5">5</a>. <a href="https://groups.google.com/d/msgid/jenkinsci-dev/824CAC89-7A49-478A-9904-5C77D8FF5A80%40beckweb.net" class="bare">https://groups.google.com/d/msgid/jenkinsci-dev/824CAC89-7A49-478A-9904-5C77D8FF5A80%40beckweb.net</a>
+</div>
+<div class="footnote" id="_footnote_6">
+<a href="#_footnoteref_6">6</a>. <a href="https://groups.google.com/d/msgid/jenkinsci-dev/CAPbPdObKcXxZ2rgGdx6Z2HVKwH9mE_gkVbB1GOeCEhmZ7JkfwQ%40mail.gmail.com" class="bare">https://groups.google.com/d/msgid/jenkinsci-dev/CAPbPdObKcXxZ2rgGdx6Z2HVKwH9mE_gkVbB1GOeCEhmZ7JkfwQ%40mail.gmail.com</a>
+</div>
+<div class="footnote" id="_footnote_7">
+<a href="#_footnoteref_7">7</a>. <a href="https://groups.google.com/d/msgid/jenkinsci-dev/CA%2BnPnMz-m49TK7Em%2BxBNb%2BV98dBCz9CrrPXg3uW6%2B_x3KX5gOQ%40mail.gmail.com" class="bare">https://groups.google.com/d/msgid/jenkinsci-dev/CA%2BnPnMz-m49TK7Em%2BxBNb%2BV98dBCz9CrrPXg3uW6%2B_x3KX5gOQ%40mail.gmail.com</a>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

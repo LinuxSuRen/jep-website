@@ -1,0 +1,17 @@
+= Hello, AsciiDoc!
+Doc Writer <doc@example.com>
+
+An introduction to http://asciidoc.org[AsciiDoc].
+
+== First Section
+
+* item 1
+* item 2
+
+[source,ruby]
+puts "Hello, World!"
+title: "Readme"
+date: 2018-09-22T21:44:23+08:00
+draft: true
+---
+

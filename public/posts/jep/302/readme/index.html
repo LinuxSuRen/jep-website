@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 302
+   Title
+ Evergreen snapshotting data safety system
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-21
+   JIRA
+ JENKINS-49406
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301, JEP-306
+     Table of Contents Abstract Specification Upgrading and downgrading Take a snapshot   Checking Jenkins health   Motivation Reasoning Scope of the data snapshotting Why Git Why not use compatibleSinceVersion metadata   Backwards Compatibility Security Secrets Man In The Middle   Infrastructure Requirements Testing Upgrading/downgrading Leveraging Telemetry and live instances data   Prototype Implementation References    Abstract Jenkins Evergreen, and more specifically its Evergreen component, aims at providing an automatically updating distribution of Jenkins." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/302/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 302
+   Title
+ Evergreen snapshotting data safety system
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-21
+   JIRA
+ JENKINS-49406
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301, JEP-306
+     Table of Contents Abstract Specification Upgrading and downgrading Take a snapshot   Checking Jenkins health   Motivation Reasoning Scope of the data snapshotting Why Git Why not use compatibleSinceVersion metadata   Backwards Compatibility Security Secrets Man In The Middle   Infrastructure Requirements Testing Upgrading/downgrading Leveraging Telemetry and live instances data   Prototype Implementation References    Abstract Jenkins Evergreen, and more specifically its Evergreen component, aims at providing an automatically updating distribution of Jenkins.">
+
+
+
+<meta itemprop="wordCount" content="1889">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 302
+   Title
+ Evergreen snapshotting data safety system
+   Sponsor
+ Baptiste Mathus
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-03-21
+   JIRA
+ JENKINS-49406
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-301, JEP-306
+     Table of Contents Abstract Specification Upgrading and downgrading Take a snapshot   Checking Jenkins health   Motivation Reasoning Scope of the data snapshotting Why Git Why not use compatibleSinceVersion metadata   Backwards Compatibility Security Secrets Man In The Middle   Infrastructure Requirements Testing Upgrading/downgrading Leveraging Telemetry and live instances data   Prototype Implementation References    Abstract Jenkins Evergreen, and more specifically its Evergreen component, aims at providing an automatically updating distribution of Jenkins."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">302</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evergreen snapshotting data safety system</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/batmat">Baptiste Mathus</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-03-21</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/JENKINS-49406">JENKINS-49406</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300</a>,
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/301">JEP-301</a>,
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/306">JEP-306</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_upgrading_and_downgrading">Upgrading and downgrading</a>
+<ul class="sectlevel3">
+<li><a href="#snapshot">Take a snapshot</a></li>
+</ul>
+</li>
+<li><a href="#healthcheck">Checking Jenkins health</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_scope_of_the_data_snapshotting">Scope of the data snapshotting</a></li>
+<li><a href="#_why_git">Why Git</a></li>
+<li><a href="#_why_not_use_compatiblesinceversion_metadata">Why not use compatibleSinceVersion metadata</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a>
+<ul class="sectlevel2">
+<li><a href="#_secrets">Secrets</a></li>
+<li><a href="#_man_in_the_middle">Man In The Middle</a></li>
+</ul>
+</li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a>
+<ul class="sectlevel2">
+<li><a href="#_upgrading_downgrading">Upgrading/downgrading</a></li>
+<li><a href="#_leveraging_telemetry_and_live_instances_data">Leveraging Telemetry and live instances data</a></li>
+</ul>
+</li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/jenkinsci/jep/tree/master/jep/300:">Jenkins Evergreen</a>, and more specifically its <a href="https://github.com/jenkinsci/jep/tree/master/jep/301:">Evergreen</a> <em>component</em>, aims at providing an <a href="https://github.com/jenkinsci/jep/tree/master/jep/300#auto-update">automatically updating distribution</a> of Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Continuous Delivery is about making small incremental changes, making failures much more easily recoverable.
+In the context here, it means Jenkins Evergreen must be able to seamlessly upgrade Jenkins, <em>but also</em> roll back to the previously running version if an upgrade goes wrong.
+As Jenkins does not support downgrading alone, this document introduces the snapshotting system which enables that auto-downgrade capability.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>Evergreen</em> works with two main components: Jenkins itself, and the <em>evergreen-client</em>.</p>
+</div>
+<div class="sect2">
+<h3 id="_upgrading_and_downgrading">Upgrading and downgrading</h3>
+<div class="paragraph">
+<p>Once an <em>evergreen client</em> has been instructed to perform an upgrade, it is responsible for the following operations:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>(If needed) Initialize the git repository.</p>
+</li>
+<li>
+<p>Stop Jenkins</p>
+</li>
+<li>
+<p>Take a snapshot (see <a href="#snapshot">Take a snapshot</a> below)</p>
+</li>
+<li>
+<p>Perform the instructed upgrade to the given Evergreen BOM <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
+</li>
+<li>
+<p>Start new Jenkins version and check Jenkins state (see below <a href="#healthcheck">Checking Jenkins health</a>).</p>
+</li>
+<li>
+<p>If a rollback is decided:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Take a snapshot <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>.</p>
+</li>
+<li>
+<p>Roll back to the previous data snapshot and Evergreen BOM version.
+Doing so, we will create an actual new commit using <code>revert</code> (i.e. avoid <code>git reset --hard HEAD~</code>), to keep a durable track of where we went through, accessible through <code>git log</code>.</p>
+</li>
+<li>
+<p>Start (previous) Jenkins version</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Report the outcome to the Evergreen backend.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="snapshot">Take a snapshot</h4>
+<div class="paragraph">
+<p>Behind the scenes, this system uses <code>git</code> for the purpose of snapshotting, excluding everything not ignored by <code>.gitignore</code> in Git&#8217;s index.
+In other words, <code>git status</code> just after a <strong>snapshot</strong> action, would read: <code>nothing to commit, working tree clean</code></p>
+</div>
+<div class="paragraph">
+<p>This system is <strong>not</strong> responsible for snapshotting data which is too large or is not sensible to store.
+To support snapshotting, Jenkins is configured in a way that physically separates as much as possible between those files which must be snapshotted, and those which must not. See <a href="#data_segregation">Segregating configuration from binaries, build data, logs, etc</a> for more details below.</p>
+</div>
+<div class="paragraph">
+<p>An manual example of the process can be visualized with the following:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update <code>.gitignore</code> content with current Evergreen release.</p>
+</li>
+<li>
+<p><code>git add --all</code></p>
+</li>
+<li>
+<p><code>git commit -m '[Upgrade] From BOM x.y.z to a.b.c'</code></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="literalblock">
+<div class="content">
+<pre>The commit log should ideally be made understandable for humans.
+We will use tags to be able to revert/switch between snapshots in a programmatic reliable way.
+Each tag name should be designed so that it is clear and easy to link it to a given version of Evergreen.</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="data_segregation">Segregating configuration from binaries, build data, logs, etc</h5>
+<div class="paragraph">
+<p>To support snapshotting only appropriate files, Jenkins must be configured with a few non-default values to better separate the more static, and critically important, files which must be preserved between upgrades.
+These files include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins global configuration</p>
+</li>
+<li>
+<p>Job/Pipeline configuration</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Compared to the more ephemeral files, such as:  build data, workspaces, exploded plugin files, and exploded core files.
+*
+To keep things simple, Evergreen uses a single Docker volume, but introduces an additional level to separate files that must be snapshotted, and those which don&#8217;t require snapshotting.
+Incidentally, this keeps <code>.gitignore</code> short.</p>
+</div>
+<div class="paragraph">
+<p>Basically, instead of the typical <code>/var/jenkins_home</code>, Evergreen introduces two subdirectories under <code>/evergreen</code>, referred to hereafter as <code>$EVERGREEN_HOME</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>/evergreen/jenkins/home</code> (=<code>$JENKINS_HOME</code>) for to-be-snapshotted content, and</p>
+</li>
+<li>
+<p><code>/evergreen/jenkins/var</code> for the rest.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>On the filesystem, for example, this would be laid out as such:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>/evergreen/jenkins/
+├── home
+│   ├── jobs
+│   │   └── the_job # configuration file only
+│   ├── nodes
+│   ├── plugins
+│   ├── secrets
+│   ├── updates
+│   ├── userContent
+│   └── users
+└── var
+    ├── logs # JENKINS-50291
+    │   └── tasks
+    ├── plugins # exploded plugins, using --pluginroot switch
+    ├── jobs # JENKINS-50164
+    │   └── the_job
+    │       ├── builds
+    │       └── workspace
+    └── war # using --webroot
+        ├── META-INF
+        ├── WEB-INF
+        ├── ...</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_files_to_store">Files to store</h5>
+<div class="paragraph">
+<p>Using the data segregation explained above, Evergreen snapshots <em>almost</em>  everything under <code>/evergreen/jenkins/home</code>.</p>
+</div>
+<div class="paragraph">
+<p>Evergreen must have a <code>.gitignore</code> file for some files that either cannot be moved elsewhere, or that should not be stored in the Git repository.
+As mentioned above, this file will likely need to be iterated upon as needs change:</p>
+</div>
+<div class="listingblock">
+<div class="title">.gitignore</div>
+<div class="content">
+<pre class="highlight"><code class="language-gitignore" data-lang="gitignore">/plugins/
+/updates/
+/secrets/master.key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Regarding <code>$JENKINS_HOME/plugins</code>, this directory contains the hpi/jpi files before extraction.
+Ideally, Evergreen would move this elsewhere under <code>$EVERGREEN_HOME/jenkins/var/plugins</code>, but this is currently not yet doable, as
+<code>--pluginsroot</code> only configures a different location for exploded plugins.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="healthcheck">Checking Jenkins health</h3>
+<div class="paragraph">
+<p>From the perspective of this proposal, health checking Jenkins itself is out of scope.
+But the  <em>driver</em> of the upgrade, <em>evergreen client</em>, requires a way to determine whether or not a rollback should be executed.</p>
+</div>
+<div class="paragraph">
+<p>This aspect is described in the dedicated <a href="https://github.com/jenkinsci/jep/blob/master/jep/306/README.adoc">JEP-306 covering Instance Client Health Checking</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins has never supported downgrading by itself, and it&#8217;s unlikely the core constructs will change in this regard anytime soon.
+The official way to revert an upgrade if something went wrong is to restore a previous backup.</p>
+</div>
+<div class="paragraph">
+<p>In the context of <em>Evergreen</em>, it cannot rely on external backups to revert to the <em>N-1</em> version as this would require regular manual user intervention, which is clearly not the desired user experience.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_scope_of_the_data_snapshotting">Scope of the data snapshotting</h3>
+<div class="paragraph">
+<p>Snapshotting data is <strong>not</strong> a backup system.</p>
+</div>
+<div class="paragraph">
+<p>The practical time frame where the snapshots are designed to be used is within the seconds or minutes after an upgrade has been initiated.
+If Jenkins, after it has been restarted, is deemed unhealthy, then an auto-rollback <em>can</em> be initiated.</p>
+</div>
+<div class="paragraph">
+<p>If a version is determined to be problematic after a few days, the data snapshotting system will <strong>not</strong> be used.
+After a longer time period, where Jenkins has executed user-motivated workloads, generating new data, the snapshots can no longer be treated as a source of truth.
+Therefore rolling back outside of the "upgrade window" would risk data loss.</p>
+</div>
+<div class="paragraph">
+<p>Errors discovered outside of this "upgrade window" should instead be resolved by new changes to Jenkins core, or an erring plugin, in order to solve the user&#8217;s issue.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_git">Why Git</h3>
+<div class="paragraph">
+<p>Using filesystem-level tools offering a snapshotting feature, like LVM, ZFS or btrfs to give a few examples, was considered.
+But this was discounted because <em>Evergreen</em> vision is about providing an <a href="https://github.com/jenkinsci/jep/tree/71d9391744c8cc7d6595805f7fdd327eedf6811a/jep/300#automatically-updated-distribution">"<em>easier to use</em> and <em>easier to manage</em> Jenkins environment"</a>.
+As per the <a href="https://github.com/jenkinsci/jep/tree/71d9391744c8cc7d6595805f7fdd327eedf6811a/jep/300#target-audience">targeted audience</a>, we obviously do not want to expect <em>Evergreen</em> users to be system experts able to set up a dedicated filesystem to operate Jenkins.
+And even with system expert, doing so would not make Evergreen a very easy and quick to use distribution of Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Git offers in this matter a powerful user-space tool that allows Evergreen to version,
+and quickly roll back to some previous state if need be.</p>
+</div>
+<div class="paragraph">
+<p>Git is also a very common tool nowadays for developers,
+hence it makes Evergreen more accessible to contributors.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_why_not_use_compatiblesinceversion_metadata">Why not use compatibleSinceVersion metadata</h3>
+<div class="paragraph">
+<p>For context, a plugin can indicate a <a href="https://jenkinsci.github.io/maven-hpi-plugin/hpi-mojo.html#compatibleSinceVersion"><code>compatibleSinceVersion</code></a> information, i.e. what is "the oldest version [&#8230;&#8203;] configuration-compatible with.". For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a plugin is being upgraded from version <code>1.4</code> to <code>1.5</code></p>
+</li>
+<li>
+<p>it specifies <code>compatibleSinceVersion</code>=<code>1.5</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In such case, <strong>if</strong> this plugin wrote configuration files, this means you cannot safely roll back to the <code>1.4</code> version of the plugin.</p>
+</div>
+<div class="paragraph">
+<p>Conversely, with the following situation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a plugin is being upgraded from version <code>1.4</code> to <code>1.5</code></p>
+</li>
+<li>
+<p><code>compatibleSinceVersion</code> is <code>1.4</code> or less, or absent.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In such case, <em>even</em> if the plugin did write its updated configuration files on the disk, we can expect being able to safely rollback the plugin to the previous <code>1.4</code> version, <em>while leaving</em> the configuration file content that was just updated for <code>1.5</code> version.</p>
+</div>
+<div class="paragraph">
+<p>This situation is not specifically handled in this design.
+In other words, Evergreen <strong>will</strong> also roll back those files.</p>
+</div>
+<div class="paragraph">
+<p>For two reasons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>this looks like an <em>optimization</em>.
+Hence as such, this is probably premature to try and be very smart with the way the downgrade will work ;</p>
+</li>
+<li>
+<p>First, work must be done on the <a href="https://issues.jenkins-ci.org/browse/JENKINS-49806">JEP to define criteria for selecting plugins to include in Jenkins Evergreen</a>, so that there is a clear process and automated tests in place to check for correct <code>compatibleSinceVersion</code> usage.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no backwards compatibility concerns related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_secrets">Secrets</h3>
+<div class="paragraph">
+<p>Versioning secrets should not be an issue per se, as the data snapshotting system is designed to be local to the running instance.
+The Git repository data will never be pushed <em>outside</em> by the <em>Evergreen</em> code, so no data leak is normally expected from this side.</p>
+</div>
+<div class="paragraph">
+<p>As users may have the unfortunate idea to push that repository elsewhere, not being aware they could leak secrets, Evergreen conservatively adds <code>secrets/master.key</code> to the <code>.gitignore</code> file.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_man_in_the_middle">Man In The Middle</h3>
+<div class="paragraph">
+<p>The main issue here is that an attacker could for instance instruct the <em>evergreen client</em> to ignore everything (by putting <code>*</code> in <code>.gitignore</code>), hence make it impossible to roll back.</p>
+</div>
+<div class="paragraph">
+<p>But this would mean someone was able to talk with connected instances.
+So even if this is a valid concern, this is considered a larger scope issue that will be addressed through <a href="https://issues.jenkins-ci.org/browse/JENKINS-49844">JENKINS-49844</a>.</p>
+</div>
+<div class="paragraph">
+<p>Hence there are no <strong>specific</strong> security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We must create an image of <em>Evergreen</em> preconfigured with a complete set of representative data.</p>
+</div>
+<div class="paragraph">
+<p>Creating/defining this data clearly requires human work, but the following checks are deemed automatable.</p>
+</div>
+<div class="sect2">
+<h3 id="_upgrading_downgrading">Upgrading/downgrading</h3>
+<div class="paragraph">
+<p>Before delivering updates on real connected instances, testing must occur in at least the following scenarios:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apply the upgrade or downgrade, then check the instance is <em>running fine</em>
+<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ad-hoc testing tools should be developed to be able to automatically assess the health of a Jenkins Evergreen instance after an upgrade or a downgrade.</p>
+</div>
+<div class="paragraph">
+<p>Automatically giving some kind of health grade to a running instance is definitely a critical part of Jenkins Evergreen.
+Detailing this here is out of scope for this proposal.
+This logic however, should be centralized and used in both during automated tests, and in production for the <em>evergreen-client</em> to automatically analyze if a product instance is healthy or is not (and decide to roll back or not, for the current matter here).</p>
+</div>
+<div class="paragraph">
+<p>Evergreen should leverage the <a href="https://github.com/jenkinsci/acceptance-test-harness">Jenkins Acceptance Test Harness project</a> for this purpose.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_leveraging_telemetry_and_live_instances_data">Leveraging Telemetry and live instances data</h3>
+<div class="paragraph">
+<p><em>Evergreen</em> is a <a href="https://github.com/jenkinsci/jep/tree/master/jep/300#connected">connected</a> system.
+That means we are able to know exactly what versions are running in production.
+This information must be used to test the <strong>actual</strong> possible upgrade paths.</p>
+</div>
+<div class="paragraph">
+<p>Along the way, that also means Evergreen should continuously be able to adjust and enrich what is reported by the <em>Evergreen client</em>s from live instances to improve the associated combinations of tests we run.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A prototype implementation is available in the <a href="https://github.com/jenkins-infra/evergreen">jenkins-infra/evergreen</a> repository.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300: <em>Jenkins Evergreen</em></a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-301: Packaging for <em>Jenkins Evergreen</em></a></p>
+</li>
+<li>
+<p>Threads on the dev mailing list about this
+<a href="https://groups.google.com/d/msg/jenkinsci-dev/XdXuMFLXKPw/GM9T-jGbAgAJ">1</a> and
+<a href="https://groups.google.com/d/msg/jenkinsci-dev/xiaHpfGPTZ8/ifABXq7yAgAJ">2</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Bill Of Materials: this format is currently being designed, but will list everything constituting a version of Evergreen: WAR and exact versions of all plugins
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. this way, if new files were created, we don&#8217;t just delete them in an unrecoverable way when going back to the previous snapshot
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. See again <a href="#healthcheck">Checking Jenkins health</a>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

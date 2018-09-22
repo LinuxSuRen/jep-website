@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 11
+   Title
+ Process improvements for adopting a Jenkins plugin
+   Sponsor
+ Craig Rodrigues
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-25
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Existing plugin adoption process Proposed modification to plugin adoption process: using JIRA Post plugin adoption tasks   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract Over time, Jenkins plugin maintainers need to change as the original maintainer may need to move on to other work." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/11/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 11
+   Title
+ Process improvements for adopting a Jenkins plugin
+   Sponsor
+ Craig Rodrigues
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-25
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Existing plugin adoption process Proposed modification to plugin adoption process: using JIRA Post plugin adoption tasks   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract Over time, Jenkins plugin maintainers need to change as the original maintainer may need to move on to other work.">
+
+
+
+<meta itemprop="wordCount" content="944">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 11
+   Title
+ Process improvements for adopting a Jenkins plugin
+   Sponsor
+ Craig Rodrigues
+   Status
+ Draft :speech_balloon:
+   Type
+ Process
+   Created
+ 2018-08-25
+   BDFL-Delegate
+ TBD
+     Table of Contents Abstract Specification Existing plugin adoption process Proposed modification to plugin adoption process: using JIRA Post plugin adoption tasks   Motivation Reasoning Backwards Compatibility Security Infrastructure Requirements Testing References    Abstract Over time, Jenkins plugin maintainers need to change as the original maintainer may need to move on to other work."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Title</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process improvements for adopting a Jenkins plugin</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rodrigc">Craig Rodrigues</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Status</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Type</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Process</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Created</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-08-25</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TBD</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_existing_plugin_adoption_process">Existing plugin adoption process</a></li>
+<li><a href="#_proposed_modification_to_plugin_adoption_process_using_jira">Proposed modification to plugin adoption process: using JIRA</a></li>
+<li><a href="#_post_plugin_adoption_tasks">Post plugin adoption tasks</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a></li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Over time, Jenkins plugin maintainers need to change as the original maintainer may need
+to move on to other work.
+<a href="https://wiki.jenkins.io/display/JENKINS/Adopt+a+Plugin">Adopt a Plugin</a> outlines the process for adopting
+a plugin.  This page mentions that the Jenkins developer mailing list should be e-mailed to start
+the process.
+This JEP proposes some process improvements to adopting a plugin which</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_existing_plugin_adoption_process">Existing plugin adoption process</h3>
+<div class="paragraph">
+<p>The existing plugin adoption process is
+outlined here on <a href="https://wiki.jenkins.io/display/JENKINS/Adopt+a+Plugin">this wiki page</a>.</p>
+</div>
+<div class="paragraph">
+<p>The above web page can be summarized as follows.</p>
+</div>
+<div class="paragraph">
+<p>For a user who is interested in adopting a plugin:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user should visit link:https://wiki.jenkins.io/display/JENKINS/Adopt+a+Plugin#AdoptaPlugin-Listofplugins
+for a list of plugins eligible for adoption.</p>
+</li>
+<li>
+<p>The user should review the documentation on plugin maintainership in the Jenkins project, especially
+documentation with respect to <a href="https://jenkins.io/project/governance/#compatibility-mattera">plugin compatibility</a>
+and <a href="https://wiki.jenkins.io/display/JENKINS/Marking+a+new+plugin+version+as+incompatible+with+older+versions">marking a plugin as incompatible
+with older Jenkins releases</a>.</p>
+</li>
+<li>
+<p>The user should mail the <a href="mailto:jenkinsci-dev@googlegroups.com">Jenkins Developers mailing list</a> and request to be made a maintainer
+of the plugin.  The user is encouraged to CC: the existing maintainer during this e-mail request.
+In the e-mail, the user is encouraged to submit their GitHub ID and Jenkins infrastructure ID.</p>
+</li>
+<li>
+<p>If the existing maintainer provides feedback agreeing to the request, the Jenkins infrastructure admins will usually grant maintainership of the
+plugin to the user.</p>
+</li>
+<li>
+<p>Sometimes an existing maintainer cannot be contacted, or does not respond in a timely way to agree or disagree with
+the request to change maintainership of the plugin.  In these cases, if the existing maintainer does not provide
+feedback after approximately two weeks, the Jenkins infrastructure admins will usually
+grant maintainership of the plugin to the user.</p>
+</li>
+<li>
+<p>Once granted maintainership of the plugin, the user is encouraged to file a GitHub PR against
+link:https://github.com/jenkins-infra/repository-permissions-updater to request permission to deploy snapshots and releases of the plugin.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For a maintainer who is interested in giving up maintainership of a plugin:
+1. The maintainer should edit the plugin&#8217;s wiki page and add the <strong>adopt-this-plugin</strong> label.
+2. Alternatively, the maintainer can use the following JIRA macro on the plugin&#8217;s wiki page:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{jenkins-plugin-info:myplugin|adopt-message=The maintainer is looking for a co-maintainer.}</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_proposed_modification_to_plugin_adoption_process_using_jira">Proposed modification to plugin adoption process: using JIRA</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When someone wants to adopt a plugin, they should file a JIRA ticket.</p>
+</li>
+<li>
+<p>They should set the Component field to the name of the plugin.</p>
+</li>
+<li>
+<p>In addition, they must set a tag in JIRA to <strong>adopt-plugin</strong>.</p>
+</li>
+<li>
+<p>The current plugin maintainer will receive an e-mail from JIRA.  If there are multiple plugin maintainers, they should be
+mentioned via the "@" mechanism in JIRA.</p>
+</li>
+<li>
+<p>If the plugin owner does not respond to the JIRA ticket within 3 weeks (enough time to cover
+reasonable vacation time, sick time, emergency), then the plugin can be adopted.</p>
+</li>
+<li>
+<p>Plugin authors will also be able to file a JIRA ticket with the <strong>adopt-plugin</strong> tag, and mention that they want to
+give up maintainership of the plugin By doing things in JIRA, it is easier for Jenkins administrators to query
+the list of plugins which are up for adoption and there is a clear audit trail of when a plugin was adopted.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_post_plugin_adoption_tasks">Post plugin adoption tasks</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The new maintainer needs to be given write access to the git repository with the plugin code.
+This can by done by sending special commands to the bot on the IRC Freenode #jenkins channel.</p>
+</li>
+<li>
+<p>In JIRA, the new maintainer should be made the default assignee for tickets filed with Component set to that plugin.</p>
+</li>
+<li>
+<p>In JIRA, all Unresolved tickets should be assigned to the new maintainer.</p>
+</li>
+<li>
+<p>The new maintainer will be responsible for updating the wiki page for the plugin to list themselves as the new maintainer.</p>
+</li>
+<li>
+<p>The new maintainer must updat the pom.xml metadata for the plugin in GitHub to indicate that they are the new maintainer.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Due to the popularity of Jenkins, the mailing lists receive a lot of messages.
+For casual Jenkins users who maintain plugins, following the mailing lists
+may be difficult and it is easy to miss these types of e-mails.</p>
+</div>
+<div class="paragraph">
+<p>There must be a clear process by which a user can easily request to adopt
+a plugin.  This process must have a clear audit trail that can be tracked.
+There also must be a clear way to track the post plugin adoption tasks.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(jglick)</strong>
+A lot of minor refinements or alternative structures were discussed on the dev list.
+You might not agree with any of them, but the basic ideas ought to be noted in this
+section and an explanation given of why you are going with the current proposal instead.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no backward compatibility concerns.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new security risks introduced by this proposal.
+The existing plugin adoption process theoretically makes it possible for bad actors to take control of popular,
+but badly maintained plugins.  The Jenkins infra team should take this into account when
+reviewing requests to change plugin maintainership, and deny requests to bad actors.  This JEP does not offer any other
+solutions to this problem.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>JIRA must be updated to support the new <strong>adopt-plugin</strong> tag.</p>
+</li>
+<li>
+<p>link:https://wiki.jenkins.io/display/JENKINS/Adopt+a+Plugin must be updated to reflect the
+new process for adopting a plugin.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>(jglick)</strong>
+There is no preparation needed. The first time a new tag is typed in, it becomes available in completion.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no testing issues related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/BkSipSaSYl8/71Ek0PVQEgAJ">Discussion on jenkinsci-dev mailing list</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins.io/display/JENKINS/Adopt+a+Plugin">Adopt a Plugin wiki page</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

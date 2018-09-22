@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 307
+   Title
+ Evergreen Update Client/Server Lifecycle
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-17
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303
+     Table of Contents Abstract Specification Update Levels Update Channel Update Manifest Checksums   Client Update Behavior Version Manifest Adding new Update Levels ingest." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/307/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 307
+   Title
+ Evergreen Update Client/Server Lifecycle
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-17
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303
+     Table of Contents Abstract Specification Update Levels Update Channel Update Manifest Checksums   Client Update Behavior Version Manifest Adding new Update Levels ingest.">
+
+
+
+<meta itemprop="wordCount" content="2565">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 307
+   Title
+ Evergreen Update Client/Server Lifecycle
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-04-17
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300, JEP-303
+     Table of Contents Abstract Specification Update Levels Update Channel Update Manifest Checksums   Client Update Behavior Version Manifest Adding new Update Levels ingest."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">307</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evergreen Update Client/Server Lifecycle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-04-17</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP-300, JEP-303</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#update-levels">Update Levels</a></li>
+<li><a href="#channel">Update Channel</a></li>
+<li><a href="#update-manifest">Update Manifest</a>
+<ul class="sectlevel3">
+<li><a href="#_checksums">Checksums</a></li>
+</ul>
+</li>
+<li><a href="#_client_update_behavior">Client Update Behavior</a></li>
+<li><a href="#version-manifest">Version Manifest</a></li>
+<li><a href="#_adding_new_update_levels">Adding new Update Levels</a>
+<ul class="sectlevel3">
+<li><a href="#__code_ingest_yaml_code"><code>ingest.yaml</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a></li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#security">Security</a>
+<ul class="sectlevel2">
+<li><a href="#_alternative_approaches">Alternative Approaches</a>
+<ul class="sectlevel3">
+<li><a href="#_http_pkp">HTTP-PKP</a></li>
+<li><a href="#_gpg_key_exchange">GPG key exchange</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Integral to <a href="https://github.com/jenkinsci/jep/tree/master/jep/300">Jenkins
+Evergreen</a> is the client&#8217;s update lifecycle with the Evergreen hosted service
+layer. Starting with the first boot, the client must frequently inform the
+server of its current versions, retrieve new versions, and apply updates. This
+document specifies those API interactions and expectations to allow this update
+lifecycle to be performed correctly.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two services involved behind the scenes which are responsible for
+facilitating the client&#8217;s update lifecycle: <code>updates</code> and <code>versions</code>.</p>
+</div>
+<div class="paragraph">
+<p>The role of the versions service is simply to maintain an audit trail
+for the versions of software that each client has installed locally. As clients
+go through various upgrade processes, they will periodically <code>POST</code>
+<a href="#version-manifest">Version Manifest</a> records which are stored in the Evergreen hosted service
+layer&#8217;s storage.</p>
+</div>
+<div class="paragraph">
+<p>The role of the update service is to use the <code>essentials.yaml</code> and retrieve the
+latest versions of software for a given client UUID and compute the appropriate
+update response to be sent to the client.</p>
+</div>
+<div class="listingblock">
+<div class="title">Bootstrapping Instance</div>
+<div class="content">
+<pre class="highlight"><code>  update                     versions                    evergreen
+  service                    service                      client
+     |                           |                           |
+     |                           |     POST version manifest |
+     |                           |     from local hpis/core  |
+     |                           |&lt;--------------------------o
+     |                           o-----------/ok/-----------&gt;|
+     |                           |                           |
+     |                     GET /update                       |
+     |&lt;------------------------------------------------------o
+     |    GET /versions for uuid |                           |
+     o--------------------------&gt;|                           |
+     |&lt;-----/200 json payload/---o                           |
+     |                           |                           |
+     |            200 with computed JSON update manifest     |
+     |            indicating what files should               |
+     |            be downloaded                              |
+     o------------------------------------------------------&gt;|
+     |                           |                           |</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Client up to date</div>
+<div class="content">
+<pre class="highlight"><code>  update                     versions                    evergreen
+  service                    service                      client
+     |                           |                           |
+     |                     GET /update                       |
+     |&lt;------------------------------------------------------o
+     |    GET /versions for uuid |                           |
+     o--------------------------&gt;|                           |
+     |&lt;-----/200 json payload/---o                           |
+     |                           |                           |
+     |                   304 Not Modified                    |
+     o------------------------------------------------------&gt;|
+     |                           |                           |</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update-levels">Update Levels</h3>
+<div class="paragraph">
+<p>In the backend datastore, updates must be considered immutable and sequential.
+These are referred to hereafter as "Update Levels". A single update record
+must have the following data structure:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>id</code>: Numerical sequential integer to identify the update</p>
+</li>
+<li>
+<p><code>commit</code>: a Git commit corresponding to a change of <code>essentials.yaml</code> in the
+<a href="https://github.com/jenkins-infra/evergreen">jenkins-infra/evergreen</a>
+repository</p>
+</li>
+<li>
+<p><code>channel</code>: String denoting the <a href="#channel">Update Channel</a> for the update.</p>
+</li>
+<li>
+<p><code>manifest</code>: JSON formatted representation of <code>essentials.yaml</code> for ease of
+storage and query in PostgreSQL</p>
+</li>
+<li>
+<p><code>tainted</code>: Boolean to indicate whether this update should be considered
+tainted and therefore not offered to clients.</p>
+</li>
+<li>
+<p><code>createdAt</code>: Timestamp when this update was created.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For a given <a href="#channel">Update Channel</a>, it is expected that each client "experiences" each
+Update Level as time goes on, excepting <code>tainted</code> records.</p>
+</div>
+<div class="paragraph">
+<p>in order to track a given update across the different channels, records should
+be duplicated between different channels while maintaining the same <code>commit</code>.
+For example, given an Update Level 1 (UL1) for the 'canary" channel. Once UL1
+has been deemed safe to deploy to the next channel, "beta", a new Update record
+will be created with all the same information as UL1, with except with a
+differing <code>id</code> and <code>channel</code>. Thus allowing clients to enter a different
+channel if desired, without re-installation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="channel">Update Channel</h3>
+<div class="paragraph">
+<p>The Update Channel is simply a means of segmenting updates to different types
+of clients. For example, testing or "dogfood" infrastructure would reasonably
+use a "canary" channel, receiving updates first, before they are added  to
+subsequent channels.</p>
+</div>
+<div class="paragraph">
+<p>The Update Channels are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>canary</code>: bleeding edge updates, initial channel for all updates.</p>
+</li>
+<li>
+<p><code>beta</code>: secondary channel for updates after <code>canary</code>, recommended for Jenkins
+contributors and other power-users.</p>
+</li>
+<li>
+<p><code>general</code>: general use channel, with updates deployed after deemed
+sufficiently stable in previous channels.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>While most users should default to the <code>general</code> channel, each instance must be
+able to select its own channel via a user-supplied argument.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="update-manifest">Update Manifest</h3>
+<div class="paragraph">
+<p>The responses sent to the client must be well-formed JSON documents, referred
+to as "update manifests" which the client must understand.</p>
+</div>
+<div class="paragraph">
+<p>The Update Manifest
+should have a consistent structure which is given to but will be dynamically generated <em>per
+client</em> in order to ensure that the client is only downloading what is
+necessary to update that specific client.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Update Manifest</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "schema" : 1,
+    "meta" : {
+        "level" : 4,
+        "channel" : "general"
+    },
+    "core" : {
+        "url" : "https://update-cdn.example.com/some/path/to/a/jenkins.war",
+        "checksum" : {
+            "type" : "sha256",
+            "signature" : "somechecksumforthefile"
+        }
+    },
+    "plugins" : {
+        "updates" : [
+            {
+                "url" : "https://update-cdn.example.com/some/path/to/a/plugin.hpi",
+                "checksum" : {
+                    "type" : "sha256",
+                    "signature" : "somechecksumforthefile"
+                }
+            },
+            {
+                "url" : "https://update-cdn.example.com/some/path/to/another/plugin.hpi",
+                "checksum" : {
+                    "type" : "sha256",
+                    "signature" : "somechecksumforthefile"
+                }
+            }
+        ]
+    },
+    "client" : {
+        "url" : "https://update-cdn.example.com/some/path/to/a/evergreen-client.tar.gz",
+        "checksum" : {
+            "type" : "sha256",
+            "signature" : "somechecksumforthefile"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The four primary keys of the update manifest are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>meta</code> is an object which contains information about the instance&#8217;s update
+cycle itself, such as the <code>channel</code> and <code>level</code>.of the enclosed manifest.</p>
+</li>
+<li>
+<p><code>core</code> which indicates that a new jenkins.war is necessary.</p>
+</li>
+<li>
+<p><code>plugins</code> which will include a list of <code>updates</code> for plugins. This is an
+object within the JSON structure rather than a flat array as it is expected
+that at some point in the future we  may require a <code>removes</code> list to properly
+unpublish legacy or out-dated plugins from instances.</p>
+</li>
+<li>
+<p><code>client</code> which indicates a new tarball for upgrading the <code>evergreen-client</code>
+itself.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additional keys should be ignored by clients not supporting them to allow the
+Update Manifest to safely include things which are not yet supported.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>There <em>may</em> be opportunities to cache the Update Manifest in the future, but
+this is considered a potential optimization which will be contingent on
+observation of real world usage for Jenkins Evergreen.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_checksums">Checksums</h4>
+<div class="paragraph">
+<p>The checksums provided in the Update Manifest are not generated or validated by
+Jenkins Evergreen but rather the Artifactory instance from which plugin, core,
+and other binaries are pulled.</p>
+</div>
+<div class="paragraph">
+<p>In essence, every <code>foo-1.2.3.hpi</code> has a corresponding <code>foo-1.2.3.hpi.sha256</code>
+file, the contents of which will be included as the checksum in the Update
+Manifest to enable clients to perform archive integrity validation.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_client_update_behavior">Client Update Behavior</h3>
+<div class="paragraph">
+<p>The client must perform the necessary downloading of items referenced in the
+<a href="#update-manifest">Update Manifest</a> and perform checksum validation before initiating a client
+update process. The exact sequence of events and what machinery must execute
+on the client is considered outside of the scope of this document.</p>
+</div>
+<div class="paragraph">
+<p>The client should also post a new <a href="#version-manifest">Version Manifest</a> once an update lifecycle
+successfully completed to ensure that subsequent update check-ins result in
+accurate generated Update Manifest.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="version-manifest">Version Manifest</h3>
+<div class="paragraph">
+<p>A version manifest is the symmetrically opposite of the <a href="#update-manifest">Update Manifest</a> in
+that it should include the actual versions of software present on a Jenkins
+Evergreen instance. This may include software which is outside of the update
+lifecycle.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of the version manifest is primarily for the client
+to report to the server a fairly accurate state of the installed software in
+the instance.</p>
+</div>
+<div class="listingblock">
+<div class="title">Version Manifest</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "schema" : 1,
+    "container" : {
+        "commit" : "sha1 of the built container",
+        "tools" : {
+            "node" : "output of node --version",
+            "npm" : "output of npm --version",
+            "java"  : "output of java -version"
+        }
+    },
+    "client" : {
+        "version" : "version of evergreen-client"
+    },
+    "jenkins" : {
+        "core" : "jenkins.war embedded version",
+        "plugins" : {
+            "git" : "git.hpi embedded version",
+            "workflow-aggregator" : "workflow-aggregator.hpi embedded version"
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The client should also report <code>container</code> information, which is informational
+rather than critical to the operation of the update lifecycle. This will be
+used at a future point in time to better understand the runtime environments
+for the Jenkins and evergreen-client processes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_adding_new_update_levels">Adding new Update Levels</h3>
+<div class="paragraph">
+<p>In order for client to receive new <a href="#update-levels">Update Levels</a>, an automated backend
+process should generating an <code>ingest.yaml</code> to be sent to the Evergreen backend
+service layer.</p>
+</div>
+<div class="sect3">
+<h4 id="__code_ingest_yaml_code"><code>ingest.yaml</code></h4>
+<div class="paragraph">
+<p>The <code>ingest.yaml</code> file should be machine-generated from the <code>essentials.yaml</code>
+with URLs and checksums for artifacts at specific point in time.  This provides
+the raw data which the Update service should use to create
+<a href="#update-levels">Update Levels</a>. The file should be checked into source control and managed
+via pull requests and automated changes to allow for thorough testing of the
+set time-based snapshot of artifacts.</p>
+</div>
+<div class="listingblock">
+<div class="title">ingest.yaml</div>
+<div class="content">
+<pre class="highlight"><code class="language-yaml" data-lang="yaml">---
+# This is an example of the output expected for incremental build information
+# for consumption by the Evergreen backend service layer
+##############################################################
+# ISO-8601 timestmap for when this document was generated. This is to be used
+# by the upload to the Evergreen backend services to understand when the ingest
+# manifest was actually created (rather than commmitted to source control, for
+# example)
+timestamp: '2018-05-21T21:40:17+00:00'
+
+# Core defines the latest incremental jenkins.war artifact.
+core:
+  # The URL referenced doesn't need to be sourced through a CDN, Artifactory is
+  # suitable. Future versions of the Evergreen backend will need to point to a
+  # CDN automatically anyways.
+  urL: 'http://mirrors.jenkins.io/war/latest/jenkins.war'
+  # The checksum is important for the Evergreen backend services, and client,
+  # to verify the artifact but also to distinguish effectively between two
+  # files which might be referenced in multiple ingest manifests which are in
+  # fact the same.
+  checksum:
+    # The type of supported checksum will need to be negotiated with the
+    # client-side support. Currently only sha256 is supported.
+    type: 'sha256'
+    signature: '246c298e9f9158f21b931e9781555ae83fcd7a46e509522e3770b9d5bdc88628'
+
+# Plugins is an array of plugin records which represent the essential group of
+# plugins to be distributed.
+plugins:
+  - groupId: 'org.jenkins-ci.plugins'
+    artifactId: 'buildtriggerbadge'
+    url: 'https://updates.jenkins.io/download/plugins/buildtriggerbadge/2.9/buildtriggerbadge.hpi'
+    checksum:
+      type: 'sha256'
+      signature: '246c298e9f9158f21b931e9781555ae83fcd7a46e509522e3770b9d5bdc88628'
+
+# Plugins defined under `environments` are expected to come from the
+# `environments` key in the essentials.yaml. These plugins will follow the same
+# structure as above and are intended to be joined with the "essential" group
+# of plugins above for clients.
+environments:
+  aws:
+    plugins:
+      - groupId: 'org.jenkins-ci.plugins'
+        artifactId: 'ec2'
+        url: 'https://updates.jenkins.io/download/plugins/ec2/1.39/ec2.hpi'
+        checksum:
+          type: 'sha256'
+          signature: '246c298e9f9158f21b931e9781555ae83fcd7a46e509522e3770b9d5bdc88628'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Adding a new Update Level</div>
+<div class="content">
+<pre class="highlight"><code>  update                      backend
+  service                    automation
+     |                           |
+     |                    [load ingest.yaml]
+     |                           |
+     |                    [convert to JSON]
+     |                           |
+     |        PUT /update        |
+     |      with ingest JSON     |
+     |&lt;--------------------------o
+     o------/200 with JSON/-----&gt;|
+     |                           |</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Expected request</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "commit" : "0xdeadbeef",
+    "manifest" : "&lt;ingest JSON&gt;"
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Expected response</div>
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">{
+    "id" : 4,
+    "channel" : "general",
+    "tainted" : false,
+    "createdAt" : "&lt;ISO 8601 timestamp&gt;",
+    "manifest" : "&lt;ingest JSON&gt;",
+    "commit" : "&lt;sha1&gt;"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The motivation for the Jenkins Evergreen distribution using this update
+lifecycle is largely driven by the goal for Jenkins Evergreen to be
+self-updating, which necessitates a different approach to code distribution
+compared to the conventional Update Center process.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The design described above is intended to be succinct enough to drive updates
+to Jenkins Evergreen, of which all instances are expected to be running the
+same approximate set of software. Contrasted to the Jenkins "Update Center"
+which provides much more metadata to provide user-visible information.</p>
+</div>
+<div class="paragraph">
+<p>As Jenkins Evergreen is intended to update automatically, the metadata
+(<a href="#update-manifest">Update Manifest</a>), only needs to contain the URLs for packages and a
+checksum for validation. There are additional <a href="#security">Security</a> concerns and
+reasoning discussed below.</p>
+</div>
+<div class="paragraph">
+<p>The Update Levels are a consideration to ensure that clients which have
+differing levels of connectivity consistency can be safely updated.
+Considering the following problem posed by
+<a href="https://github.com/olblak">Olivier</a>:</p>
+</div>
+<div class="paragraph">
+<p>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Do you consider all updates as 'safe'?
+What happened if a client didn&#8217;t connect to the update service for month?
+Is it an information that would be useful in the update manifest?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>One of the challenges for Jenkins Evergreen is determining how to handle
+updates for clients which are not consistently connected. If for example, a
+client is only <em>connected</em> to the Evergreen backend services layer once a week
+due to network misconfiguration, outages in the Evergreen services layer, or
+infrequent internet access, these instances should still be capable of safely
+updating their software.</p>
+</div>
+<div class="paragraph">
+<p>Consider two instances, Alpha and Bravo. They both are created at the same
+time, at Update Level (UL) 1. Alpha stays online, and connected, for the next
+14 days, while Bravo is disconnected until day 14.</p>
+</div>
+<div class="paragraph">
+<p>Our state is now:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Alpha: UL14
+Bravo: UL1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first idea was to dry to have Bravo jump from UL1 &#8594; UL14 but with Jenkins
+Evergreen' testing process, this would effectively be a completely untested
+upgrade jump. This approach was considered <strong>too risky</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Another idea which was discussed was to use a git-bisect(1) type approach, trying UL14,
+if that fails, try UL7, and so on. This was also discarded as it would result
+in instances using completely untested upgrade paths, therefore <strong>too risky</strong>.</p>
+</div>
+<div class="paragraph">
+<p>(contrary to what the JEP presently describes), and staggar the upgrade logic
+Bravo to where it can successfully go from UL1&#8594;UL2, then UL2&#8594;UL3, etc.</p>
+</div>
+<div class="paragraph">
+<p>While there ome user experience concerns with downloading updates and
+restarting, at the present stage of development, this is considered an
+acceptable trade-off, safety rather than performance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Not necessary as there is no pre-existing implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When considering security for Update Manifests, much of the research which was
+considered was around how traditional package managers consider their security
+challenges, such as the paper "A Look In the Mirror: Attacks on Package
+Managers" <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>
+and the design work done as part of "The Update Framework." <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup></p>
+</div>
+<div class="paragraph">
+<p>The two major areas of concern for security with the update lifecycle are
+ensuring:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Update Manifests retrieved by the clients are themselves deemed authentic.</p>
+</li>
+<li>
+<p>Packages suggested for the client to download are valid and legitimate.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For Update Manifests to be deemed authentic they must <strong>only</strong> be served over
+TLS encrypted HTTP connections. Relying on the
+<a href="https://letsencrypt.org">Let&#8217;s Encrypt</a> certificates provisioned for all
+<code>jenkins.io</code> services.</p>
+</div>
+<div class="paragraph">
+<p>To provide additional security, and protect against poisoned or fraudulent
+<code>jenkins.io</code> certificates being used to distribute false Update Manifests, the
+Jenkins Evergreen container will have a <strong>restricted set of trusted root
+certificates</strong>. Trusting only the
+<a href="https://letsencrypt.org/certificates/">root certificates used by Let&#8217;s
+Encrypt</a>, which are presently:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DST_Root_CA_X3.crt</code></p>
+</li>
+<li>
+<p><code>IdenTrust_Public_Sector_Root_CA_1.crt</code></p>
+</li>
+<li>
+<p><code>IdenTrust_Commercial_Root_CA_1.crt</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(provided by the <code>ca-certificates</code> package on Debian 9 "Stretch")</p>
+</div>
+<div class="paragraph">
+<p>The second concern is remedied by providing checksums from the distribution site
+in the <a href="#update-manifest">Update Manifest</a>. By ensuring that the client can trust the
+authenticity of the Update Manifest, the checksums will be trustworthy even in
+cases where the packages themselves are served through a CDN or mirror network.</p>
+</div>
+<div class="sect2">
+<h3 id="_alternative_approaches">Alternative Approaches</h3>
+<div class="paragraph">
+<p>The initial thinking relied on Public Key Pinning (PKP, also referred to as
+"pinning leaf certificates") in the client for the Update services. After
+cursory amounts of research, it is apparent that this approach is falling out
+of favor with leaders in this space such as Chromium
+<a href="https://groups.google.com/a/chromium.org/forum/#!topic/blink-dev/he9tr7p3rZ8">moving away from PKP</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="_http_pkp">HTTP-PKP</h4>
+<div class="paragraph">
+<p>Another, related approach is referred to as
+<a href="https://tools.ietf.org/html/rfc7469">HTTP-PKP</a>. Which while it is possible
+to implement
+<a href="https://community.letsencrypt.org/t/hpkp-best-practices-if-you-choose-to-implement/4625">HTTP-PKP
+with Let&#8217;s Encrypt</a> (also see
+<a href="https://lilleengen.io/blog/posts/activating-http-public-key-pinning-hpkp-on-lets-encrypt">this
+blog post</a>). This approach was discarded as unnecessarily complex considering
+the client environment which is under control by Jenkins Evergreen.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_gpg_key_exchange">GPG key exchange</h4>
+<div class="paragraph">
+<p>GPG key exchange is a common approach used by package managers such as Apt and
+Yum. This approach was not strongly considered as the tooling for managing GPG
+keys from <a href="https://nodejs.org">Node.js</a> is lacking, and the use of such keys
+would add non-trivial amounts of complexity to the client/server design to
+accommodate proper key rotation and revocation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Nothing additional outside of the existing requirements already for the
+Evergreen hosted service layer.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Outside of the scope of this document and subject to the implementation linked
+below.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The prototype and <em>actual</em> implementation of this work is being performed in
+the <a href="https://github.com/jenkins-infra/evergreen">jenkins-infra/evergreen</a>
+repository.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/msgid/jenkinsci-dev/20180418142050.GT1836%40grape.lasagna.io">Discussion on the jenkinsci-dev mailing list</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://isis.poly.edu/~jcappos/papers/cappos_mirror_ccs_08.pdf" class="bare">https://isis.poly.edu/~jcappos/papers/cappos_mirror_ccs_08.pdf</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://theupdateframework.github.io/" class="bare">https://theupdateframework.github.io/</a>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

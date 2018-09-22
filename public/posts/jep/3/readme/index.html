@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 3
+   Title
+ Adding the &#34;Released As&#34; field and &#34;Ready for Release&#34; status to Jenkins JIRA
+   Sponsor
+ Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-01-29
+   JIRA
+ INFRA-1301
+   Discussions-To
+ jenkinsci-dev thread
+     Table of Contents Abstract Specification UPDATE: Modify the workflow in the JENKINS project ADD: an optional &#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/3/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 3
+   Title
+ Adding the &#34;Released As&#34; field and &#34;Ready for Release&#34; status to Jenkins JIRA
+   Sponsor
+ Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-01-29
+   JIRA
+ INFRA-1301
+   Discussions-To
+ jenkinsci-dev thread
+     Table of Contents Abstract Specification UPDATE: Modify the workflow in the JENKINS project ADD: an optional &#34;">
+
+
+
+<meta itemprop="wordCount" content="802">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 3
+   Title
+ Adding the &#34;Released As&#34; field and &#34;Ready for Release&#34; status to Jenkins JIRA
+   Sponsor
+ Oleg Nenashev
+   Status
+ Accepted :ok_hand:
+   Type
+ Standards
+   Created
+ 2018-01-29
+   JIRA
+ INFRA-1301
+   Discussions-To
+ jenkinsci-dev thread
+     Table of Contents Abstract Specification UPDATE: Modify the workflow in the JENKINS project ADD: an optional &#34;"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adding the "Released As" field and "Ready for Release" status to Jenkins JIRA</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/oleg-nenashev">Oleg Nenashev</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepted :ok_hand:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-01-29</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JIRA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://issues.jenkins-ci.org/browse/INFRA-1301">INFRA-1301</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discussions-To</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://groups.google.com/forum/#!topic/jenkinsci-dev/wzc4VLplHvs">jenkinsci-dev thread</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_update_modify_the_workflow_in_the_jenkins_project">UPDATE: Modify the workflow in the JENKINS project</a></li>
+<li><a href="#_add_an_optional_released_as_field_to_jira_type_string">ADD: an optional "Released As" field to JIRA (type=String)</a></li>
+<li><a href="#_update_modify_jira_issue_linking_bot">UPDATE: Modify JIRA issue linking bot</a></li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a></li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This JEP targets improving experience for Jenkins users who review statuses of issues in JIRA
+to understand the fix/release status.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_update_modify_the_workflow_in_the_jenkins_project">UPDATE: Modify the workflow in the JENKINS project</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add new “Fixed But Not Released” state (aka "Stage Release")</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Instead of "In Progress" &#8658; "Resolved", contributors can optionally move integrated fixed into the "Fixed But Not Released" state</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>All current transitions in JENKINS workflow should be retained.
+JIRA tickets can be moved to “Resolved” state from any existing state</p>
+<div class="ulist">
+<ul>
+<li>
+<p>“In Review” &#8658; “Resolved” is a default transition in UI so that the change is not disruptive</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The proposed workflow change may be adopted in other projects (e.g. <em>SECURITY</em>),
+but it is outside of this JEP scope.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_add_an_optional_released_as_field_to_jira_type_string">ADD: an optional "Released As" field to JIRA (type=String)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>When a contributor moves the issue to "Fixed But Not Released", "Resolved" or "Closed" state, an optional “Released as” field appears in the dialog</p>
+</li>
+<li>
+<p>Type of the field: String (see the <em>Reasoning</em> section below)</p>
+</li>
+<li>
+<p>Version format in the field is up to maintainers</p>
+</li>
+<li>
+<p>Description should have a recommendation to use comma-separated list of git tags
+(e.g. “jenkins-2.74,remoting-3.11” or “git-3.2.3”)</p>
+</li>
+<li>
+<p>If the field is non-empty, it will appear in the ticket header,
+hence users won&#8217;t need to look into comments and commit histories</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_modify_jira_issue_linking_bot">UPDATE: Modify JIRA issue linking bot</h3>
+<div class="paragraph">
+<p>Current code location:
+<a href="https://github.com/cloudbees/java.net-scm-issue-link" class="bare">https://github.com/cloudbees/java.net-scm-issue-link</a></p>
+</div>
+<div class="paragraph">
+<p>Changes to be done:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>“FIXED JENKINS-123” should now move the tickets to the “Fixed But Not Released” state in JIRA in the following components:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins core</p>
+</li>
+<li>
+<p>All modules and libraries bundled into the Jenkins core</p>
+</li>
+<li>
+<p>Remoting Library</p>
+</li>
+<li>
+<p>Winstone</p>
+</li>
+<li>
+<p>Extras Executable WAR</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>JIRA issue link bot documentation should describe a way to change flow in other components if needed</p>
+</li>
+<li>
+<p>TBD: Automatically fill in the “Released as” field according to POM.xml (proposed by Ullrich Hafner)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As a Jenkins contributor, I see many users struggling to understand the issue statuses and the version including the fix.
+Currently we have an issue with the <em>FIXED</em> status.
+Depending on the component type, it may mean "merged" or "released".
+E.g. Jenkins JIRA linking bot automatically marks merged tickets with "FIXED" keyword as <em>FIXED</em>.
+Users usually understand "FIXED" as "released, please update".
+Such ambiguity causes users to spend time checking update centers and commits in GitHub.
+It does not improve the overall user experience.</p>
+</div>
+<div class="paragraph">
+<p>I would like to make issue statuses more explicit at least in the kernel components
+(Core, Remoting, detached plugins).
+It could be also helpful for plugins which do not release the integrated fixes immediately.
+For plugins this change would be an opt-in in order to avoid impact on established workflows used by plugin maintainers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The current specification has been created according to the feedback from Jenkins contributors
+in the <a href="https://docs.google.com/document/d/1EIRuCMOjmPgpxybkWRPHfx1f1yglcuYlqPWN8K1Ni28/edit#">original proposal</a>.</p>
+</li>
+<li>
+<p>The proposed changes are opt-in in order to address feedback from
+<a href="https://github.com/uhafner">Ulli Hafner</a> and <a href="https://github.com/i386">James Dumay</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following feedback has been addressed:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ullrich Hafner: Impact on plugin maintainers</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The document has been updated to make all changes opt-in</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>James Dumay: Impact on custom dashboards/reports</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There may be some updates required in custom dashboards if they filter the statuses by value</p>
+</li>
+<li>
+<p>Mitigation: The change will be announced in the blogpost with detailed description of the change and potential impact</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>James Dumay: Current JIRA structure does not address my needs. Instead of that, let&#8217;s move plugins to separate projects</p>
+<div class="ulist">
+<ul>
+<li>
+<p>JEP Sponsor feels that splitting plugins to separate projects may be feasible,
+but it requires a huge amount of time to implement it gracefully without a serious impact on Jira users</p>
+</li>
+<li>
+<p>The changes proposed in this JEP are compatible with the approach proposed by James Dumay</p>
+</li>
+<li>
+<p>JEP Sponsor decided not to go that far with this JEP, it may be a subject for follow-up changes</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>James Dumay: Let&#8217;s use JIRA versions instead of String fields</p>
+<div class="ulist">
+<ul>
+<li>
+<p>JIRA does not support per-component versions.
+With the single-project structure we would end up with huge list within the <em>JENKINS</em> JIRA project</p>
+</li>
+<li>
+<p>JEP Sponsor decided to keep his proposal as is (with "String type")</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>N/A</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Workflows need to be updated for the <code>JENKINS</code> project in JIRA</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>New JIRA workflows will be tested using the <em>TEST</em> project</p>
+</li>
+<li>
+<p>Issue linking bot will be tested using the test project in JIRA</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This change does not impact Jenkins codebase itself.
+A prototype can be set up on Jenkins JIRA site once the JEP is accepted as a draft.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/document/d/1EIRuCMOjmPgpxybkWRPHfx1f1yglcuYlqPWN8K1Ni28/edit#">Original proposal</a></p>
+</li>
+<li>
+<p><a href="https://groups.google.com/d/msg/jenkinsci-dev/wzc4VLplHvs/FXLEpDLPAwAJ">Mailing list discussion</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

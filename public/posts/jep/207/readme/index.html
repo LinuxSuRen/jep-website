@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 207
+   Title
+ External Build Logging support in the Jenkins Core
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-23
+   BDFL-Delegate
+ Jesse Glick
+   Discussions-To
+ Jenkins Cloud Native SIG
+     Table of Contents Abstract Specification Top-level requirements Design decisions Events External Build Logging System Build logging destinations Number of Logging System destinations Log annotations Log browsing Log rotation   Design NEW: Loggable interface NEW: LogStorage abstract class NEW: LogStorageFactory extension point NEW: FileLogStorage Patches in Run and AbstractBuild     Motivation Reasoning LogStorage vs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/207/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 207
+   Title
+ External Build Logging support in the Jenkins Core
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-23
+   BDFL-Delegate
+ Jesse Glick
+   Discussions-To
+ Jenkins Cloud Native SIG
+     Table of Contents Abstract Specification Top-level requirements Design decisions Events External Build Logging System Build logging destinations Number of Logging System destinations Log annotations Log browsing Log rotation   Design NEW: Loggable interface NEW: LogStorage abstract class NEW: LogStorageFactory extension point NEW: FileLogStorage Patches in Run and AbstractBuild     Motivation Reasoning LogStorage vs.">
+
+
+
+<meta itemprop="wordCount" content="3098">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 207
+   Title
+ External Build Logging support in the Jenkins Core
+   Sponsor
+ Oleg Nenashev
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-07-23
+   BDFL-Delegate
+ Jesse Glick
+   Discussions-To
+ Jenkins Cloud Native SIG
+     Table of Contents Abstract Specification Top-level requirements Design decisions Events External Build Logging System Build logging destinations Number of Logging System destinations Log annotations Log browsing Log rotation   Design NEW: Loggable interface NEW: LogStorage abstract class NEW: LogStorageFactory extension point NEW: FileLogStorage Patches in Run and AbstractBuild     Motivation Reasoning LogStorage vs."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">207</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">External Build Logging support in the Jenkins Core</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/oleg-nenashev">Oleg Nenashev</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-07-23</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/jglick">Jesse Glick</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Discussions-To</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://groups.google.com/forum/#!forum/jenkins-cloud-native-sig">Jenkins Cloud Native SIG</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_top_level_requirements">Top-level requirements</a></li>
+<li><a href="#_design_decisions">Design decisions</a>
+<ul class="sectlevel3">
+<li><a href="#_events">Events</a></li>
+<li><a href="#_external_build_logging_system">External Build Logging System</a></li>
+<li><a href="#_build_logging_destinations">Build logging destinations</a></li>
+<li><a href="#_number_of_logging_system_destinations">Number of Logging System destinations</a></li>
+<li><a href="#_log_annotations">Log annotations</a></li>
+<li><a href="#_log_browsing">Log browsing</a></li>
+<li><a href="#_log_rotation">Log rotation</a></li>
+</ul>
+</li>
+<li><a href="#_design">Design</a>
+<ul class="sectlevel3">
+<li><a href="#_new_loggable_interface">NEW: Loggable interface</a></li>
+<li><a href="#_new_logstorage_abstract_class">NEW: LogStorage abstract class</a></li>
+<li><a href="#_new_logstoragefactory_extension_point">NEW: LogStorageFactory extension point</a></li>
+<li><a href="#_new_filelogstorage">NEW: FileLogStorage</a></li>
+<li><a href="#_patches_in_run_and_abstractbuild">Patches in Run and AbstractBuild</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#__code_logstorage_code_vs_separate_code_loggingmethod_code_and_code_logbrowser_code"><code>LogStorage</code> vs. separate <code>LoggingMethod</code> and <code>LogBrowser</code></a></li>
+<li><a href="#_steps_browsing_support_in_the_core">Steps browsing support in the core</a></li>
+<li><a href="#_log_migration">Log migration</a></li>
+<li><a href="#_encoding_of_log_files">Encoding of log files</a></li>
+<li><a href="#_client_side_only_log_browsing">Client-side-only Log Browsing</a></li>
+<li><a href="#_user_interface">User Interface</a></li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a>
+<ul class="sectlevel2">
+<li><a href="#_storage_compatibility">Storage compatibility</a></li>
+<li><a href="#_run_api_compatibility">Run API compatibility</a></li>
+<li><a href="#_api_extensibility">API Extensibility</a></li>
+</ul>
+</li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure requirements</a></li>
+<li><a href="#_testing">Testing</a>
+<ul class="sectlevel2">
+<li><a href="#_functional_testing">Functional testing</a></li>
+<li><a href="#_integration_testing">Integration testing</a></li>
+<li><a href="#_load_testing">Load Testing</a></li>
+</ul>
+</li>
+<li><a href="#_prototype_implementation">Prototype implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>On large-scale Jenkins instances master Disk and Network I/O become bottlenecks in particular cases.
+Build logging and Task reporting are one for the most intensive I/O consumers,
+hence it would be great to somehow redirect them to an external system.
+This is a continuation of the original story we had back in 2016
+(see the public design document
+<a href="https://docs.google.com/document/d/1_bquSeA_lC7zJhQoWhxlSKJAg6b8duNbyQ15zCz-e4Y/edit#">here</a>).</p>
+</div>
+<div class="paragraph">
+<p>This Jenkins enhancement proposal documents changes in the core required to achieve
+the external <strong>build</strong> logging objective
+(see <em>Reasoning</em> for explanation of the scope).
+Support of other logging types will be documented in subsequent JEPs.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_top_level_requirements">Top-level requirements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>All or almost all build logging is moved from Jenkins filesystem to External Build Log Storage</p>
+<div class="ulist">
+<ul>
+<li>
+<p>ON: “Task” logging is not considered as a requirement after the scope change</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Minimize log traffic between Jenkins agents and the master, logs should be reported from slaves directly when it is possible</p>
+</li>
+<li>
+<p>External Build Log Storage has an extensible and pluggable architecture</p>
+</li>
+<li>
+<p>Reference implementations:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>File-system-based storage (current implementation)</p>
+</li>
+<li>
+<p>One external build log storage based on the open-source stack, e.g. Elasticsearch-Logstash-Kibana (ELK)</p>
+</li>
+<li>
+<p>Nice 2 have: one Cloud-focused implementation, e.g. for AWS CloudWatch</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Freestyle and Jenkins Pipeline projects are supported out of the box</p>
+</li>
+<li>
+<p>Run console logs should be provided using standard Jenkins interfaces</p>
+</li>
+<li>
+<p>Data migration flow for upgrading instances is technically possible</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It is OK if it requires special actions outside Jenkins</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Reference External Build logging implementation provides a feasible performance and fault-tolerance compared to the original filesystem based solution</p>
+</li>
+<li>
+<p>All Global Configurations are designed in a way that they can be configured via Jenkins Configuration-as-Code Plugin</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_design_decisions">Design decisions</h3>
+<div class="paragraph">
+<p>This section contains a not-so-sorted top-level description (aka “braindump”) of use-cases and concerns we need to address in the design.</p>
+</div>
+<div class="sect3">
+<h4 id="_events">Events</h4>
+<div class="paragraph">
+<p>In this story we consider Build logs as a sequence of events, which need to be registered in the system.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We cannot handle all kinds of executions in Jenkins since plugins may have their specific implementations</p>
+</li>
+<li>
+<p>For console logs the minimal atomic item for Event is a <em>line</em> (for I/O Stream implementations) or <em>event</em></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Such events may also include metadata so that they can be queried by Jenkins
+(e.g. "get all log entries for a build step") or other log consumers.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_external_build_logging_system">External Build Logging System</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>We do not implement new external logging system on our own,
+we want to integrate with existing open-source and/or proprietary systems</p>
+</li>
+<li>
+<p>The build reporting system should support….</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reporting of events - the build log will be splitted to multiple (potentially thousands) events.
+These timestamped events may be delivered to the storage systems in a random order
+(e.g. in <code>parallel()</code> builds for Pipeline)</p>
+</li>
+<li>
+<p>The reporting may be performed in parallel</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reporting of log data from master and agents will not be synchronized</p>
+</li>
+<li>
+<p>Reporting from a single instance (e.g. Master) may be also parallel</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Multiple Jenkins masters may be connected to the same External Log storage</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_build_logging_destinations">Build logging destinations</h4>
+<div class="paragraph">
+<p>Depending on the environment,
+different build logging destinations may be used.
+The solution should be generic enough in order to support common destination types
+The following storage types should be supportable:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>FileSystem-based storage (default implementation)</p>
+</li>
+<li>
+<p>Industry-standard External Build Logging and storage systems:
+Fluentd, Logstash, Elasticsearch, etc.</p>
+</li>
+<li>
+<p>SQL-based storages</p>
+</li>
+<li>
+<p>No-SQL storages: Key-value storages, Document-based storages</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_number_of_logging_system_destinations">Number of Logging System destinations</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>We will support different External Build Logging system for different builds</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It allows updating without data migration</p>
+</li>
+<li>
+<p>It allows configuring different loggers[n][o][p]</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We implement the new “LogStorageFactory” extension point, which allows tweaking logging strategies</p>
+</li>
+<li>
+<p>By now we do not provide specific implementations excepting reference ones, but we can tweak logging destination via JobProperty or NodeProperty later</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline step / declarative will be complicated since we may lose some logging info (self-configuring logging within Pipeline, like JENKINS-41929)
+Secret handling during Log reporting</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Logging should be performed on both master and slave</p>
+</li>
+<li>
+<p>Secrets should be shaded on both sides &#8658; password suppression rules should be executed on both master and slaves side</p>
+</li>
+<li>
+<p>This suppression rules should be passed to the node. It causes a potential security [q][r][s]risk if the implementation does not capture secrets <strong>properly</strong>, because they may go to location Jenkins admin does not control (external storage)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>JG: If a secret is defined in an environment variable, we are already sending it to the agent via <code>RemoteLaunchCallable.env</code>. So having the <code>ConsoleLogFilter</code> also include the same information is not an issue.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Design decisions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Agent &lt;&#8658; Master communication should be always performed via encrypted protocol when we use external build logging (ideally needs a NodeMonitor)</p>
+</li>
+<li>
+<p>We should pass secret filtering options to the remote launcher when we invoke it</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_log_annotations">Log annotations</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>According to the “Indexing” approach, we have binary and text annotations</p>
+</li>
+<li>
+<p>ConsoleNote is technically a binary one, which is being encoded to a string with a prefix to the output stream</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Design decisions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Log annotations should be performed on the master and agent side</p>
+</li>
+<li>
+<p>Binary annotations (ConsoleNote classes) should be encoded into HEX representation and stored as additional annotation fields[t]</p>
+<div class="ulist">
+<ul>
+<li>
+<p>They will be decoded by Jenkins master[u][v][w] only when it displays it</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_log_browsing">Log browsing</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Log browsing should support both local and remote Logging systems</p>
+</li>
+<li>
+<p>The interface should support…</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Querying and Filtering logs</p>
+</li>
+<li>
+<p>Progressive log output (for running builds and tasks)</p>
+</li>
+<li>
+<p>Annotation visualization in console log</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Design decisions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Annotations should be stored in the external storage</p>
+</li>
+<li>
+<p>Storage format is defined by the external log storage implementation</p>
+</li>
+<li>
+<p>If the log storage can store objects, it is recommended to store annotations separately from the text</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_log_rotation">Log rotation</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Log rotation is performed as for any other components within Jenkins builds</p>
+</li>
+<li>
+<p>Currently log deletion is implemented as a part of the build deletion</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Design decisions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New API should be introduced to support deletion of logs</p>
+</li>
+<li>
+<p>External logging APIs should provide methods for deletion of logs</p>
+</li>
+<li>
+<p>These APIs may implement log deletion&#8230;&#8203; or not.
+In the latter case Jenkins should be able to produce a warning,
+but it should not impact its operation</p>
+</li>
+<li>
+<p>External log browser implementations should be able to explicitly
+indicate that there is no logs available</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_design">Design</h3>
+<div class="paragraph">
+<p>The following new API entities will be introduced:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Loggable</code> - interface for objects supporting external logging</p>
+</li>
+<li>
+<p><code>LogStorage</code> - objects defining log reporting and browsing logic</p>
+</li>
+<li>
+<p><code>LogStorageFactory</code> - extension point for locating <code>LogStorage</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Implementations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>File-based <code>LogStorage</code> -
+logging to the local FileSystem, implements compatibility mode</p>
+</li>
+<li>
+<p>No-op <code>LogStorage</code> -
+Fallback implementations for reporting errors</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The introduced entities are described below.</p>
+</div>
+<div class="sect3">
+<h4 id="_new_loggable_interface">NEW: Loggable interface</h4>
+<div class="paragraph">
+<p>This is a new interface,
+which will mark all objects supporting external logging.
+In the current design this interface will be implemented only by <code>Run</code> instances,
+but other log types may be supported in further implementations.</p>
+</div>
+<div class="paragraph">
+<p>Loggable interface should provide the following methods:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Getters for the <code>LogStorage</code> being used in the object</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Default implementation - consult with <code>LogStorageFactory</code> extensions</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Getters for default LogStorage</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These getters will be used if there is no <code>LogStorage</code> configured for the item</p>
+</li>
+<li>
+<p>For example, `Run`s will be referring File-based storage to retain compatibility</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>boolean isLoggingFinished()</code> - indicates that there is no new logging being performed</p>
+</li>
+<li>
+<p><code>Charset getCharset()</code> - method, which defines the charset to be used</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Some instances like <code>Run</code> allow setting charsets explicitly.</p>
+</li>
+<li>
+<p>By this method this requirement is propagated to logging methods</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>getLogFileCompatLocation</code> - provides file path to be used by the File-based storage</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This method is needed, because instances like <code>Runs</code> have complex logic which defines the storage location</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_logstorage_abstract_class">NEW: LogStorage abstract class</h4>
+<div class="paragraph">
+<p>LogStorage is a central class
+which represents the log storage being used for a particular <code>Loggable</code> instance.
+It defines API for reporting logs and retrieving them.</p>
+</div>
+<div class="paragraph">
+<p>LogStorage is an <code>@ExportedBean</code>,
+so its instances can be exported to the REST API.</p>
+</div>
+<div class="paragraph">
+<p>Methods to be offered:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>BuildListener createBuildListener() throws IOException, InterruptedException</code> -
+Build Listener provider.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This listener will receive build events and put them to the storage</p>
+</li>
+<li>
+<p>Implementations are responsible to consult with Jenkins security logic
+like <code>ConsoleLogFilter</code> extension points</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>TaskListener createTaskListener() throws IOException, InterruptedException</code> -
+Same as <code>createBuildListener()</code>, but for tasks.
+This is a stub for other task types support in the future</p>
+</li>
+<li>
+<p><code>Launcher decorateLauncher(@Nonnull Launcher original, @Nonnull Run&lt;?,?&gt; run, @Nonnull Node node)</code> -
+Launcher decorator for logging.
+It allows altering the launcher logic in builds, e.g. to inject custom environment.
+This logic may be invoked by core and plugins
+(see <a href="https://issues.jenkins-ci.org/browse/JENKINS-52914">JENKINS-52914</a> for limitations).</p>
+</li>
+<li>
+<p><code>AnnotatedLargeText&lt;T&gt; overallLog()</code> -
+Get large text for the entire execution/run</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Some implementations should be also moved from <code>Run</code> and generalized.
+Jenkins core or External Logging API will provide default convenience implementations
+which can be overridden by implementations for better performance.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>InputStream getLogInputStream() throws IOException</code> -
+gets the log as an input stream</p>
+</li>
+<li>
+<p><code>Reader getLogReader() throws IOException</code> -
+get the log as a Reader</p>
+</li>
+<li>
+<p><code>String getLog() throws IOException</code> -
+gets the entire log as a single String</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This method is deprecated in <code>hudson.model.Run</code>,
+and it should remain deprecated</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>List&lt;String&gt; getLog(int maxLines) throws IOException</code> -
+gets a number of log lines as a list of strings</p>
+</li>
+<li>
+<p><code>File getLogFile() throws IOException</code> -
+Compatibility method, which retrieves the log as a <code>File</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>By default a temporary file will be created, unless an implementation offers something better</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_logstoragefactory_extension_point">NEW: LogStorageFactory extension point</h4>
+<div class="paragraph">
+<p>This is a low-level extension point, which allows locating
+<code>LogStorage</code> to be used for a particular <code>Loggable</code> item.</p>
+</div>
+<div class="paragraph">
+<p>This extension point should offer static methods which consult with all implementations
+and provide proper extensions.
+If there is no <code>LogStorageFactory</code> providing implementation,
+fallback <code>FileLogStorage</code> should be used.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_new_filelogstorage">NEW: FileLogStorage</h4>
+<div class="paragraph">
+<p>These classes implement extension points and contain the
+original logic for the Filesystem logging.
+All Filesystem-specific logic from <code>hudson.model.Run</code> and other such classes
+should be moved to these implementations.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_patches_in_run_and_abstractbuild">Patches in Run and AbstractBuild</h4>
+<div class="paragraph">
+<p>Integration with <code>Loggable</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Run</code> instance should implement <code>Loggable</code></p>
+</li>
+<li>
+<p><code>Run</code> stores <code>LogStorage</code> references in fields.
+These fields can be persisted on the disk</p>
+</li>
+<li>
+<p><code>Run#onLoad()</code> method restores references to the owner which are stored by <code>LogStorage</code></p>
+</li>
+<li>
+<p>All methods in <code>Run</code> and child classes implement new APIs used by LogStorage`</p>
+</li>
+<li>
+<p><code>Run</code> offers a <code>getLogStorage()</code> method which is <code>@Exported</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>File operations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>File logging operations are moved to <code>FileLogStorage</code></p>
+</li>
+<li>
+<p><code>Run#getLogFile()</code> method should be deprecated,
+all usages in the Jenkins core should be cleaned up.
+The method will be still invoking the compatibility layer from <code>LogStorage</code>
+so read-only API users do not lose the compatibility</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default build logging in Jenkins is known to be a performance and scalability bottleneck at large-scale instances.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build logging from agents goes through master.
+It produces loads on the network and master&#8217;s memory/CPU, especially in the case
+of massive parallel builds</p>
+</li>
+<li>
+<p>Build browsing goes through master.
+Every time logs are displayed to users,
+a request is sent to the Jenkins master in order to load the data</p>
+</li>
+<li>
+<p>Logs are stored on the disk in raw format.
+It consumes a lot of storage space.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Externalization of Build logging could allow improving the situation a lot,
+but Core API patches are required to support external logging in <code>AbstractProject</code>-based job types.
+This JEP is needed in order to specify such core changes.
+Other changes are documented in subsequent JEPs.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Being compared to the original design in 2016,
+this design limits the scope of work so that it can be implemented and delivered
+in a reasonable timeframe.</p>
+</div>
+<div class="sect2">
+<h3 id="__code_logstorage_code_vs_separate_code_loggingmethod_code_and_code_logbrowser_code"><code>LogStorage</code> vs. separate <code>LoggingMethod</code> and <code>LogBrowser</code></h3>
+<div class="paragraph">
+<p>The original design in this JEP proposed to keep independent implementations
+for log reporting and log browsing functionality
+in order to increase configuration flexibility of implementations.</p>
+</div>
+<div class="paragraph">
+<p>After the discussion in Cloud Native SIG,
+it was decided to move this separation to the External Logging API Plugin (JEP-212).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_steps_browsing_support_in_the_core">Steps browsing support in the core</h3>
+<div class="paragraph">
+<p>In the original JEP it was proposed to support Log browsing for particular steps.
+This functionality is needed to browse Pipeline FlowNode logs,
+but it may be also used to browse other segmented logs.</p>
+</div>
+<div class="paragraph">
+<p>After the review it was decided to NOT add this API to the core.
+Instead of that, External Logging API implements it for now.
+If there is a need to support logging of steps,
+such feature can be added in future core versions in a compatible way (implicit override).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_log_migration">Log migration</h3>
+<div class="paragraph">
+<p>During the original discussions in 2016, the log migration topic has been raised.
+When a logging system is configured, one may expect the logs to be moved
+(e.g. from filesystem to the external storage).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We will NOT implement migration for old builds</p>
+</li>
+<li>
+<p>We are going to provide multiple `LogStorage`s in parallel on a single instance according to the current design</p>
+</li>
+<li>
+<p>We will show logs from the file system till they get log-rotated</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Justification:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Not required since we offer smooth migration. All logs on the disk on old instances will be rotated eventually</p>
+</li>
+<li>
+<p>It would be complicated since we may have multiple log sources.</p>
+</li>
+<li>
+<p>We would also have to take ConsoleNote annotations into account</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_encoding_of_log_files">Encoding of log files</h3>
+<div class="paragraph">
+<p>Currently Jenkins does not set limitations for encoding while doing logging.
+Any charsets may be used on agent and master sides, and it is hard to manage them.
+Some implementations also rely on the default encoding in master or agent JVMs,
+and these encodings may be different.
+This behavior should be retained, because it is a default one for Freestyle projects.</p>
+</div>
+<div class="paragraph">
+<p>Although it is expected that all logs eventually switch to UTF-8
+(see the <a href="/jep/JEP-206">JEP-206 proposal</a> for Pipeline),
+in meantime external logging <strong>may</strong> be performed in different encodings.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Loggable</code> implementations can define the charset to be used</p>
+</li>
+<li>
+<p><code>LogStorage</code> implementations may
+implement support of charsets or reject them,
+it is up to the implementation</p>
+</li>
+<li>
+<p>If the implementation does not support the requested charset,
+<code>LogStorageFactory</code> may apply a compatibility layer or skip the Log Storage</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the current design, the encoding is up to the <code>LogStorage</code> implementation.
+The default <code>FileLogStorage</code> implementation must support the default encoding.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_client_side_only_log_browsing">Client-side-only Log Browsing</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>We investigated Kibana usage for client-only log browsing during ELK prototyping, and we were able to create it for non-authenticated instances</p>
+</li>
+<li>
+<p>For real-world there are limitations of things to consider:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Master-provided logs may be required
+by CLI, REST API, or by plugins relying on the current master-side
+implementations (like BlueOcean)</p>
+</li>
+<li>
+<p>Isolation. The log storage (e.g. Elasticsearch or AWS Cloudwatch) may be inaccessible to users at all. Services may have some kind of access tokens for it, but we should not expect any Jenkins user to have such access</p>
+</li>
+<li>
+<p>Network isolation. The services may be just unreachable for user machines</p>
+</li>
+<li>
+<p>…</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the current design it was decided that log browsing by default will go through the master.
+Client-side logging may be implemented via custom <code>RunAction</code> implementations.
+Support of client-side log browsing may be added in a subsequent JEP.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_user_interface">User Interface</h3>
+<div class="paragraph">
+<p>In order to minimize the implementation on the core side,
+there will be no User Interface for log management in the
+Jenkins core.</p>
+</div>
+<div class="paragraph">
+<p>Log management interface will be implemented in the
+External Logging API plugin.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_storage_compatibility">Storage compatibility</h3>
+<div class="paragraph">
+<p>This JEP guarantees full compatibility of Jenkins instances when
+they are upgraded and keep the legacy Filesystem-based storage.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand,
+some incompatibilities may be introduced for the new external logging modes.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Logging of non-UTF-8 charsets</p>
+</li>
+<li>
+<p>Application of non-serializable <code>ConsoleLogFilter</code> implementations</p>
+</li>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>External logging implementations will be responsible to document
+known incompatibilities and to warn users about it.
+Some checks will be performed at the External Logging API plugin level.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_api_compatibility">Run API compatibility</h3>
+<div class="paragraph">
+<p><code>hudson.model.Run</code> offers <code>File getLogFile()</code> method and several other methods,
+which cannot be universally mapped to external storages.</p>
+</div>
+<div class="paragraph">
+<p>In order to support them, all <code>LogStorage</code> implementations are
+expected to provide a <code>File toLogFile()</code> method which ensures compatibility with such old API.
+It may be done via creating temporary files,
+so that read-only calls to <code>Run#getLogFile()</code> remain compatible.</p>
+</div>
+<div class="paragraph">
+<p>Such caching approach implies a performance hit, but the raw <code>File</code>-based APIs are deprecated by this design anyway.
+There will be no performance overhead on the built-in File-based storage.</p>
+</div>
+<div class="paragraph">
+<p>Also, caching does not prevent from compatibility issues if one of the plugins
+invokes <code>Run#getLogFile()</code> and then performs modification of such file.
+Such logic will be considered as incompatible for new External Logging implementations.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api_extensibility">API Extensibility</h3>
+<div class="paragraph">
+<p>The designed API can be extended in the future.
+Although this JEP addresses only external logging for runs,
+the API is designed in a way which allows supporting other log types later.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This JEP defines the following security requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All newly introduced methods should follow the Jenkins security model
+and perform user and queue authentication permission checks where necessary</p>
+</li>
+<li>
+<p>Existing sensitive information masking logic should be executed
+on master and agent
+<strong>BEFORE</strong> logs are submitted to the external storage.
+External log storage should not expose secrets</p>
+</li>
+<li>
+<p>The following sensitive data must be masked by default</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Environment variables and parameters marked as <em>sensitive</em></p>
+</li>
+<li>
+<p>Credentials contributed by <em>Credentials Binding</em> plugin</p>
+</li>
+<li>
+<p><code>ConsoleLogFilter</code> implementations if they are <code>Serializable</code>
+(the most of Pipeline-compatible implementations are already serializable)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>ConsoleAnnotator</code>-based secret masking (e.g. <em>Mask Passwords</em> plugin)
+should be implementable in plugins</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This Jenkins Enhancement Proposal does not define strong security
+requirements for external storage implementations.
+These implementations are responsible to define their security model.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is no special infrastructure requirements defined for
+this JEP.
+Subsequent JEPs for the implementations may define such infrastructure
+requirements.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_functional_testing">Functional testing</h3>
+<div class="paragraph">
+<p>All tests will be implemented using Jenkins Test Harness or
+Acceptance Test Harness (ATH) frameworks.</p>
+</div>
+<div class="paragraph">
+<p>The following use-cases must be covered:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Backward compatibility</p>
+</li>
+<li>
+<p>Upgradeability - upgraded instances use the Filesystem Storage by default</p>
+</li>
+<li>
+<p>Smoke tests - logging Method locators are invoked for new runs</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_integration_testing">Integration testing</h3>
+<div class="paragraph">
+<p>Jenkins core will provide Logging methods and browsers only for the
+File System Log storage.
+This storage will be covered by existing tests for jobs.</p>
+</div>
+<div class="paragraph">
+<p>External Logging implementations are expected to implement integration
+tests using <code>DockerRule</code> or similar technologies,
+if the target log storage allows it.</p>
+</div>
+<div class="paragraph">
+<p>Once JENKINS-TODO is implemented, integration tests with <em>External Task Logging API Plugin</em>
+and one of the reference implementations should be added to the
+<code>essentialsTest()</code> run.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_load_testing">Load Testing</h3>
+<div class="paragraph">
+<p>There is no special log testing requirements for this story.
+External Logging API and its implementations are responsible to execute
+performance and load testing,
+if deemed necessary.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype implementation</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/jenkins/pull/3575" class="bare">https://github.com/jenkinsci/jenkins/pull/3575</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/external-logging-api-plugin" class="bare">https://github.com/jenkinsci/external-logging-api-plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/external-logging-logstash-plugin" class="bare">https://github.com/jenkinsci/external-logging-logstash-plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.google.com/document/d/1_bquSeA_lC7zJhQoWhxlSKJAg6b8duNbyQ15zCz-e4Y/edit#">External Task Logging API design, 2016</a></p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/onenashev/jw2016-hackathon-external-build-logging-prototype-demo">External Build Logging demo slides, 2016</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/custom-war-packager/tree/master/demo/external-logging-elasticsearch">External Task logging with Elasticsearch demo, 2018</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

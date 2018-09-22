@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 301
+   Title
+ Evergreen packaging
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Mutable Data Evergreen Client Image Plugins Scripts Kubernetes   Motivation Reasoning Alternative Approaches Extending Jenkins itself     Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract A key aspect of Jenkins Evergreen is the automatically updating distribution, which aims to provide an easier to use, self-updating distribution of Jenkins core and an &#34;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/301/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 301
+   Title
+ Evergreen packaging
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Mutable Data Evergreen Client Image Plugins Scripts Kubernetes   Motivation Reasoning Alternative Approaches Extending Jenkins itself     Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract A key aspect of Jenkins Evergreen is the automatically updating distribution, which aims to provide an easier to use, self-updating distribution of Jenkins core and an &#34;">
+
+
+
+<meta itemprop="wordCount" content="1509">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 301
+   Title
+ Evergreen packaging
+   Sponsor
+ R. Tyler Croy
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-02-07
+   BDFL-Delegate
+ R. Tyler Croy
+   Requires
+ JEP-300
+     Table of Contents Abstract Specification Mutable Data Evergreen Client Image Plugins Scripts Kubernetes   Motivation Reasoning Alternative Approaches Extending Jenkins itself     Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract A key aspect of Jenkins Evergreen is the automatically updating distribution, which aims to provide an easier to use, self-updating distribution of Jenkins core and an &#34;"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">301</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evergreen packaging</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-02-07</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BDFL-Delegate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/rtyler">R. Tyler Croy</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP-300</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_mutable_data">Mutable Data</a></li>
+<li><a href="#evergreen-client">Evergreen Client</a></li>
+<li><a href="#image">Image</a></li>
+<li><a href="#plugins">Plugins</a></li>
+<li><a href="#scripts">Scripts</a></li>
+<li><a href="#kubernetes">Kubernetes</a></li>
+</ul>
+</li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#_reasoning">Reasoning</a>
+<ul class="sectlevel2">
+<li><a href="#_alternative_approaches">Alternative Approaches</a>
+<ul class="sectlevel3">
+<li><a href="#_extending_jenkins_itself">Extending Jenkins itself</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A key aspect of
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/300">Jenkins Evergreen</a>
+is the
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/300#auto-update">automatically updating distribution</a>,
+which aims to provide an easier to use, self-updating distribution of Jenkins
+core and an "essential" set of plugins. This document outlines the design of
+the Evergreen packaging system for Jenkins Evergreen which is, in short, a
+self-updating Docker container necessary to provide the least-error-prone
+mechanism for automatically self-updating Jenkins and a set of plugins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document proposes the creation of a new Docker image in the
+<a href="https://hub.docker.com/r/jenkins/">jenkins Docker Hub organization</a>
+referred to henceforth as <code>jenkins/evergreen</code>.</p>
+</div>
+<div class="paragraph">
+<p>Unlike the current primary images <sup class="footnote" id="_footnote_docker">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>,
+<code>jenkins/jenkins:latest</code>, <code>jenkins/jenkins:lts</code>, <code>jenkins/jenkins:alpine</code>, and
+<code>jenkins/jenkins:lts-alpine</code>, the <code>jenkins/evergreen</code> image will contain
+additional scripting, tooling, and machinery to coordinate the
+automatically self-updating functions of Jenkins Evergreen.</p>
+</div>
+<div class="paragraph">
+<p>The first additional tool added into <code>jenkins/evergreen</code> is
+<a href="http://supervisord.org/">supervisord</a>,
+a Python-based process control and supervision daemon. The <code>supervisord</code>
+process is responsible for maintaining a proper running state for the two
+subsequent processes which must be launched within the container:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins core (<code>jenkins.war</code>)</p>
+</li>
+<li>
+<p><a href="#evergreen-client">Evergreen Client</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As described in the diagram below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>+-------------------------------+
+|  jenkins/evergreen            |
+|-------------------------------|
+| ENTRYPOINT:                   |
+| +---------------------------+ |
+| | supervisord               | |
+| | +-----------------------+ | |
+| | |node: evergreen client | | |
+| | +-----------------------+ | |
+| | +-----------------------+ | |
+| | |java: jenkins.war      | | |
+| | +-----------------------+ | |
+| +---------------------------+ |
++------------------------------ +</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>supervisord</code> is also responsible for reporting process status and allowing
+<a href="#evergreen-client">Evergreen Client</a> to inspect the current running state and information of
+the Jenkins core process.</p>
+</div>
+<div class="sect2">
+<h3 id="_mutable_data">Mutable Data</h3>
+<div class="paragraph">
+<p>By default Jenkins must write numerous types of data to its filesystem,
+typically in <code>/var/lib/jenkins</code> on most Linux systems and referred to as
+<code>JENKINS_HOME</code>. For <code>jenkins/evergreen</code> it is expected that <em>all</em> mutable state
+and data <em>critical</em> to the evergreen distribution system will be written and
+stored in a single volume referred to by the <code>EVERGREEN_HOME</code> environment
+variable, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Data generated by the Jenkins process.</p>
+</li>
+<li>
+<p>Data necessary for performing safe upgrades of Jenkins.</p>
+</li>
+<li>
+<p>Caches and other data generated by <code>evergreen-client</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>No other data should be written to the filesystem outside of <code>EVERGREEN_HOME</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="evergreen-client">Evergreen Client</h3>
+<div class="paragraph">
+<p>The second additional tool added into <code>jenkins/evergreen</code> is the
+<code>evergreen-client</code> process.  In short, it is the process responsible for
+managing updates, interrogating <code>supervisord</code> for process status, and reporting
+necessary telemetry to the Evergreen hosted service layer. The
+<code>evergreen-client</code> process is also expected to manage restarts of the
+<code>jenkins.war</code> process as updates are downloaded and made available.</p>
+</div>
+<div class="paragraph">
+<p>The specific design of the <code>evergreen-client</code> is largely subject of a future
+document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image">Image</h3>
+<div class="paragraph">
+<p>The <code>jenkins/evergreen</code> image extends the <code>openjdk:8-jre-alpine</code> image to
+provide the latest up to date Java Runtime Environment (JRE). In addition to
+the JRE, the <code>jenkins/evergreen</code> image should include the necessary supporting
+tools and scripts to <em>fetch</em> the latest up-to-date version of Jenkins
+Evergreen on first boot. This ensures that each instance is on the latest
+release.</p>
+</div>
+<div class="paragraph">
+<p>New revisions of the base image should cause a rebuild of the <code>latest</code> tag of
+<code>jenkins/evergreen</code> but only to ensure that new users of
+<code>jenkins/evergreen:latest</code> will have access to the latest useful tooling and
+scripts committed upstream.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="plugins">Plugins</h3>
+<div class="paragraph">
+<p>The <code>jenkins/evergreen</code> image does not have any plugins pre-installed, since
+the plugin versions in Jenkins Evergreen will be constantly updating. Rather
+<code>jenkins/evergreen</code> must have some "first-boot" behavior to reach out to the
+Evergreen hosted service layer to request the current plugin versions.</p>
+</div>
+<div class="paragraph">
+<p>This has the added benefit of keeping <code>jenkins/evergreen</code> itself reasonably
+small.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scripts">Scripts</h3>
+<div class="paragraph">
+<p>Since the <code>jenkins/evergreen</code> image is likely going to be moving slower than
+Jenkins Evergreen itself, it will contain only the bare minimum amount of
+scripts to support configuring and setting up <code>evergreen-client</code>, Jenkins core,
+and <code>supervisord</code>.</p>
+</div>
+<div class="paragraph">
+<p>The scripts packaged into the image will not be responsible for configuring
+Jenkins or setting up the
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/300#sane-defaults">Automatic Sane Defaults</a>
+described in
+<a href="https://github.com/jenkinsci/jep/tree/master/jep/300">JEP-300</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kubernetes">Kubernetes</h3>
+<div class="paragraph">
+<p>At the present time there are no explicit caveats or changes in this design to
+support running in a <a href="https://kubernetes.io">Kubernetes</a> environment
+specifically.</p>
+</div>
+<div class="paragraph">
+<p>It is however very likely that the relationship between <code>evergreen-client</code> and
+<code>jenkins.war</code> may be changed in the future to take advantage of the container
+orchestration patterns and practices made available by Kubernetes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The current
+<a href="https://github.com/jenkinsci/packaging">Jenkins packaging</a>
+is largely structured around the need to provide a multitude of native Jenkins
+core packages for different platforms.</p>
+</div>
+<div class="paragraph">
+<p>The two downsides to this multi-variant packaging approach, which necessitate a
+separate packaging mechanism for Jenkins Evergreen, are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The numerous platform-specific packages requires a non-trivial amount of work
+to maintain, build, and support.</p>
+</li>
+<li>
+<p>Jenkins Evergreen requires a very confined and consistent environment, at
+least initially, to safely perform automatically self-updates. The isolated
+packaging approach described above, creating a <code>jenkins/evergreen</code> image,
+allows for a dramatic reduction in variance in the build, testing, and
+runtime environments for Jenkins Evergreen.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Additionally, packaging as a separate <code>jenkins/evergreen</code> container allows for
+safe experimentation without disrupting existing users of native packages, or
+the current <code>jenkins/jenkins</code> containers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As described in the <a href="#motivation">Motivation</a> section, Jenkins Evergreen requires a very
+confined and consistent environment. The requirements are a natural fit for
+Docker containers. Compared to three years ago, containers are now much more
+commonly accepted as a distribution mechanism for software such as Jenkins. As
+of this writing, the <code>jenkins/jenkins</code>
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>
+image on Docker Hub has been "pulled" over five million times.</p>
+</div>
+<div class="paragraph">
+<p>The major architecture change <em>within</em> the container, compared to
+<code>jenkins/jenkins</code>, comes with the introduction of the <code>evergreen-client</code>
+process. The process is responsible for managing the lifecycle of the Jenkins
+core and essential plugins, along with a number of other responsibilities which
+are unique to Jenkins Evergreen. By delegating these responsibilities to
+something <em>external</em> to Jenkins core, <code>evergreen-client</code>, lifecycle processes
+which require the termination of the Jenkins process can be safely managed.</p>
+</div>
+<div class="paragraph">
+<p>This notion of a "sidecar process" necessitates the introduction of
+<code>supervisord</code> into <code>jenkins/evergreen</code> for ensuring that both the Jenkins core
+and the <code>evergreen-client</code> process are properly running. The selection of
+<code>supervisord</code> for this task is not coincidental, but rather it was chosen for
+the following reasons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>supervisord</code> is a relatively lightweight Python process and does not add
+significant space on disk or consume significant CPU/RAM overhead when
+running.</p>
+</li>
+<li>
+<p><code>supervisord</code> is very easy to put inside of a Docker container, compared to
+say <code>systemd</code>.</p>
+</li>
+<li>
+<p><code>supervisord</code> exposes an <a href="http://supervisord.org/api.html">XML-RPC API</a>
+which provides useful process status information, and control, over HTTP for
+consumption by the <code>evergreen-client</code> process.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_alternative_approaches">Alternative Approaches</h3>
+<div class="sect3">
+<h4 id="_extending_jenkins_itself">Extending Jenkins itself</h4>
+<div class="paragraph">
+<p>The only other alternative approach to the "sidecar
+process" and a Docker container which was considered was extending Jenkins
+itself via a plugin or something similar.</p>
+</div>
+<div class="paragraph">
+<p>This approach was discarded early on in the prototype stage for a number of
+reasons, but the most important one is the need to be able to control Jenkins
+<em>while</em> Jenkins is offline. One such scenario would be if an automatic
+self-upgrade fails, resulting in the Jenkins process failing to boot due to
+some critical error. Using a Jenkins plugin as the vehicle for managing
+Jenkins Evergreen upgrades would open the potential for "bricked instances"
+when a bad upgrade is delivered.</p>
+</div>
+<div class="paragraph">
+<p>Extending Jenkins itself also adds other constraints, such as requiring the
+dependencies loaded into the JVM to be compatible with other code loaded by
+Jenkins core and plugins. Or the ability for other plugins or users to build
+dependencies off of the code itself, inadvertently leading to de facto public
+APIs to be consumed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since this document describes a new packaging medium, there are no backwards
+compatibility concerns as all existing packaging will remain the same.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The security impact of this proposal is minimal, but does require chaining of
+the <code>jenkins/evergreen</code> build "downstream" of the <code>jenkins/jenkins</code> build to
+ensure that necessary core security updates are baked into the image by
+default.</p>
+</div>
+<div class="paragraph">
+<p>The documents describing the design of <code>evergreen-client</code> and the Jenkins
+Evergreen plugin list will detail the specific security ramifications of those
+two systems.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The infrastructure requirements for the <code>jenkins/evergreen</code> image are mostly on
+services external to the Jenkins project such as
+<a href="https://hub.docker.com">Docker Hub</a>.</p>
+</div>
+<div class="paragraph">
+<p>The requirements of the Jenkins project infrastructure are only:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A Pipeline on ci.jenkins.io for validation of the repository and pull
+requests</p>
+</li>
+<li>
+<p>A Pipeline in the "trusted.ci" environment for publishing of images to Docker
+Hub</p>
+</li>
+<li>
+<p>A repository within the <code>jenkins-infra</code> GitHub organization.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The testing of what composes "Jenkins Evergreen" is the subject of another JEP
+document, but in the context of the Evergreen packaging there are no plans for
+specific test suites other than to ensure that the <code>jenkins/evergreen</code>
+container can properly boot both Jenkins core and the <code>evergreen-client</code> after
+a new <code>jenkins/evergreen</code> image has been built.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The current prototype implementation can be found in
+<a href="https://github.com/rtyler/evergreen">this repository</a>.</p>
+</div>
+<div class="paragraph">
+<p>Of particular note are the following files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Dockerfile.jenkins</code></p>
+</li>
+<li>
+<p><code>supervisord.conf</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Caution</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As of 2018-02-07 there are no tests which validate that the container built is
+correct. This work is captured in
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-49449">JENKINS-49449</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://github.com/jenkinsci/docker" class="bare">https://github.com/jenkinsci/docker</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://hub.docker.com/r/jenkins/jenkins/" class="bare">https://hub.docker.com/r/jenkins/jenkins/</a>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

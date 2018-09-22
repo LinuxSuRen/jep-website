@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site </title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40-DEV" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.e08a958ae3e530145318b6373195c765.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="" />
+<meta property="og:description" content="Table 1. Metadata     JEP
+ 204
+   Title
+ BlueOcean Extensibility API
+   Sponsor
+ Ivan Meredith
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-15
+   Requires
+ JEP-203
+     Table of Contents Abstract Specification Extension Store Registering Extensions List of Extension Points Listing of Extensions for a Extension Point   Extension function Extensions that render     Motivation Extensions as React components   Reasoning Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract The BlueOcean extensiblity api is the way in which Jenkins plugin developers extend the BlueOcean UI." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jep/204/readme/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="">
+<meta itemprop="description" content="Table 1. Metadata     JEP
+ 204
+   Title
+ BlueOcean Extensibility API
+   Sponsor
+ Ivan Meredith
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-15
+   Requires
+ JEP-203
+     Table of Contents Abstract Specification Extension Store Registering Extensions List of Extension Points Listing of Extensions for a Extension Point   Extension function Extensions that render     Motivation Extensions as React components   Reasoning Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract The BlueOcean extensiblity api is the way in which Jenkins plugin developers extend the BlueOcean UI.">
+
+
+
+<meta itemprop="wordCount" content="626">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Table 1. Metadata     JEP
+ 204
+   Title
+ BlueOcean Extensibility API
+   Sponsor
+ Ivan Meredith
+   Status
+ Draft :speech_balloon:
+   Type
+ Standards
+   Created
+ 2018-05-15
+   Requires
+ JEP-203
+     Table of Contents Abstract Specification Extension Store Registering Extensions List of Extension Points Listing of Extensions for a Extension Point   Extension function Extensions that render     Motivation Extensions as React components   Reasoning Backwards Compatibility Security Infrastructure Requirements Testing Prototype Implementation References    Abstract The BlueOcean extensiblity api is the way in which Jenkins plugin developers extend the BlueOcean UI."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+      
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center ph3 ph0-l">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1"></h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="0001-01-01T00:00:00Z">January 1, 0001</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l"><div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Metadata</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">204</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BlueOcean Extensibility API</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sponsor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://github.com/imeredith">Ivan Meredith</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Status</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft :speech_balloon:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2018-05-15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Requires</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JEP-203</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_abstract">Abstract</a></li>
+<li><a href="#_specification">Specification</a>
+<ul class="sectlevel2">
+<li><a href="#_extension_store">Extension Store</a>
+<ul class="sectlevel3">
+<li><a href="#_registering_extensions">Registering Extensions</a></li>
+<li><a href="#_list_of_extension_points">List of Extension Points</a></li>
+<li><a href="#_listing_of_extensions_for_a_extension_point">Listing of Extensions for a Extension Point</a></li>
+</ul>
+</li>
+<li><a href="#extensionfunction">Extension function</a>
+<ul class="sectlevel3">
+<li><a href="#_extensions_that_render">Extensions that render</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_motivation">Motivation</a>
+<ul class="sectlevel2">
+<li><a href="#_extensions_as_react_components">Extensions as React components</a></li>
+</ul>
+</li>
+<li><a href="#_reasoning">Reasoning</a></li>
+<li><a href="#_backwards_compatibility">Backwards Compatibility</a></li>
+<li><a href="#_security">Security</a></li>
+<li><a href="#_infrastructure_requirements">Infrastructure Requirements</a></li>
+<li><a href="#_testing">Testing</a></li>
+<li><a href="#_prototype_implementation">Prototype Implementation</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The BlueOcean extensiblity api is the way in which Jenkins plugin developers extend the BlueOcean UI.
+This JEP describes how extensions are defined and implemented.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_specification">Specification</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_extension_store">Extension Store</h3>
+<div class="paragraph">
+<p>This is the only global object exposed by the extension system; it stores Extension Points and Extensions implementing it.
+This is where an extension registry is stored and during javascript execution offers lookup capability to apply the Extension Points or call the rendering function.</p>
+</div>
+<div class="sect3">
+<h4 id="_registering_extensions">Registering Extensions</h4>
+<div class="paragraph">
+<p>Extensions in Jenkins are normally discovered with the <code>@Extension</code> annotation.
+Javascript has no runtime methods to discover extensions automatically, so an explicit call to <code>register()</code> is needed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">/**
+ * @param {string} extensionPointId - Unique string that idenifies the extension point.
+ * @param {function} callbackFn - Extension function<b class="conum">(1)</b>
+ */
+window.extensionStore.register(extensionPointId, callbackFn)</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><a href="#extensionfunction">Extension function</a></p>
+</li>
+</ol>
+</div>
+<div class="sect4">
+<h5 id="_registration_event_listener">Registration Event Listener</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">/**
+ * @param {string} event - The event to register a callback against.
+ * @param {function} callbackFn - Callback function to be executed on event
+ */
+window.extensionStore.registerListener(event, callbackFn)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_list_of_extension_points">List of Extension Points</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">/**
+ * @returns {string[]} List of extension point ids that are registered.
+ */
+window.extensionStore.getExtensionPointIds()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_listing_of_extensions_for_a_extension_point">Listing of Extensions for a Extension Point</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">/**
+ * @param {string} [extensionPointId] - Extension point to get registered extensions for. If not provided return all extensions.
+ */
+window.extensionStore.getExtensions(extensionPointId)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="extensionfunction">Extension function</h3>
+<div class="paragraph">
+<p>Extensions are implemented as functions, specific extension points will define what contract the extensions must implement. The basic format is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">function(context) {
+    // Extension code
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The extension point defines what context it will give extensions.
+This could be contextual data or it could be callback functions to provide data to the extension point</p>
+</div>
+<div class="sect3">
+<h4 id="_extensions_that_render">Extensions that render</h4>
+<div class="paragraph">
+<p>Extensions that want to render UI are a specialized version of the general extension function.
+Extension points will pass in a <code>container</code> div for the extension to render into.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">function(context) {
+    context.container.innerHTML = "&lt;p&gt;No test results&lt;/p&gt;"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_motivation">Motivation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>BlueOcean has an extensibility system built around <a href="https://github.com/jenkinsci/js-builder">js-builder</a> and <a href="https://github.com/jenkinsci/js-modules">js-modules</a>.
+It currently forces plugins to implement extensions as React components.</p>
+</div>
+<div class="paragraph">
+<p>There are some key issues with the way that it is currently implemented.</p>
+</div>
+<div class="sect2">
+<h3 id="_extensions_as_react_components">Extensions as React components</h3>
+<div class="paragraph">
+<p>Because extensions are react components, it uses <code>ReactDOM</code> provided by BlueOcean to render them.
+This forces extensions to use the same version of React as BlueOcean.
+The main issue with this if BlueOcean needs to upgrade React, every plugin will need to be updated too, or potentially have runtime issues due to API changes in React.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reasoning">Reasoning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The extensibility api is designed to decouple the rendering of UI from BlueOcean.
+To that end extensions implement a function that does the rendering.
+Not only does it allow for greater flexibility as extensions can generate UI with any javascript library,
+if plugins need to use React they can provide thier own version of it which lets BlueOcean not worry about upgrading itself.</p>
+</div>
+<div class="paragraph">
+<p>ES5 compatibility was chosen to allow plugin developers to have the greatest flexibility with what Javascript technology they want to develop the extensions in.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_backwards_compatibility">Backwards Compatibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are only a few BlueOcean plugins, however they will need to be updated to use this API.
+An exact plan on migration needs to be worked out.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_security">Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no security risks related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_infrastructure_requirements">Infrastructure Requirements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are no new infrastructure requirements related to this proposal.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_testing">Testing</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Unit tests to show that API is to spec</p>
+</li>
+<li>
+<p>BlueOcean Acceptance Test Harness will load extensions using this API for integration testing.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prototype_implementation">Prototype Implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/imeredith/es-extensions-api" class="bare">https://github.com/imeredith/es-extensions-api</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://groups.google.com/d/topic/jenkinsci-dev/urbEsaAjbVw/discussion">Blue Ocean Extensibility Discussion</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2018 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
